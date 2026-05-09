@@ -1,0 +1,23 @@
+.env
+.secrets/
+Kalshi API*.txt
+*private*key*.txt
+*api*key*.txt
+*.pem
+*.key
+.venv/
+.codex_runtime_pkgs/
+.pip_tmp/
+data/raw/
+data/interim/
+data/processed/
+data/models/
+data/reports/
+data/kalshi/markets_today.csv
+data/kalshi/markets_to_fill.csv
+data/kalshi/markets_manual*.csv
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+tmp*/
+.DS_Store

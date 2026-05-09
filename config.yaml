@@ -1,0 +1,57 @@
+project:
+  random_seed: 42
+
+nba:
+  start_season: 2018
+  end_season: 2025
+  season_type: "Regular Season"
+  raw_dir: data/raw/nba
+
+data:
+  start_season: 2018
+  end_season: 2025
+  cache_dir: data/raw/nba
+  player_cache_dir: data/raw/nba/player
+  availability_report_path: data/raw/nba/injuries/availability.csv
+  processed_dir: data/processed
+
+model:
+  target: target_home_win
+  train_start_season: 2018
+  train_end_season: 2023
+  test_season: 2024
+  model_type: logistic_regression
+
+strategy:
+  starting_bankroll: 100.0
+  edge_threshold: 0.05
+  max_bet_fraction: 0.03
+  min_market_price: 0.05
+  max_market_price: 0.95
+  use_yes_ask_for_buys: true
+  allow_no_trades: false
+  use_fractional_kelly: false
+  kelly_fraction: 0.25
+
+kalshi:
+  enabled: true
+  base_url: "https://external-api.kalshi.com/trade-api/v2"
+  demo_base_url: "https://demo-api.kalshi.co/trade-api/v2"
+  use_demo: false
+  require_auth: false
+  default_candle_interval_minutes: 1
+  fallback_candle_interval_minutes: 60
+  market_search_days_before_game: 1
+  market_search_days_after_game: 1
+  env: prod
+
+matching:
+  auto_match_threshold: 0.85
+  review_match_threshold: 0.60
+
+backtest:
+  pregame_snapshot_minutes_before_tipoff: 60
+  min_volume: 10
+  allowed_price_qualities: "bid_ask_available"
+  require_bid_ask: true
+  max_candle_interval_minutes: 60

@@ -1,0 +1,13 @@
+pandas
+numpy
+scikit-learn
+requests
+cryptography
+python-dotenv
+pydantic
+tqdm
+matplotlib
+joblib
+nba_api
+pyarrow
+pyyaml
