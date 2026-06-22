@@ -83,7 +83,14 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
-        path = Path(options["path"]) if options["path"] else settings.REPORTS_DIR / "matchup_predictions_today.csv"
+        if options["path"]:
+            path = Path(options["path"])
+        else:
+            # Prefer the live pipeline output; fall back to the committed seed copy
+            # (used on hosts like Render where data/reports/ isn't in the repo).
+            primary = settings.REPORTS_DIR / "matchup_predictions_today.csv"
+            seed = Path(settings.BASE_DIR) / "predictions" / "seed_data" / "matchup_predictions_today.csv"
+            path = primary if primary.exists() else seed
         if not path.exists():
             raise CommandError(f"Predictions CSV not found: {path}")
 

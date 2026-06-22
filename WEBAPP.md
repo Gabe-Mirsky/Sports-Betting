@@ -110,15 +110,23 @@ git push -u origin main
 
 1. Go to render.com → **New → Blueprint** and pick your GitHub repo. Render reads
    `render.yaml` and creates a web service **and** a free Postgres database.
-2. It runs `build.sh` (install → `collectstatic` → `migrate`) and starts gunicorn.
-3. `DJANGO_SECRET_KEY` is auto-generated; `DATABASE_URL` is wired to the Postgres DB;
-   `DJANGO_DEBUG=0` is set. The host's URL is trusted automatically.
-4. After the first deploy, load data from the Render shell:
-   `python manage.py import_predictions` (or `seed_demo`), then
-   `python manage.py createsuperuser` for the admin, and
-   `python manage.py export_model_explanation` for the How It Works coefficients.
+2. In the web service's **Environment** tab, set your admin login:
+   `DJANGO_SUPERUSER_USERNAME`, `DJANGO_SUPERUSER_PASSWORD`, and (optional)
+   `DJANGO_SUPERUSER_EMAIL`.
+3. Deploy. The build (`build.sh`) automatically runs `collectstatic`, `migrate`,
+   loads the bundled predictions, and creates your admin — **no shell needed**
+   (the free tier has no Shell tab). `DJANGO_SECRET_KEY` is auto-generated,
+   `DATABASE_URL` is wired to Postgres, and `DJANGO_DEBUG=0` is set.
 
-Render gives you a public URL like `https://matchup-predictor.onrender.com`.
+Render gives you a public URL like `https://matchup-predictor.onrender.com`, with
+the predictions, recommendations, parlay creator, How It Works coefficients, and
+`/admin/` all working immediately.
+
+> **Data note:** small seed copies of the predictions and the model coefficients are
+> committed in `predictions/seed_data/` so the live site has data without needing the
+> gitignored `data/` files. To refresh the live site later, regenerate those files
+> locally (`build_matchup_predictions.py` + `export_model_explanation`), copy them
+> into `predictions/seed_data/`, and push.
 
 ### 3. Use your own domain
 

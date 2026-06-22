@@ -18,6 +18,14 @@ services:
         fromDatabase:
           name: matchup-predictor-db
           property: connectionString
+      # Admin login, created automatically on deploy. Set these in the Render
+      # dashboard (Environment tab) before/after the first deploy.
+      - key: DJANGO_SUPERUSER_USERNAME
+        sync: false
+      - key: DJANGO_SUPERUSER_PASSWORD
+        sync: false
+      - key: DJANGO_SUPERUSER_EMAIL
+        sync: false
       # Optional AI reasoning (leave unset to use the offline fallback):
       - key: AI_PROVIDER
         sync: false
