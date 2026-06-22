@@ -8,14 +8,17 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 from typing import Any
+from zoneinfo import ZoneInfo
 
 import pandas as pd
 
+from .scoreboard import fetch_scoreboard_games
 from .team_aliases import normalize_team_abbr
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 ESPN_NBA_SCOREBOARD_URL = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard"
+EASTERN = ZoneInfo("America/New_York")
 
 
 def _parse_dates(values: pd.Series) -> pd.Series:
@@ -65,6 +68,64 @@ def fetch_espn_scoreboard_date(game_date: str | pd.Timestamp, timeout: int = 30)
     return pd.DataFrame(rows)
 
 
+def _official_start_time_to_utc(value: Any) -> str:
+    timestamp = pd.to_datetime(value, errors="coerce")
+    if pd.isna(timestamp):
+        return ""
+    if timestamp.tzinfo is None:
+        timestamp = timestamp.tz_localize(EASTERN)
+    return timestamp.tz_convert("UTC").isoformat()
+
+
+def fetch_nba_official_scoreboard_date(game_date: str | pd.Timestamp, timeout: int = 30) -> pd.DataFrame:
+    """Fetch one date of NBA Stats scoreboard data and return official game start times."""
+
+    date_value = pd.Timestamp(game_date)
+    games = fetch_scoreboard_games(
+        date_value.date().isoformat(),
+        timeout=timeout,
+        retries=1,
+        log_warnings=False,
+    )
+    if games.empty:
+        return pd.DataFrame()
+
+    rows: list[dict[str, Any]] = []
+    for _, row in games.iterrows():
+        home_team = normalize_team_abbr(row.get("home_team_abbr", ""))
+        away_team = normalize_team_abbr(row.get("away_team_abbr", ""))
+        start_time = _official_start_time_to_utc(row.get("game_date"))
+        if not home_team or not away_team or not start_time:
+            continue
+        rows.append(
+            {
+                "game_date": date_value.date().isoformat(),
+                "home_team_abbr": home_team,
+                "away_team_abbr": away_team,
+                "game_start_time": start_time,
+                "game_time_source": "nba_stats_scoreboard",
+                "nba_game_id": row.get("game_id", ""),
+            }
+        )
+    return pd.DataFrame(rows)
+
+
+def fetch_game_start_times_for_date(game_date: str | pd.Timestamp, timeout: int = 30) -> pd.DataFrame:
+    """Prefer official NBA Stats start times, with ESPN as a free fallback."""
+
+    try:
+        official = fetch_nba_official_scoreboard_date(game_date, timeout=timeout)
+        if not official.empty:
+            return official
+    except Exception:
+        pass
+    fallback = fetch_espn_scoreboard_date(game_date, timeout=timeout)
+    if not fallback.empty:
+        fallback = fallback.copy()
+        fallback["game_time_source"] = "espn_scoreboard_after_nba_stats_fallback"
+    return fallback
+
+
 def download_game_start_times_for_games(
     games_df: pd.DataFrame,
     output_path: str | Path | None = None,
@@ -79,7 +140,7 @@ def download_game_start_times_for_games(
     failures: list[dict[str, str]] = []
     for game_date in dates:
         try:
-            frame = fetch_espn_scoreboard_date(str(game_date))
+            frame = fetch_game_start_times_for_date(str(game_date))
             if not frame.empty:
                 frames.append(frame)
         except Exception as exc:
@@ -91,9 +152,14 @@ def download_game_start_times_for_games(
         output = output.drop_duplicates(subset=["game_date", "home_team_abbr", "away_team_abbr"], keep="last")
     path = Path(output_path) if output_path else PROJECT_ROOT / "data" / "interim" / "nba_game_start_times.csv"
     path.parent.mkdir(parents=True, exist_ok=True)
-    output.to_csv(path, index=False)
+    if not output.empty or not path.exists():
+        output.to_csv(path, index=False)
     if failures:
-        failure_path = PROJECT_ROOT / "data" / "reports" / "nba_game_start_time_failures.csv"
+        failure_path = (
+            path.with_name(f"{path.stem}_failures.csv")
+            if output_path
+            else PROJECT_ROOT / "data" / "reports" / "nba_game_start_time_failures.csv"
+        )
         failure_path.parent.mkdir(parents=True, exist_ok=True)
         pd.DataFrame(failures).to_csv(failure_path, index=False)
     return output
@@ -107,7 +173,7 @@ def add_game_start_times(games_df: pd.DataFrame, starts_df: pd.DataFrame) -> pd.
     games = games.drop(
         columns=[
             column
-            for column in ["game_start_time", "game_time_source", "espn_event_id"]
+            for column in ["game_start_time", "game_time_source", "espn_event_id", "nba_game_id"]
             if column in games.columns
         ]
     )

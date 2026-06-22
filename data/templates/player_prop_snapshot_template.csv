@@ -1,0 +1,1 @@
+snapshot_time,sport,league,season,game_date,game_start_time,canonical_game_key,player_name,player_id,team,opponent,home_away,prop_type,line,over_price,under_price,bookmaker,source,market_id,is_closing_snapshot,minutes_to_game_start,has_result,actual_stat_value,over_won,under_won,raw_source_file

@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import json
 import re
+from datetime import date, datetime
 from pathlib import Path
 from typing import Any
 
@@ -238,17 +240,57 @@ def _read_dataframe_cache(path: Path) -> pd.DataFrame:
     return pd.DataFrame()
 
 
+def _is_missing_cache_value(value: Any) -> bool:
+    if value is None:
+        return True
+    try:
+        return bool(pd.isna(value))
+    except (TypeError, ValueError):
+        return False
+
+
+def _normalize_cache_scalar(value: Any) -> Any:
+    if _is_missing_cache_value(value):
+        return pd.NA
+    if isinstance(value, pd.Timestamp):
+        return value.isoformat()
+    if isinstance(value, (datetime, date)):
+        return pd.Timestamp(value).isoformat()
+    if isinstance(value, (bytes, bytearray)):
+        return bytes(value).decode("utf-8", errors="replace")
+    if isinstance(value, (dict, list, tuple, set)):
+        return json.dumps(value, sort_keys=True, default=str)
+    return value
+
+
+def _normalize_cache_dataframe_for_write(df: pd.DataFrame) -> pd.DataFrame:
+    """Make raw Kalshi API cache frames safe for parquet serialization.
+
+    Kalshi market cache appends can mix older string/bytes values with newly
+    parsed Timestamp values in the same object column. PyArrow cannot infer a
+    stable parquet type from that mix, so object columns are serialized as
+    nullable strings after normalizing common API payload types.
+    """
+
+    output = df.copy()
+    for column in output.columns:
+        if pd.api.types.is_object_dtype(output[column]):
+            output[column] = output[column].map(_normalize_cache_scalar).astype("string")
+    return output
+
+
 def _write_dataframe_cache(df: pd.DataFrame, path: Path) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
+    output = _normalize_cache_dataframe_for_write(df)
     if path.suffix.lower() == ".csv":
-        df.to_csv(path, index=False)
+        output.to_csv(path, index=False)
         return path
     try:
-        df.to_parquet(path, index=False)
+        output.to_parquet(path, index=False)
         return path
     except (ImportError, ValueError, RuntimeError):
         csv_path = path.with_suffix(".csv")
-        df.to_csv(csv_path, index=False)
+        output.to_csv(csv_path, index=False)
         return csv_path
 
 

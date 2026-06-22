@@ -9,7 +9,8 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
-from strategy.signal import add_yes_signals
+from data.sportsbook_odds import match_sportsbook_odds_to_games
+from strategy.signal import add_two_sided_signals
 from strategy.staking import calculate_flat_fractional_shares
 
 
@@ -34,6 +35,32 @@ def _range_label(start_date: str | None, end_date: str | None) -> str:
     return "n/a"
 
 
+def _side_metrics(traded: pd.DataFrame, side: str) -> dict[str, Any]:
+    side_trades = traded[traded["side"] == side].copy() if "side" in traded.columns else pd.DataFrame()
+    if side_trades.empty:
+        return {
+            f"{side.lower()}_win_rate": 0.0,
+            f"{side.lower()}_profit": 0.0,
+            f"{side.lower()}_average_profit_per_trade": 0.0,
+            f"{side.lower()}_average_clv_cents": 0.0,
+            f"{side.lower()}_positive_clv_rate": 0.0,
+        }
+
+    output = {
+        f"{side.lower()}_win_rate": float((side_trades["profit"] > 0).mean()),
+        f"{side.lower()}_profit": float(side_trades["profit"].sum()),
+        f"{side.lower()}_average_profit_per_trade": float(side_trades["profit"].mean()),
+        f"{side.lower()}_average_clv_cents": 0.0,
+        f"{side.lower()}_positive_clv_rate": 0.0,
+    }
+    if "clv_cents" in side_trades.columns:
+        side_clv = pd.to_numeric(side_trades["clv_cents"], errors="coerce").dropna()
+        if not side_clv.empty:
+            output[f"{side.lower()}_average_clv_cents"] = float(side_clv.mean())
+            output[f"{side.lower()}_positive_clv_rate"] = float((side_clv > 0).mean())
+    return output
+
+
 def summarize_backtest(trades: pd.DataFrame, starting_bankroll: float) -> dict[str, Any]:
     """Summarize paper-trading results."""
 
@@ -41,10 +68,11 @@ def summarize_backtest(trades: pd.DataFrame, starting_bankroll: float) -> dict[s
     ending_bankroll = float(trades["bankroll_after"].iloc[-1]) if not trades.empty else starting_bankroll
     amount_risked = float(traded["cost"].sum()) if not traded.empty else 0.0
     wins = traded[traded["profit"] > 0]
+    side_counts = traded["side"].value_counts().to_dict() if "side" in traded.columns else {}
     market_start_date, market_end_date = _date_range(trades["date"]) if "date" in trades.columns else (None, None)
     trade_start_date, trade_end_date = _date_range(traded["date"]) if "date" in traded.columns else (None, None)
 
-    return {
+    summary = {
         "starting_bankroll": float(starting_bankroll),
         "ending_bankroll": ending_bankroll,
         "total_return_pct": (ending_bankroll / float(starting_bankroll) - 1.0)
@@ -52,6 +80,8 @@ def summarize_backtest(trades: pd.DataFrame, starting_bankroll: float) -> dict[s
         else 0.0,
         "num_markets_seen": int(len(trades)),
         "num_trades": int(len(traded)),
+        "num_yes_trades": int(side_counts.get("YES", 0)),
+        "num_no_trades": int(side_counts.get("NO", 0)),
         "market_start_date": market_start_date,
         "market_end_date": market_end_date,
         "market_timeline": _range_label(market_start_date, market_end_date),
@@ -67,7 +97,19 @@ def summarize_backtest(trades: pd.DataFrame, starting_bankroll: float) -> dict[s
         "roi_on_amount_risked": float(traded["profit"].sum() / amount_risked)
         if amount_risked
         else 0.0,
+        "average_clv_cents": float(traded["clv_cents"].mean())
+        if len(traded) and "clv_cents" in traded.columns
+        else 0.0,
+        "median_clv_cents": float(traded["clv_cents"].median())
+        if len(traded) and "clv_cents" in traded.columns
+        else 0.0,
+        "positive_clv_rate": float((traded["clv_cents"] > 0).mean())
+        if len(traded) and "clv_cents" in traded.columns
+        else 0.0,
     }
+    summary.update(_side_metrics(traded, "YES"))
+    summary.update(_side_metrics(traded, "NO"))
+    return summary
 
 
 def run_backtest(
@@ -77,6 +119,7 @@ def run_backtest(
     max_bet_fraction: float = 0.03,
     min_market_price: float = 0.05,
     max_market_price: float = 0.95,
+    allow_no_trades: bool = True,
 ) -> pd.DataFrame:
     """Run a simple same-day-settlement fake-bankroll backtest."""
 
@@ -88,7 +131,6 @@ def run_backtest(
         "away_team_abbr",
         "yes_team_abbr",
         "model_yes_prob",
-        "yes_mid_cents",
         "actual_yes_win",
     ]
     missing = [column for column in required if column not in matched_markets_df.columns]
@@ -97,11 +139,16 @@ def run_backtest(
 
     markets = matched_markets_df.copy()
     markets["game_date"] = pd.to_datetime(markets["game_date"], errors="coerce")
-    markets = add_yes_signals(
+    if "yes_ask" not in markets.columns:
+        markets["yes_ask"] = markets.get("yes_mid_cents")
+    if "yes_bid" not in markets.columns:
+        markets["yes_bid"] = pd.NA
+    markets = add_two_sided_signals(
         markets,
         edge_threshold=edge_threshold,
         min_market_price=min_market_price,
         max_market_price=max_market_price,
+        allow_no=allow_no_trades,
     )
     markets = markets.sort_values(["game_date", "game_id", "market_ticker"]).reset_index(drop=True)
 
@@ -129,27 +176,44 @@ def run_backtest(
                 reason = str(row["reason"])
                 contract_cost = float(row["price_cents"]) / 100.0
                 cost = shares * contract_cost
-                payout = float(shares) if bool(row["actual_yes_win"]) else 0.0
+                side_won = bool(row["actual_yes_win"]) if row["side"] == "YES" else not bool(row["actual_yes_win"])
+                payout = float(shares) if side_won else 0.0
                 profit = payout - cost
                 bankroll = bankroll - cost + payout
         else:
             trade = False
             reason = str(row["reason"])
 
+        clv_reference_price = row.get("clv_reference_price_cents", np.nan)
+        clv_reference_snapshot = row.get("clv_reference_snapshot", "")
+        candidate_side = str(row.get("candidate_side", row.get("side", ""))).upper()
+        if candidate_side == "NO":
+            clv_reference_price = row.get("clv_reference_no_price_cents", np.nan)
+            clv_reference_snapshot = row.get("clv_reference_no_snapshot", clv_reference_snapshot)
+        clv_cents = (
+            float(clv_reference_price) - float(row["price_cents"])
+            if pd.notna(clv_reference_price) and pd.notna(row["price_cents"])
+            else np.nan
+        )
+
         rows.append(
             {
                 "date": row["game_date"],
                 "game_id": row["game_id"],
+                "season": row.get("season", np.nan),
+                "season_type": row.get("season_type", ""),
                 "market_ticker": row["market_ticker"],
                 "home_team_abbr": row["home_team_abbr"],
                 "away_team_abbr": row["away_team_abbr"],
                 "yes_team_abbr": row["yes_team_abbr"],
                 "model_yes_prob": row["model_yes_prob"],
+                "model_prob": row["model_prob"],
                 "market_prob": row["market_prob"],
                 "edge": row["edge"],
                 "price_cents": row["price_cents"],
                 "trade": trade,
-                "side": "YES" if trade else "",
+                "side": row["side"] if trade else "",
+                "candidate_side": candidate_side,
                 "shares": shares,
                 "cost": cost,
                 "payout": payout,
@@ -158,6 +222,14 @@ def run_backtest(
                 "bankroll_after": bankroll,
                 "actual_yes_win": bool(row["actual_yes_win"]),
                 "reason": reason,
+                "snapshot_target": row.get("snapshot_target", ""),
+                "price_quality": row.get("price_quality", ""),
+                "period_interval": row.get("period_interval", np.nan),
+                "volume": row.get("volume", np.nan),
+                "open_interest": row.get("open_interest", np.nan),
+                "clv_reference_price_cents": clv_reference_price,
+                "clv_reference_snapshot": clv_reference_snapshot,
+                "clv_cents": clv_cents,
             }
         )
 
@@ -172,6 +244,8 @@ def prepare_candlestick_backtest_markets(
     allowed_price_qualities: list[str] | tuple[str, ...] | set[str] | None = ("bid_ask_available",),
     require_bid_ask: bool = True,
     max_candle_interval_minutes: int | None = 60,
+    max_bid_ask_spread_cents: float | None = 10.0,
+    preferred_snapshot_targets: list[str] | tuple[str, ...] | None = None,
 ) -> tuple[pd.DataFrame, dict[str, Any]]:
     """Build run_backtest input from Kalshi matches and extracted candle snapshots."""
 
@@ -213,12 +287,22 @@ def prepare_candlestick_backtest_markets(
         ].copy()
     after_bid_ask_rows = int(len(usable_prices))
 
+    if max_bid_ask_spread_cents is not None:
+        for column in ["yes_bid", "yes_ask"]:
+            if column not in usable_prices.columns:
+                usable_prices[column] = np.nan
+            usable_prices[column] = pd.to_numeric(usable_prices[column], errors="coerce")
+        spread = usable_prices["yes_ask"] - usable_prices["yes_bid"]
+        usable_prices = usable_prices[spread <= float(max_bid_ask_spread_cents)].copy()
+    after_spread_rows = int(len(usable_prices))
+
     if min_volume > 0 and "volume" in usable_prices.columns:
         usable_prices["volume"] = pd.to_numeric(usable_prices["volume"], errors="coerce").fillna(0)
         usable_prices = usable_prices[usable_prices["volume"] >= float(min_volume)]
     after_volume_rows = int(len(usable_prices))
 
-    priority = {"pregame_60m": 0, "pregame_30m": 1, "pregame_5m": 2}
+    target_order = list(preferred_snapshot_targets or ["pregame_60m", "pregame_30m", "pregame_5m"])
+    priority = {target: index for index, target in enumerate(target_order)}
     usable_prices["snapshot_priority"] = usable_prices["snapshot_target"].map(priority).fillna(99)
     usable_prices["snapshot_ts"] = pd.to_numeric(usable_prices["snapshot_ts"], errors="coerce")
     chosen_prices = (
@@ -227,12 +311,51 @@ def prepare_candlestick_backtest_markets(
         .copy()
     )
 
+    snapshot_prices = usable_prices.pivot_table(
+        index=["game_id", "market_ticker", "series_ticker"],
+        columns="snapshot_target",
+        values="yes_price",
+        aggfunc="first",
+    ).reset_index()
+    snapshot_prices = snapshot_prices.rename(
+        columns={
+            "pregame_60m": "pregame_price_60m",
+            "pregame_30m": "pregame_price_30m",
+            "pregame_5m": "pregame_price_5m",
+        }
+    )
+    snapshot_bids = usable_prices.pivot_table(
+        index=["game_id", "market_ticker", "series_ticker"],
+        columns="snapshot_target",
+        values="yes_bid",
+        aggfunc="first",
+    ).reset_index()
+    snapshot_bids = snapshot_bids.rename(
+        columns={
+            "pregame_60m": "pregame_yes_bid_60m",
+            "pregame_30m": "pregame_yes_bid_30m",
+            "pregame_5m": "pregame_yes_bid_5m",
+        }
+    )
+
     matched = auto_matches.merge(
         chosen_prices,
         on=["game_id", "market_ticker", "series_ticker"],
         how="left",
         suffixes=("", "_price"),
     )
+    if not snapshot_prices.empty:
+        matched = matched.merge(
+            snapshot_prices,
+            on=["game_id", "market_ticker", "series_ticker"],
+            how="left",
+        )
+    if not snapshot_bids.empty:
+        matched = matched.merge(
+            snapshot_bids,
+            on=["game_id", "market_ticker", "series_ticker"],
+            how="left",
+        )
     backtest_rows = matched.merge(
         predictions,
         on=["game_id", "game_date", "home_team_abbr", "away_team_abbr"],
@@ -244,6 +367,7 @@ def prepare_candlestick_backtest_markets(
 
     if backtest_rows.empty:
         diagnostics = {
+            "mode": "kalshi_candlestick",
             "games_available": int(len(predictions)),
             "games_with_matched_kalshi_market": int(len(auto_matches)),
             "games_with_usable_pregame_price": 0,
@@ -256,11 +380,14 @@ def prepare_candlestick_backtest_markets(
             "price_rows_after_quality_filter": after_quality_rows,
             "price_rows_after_interval_filter": after_interval_rows,
             "price_rows_after_bid_ask_filter": after_bid_ask_rows,
+            "price_rows_after_spread_filter": after_spread_rows,
             "price_rows_after_volume_filter": after_volume_rows,
             "allowed_price_qualities": sorted(allowed_price_qualities) if allowed_price_qualities else "any_non_missing",
             "require_bid_ask": bool(require_bid_ask),
             "min_volume": float(min_volume),
             "max_candle_interval_minutes": max_candle_interval_minutes,
+            "max_bid_ask_spread_cents": max_bid_ask_spread_cents,
+            "preferred_snapshot_targets": target_order,
         }
         return pd.DataFrame(), diagnostics
 
@@ -280,6 +407,38 @@ def prepare_candlestick_backtest_markets(
     )
     backtest_rows["yes_mid_cents"] = pd.to_numeric(backtest_rows["yes_price"], errors="coerce")
     backtest_rows["price_source"] = backtest_rows["price_quality"]
+    for column in ["pregame_price_60m", "pregame_price_30m", "pregame_price_5m"]:
+        if column not in backtest_rows.columns:
+            backtest_rows[column] = np.nan
+        backtest_rows[column] = pd.to_numeric(backtest_rows[column], errors="coerce")
+    for column in ["pregame_yes_bid_60m", "pregame_yes_bid_30m", "pregame_yes_bid_5m"]:
+        if column not in backtest_rows.columns:
+            backtest_rows[column] = np.nan
+        backtest_rows[column] = pd.to_numeric(backtest_rows[column], errors="coerce")
+    backtest_rows["clv_reference_price_cents"] = np.where(
+        backtest_rows["snapshot_target"].eq("pregame_5m"),
+        np.nan,
+        backtest_rows["pregame_price_5m"],
+    )
+    missing_5m = backtest_rows["clv_reference_price_cents"].isna() & ~backtest_rows["snapshot_target"].eq("pregame_30m")
+    backtest_rows.loc[missing_5m, "clv_reference_price_cents"] = backtest_rows.loc[missing_5m, "pregame_price_30m"]
+    backtest_rows["clv_reference_snapshot"] = np.where(
+        backtest_rows["clv_reference_price_cents"].eq(backtest_rows["pregame_price_5m"]),
+        "pregame_5m",
+        np.where(backtest_rows["clv_reference_price_cents"].notna(), "pregame_30m", ""),
+    )
+    backtest_rows["clv_reference_yes_bid_cents"] = np.where(
+        backtest_rows["clv_reference_snapshot"].eq("pregame_5m"),
+        backtest_rows["pregame_yes_bid_5m"],
+        np.where(
+            backtest_rows["clv_reference_snapshot"].eq("pregame_30m"),
+            backtest_rows["pregame_yes_bid_30m"],
+            np.nan,
+        ),
+    )
+    backtest_rows["clv_reference_no_price_cents"] = 100.0 - backtest_rows["clv_reference_yes_bid_cents"]
+    backtest_rows["clv_reference_no_snapshot"] = backtest_rows["clv_reference_snapshot"]
+    backtest_rows["clv_cents"] = backtest_rows["clv_reference_price_cents"] - backtest_rows["yes_mid_cents"]
     if "season_type" in backtest_rows.columns:
         backtest_rows["is_playoffs"] = backtest_rows["season_type"].astype(str).str.contains("Playoffs", case=False, na=False)
     elif "is_playoffs" not in backtest_rows.columns:
@@ -307,9 +466,18 @@ def prepare_candlestick_backtest_markets(
         "period_interval",
         "volume",
         "open_interest",
+        "pregame_price_60m",
+        "pregame_price_30m",
+        "pregame_price_5m",
+        "clv_reference_price_cents",
+        "clv_reference_snapshot",
+        "clv_reference_no_price_cents",
+        "clv_reference_no_snapshot",
+        "clv_cents",
     ]
     output = backtest_rows[[column for column in output_columns if column in backtest_rows.columns]].copy()
     diagnostics = {
+        "mode": "kalshi_candlestick",
         "games_available": int(len(predictions)),
         "games_with_matched_kalshi_market": int(len(auto_matches)),
         "games_with_usable_pregame_price": int(output["game_id"].nunique()),
@@ -322,12 +490,95 @@ def prepare_candlestick_backtest_markets(
         "price_rows_after_quality_filter": after_quality_rows,
         "price_rows_after_interval_filter": after_interval_rows,
         "price_rows_after_bid_ask_filter": after_bid_ask_rows,
+        "price_rows_after_spread_filter": after_spread_rows,
         "price_rows_after_volume_filter": after_volume_rows,
         "allowed_price_qualities": sorted(allowed_price_qualities) if allowed_price_qualities else "any_non_missing",
         "require_bid_ask": bool(require_bid_ask),
         "min_volume": float(min_volume),
         "max_candle_interval_minutes": max_candle_interval_minutes,
+        "max_bid_ask_spread_cents": max_bid_ask_spread_cents,
+        "preferred_snapshot_targets": target_order,
     }
+    return output.reset_index(drop=True), diagnostics
+
+
+def prepare_sportsbook_backtest_markets(
+    predictions_df: pd.DataFrame,
+    sportsbook_odds_df: pd.DataFrame,
+) -> tuple[pd.DataFrame, dict[str, Any]]:
+    """Build run_backtest input from historical sportsbook no-vig moneyline odds."""
+
+    predictions = predictions_df.copy()
+    matched = match_sportsbook_odds_to_games(predictions, sportsbook_odds_df)
+    if matched.empty:
+        return pd.DataFrame(), {
+            "mode": "sportsbook_market_proxy",
+            "games_available": int(len(predictions)),
+            "games_with_sportsbook_odds": 0,
+            "skipped_games_due_to_no_sportsbook_odds": int(len(predictions)),
+        }
+
+    required = ["home_no_vig_prob", "away_no_vig_prob", "model_home_win_prob", "model_away_win_prob"]
+    for column in required:
+        if column not in matched.columns:
+            matched[column] = np.nan
+        matched[column] = pd.to_numeric(matched[column], errors="coerce")
+    matched = matched.dropna(subset=required).copy()
+    if "actual_home_win" not in matched.columns and "home_win" in matched.columns:
+        matched["actual_home_win"] = matched["home_win"]
+    matched["actual_home_win"] = pd.to_numeric(matched.get("actual_home_win"), errors="coerce")
+    matched = matched.dropna(subset=["actual_home_win"]).copy()
+
+    if matched.empty:
+        return pd.DataFrame(), {
+            "mode": "sportsbook_market_proxy",
+            "games_available": int(len(predictions)),
+            "games_with_sportsbook_odds": 0,
+            "skipped_games_due_to_no_sportsbook_odds": int(len(predictions)),
+        }
+
+    output = pd.DataFrame(
+        {
+            "game_date": matched["game_date"],
+            "game_id": matched["game_id"],
+            "season": matched.get("season", np.nan),
+            "season_type": matched.get("season_type", ""),
+            "market_ticker": "SPORTSBOOK-" + matched["game_id"].astype(str) + "-HOME",
+            "home_team_abbr": matched["home_team_abbr"],
+            "away_team_abbr": matched["away_team_abbr"],
+            "yes_team_abbr": matched["home_team_abbr"],
+            "model_yes_prob": matched["model_home_win_prob"],
+            "yes_mid_cents": matched["home_no_vig_prob"] * 100.0,
+            "yes_bid": matched["home_no_vig_prob"] * 100.0,
+            "yes_ask": matched["home_no_vig_prob"] * 100.0,
+            "actual_yes_win": matched["actual_home_win"].astype(bool),
+            "price_quality": "sportsbook_no_vig",
+            "market_source": "sportsbook",
+            "sportsbook_name": matched.get("sportsbook_name", ""),
+            "home_moneyline": matched.get("home_moneyline", np.nan),
+            "away_moneyline": matched.get("away_moneyline", np.nan),
+            "home_implied_prob": matched.get("home_implied_prob", np.nan),
+            "away_implied_prob": matched.get("away_implied_prob", np.nan),
+            "home_no_vig_prob": matched["home_no_vig_prob"],
+            "away_no_vig_prob": matched["away_no_vig_prob"],
+            "spread": matched.get("spread", np.nan),
+            "total": matched.get("total", np.nan),
+        }
+    )
+    diagnostics = {
+        "mode": "sportsbook_market_proxy",
+        "games_available": int(len(predictions)),
+        "games_with_sportsbook_odds": int(output["game_id"].nunique()),
+        "skipped_games_due_to_no_sportsbook_odds": int(max(len(predictions) - output["game_id"].nunique(), 0)),
+        "market_probability_source": "sportsbook_no_vig_moneyline",
+    }
+    if "dataset_split" in predictions.columns:
+        diagnostics["skipped_games_by_dataset_split"] = {
+            str(split): int(count)
+            for split, count in predictions[
+                ~predictions["game_id"].astype(str).isin(output["game_id"].astype(str))
+            ].groupby("dataset_split")["game_id"].nunique().items()
+        }
     return output.reset_index(drop=True), diagnostics
 
 

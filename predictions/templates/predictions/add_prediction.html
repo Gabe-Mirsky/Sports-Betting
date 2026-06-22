@@ -1,0 +1,23 @@
+{% extends "predictions/base.html" %}
+
+{% block title %}Add a prediction{% endblock %}
+
+{% block content %}
+<div class="section-head"><h1>Add a matchup</h1></div>
+<p class="lede">Enter a matchup and (optionally) win probabilities. The AI reasoning service
+   will draft the key reasons and risks; you'll preview it before saving. New entries are
+   submitted for review and appear once approved in the admin.</p>
+
+<form method="post" class="stack-form card">
+  {% csrf_token %}
+  {% for field in form %}
+    <div class="form-row">
+      <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+      {{ field }}
+      {% if field.help_text %}<small class="muted">{{ field.help_text }}</small>{% endif %}
+      {% for error in field.errors %}<div class="field-error">{{ error }}</div>{% endfor %}
+    </div>
+  {% endfor %}
+  <button class="btn btn-primary" type="submit">Generate reasoning &amp; preview</button>
+</form>
+{% endblock %}

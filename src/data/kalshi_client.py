@@ -198,6 +198,11 @@ class KalshiAPIClient:
                 )
             return headers, ""
 
+        if hashes is None or serialization is None or padding is None:
+            if self.require_auth:
+                return headers, "The cryptography package is required for authenticated Kalshi requests."
+            return headers, ""
+
         try:
             timestamp_ms = str(int(time.time() * 1000))
             sign_path = urllib.parse.urlparse(f"{self.base_url}{path}").path
@@ -313,6 +318,11 @@ class KalshiAPIClient:
         if not isinstance(payload, dict):
             return {"payload": payload}
         return payload
+
+    def get_json(self, path: str, params: dict[str, Any] | None = None) -> dict[str, Any]:
+        """Return a raw JSON payload from a public Kalshi endpoint."""
+
+        return self._get(path, params)
 
     def _get_with_urllib(
         self,
@@ -529,6 +539,26 @@ class KalshiAPIClient:
         )
         return _candlestick_payload_to_frame(payload)
 
+    def get_batch_market_candlesticks(
+        self,
+        market_tickers: list[str],
+        start_ts: int,
+        end_ts: int,
+        period_interval: int,
+        include_latest_before_start: bool = False,
+    ) -> pd.DataFrame:
+        payload = self._get(
+            "/markets/candlesticks",
+            {
+                "tickers": ",".join(market_tickers),
+                "start_ts": int(start_ts),
+                "end_ts": int(end_ts),
+                "period_interval": int(period_interval),
+                "include_latest_before_start": str(bool(include_latest_before_start)).lower(),
+            },
+        )
+        return _batch_candlestick_payload_to_frame(payload)
+
 
 def _normalize_market_response(markets: pd.DataFrame) -> pd.DataFrame:
     if markets.empty:
@@ -627,6 +657,36 @@ def _candlestick_payload_to_frame(payload: dict[str, Any]) -> pd.DataFrame:
     return frame
 
 
+def _batch_candlestick_payload_to_frame(payload: dict[str, Any]) -> pd.DataFrame:
+    if payload.get("error"):
+        frame = pd.DataFrame()
+        frame.attrs["error"] = str(payload["error"])
+        return frame
+
+    market_records = payload.get("markets") or []
+    if not isinstance(market_records, list) or not market_records:
+        return pd.DataFrame()
+
+    frames: list[pd.DataFrame] = []
+    for market_record in market_records:
+        if not isinstance(market_record, dict):
+            continue
+        ticker = (
+            market_record.get("market_ticker")
+            or market_record.get("ticker")
+            or market_record.get("market_id")
+            or ""
+        )
+        frame = _candlestick_payload_to_frame({"candlesticks": market_record.get("candlesticks") or []})
+        if frame.empty:
+            continue
+        frame["market_ticker"] = str(ticker)
+        frames.append(frame)
+    if not frames:
+        return pd.DataFrame()
+    return pd.concat(frames, ignore_index=True)
+
+
 def _default_client() -> KalshiAPIClient:
     return KalshiAPIClient.from_env()
 
@@ -678,6 +738,22 @@ def get_historical_market_candlesticks(
         start_ts=start_ts,
         end_ts=end_ts,
         period_interval=period_interval,
+    )
+
+
+def get_batch_market_candlesticks(
+    market_tickers: list[str],
+    start_ts: int,
+    end_ts: int,
+    period_interval: int,
+    include_latest_before_start: bool = False,
+) -> pd.DataFrame:
+    return _default_client().get_batch_market_candlesticks(
+        market_tickers=market_tickers,
+        start_ts=start_ts,
+        end_ts=end_ts,
+        period_interval=period_interval,
+        include_latest_before_start=include_latest_before_start,
     )
 
 

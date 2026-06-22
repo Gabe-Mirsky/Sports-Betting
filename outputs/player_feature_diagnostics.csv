@@ -1,0 +1,193 @@
+diagnostic_type,item,status,value,detail
+attachment_check,home_player_features_attached_to_home_team,pass,True,Home player features are prefixed with home_ after game_id merge.
+attachment_check,away_player_features_attached_to_away_team,pass,True,Away player features are prefixed with away_ after game_id merge.
+leakage_check,player_features_use_prior_games_only,pass,True,features.player_features uses team_game_order rows with game_date < current game_date.
+missingness_by_season,2018,pass,1.0,rotation_coverage=0.9618
+missingness_by_season,2019,pass,1.0,rotation_coverage=0.9547
+missingness_by_season,2020,pass,1.0,rotation_coverage=0.9556
+missingness_by_season,2021,pass,1.0,rotation_coverage=0.9610
+missingness_by_season,2022,pass,1.0,rotation_coverage=0.9292
+missingness_by_team,ATL,pass,1.0,games=347 rotation_coverage=0.9568
+missingness_by_team,BKN,pass,1.0,games=350 rotation_coverage=0.9486
+missingness_by_team,BOS,pass,1.0,games=353 rotation_coverage=0.9575
+missingness_by_team,CHA,pass,1.0,games=346 rotation_coverage=0.9566
+missingness_by_team,CHI,pass,1.0,games=345 rotation_coverage=0.9565
+missingness_by_team,CLE,pass,1.0,games=346 rotation_coverage=0.9538
+missingness_by_team,DAL,pass,1.0,games=356 rotation_coverage=0.9579
+missingness_by_team,DEN,pass,1.0,games=352 rotation_coverage=0.9545
+missingness_by_team,DET,pass,1.0,games=349 rotation_coverage=0.9542
+missingness_by_team,GSW,pass,1.0,games=345 rotation_coverage=0.9536
+missingness_by_team,HOU,pass,1.0,games=352 rotation_coverage=0.9545
+missingness_by_team,IND,pass,1.0,games=354 rotation_coverage=0.9576
+missingness_by_team,LAC,pass,1.0,games=353 rotation_coverage=0.9547
+missingness_by_team,LAL,pass,1.0,games=351 rotation_coverage=0.9544
+missingness_by_team,MEM,pass,1.0,games=352 rotation_coverage=0.9545
+missingness_by_team,MIA,pass,1.0,games=354 rotation_coverage=0.9576
+missingness_by_team,MIL,pass,1.0,games=353 rotation_coverage=0.9547
+missingness_by_team,MIN,pass,1.0,games=345 rotation_coverage=0.9565
+missingness_by_team,NOP,pass,1.0,games=352 rotation_coverage=0.9489
+missingness_by_team,NYK,pass,1.0,games=347 rotation_coverage=0.9539
+missingness_by_team,OKC,pass,1.0,games=352 rotation_coverage=0.9545
+missingness_by_team,ORL,pass,1.0,games=353 rotation_coverage=0.9490
+missingness_by_team,PHI,pass,1.0,games=352 rotation_coverage=0.9517
+missingness_by_team,PHX,pass,1.0,games=354 rotation_coverage=0.9576
+missingness_by_team,POR,pass,1.0,games=353 rotation_coverage=0.9547
+missingness_by_team,SAC,pass,1.0,games=350 rotation_coverage=0.9514
+missingness_by_team,SAS,pass,1.0,games=351 rotation_coverage=0.9573
+missingness_by_team,TOR,pass,1.0,games=352 rotation_coverage=0.9545
+missingness_by_team,UTA,pass,1.0,games=355 rotation_coverage=0.9577
+missingness_by_team,WAS,pass,1.0,games=352 rotation_coverage=0.9574
+feature_quality,away_expected_active_players,pass,1.213392872762912,missing_rate=0.0146 unique_values=10 near_constant=False
+feature_quality,away_expected_assists_from_active_rotation,pass,2.778343427068853,missing_rate=0.0146 unique_values=427 near_constant=False
+feature_quality,away_expected_plus_minus_from_active_rotation,pass,29.922110934038834,missing_rate=0.0146 unique_values=2121 near_constant=False
+feature_quality,away_expected_points_from_active_rotation,pass,8.288408753911847,missing_rate=0.0146 unique_values=841 near_constant=False
+feature_quality,away_expected_rebounds_from_active_rotation,pass,3.9347397429709674,missing_rate=0.0146 unique_values=520 near_constant=False
+feature_quality,away_expected_top5_minutes_total,pass,10.99689227918213,missing_rate=0.0146 unique_values=1222 near_constant=False
+feature_quality,away_expected_top8_rotation,pass,0.4324399072111188,missing_rate=0.0146 unique_values=75 near_constant=False
+feature_quality,away_missing_key_players_count,pass,0.926543389011281,missing_rate=0.0146 unique_values=9 near_constant=False
+feature_quality,away_missing_top3_minutes_players_count,pass,0.3699741057996534,missing_rate=0.0146 unique_values=4 near_constant=False
+feature_quality,away_missing_top5_minutes_players_count,pass,0.6451832455885499,missing_rate=0.0146 unique_values=6 near_constant=False
+feature_quality,away_player_active_count_last5,pass,1.213392872762912,missing_rate=0.0146 unique_values=10 near_constant=False
+feature_quality,away_player_key_absence_minutes_last_game,pass,20.434985217693637,missing_rate=0.0146 unique_values=776 near_constant=False
+feature_quality,away_player_prior_games_last10,pass,2.2020510949232244,missing_rate=0.0000 unique_values=11 near_constant=False
+feature_quality,away_player_rotation_continuity_last5,pass,0.06898377333959473,missing_rate=0.0146 unique_values=26 near_constant=False
+feature_quality,away_player_top3_minutes_last10,pass,7.387824038981169,missing_rate=0.0146 unique_values=783 near_constant=False
+feature_quality,away_player_top5_minutes_last10,pass,10.99689227918213,missing_rate=0.0146 unique_values=1222 near_constant=False
+feature_quality,away_player_top8_ast_last10,pass,2.778343427068853,missing_rate=0.0146 unique_values=427 near_constant=False
+feature_quality,away_player_top8_games_played_share_last10,pass,0.05405498840138986,missing_rate=0.0146 unique_values=75 near_constant=False
+feature_quality,away_player_top8_minutes_gap_last_game,pass,22.282924881455735,missing_rate=0.0146 unique_values=1829 near_constant=False
+feature_quality,away_player_top8_minutes_last10,pass,12.313026526926366,missing_rate=0.0146 unique_values=977 near_constant=False
+feature_quality,away_player_top8_plus_minus_last10,pass,29.922110934038834,missing_rate=0.0146 unique_values=2121 near_constant=False
+feature_quality,away_player_top8_points_last10,pass,8.288408753911847,missing_rate=0.0146 unique_values=841 near_constant=False
+feature_quality,away_player_top8_reb_last10,pass,3.9347397429709674,missing_rate=0.0146 unique_values=520 near_constant=False
+feature_quality,away_player_top8_value_last10,pass,16.154252659184525,missing_rate=0.0146 unique_values=3721 near_constant=False
+feature_quality,expected_plus_minus_from_active_rotation_diff,pass,41.85191431665981,missing_rate=0.0152 unique_values=2921 near_constant=False
+feature_quality,expected_points_from_active_rotation_diff,pass,11.154299396641155,missing_rate=0.0152 unique_values=1714 near_constant=False
+feature_quality,expected_top5_minutes_total_diff,pass,14.654862719494202,missing_rate=0.0152 unique_values=1981 near_constant=False
+feature_quality,home_expected_active_players,pass,1.216009227143568,missing_rate=0.0139 unique_values=10 near_constant=False
+feature_quality,home_expected_assists_from_active_rotation,pass,2.8018413396386532,missing_rate=0.0139 unique_values=426 near_constant=False
+feature_quality,home_expected_plus_minus_from_active_rotation,pass,29.568437441633446,missing_rate=0.0139 unique_values=2095 near_constant=False
+feature_quality,home_expected_points_from_active_rotation,pass,8.313414232865078,missing_rate=0.0139 unique_values=826 near_constant=False
+feature_quality,home_expected_rebounds_from_active_rotation,pass,3.9541029719698524,missing_rate=0.0139 unique_values=521 near_constant=False
+feature_quality,home_expected_top5_minutes_total,pass,11.054941508507602,missing_rate=0.0139 unique_values=1207 near_constant=False
+feature_quality,home_expected_top8_rotation,pass,0.4267020222324966,missing_rate=0.0139 unique_values=66 near_constant=False
+feature_quality,home_missing_key_players_count,pass,0.9190383781357435,missing_rate=0.0139 unique_values=7 near_constant=False
+feature_quality,home_missing_top3_minutes_players_count,pass,0.3700017271884351,missing_rate=0.0139 unique_values=4 near_constant=False
+feature_quality,home_missing_top5_minutes_players_count,pass,0.6344323221361267,missing_rate=0.0139 unique_values=5 near_constant=False
+feature_quality,home_player_active_count_last5,pass,1.216009227143568,missing_rate=0.0139 unique_values=10 near_constant=False
+feature_quality,home_player_key_absence_minutes_last_game,pass,20.186028539574224,missing_rate=0.0139 unique_values=778 near_constant=False
+feature_quality,home_player_prior_games_last10,pass,2.2129263225436966,missing_rate=0.0000 unique_values=11 near_constant=False
+feature_quality,home_player_rotation_continuity_last5,pass,0.06813124609716283,missing_rate=0.0139 unique_values=24 near_constant=False
+feature_quality,home_player_top3_minutes_last10,pass,7.436998967389687,missing_rate=0.0139 unique_values=769 near_constant=False
+feature_quality,home_player_top5_minutes_last10,pass,11.054941508507602,missing_rate=0.0139 unique_values=1207 near_constant=False
+feature_quality,home_player_top8_ast_last10,pass,2.8018413396386532,missing_rate=0.0139 unique_values=426 near_constant=False
+feature_quality,home_player_top8_games_played_share_last10,pass,0.053337752779062074,missing_rate=0.0139 unique_values=65 near_constant=False
+feature_quality,home_player_top8_minutes_gap_last_game,pass,21.656475798553945,missing_rate=0.0139 unique_values=1808 near_constant=False
+feature_quality,home_player_top8_minutes_last10,pass,12.296039915141316,missing_rate=0.0139 unique_values=974 near_constant=False
+feature_quality,home_player_top8_plus_minus_last10,pass,29.568437441633446,missing_rate=0.0139 unique_values=2095 near_constant=False
+feature_quality,home_player_top8_points_last10,pass,8.313414232865078,missing_rate=0.0139 unique_values=826 near_constant=False
+feature_quality,home_player_top8_reb_last10,pass,3.9541029719698524,missing_rate=0.0139 unique_values=521 near_constant=False
+feature_quality,home_player_top8_value_last10,pass,16.14854840669314,missing_rate=0.0139 unique_values=3758 near_constant=False
+feature_quality,missing_key_players_count_diff,pass,1.228886501391291,missing_rate=0.0152 unique_values=13 near_constant=False
+feature_quality,player_active_count_last5_diff,pass,1.656074896613814,missing_rate=0.0152 unique_values=16 near_constant=False
+feature_quality,player_key_absence_minutes_last_game_diff,pass,27.240799736652036,missing_rate=0.0152 unique_values=1814 near_constant=False
+feature_quality,player_prior_games_last10_diff,pass,0.30200269006127073,missing_rate=0.0000 unique_values=6 near_constant=False
+feature_quality,player_rotation_continuity_last5_diff,pass,0.08584643337765789,missing_rate=0.0152 unique_values=71 near_constant=False
+feature_quality,player_top3_minutes_last10_diff,pass,10.082222445545016,missing_rate=0.0152 unique_values=1621 near_constant=False
+feature_quality,player_top5_minutes_last10_diff,pass,14.654862719494202,missing_rate=0.0152 unique_values=1981 near_constant=False
+feature_quality,player_top8_ast_last10_diff,pass,3.882131676024041,missing_rate=0.0152 unique_values=1012 near_constant=False
+feature_quality,player_top8_games_played_share_last10_diff,pass,0.06315587502279461,missing_rate=0.0152 unique_values=283 near_constant=False
+feature_quality,player_top8_minutes_gap_last_game_diff,pass,30.41590407777868,missing_rate=0.0152 unique_values=2824 near_constant=False
+feature_quality,player_top8_minutes_last10_diff,pass,15.974893757275515,missing_rate=0.0152 unique_values=2096 near_constant=False
+feature_quality,player_top8_plus_minus_last10_diff,pass,41.85191431665981,missing_rate=0.0152 unique_values=2921 near_constant=False
+feature_quality,player_top8_points_last10_diff,pass,11.154299396641155,missing_rate=0.0152 unique_values=1714 near_constant=False
+feature_quality,player_top8_reb_last10_diff,pass,5.250652639064784,missing_rate=0.0152 unique_values=1286 near_constant=False
+feature_quality,player_top8_value_last10_diff,pass,21.590839283821328,missing_rate=0.0152 unique_values=4649 near_constant=False
+high_correlation,away_expected_top8_rotation__away_player_top8_games_played_share_last10,warn,1.0000000000000002,absolute correlation >= 0.95
+high_correlation,away_expected_top5_minutes_total__away_player_top5_minutes_last10,warn,1.0,absolute correlation >= 0.95
+high_correlation,away_expected_active_players__away_player_active_count_last5,warn,1.0,absolute correlation >= 0.95
+high_correlation,home_expected_top5_minutes_total__home_player_top5_minutes_last10,warn,1.0,absolute correlation >= 0.95
+high_correlation,away_expected_plus_minus_from_active_rotation__away_player_top8_plus_minus_last10,warn,1.0,absolute correlation >= 0.95
+high_correlation,home_expected_top8_rotation__home_player_top8_games_played_share_last10,warn,1.0,absolute correlation >= 0.95
+high_correlation,home_expected_plus_minus_from_active_rotation__home_player_top8_plus_minus_last10,warn,1.0,absolute correlation >= 0.95
+high_correlation,home_expected_assists_from_active_rotation__home_player_top8_ast_last10,warn,1.0,absolute correlation >= 0.95
+high_correlation,expected_top5_minutes_total_diff__player_top5_minutes_last10_diff,warn,1.0,absolute correlation >= 0.95
+high_correlation,home_expected_active_players__home_player_active_count_last5,warn,1.0,absolute correlation >= 0.95
+high_correlation,away_expected_assists_from_active_rotation__away_player_top8_ast_last10,warn,1.0,absolute correlation >= 0.95
+high_correlation,expected_plus_minus_from_active_rotation_diff__player_top8_plus_minus_last10_diff,warn,1.0,absolute correlation >= 0.95
+high_correlation,expected_points_from_active_rotation_diff__player_top8_points_last10_diff,warn,1.0,absolute correlation >= 0.95
+high_correlation,away_expected_rebounds_from_active_rotation__away_player_top8_reb_last10,warn,1.0,absolute correlation >= 0.95
+high_correlation,home_expected_points_from_active_rotation__home_player_top8_points_last10,warn,1.0,absolute correlation >= 0.95
+high_correlation,away_expected_points_from_active_rotation__away_player_top8_points_last10,warn,1.0,absolute correlation >= 0.95
+high_correlation,home_expected_rebounds_from_active_rotation__home_player_top8_reb_last10,warn,1.0,absolute correlation >= 0.95
+high_correlation,away_player_prior_games_last10__home_player_prior_games_last10,warn,0.9906538285141363,absolute correlation >= 0.95
+high_correlation,away_missing_key_players_count__away_player_key_absence_minutes_last_game,warn,0.9717541276902844,absolute correlation >= 0.95
+high_correlation,home_missing_key_players_count__home_player_key_absence_minutes_last_game,warn,0.9687055687502747,absolute correlation >= 0.95
+high_correlation,missing_key_players_count_diff__player_key_absence_minutes_last_game_diff,warn,0.9670055810680794,absolute correlation >= 0.95
+team_strength_duplication,away_expected_active_players,pass,0.16062728315783906,max absolute correlation to team-strength feature
+team_strength_duplication,away_expected_assists_from_active_rotation,pass,0.44573037639337965,max absolute correlation to team-strength feature
+team_strength_duplication,away_expected_plus_minus_from_active_rotation,warn,0.9208212958264925,max absolute correlation to team-strength feature
+team_strength_duplication,away_expected_points_from_active_rotation,pass,0.6964151026845258,max absolute correlation to team-strength feature
+team_strength_duplication,away_expected_rebounds_from_active_rotation,pass,0.34267509414500175,max absolute correlation to team-strength feature
+team_strength_duplication,away_expected_top5_minutes_total,pass,0.15873058585494687,max absolute correlation to team-strength feature
+team_strength_duplication,away_expected_top8_rotation,pass,0.275148975811026,max absolute correlation to team-strength feature
+team_strength_duplication,away_missing_key_players_count,pass,0.15542377393578494,max absolute correlation to team-strength feature
+team_strength_duplication,away_missing_top3_minutes_players_count,pass,0.09288909357359786,max absolute correlation to team-strength feature
+team_strength_duplication,away_missing_top5_minutes_players_count,pass,0.10013342732002098,max absolute correlation to team-strength feature
+team_strength_duplication,away_player_active_count_last5,pass,0.16062728315783906,max absolute correlation to team-strength feature
+team_strength_duplication,away_player_key_absence_minutes_last_game,pass,0.1483158979881421,max absolute correlation to team-strength feature
+team_strength_duplication,away_player_prior_games_last10,pass,0.5500329125429341,max absolute correlation to team-strength feature
+team_strength_duplication,away_player_rotation_continuity_last5,pass,0.20200794436788164,max absolute correlation to team-strength feature
+team_strength_duplication,away_player_top3_minutes_last10,pass,0.14285344484676782,max absolute correlation to team-strength feature
+team_strength_duplication,away_player_top5_minutes_last10,pass,0.15873058585494687,max absolute correlation to team-strength feature
+team_strength_duplication,away_player_top8_ast_last10,pass,0.44573037639337965,max absolute correlation to team-strength feature
+team_strength_duplication,away_player_top8_games_played_share_last10,pass,0.275148975811026,max absolute correlation to team-strength feature
+team_strength_duplication,away_player_top8_minutes_gap_last_game,pass,0.08644613413354894,max absolute correlation to team-strength feature
+team_strength_duplication,away_player_top8_minutes_last10,pass,0.18560899210345552,max absolute correlation to team-strength feature
+team_strength_duplication,away_player_top8_plus_minus_last10,warn,0.9208212958264925,max absolute correlation to team-strength feature
+team_strength_duplication,away_player_top8_points_last10,pass,0.6964151026845258,max absolute correlation to team-strength feature
+team_strength_duplication,away_player_top8_reb_last10,pass,0.34267509414500175,max absolute correlation to team-strength feature
+team_strength_duplication,away_player_top8_value_last10,pass,0.58469300341142,max absolute correlation to team-strength feature
+team_strength_duplication,expected_plus_minus_from_active_rotation_diff,warn,0.9264459868303098,max absolute correlation to team-strength feature
+team_strength_duplication,expected_points_from_active_rotation_diff,pass,0.6997425524761196,max absolute correlation to team-strength feature
+team_strength_duplication,expected_top5_minutes_total_diff,pass,0.1812276201131901,max absolute correlation to team-strength feature
+team_strength_duplication,home_expected_active_players,pass,0.19333979436180804,max absolute correlation to team-strength feature
+team_strength_duplication,home_expected_assists_from_active_rotation,pass,0.46715992695645153,max absolute correlation to team-strength feature
+team_strength_duplication,home_expected_plus_minus_from_active_rotation,warn,0.9262155639528106,max absolute correlation to team-strength feature
+team_strength_duplication,home_expected_points_from_active_rotation,pass,0.6987086277874441,max absolute correlation to team-strength feature
+team_strength_duplication,home_expected_rebounds_from_active_rotation,pass,0.349050226149698,max absolute correlation to team-strength feature
+team_strength_duplication,home_expected_top5_minutes_total,pass,0.15974337132984698,max absolute correlation to team-strength feature
+team_strength_duplication,home_expected_top8_rotation,pass,0.28546481722002504,max absolute correlation to team-strength feature
+team_strength_duplication,home_missing_key_players_count,pass,0.17018159500482727,max absolute correlation to team-strength feature
+team_strength_duplication,home_missing_top3_minutes_players_count,pass,0.10407869718250556,max absolute correlation to team-strength feature
+team_strength_duplication,home_missing_top5_minutes_players_count,pass,0.08093250803661703,max absolute correlation to team-strength feature
+team_strength_duplication,home_player_active_count_last5,pass,0.19333979436180804,max absolute correlation to team-strength feature
+team_strength_duplication,home_player_key_absence_minutes_last_game,pass,0.1659143881658063,max absolute correlation to team-strength feature
+team_strength_duplication,home_player_prior_games_last10,pass,0.549924933858372,max absolute correlation to team-strength feature
+team_strength_duplication,home_player_rotation_continuity_last5,pass,0.22279975577711505,max absolute correlation to team-strength feature
+team_strength_duplication,home_player_top3_minutes_last10,pass,0.13490091948831376,max absolute correlation to team-strength feature
+team_strength_duplication,home_player_top5_minutes_last10,pass,0.15974337132984698,max absolute correlation to team-strength feature
+team_strength_duplication,home_player_top8_ast_last10,pass,0.46715992695645153,max absolute correlation to team-strength feature
+team_strength_duplication,home_player_top8_games_played_share_last10,pass,0.28546481722002504,max absolute correlation to team-strength feature
+team_strength_duplication,home_player_top8_minutes_gap_last_game,pass,0.07318304502112546,max absolute correlation to team-strength feature
+team_strength_duplication,home_player_top8_minutes_last10,pass,0.19835804041708388,max absolute correlation to team-strength feature
+team_strength_duplication,home_player_top8_plus_minus_last10,warn,0.9262155639528106,max absolute correlation to team-strength feature
+team_strength_duplication,home_player_top8_points_last10,pass,0.6987086277874441,max absolute correlation to team-strength feature
+team_strength_duplication,home_player_top8_reb_last10,pass,0.349050226149698,max absolute correlation to team-strength feature
+team_strength_duplication,home_player_top8_value_last10,pass,0.5890297682977451,max absolute correlation to team-strength feature
+team_strength_duplication,missing_key_players_count_diff,pass,0.13524902734496647,max absolute correlation to team-strength feature
+team_strength_duplication,player_active_count_last5_diff,pass,0.16837401639900915,max absolute correlation to team-strength feature
+team_strength_duplication,player_key_absence_minutes_last_game_diff,pass,0.11794409197924399,max absolute correlation to team-strength feature
+team_strength_duplication,player_prior_games_last10_diff,pass,0.14417023445348243,max absolute correlation to team-strength feature
+team_strength_duplication,player_rotation_continuity_last5_diff,pass,0.16769613547909004,max absolute correlation to team-strength feature
+team_strength_duplication,player_top3_minutes_last10_diff,pass,0.14293041261869396,max absolute correlation to team-strength feature
+team_strength_duplication,player_top5_minutes_last10_diff,pass,0.1812276201131901,max absolute correlation to team-strength feature
+team_strength_duplication,player_top8_ast_last10_diff,pass,0.44474893940012616,max absolute correlation to team-strength feature
+team_strength_duplication,player_top8_games_played_share_last10_diff,pass,0.17911148195025153,max absolute correlation to team-strength feature
+team_strength_duplication,player_top8_minutes_gap_last_game_diff,pass,0.09214430619889077,max absolute correlation to team-strength feature
+team_strength_duplication,player_top8_minutes_last10_diff,pass,0.21804358641511568,max absolute correlation to team-strength feature
+team_strength_duplication,player_top8_plus_minus_last10_diff,warn,0.9264459868303098,max absolute correlation to team-strength feature
+team_strength_duplication,player_top8_points_last10_diff,pass,0.6997425524761196,max absolute correlation to team-strength feature
+team_strength_duplication,player_top8_reb_last10_diff,pass,0.36409687458031775,max absolute correlation to team-strength feature
+team_strength_duplication,player_top8_value_last10_diff,pass,0.6011149541097922,max absolute correlation to team-strength feature
+coverage_summary,player_data_available,pass,1.0,projected_rotation_available=0.9548

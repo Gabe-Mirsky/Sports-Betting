@@ -1,0 +1,37 @@
+{
+  "status": "potential_signal",
+  "validated_edge": false,
+  "warning": "Discovery was positive, but holdout failed or was too small.",
+  "recommended_default_rule": "No live trades. Research-only display. Hide 0-20% longshot signals from highlighted opportunities. Require at least 7% edge to appear as a potential signal.",
+  "selected_rule": {
+    "min_edge": 0.15,
+    "min_contract_price": 0.0,
+    "max_contract_price": 0.7,
+    "timing_filter": "within_30m",
+    "side_filter": "yes_only",
+    "favorite_filter": "underdogs_only",
+    "home_away_filter": "both"
+  },
+  "discovery": {
+    "trades": 32,
+    "wins": 20,
+    "losses": 12,
+    "win_rate": 0.625,
+    "average_edge": 0.19694820299476584,
+    "average_price": 0.29874999999999996,
+    "profit_loss_per_dollar_staked": 41.0952380952381,
+    "roi": 1.2842261904761907,
+    "max_drawdown": -8.0
+  },
+  "holdout": {
+    "trades": 24,
+    "wins": 4,
+    "losses": 20,
+    "win_rate": 0.16666666666666666,
+    "average_edge": 0.24551605000974608,
+    "average_price": 0.22666666666666666,
+    "profit_loss_per_dollar_staked": 6.7692307692307665,
+    "roi": 0.28205128205128194,
+    "max_drawdown": -12.0
+  }
+}

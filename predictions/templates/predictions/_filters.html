@@ -1,0 +1,23 @@
+{% comment %}Shared filter bar. `action` is the URL to submit to.{% endcomment %}
+<form class="filters" method="get" action="{{ action }}">
+  <input type="text" name="q" value="{{ query }}" placeholder="Search team…">
+  <select name="sport">
+    <option value="">All sports</option>
+    {% for s in sports %}
+      <option value="{{ s }}" {% if s == selected_sport %}selected{% endif %}>{{ s }}</option>
+    {% endfor %}
+  </select>
+  <select name="league">
+    <option value="">All leagues</option>
+    {% for l in leagues %}
+      <option value="{{ l }}" {% if l == selected_league %}selected{% endif %}>{{ l }}</option>
+    {% endfor %}
+  </select>
+  <select name="confidence">
+    <option value="">Any confidence</option>
+    <option value="1" {% if selected_confidence == "1" %}selected{% endif %}>Low or better</option>
+    <option value="2" {% if selected_confidence == "2" %}selected{% endif %}>Medium or better</option>
+    <option value="3" {% if selected_confidence == "3" %}selected{% endif %}>High only</option>
+  </select>
+  <button class="btn" type="submit">Filter</button>
+</form>

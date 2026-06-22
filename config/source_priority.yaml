@@ -1,0 +1,77 @@
+# Multi-source data router config (research-only).
+#
+# Declares which data source to prefer for each (scope, data_type), each
+# source's capabilities, and the quota floors that protect paid budgets. The
+# router NEVER enables betting, parlays, predictions, or recommendations; it only
+# decides where research data should be fetched from, and writes a SKIP reason
+# when no source is safe.
+
+schema_version: 1
+research_only: true
+
+# Below these remaining-quota values a source is treated as "below floor" and
+# skipped for PAID (credit/entity-spending) data types. Do not lower without
+# explicit approval. Free endpoints (see free_data_types) ignore the floor.
+quota_floors:
+  odds_api: 100          # Odds API monthly credits
+  sportsgameodds: 300    # SGO monthly entities
+  apisports: 5           # API-Sports daily requests
+  kalshi: 0              # public reads, no quota
+
+# A source that failed within this many hours is skipped (cooldown) so the
+# router fails over instead of hammering a broken source.
+recent_failure_cooldown_hours: 1
+
+# Source capability matrix. "kind" keeps categories from being mixed:
+#   sportsbook        -> game_odds / player_props / closing_lines
+#   stats             -> schedules / results / player_stats (NOT sportsbook odds)
+#   prediction_market -> Kalshi yes/no contract prices (NEVER sportsbook odds)
+sources:
+  odds_api:
+    key_env: ODDS_API_KEY
+    key_required: true
+    kind: sportsbook
+    supports: [events_schedule, game_odds, player_props, results, closing_lines]
+    free_data_types: [events_schedule]    # /events costs 0 credits
+  sportsgameodds:
+    key_env: SPORTSGAMEODDS_API_KEY
+    key_required: true
+    kind: sportsbook
+    supports: [events_schedule, game_odds, player_props, results, closing_lines]
+    free_data_types: []
+  apisports:
+    key_env: APISPORTS_API_KEY
+    key_required: true
+    kind: stats
+    supports: [events_schedule, results, player_stats]
+    free_data_types: []
+  kalshi:
+    key_env: KALSHI_API_KEY
+    key_required: false                   # public market reads allowed
+    kind: prediction_market
+    supports: [prediction_market_prices, events_schedule, closing_lines]
+    free_data_types: [prediction_market_prices, events_schedule, closing_lines]
+
+# Ordered source preference per scope + data_type. The router walks the list and
+# picks the first source that is supported, keyed, fresh, and above its floor.
+routes:
+  WORLD_CUP:
+    events_schedule: [apisports, odds_api, sportsgameodds]   # prefer free stats schedule
+    results:         [apisports, odds_api]                   # API-Football fixtures, else Odds API /scores (paid)
+    game_odds:       [odds_api]                             # spec: World Cup sportsbook odds = Odds API only, quota-gated
+    closing_lines:   [odds_api]
+    prediction_market_prices: [kalshi]                       # separate category
+  NBA:
+    player_props:    [sportsgameodds, odds_api]   # SGO first: 1 entity/event can replace many Odds API credits
+    closing_lines:   [sportsgameodds, odds_api]
+    events_schedule: [odds_api, sportsgameodds]
+    results:         [odds_api]                   # nba_api actuals handled by the NBA pipeline
+    prediction_market_prices: [kalshi]
+  DEFAULT:
+    events_schedule: [odds_api, sportsgameodds]
+    game_odds:       [odds_api, sportsgameodds]
+    player_props:    [odds_api, sportsgameodds]
+    results:         [odds_api, sportsgameodds]
+    closing_lines:   [odds_api, sportsgameodds]
+    player_stats:    [apisports]
+    prediction_market_prices: [kalshi]

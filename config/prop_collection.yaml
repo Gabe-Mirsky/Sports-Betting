@@ -1,0 +1,287 @@
+# Multi-sport player-prop odds collection config (research-only).
+#
+# This file only controls *data collection*. It does not enable any models,
+# recommendations, approved bets, or approved parlays.
+#
+# Leagues: NBA is the modeling priority; every other league is collect_only
+# (build the historical database now, model later). Soccer leagues are
+# collect_only: no soccer models exist or are planned yet.
+
+schema_version: 1
+research_only: true
+
+defaults:
+  # Only collect props for games starting within this many hours from now.
+  event_horizon_hours: 36
+  # Snapshots taken within this many minutes before game start are closing-like.
+  closing_window_minutes: 60
+  # Per-league cap on event-odds requests per run (Odds API free tier ~500 req/mo;
+  # player-prop markets cost extra credits, so keep this small). Each league may
+  # override with its own max_events_per_run.
+  max_events_per_league_per_run: 6
+  # Quota protection: at most this many leagues actually collect per run,
+  # taken in priority order (lower priority number first). 0 = no cap.
+  max_leagues_per_run: 8
+
+# Quota protection: The Odds API reports remaining credits in the
+# x-requests-remaining response header. Once it drops below
+# min_remaining_requests, every remaining league in the run is skipped.
+# low_priority_min_remaining is a stricter floor for collect-only
+# (non-modeling-priority) leagues: when quota looks limited they are skipped
+# first so NBA closing collection keeps running. Modeling-priority leagues
+# (NBA) always collect first in the run ordering. 0 disables a guard.
+quota:
+  min_remaining_requests: 25
+  low_priority_min_remaining: 50
+
+# Catch-up behavior: if the previous run finished more than this many hours
+# ago, the run logs an explicit missed-collection warning. Missed odds are NOT
+# recoverable (the API has no historical odds on the current plan); collection
+# simply continues from now.
+catch_up:
+  max_gap_hours: 24
+
+# Informational: suggested local run times, used by the Task Scheduler guide
+# (scripts/windows_task_scheduler_setup.md). The collector itself runs once per
+# invocation; schedule it at these times to capture line movement.
+collection_windows:
+  morning: "09:00"
+  midday: "13:00"
+  early_evening: "17:30"
+  pre_tip: "18:30"
+
+closing_snapshot:
+  window_minutes: 60
+
+output:
+  raw_dir: data/raw/prop_odds
+  processed_path: data/processed/player_prop_snapshots_normalized.csv
+  run_summary_path: data/reports/player_prop_collection_run_summary.json
+  run_log_dir: data/logs/prop_collection_runs
+  # Append-only one-line-JSON record per run; powers the health report.
+  run_history_path: data/reports/prop_collection_run_history.jsonl
+
+sources:
+  odds_api:
+    enabled: true
+    api_key_env: ODDS_API_KEY
+    base_url: https://api.the-odds-api.com/v4
+    regions: us
+    odds_format: decimal
+  kalshi:
+    # Planned: Kalshi prop tickers (KXNBAPTS/KXNBAREB/...) are not wired into
+    # this collector yet; the run skips unimplemented sources gracefully.
+    enabled: false
+
+# markets maps the source-native market key -> canonical prop_type
+# (src/data/player_prop_schema.py PROP_TYPES).
+# priority: collection order under quota pressure (lower = collected first).
+leagues:
+  NBA:
+    sport: basketball
+    enabled: true
+    modeling_priority: true
+    collect_only: false
+    priority: 1
+    sources:
+      odds_api:
+        sport_key: basketball_nba
+        markets:
+          player_points: points
+          player_rebounds: rebounds
+          player_assists: assists
+          player_threes: threes
+  WNBA:
+    sport: basketball
+    enabled: true
+    modeling_priority: false
+    collect_only: true
+    priority: 2
+    sources:
+      odds_api:
+        sport_key: basketball_wnba
+        markets:
+          player_points: points
+          player_rebounds: rebounds
+          player_assists: assists
+  MLB:
+    sport: baseball
+    enabled: true
+    modeling_priority: false
+    collect_only: true
+    priority: 3
+    sources:
+      odds_api:
+        sport_key: baseball_mlb
+        markets:
+          batter_hits: hits
+          batter_home_runs: home_runs
+          batter_total_bases: total_bases
+          pitcher_strikeouts: pitcher_strikeouts
+  NFL:
+    sport: football
+    enabled: true
+    modeling_priority: false
+    collect_only: true
+    priority: 4
+    sources:
+      odds_api:
+        sport_key: americanfootball_nfl
+        markets:
+          player_pass_yds: pass_yards
+          player_pass_tds: pass_tds
+          player_rush_yds: rush_yards
+          player_receptions: receptions
+          player_reception_yds: receiving_yards
+  NHL:
+    sport: hockey
+    enabled: true
+    modeling_priority: false
+    collect_only: true
+    priority: 5
+    sources:
+      odds_api:
+        sport_key: icehockey_nhl
+        markets:
+          player_points: points
+          player_goals: goals
+          player_assists: assists
+          player_shots_on_goal: shots_on_goal
+  NCAAB:
+    sport: basketball
+    enabled: true
+    modeling_priority: false
+    collect_only: true
+    priority: 6
+    sources:
+      odds_api:
+        sport_key: basketball_ncaab
+        markets:
+          player_points: points
+          player_rebounds: rebounds
+          player_assists: assists
+  # --- Soccer (collect_only; no soccer models exist or are planned yet). ---
+  # Sport keys verified against The Odds API docs; run
+  # scripts/discover_odds_api_sports.py to re-check availability/season status.
+  # Soccer leagues get smaller event caps: many matches per day, limited credits.
+  EPL:
+    sport: soccer
+    enabled: true
+    modeling_priority: false
+    collect_only: true
+    priority: 7
+    max_events_per_run: 3
+    sources:
+      odds_api:
+        sport_key: soccer_epl
+        markets:
+          player_shots_on_target: shots_on_target
+          player_shots: shots
+          player_assists: assists
+  MLS:
+    sport: soccer
+    enabled: true
+    modeling_priority: false
+    collect_only: true
+    priority: 8
+    max_events_per_run: 3
+    sources:
+      odds_api:
+        sport_key: soccer_usa_mls
+        markets:
+          player_shots_on_target: shots_on_target
+          player_shots: shots
+          player_assists: assists
+  LA_LIGA:
+    sport: soccer
+    enabled: true
+    modeling_priority: false
+    collect_only: true
+    priority: 9
+    max_events_per_run: 3
+    sources:
+      odds_api:
+        sport_key: soccer_spain_la_liga
+        markets:
+          player_shots_on_target: shots_on_target
+          player_shots: shots
+          player_assists: assists
+  SERIE_A:
+    sport: soccer
+    enabled: true
+    modeling_priority: false
+    collect_only: true
+    priority: 10
+    max_events_per_run: 3
+    sources:
+      odds_api:
+        sport_key: soccer_italy_serie_a
+        markets:
+          player_shots_on_target: shots_on_target
+          player_shots: shots
+          player_assists: assists
+  BUNDESLIGA:
+    sport: soccer
+    enabled: true
+    modeling_priority: false
+    collect_only: true
+    priority: 11
+    max_events_per_run: 3
+    sources:
+      odds_api:
+        sport_key: soccer_germany_bundesliga
+        markets:
+          player_shots_on_target: shots_on_target
+          player_shots: shots
+          player_assists: assists
+  LIGUE_1:
+    sport: soccer
+    enabled: true
+    modeling_priority: false
+    collect_only: true
+    priority: 12
+    max_events_per_run: 3
+    sources:
+      odds_api:
+        sport_key: soccer_france_ligue_one
+        markets:
+          player_shots_on_target: shots_on_target
+          player_shots: shots
+          player_assists: assists
+  # College football (collect_only). Sport key verified active via
+  # scripts/discover_odds_api_sports.py 2026-06-11. Prop markets mirror NFL;
+  # books post NCAAF player props mainly near game day, so empty pulls are
+  # normal off-season. Lowest-priority tier: skipped first under quota pressure.
+  NCAAF:
+    sport: football
+    enabled: true
+    modeling_priority: false
+    collect_only: true
+    priority: 13
+    max_events_per_run: 3
+    sources:
+      odds_api:
+        sport_key: americanfootball_ncaaf
+        markets:
+          player_pass_yds: pass_yards
+          player_pass_tds: pass_tds
+          player_rush_yds: rush_yards
+          player_receptions: receptions
+          player_reception_yds: receiving_yards
+  # UEFA Champions League (collect_only). Sport key verified available (off-season
+  # inactive) via scripts/discover_odds_api_sports.py 2026-06-11. Same soccer
+  # markets and caps as the domestic leagues; no soccer models exist or are planned.
+  UEFA_CL:
+    sport: soccer
+    enabled: true
+    modeling_priority: false
+    collect_only: true
+    priority: 14
+    max_events_per_run: 3
+    sources:
+      odds_api:
+        sport_key: soccer_uefa_champs_league
+        markets:
+          player_shots_on_target: shots_on_target
+          player_shots: shots
+          player_assists: assists

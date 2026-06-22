@@ -1,0 +1,98 @@
+{% extends "predictions/base.html" %}
+
+{% block title %}How predictions work{% endblock %}
+
+{% block content %}
+<div class="section-head"><h1>How the predictions work</h1></div>
+<p class="lede">No magic, no insider secrets. The model looks at a list of simple clues about both
+   teams, and turns them into a percent chance for each result. Here is every clue it uses,
+   in plain words.</p>
+
+<!-- The clues -->
+<h2>What the model looks at</h2>
+{% for group in groups %}
+  <section class="how-group">
+    <h3>{{ group.group }}</h3>
+    <p class="muted">{{ group.blurb }}</p>
+    <div class="var-grid">
+      {% for f in group.features %}
+        <div class="var-card">
+          <div class="var-name">{{ f.name }}</div>
+          <div class="var-desc">{{ f.desc }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endfor %}
+
+<!-- How probability is computed -->
+<h2>How we turn clues into a percent</h2>
+<div class="card prose">
+  <p>Think of each clue as worth some <b>points</b>. The model learned from thousands of past
+     games how many points each clue should be worth. Here is the recipe:</p>
+  <ol>
+    <li><b>Start with a base number.</b> This is the starting point before looking at any clue.</li>
+    <li><b>Add up the points.</b> For each clue, multiply the clue's value by its weight (its points),
+        then add them all together. A clue with a big positive weight pushes toward Team A winning.
+        A negative weight pushes toward the other team.</li>
+    <li><b>Squish it into 0%–100%.</b> The total can be any number, so we run it through an
+        S-shaped curve (called the <i>logistic</i> curve) that turns it into a friendly percent
+        between 0% and 100%. A big positive total becomes close to 100%; a big negative total
+        becomes close to 0%; near zero becomes about 50–50.</li>
+    <li><b>Make the parts add to 100%.</b> For sports with draws, we do this for Team&nbsp;A win,
+        Draw, and Team&nbsp;B win so the three chances add up to 100%.</li>
+  </ol>
+  <p class="muted">The model's <b>confidence</b> is just how far apart the top two chances are. If one
+     result is 80% and the next is 12%, that's high confidence. If they're 38% and 34%, that's low.</p>
+</div>
+
+<!-- Real coefficients -->
+<h2>The actual points (coefficients)</h2>
+{% if sport_tables %}
+  <p>These are the real learned weights, shown as <b>points toward Team&nbsp;A winning</b>.
+     A positive number helps Team&nbsp;A; a negative number helps the other team. Bigger numbers
+     matter more. (The weights are on a standardized scale so they can be compared fairly.)</p>
+  {% for table in sport_tables %}
+    <details class="coef-block" {% if forloop.first %}open{% endif %}>
+      <summary><b>{{ table.sport|title }}</b> — learned from {{ table.n_train }} games
+        (base number: {{ table.intercept }})</summary>
+      <div class="table-wrap">
+        <table class="pred-table">
+          <thead><tr><th>Clue</th><th>What it means</th><th class="col-num">Points toward Team A</th></tr></thead>
+          <tbody>
+            {% for row in table.rows %}
+              <tr>
+                <td>{{ row.name }}</td>
+                <td class="muted">{{ row.desc }}</td>
+                <td class="col-num">
+                  <span class="weight {% if row.weight >= 0 %}weight-pos{% else %}weight-neg{% endif %}">
+                    {{ row.weight|floatformat:2 }}
+                  </span>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% if table.game_types %}
+        <h4>Kinds of game that change the result the most</h4>
+        <p class="muted">There are many kinds of game. These few push the prediction the hardest
+           (toward Team A if positive, toward the other team if negative).</p>
+        <ul class="gametype-list">
+          {% for g in table.game_types %}
+            <li><span>{{ g.name }}</span>
+              <span class="weight {% if g.weight >= 0 %}weight-pos{% else %}weight-neg{% endif %}">{{ g.weight|floatformat:2 }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </details>
+  {% endfor %}
+{% else %}
+  <div class="empty">
+    The exact point values haven't been exported yet. Run
+    <code>python manage.py export_model_explanation</code> to fill this in with the real
+    coefficients. Until then, the clues above are still exactly what the model uses.
+  </div>
+{% endif %}
+{% endblock %}

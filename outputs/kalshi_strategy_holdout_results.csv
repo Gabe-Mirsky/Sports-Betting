@@ -1,0 +1,2 @@
+min_edge,min_contract_price,max_contract_price,timing_filter,side_filter,favorite_filter,home_away_filter,holdout_trades,holdout_wins,holdout_losses,holdout_win_rate,holdout_average_edge,holdout_average_price,holdout_profit_loss_per_dollar_staked,holdout_roi,holdout_max_drawdown,holdout_passed
+0.15,0.0,0.7,within_30m,yes_only,underdogs_only,both,24,4,20,0.16666666666666666,0.24551605000974608,0.22666666666666666,6.7692307692307665,0.28205128205128194,-12.0,False

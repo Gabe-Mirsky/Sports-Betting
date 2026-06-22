@@ -1,0 +1,1097 @@
+source,sport,league,game_date,home_team,away_team,home_score,away_score,home_odds,draw_odds,away_odds,outcome_available,game_odds_available,prop_odds_available,closing_available,canonical_game_key
+world_cup_results,soccer,WORLD_CUP,1930-07-13,Belgium,United States,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1930-07-13|BELGIUM|UNITEDSTATES
+world_cup_results,soccer,WORLD_CUP,1930-07-13,France,Mexico,4.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1930-07-13|FRANCE|MEXICO
+world_cup_results,soccer,WORLD_CUP,1930-07-14,Brazil,Yugoslavia,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1930-07-14|BRAZIL|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1930-07-14,Peru,Romania,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1930-07-14|PERU|ROMANIA
+world_cup_results,soccer,WORLD_CUP,1930-07-15,Argentina,France,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1930-07-15|ARGENTINA|FRANCE
+world_cup_results,soccer,WORLD_CUP,1930-07-16,Chile,Mexico,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1930-07-16|CHILE|MEXICO
+world_cup_results,soccer,WORLD_CUP,1930-07-17,Bolivia,Yugoslavia,0.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|1930-07-17|BOLIVIA|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1930-07-17,Paraguay,United States,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1930-07-17|PARAGUAY|UNITEDSTATES
+world_cup_results,soccer,WORLD_CUP,1930-07-18,Uruguay,Peru,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1930-07-18|URUGUAY|PERU
+world_cup_results,soccer,WORLD_CUP,1930-07-19,Argentina,Mexico,6.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1930-07-19|ARGENTINA|MEXICO
+world_cup_results,soccer,WORLD_CUP,1930-07-19,Chile,France,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1930-07-19|CHILE|FRANCE
+world_cup_results,soccer,WORLD_CUP,1930-07-20,Belgium,Paraguay,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1930-07-20|BELGIUM|PARAGUAY
+world_cup_results,soccer,WORLD_CUP,1930-07-20,Bolivia,Brazil,0.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|1930-07-20|BOLIVIA|BRAZIL
+world_cup_results,soccer,WORLD_CUP,1930-07-21,Uruguay,Romania,4.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1930-07-21|URUGUAY|ROMANIA
+world_cup_results,soccer,WORLD_CUP,1930-07-22,Argentina,Chile,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1930-07-22|ARGENTINA|CHILE
+world_cup_results,soccer,WORLD_CUP,1930-07-26,Argentina,United States,6.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1930-07-26|ARGENTINA|UNITEDSTATES
+world_cup_results,soccer,WORLD_CUP,1930-07-27,Uruguay,Yugoslavia,6.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1930-07-27|URUGUAY|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1930-07-30,Uruguay,Argentina,4.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1930-07-30|URUGUAY|ARGENTINA
+world_cup_results,soccer,WORLD_CUP,1934-05-27,Argentina,Sweden,2.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1934-05-27|ARGENTINA|SWEDEN
+world_cup_results,soccer,WORLD_CUP,1934-05-27,Austria,France,3.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1934-05-27|AUSTRIA|FRANCE
+world_cup_results,soccer,WORLD_CUP,1934-05-27,Belgium,Germany,2.0,5.0,,,,True,False,False,False,soccer|WORLDCUP|1934-05-27|BELGIUM|GERMANY
+world_cup_results,soccer,WORLD_CUP,1934-05-27,Brazil,Spain,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1934-05-27|BRAZIL|SPAIN
+world_cup_results,soccer,WORLD_CUP,1934-05-27,Czechoslovakia,Romania,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1934-05-27|CZECHOSLOVAKIA|ROMANIA
+world_cup_results,soccer,WORLD_CUP,1934-05-27,Egypt,Hungary,2.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|1934-05-27|EGYPT|HUNGARY
+world_cup_results,soccer,WORLD_CUP,1934-05-27,Italy,United States,7.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1934-05-27|ITALY|UNITEDSTATES
+world_cup_results,soccer,WORLD_CUP,1934-05-27,Netherlands,Switzerland,2.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1934-05-27|NETHERLANDS|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,1934-05-31,Austria,Hungary,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1934-05-31|AUSTRIA|HUNGARY
+world_cup_results,soccer,WORLD_CUP,1934-05-31,Czechoslovakia,Switzerland,3.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1934-05-31|CZECHOSLOVAKIA|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,1934-05-31,Germany,Sweden,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1934-05-31|GERMANY|SWEDEN
+world_cup_results,soccer,WORLD_CUP,1934-05-31,Italy,Spain,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1934-05-31|ITALY|SPAIN
+world_cup_results,soccer,WORLD_CUP,1934-06-01,Italy,Spain,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1934-06-01|ITALY|SPAIN
+world_cup_results,soccer,WORLD_CUP,1934-06-03,Czechoslovakia,Germany,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1934-06-03|CZECHOSLOVAKIA|GERMANY
+world_cup_results,soccer,WORLD_CUP,1934-06-03,Italy,Austria,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1934-06-03|ITALY|AUSTRIA
+world_cup_results,soccer,WORLD_CUP,1934-06-07,Austria,Germany,2.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1934-06-07|AUSTRIA|GERMANY
+world_cup_results,soccer,WORLD_CUP,1934-06-10,Italy,Czechoslovakia,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1934-06-10|ITALY|CZECHOSLOVAKIA
+world_cup_results,soccer,WORLD_CUP,1938-06-04,Germany,Switzerland,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1938-06-04|GERMANY|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,1938-06-05,Brazil,Poland,6.0,5.0,,,,True,False,False,False,soccer|WORLDCUP|1938-06-05|BRAZIL|POLAND
+world_cup_results,soccer,WORLD_CUP,1938-06-05,Cuba,Romania,3.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1938-06-05|CUBA|ROMANIA
+world_cup_results,soccer,WORLD_CUP,1938-06-05,Czechoslovakia,Netherlands,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1938-06-05|CZECHOSLOVAKIA|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,1938-06-05,France,Belgium,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1938-06-05|FRANCE|BELGIUM
+world_cup_results,soccer,WORLD_CUP,1938-06-05,Hungary,Indonesia,6.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1938-06-05|HUNGARY|INDONESIA
+world_cup_results,soccer,WORLD_CUP,1938-06-05,Italy,Norway,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1938-06-05|ITALY|NORWAY
+world_cup_results,soccer,WORLD_CUP,1938-06-09,Cuba,Romania,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1938-06-09|CUBA|ROMANIA
+world_cup_results,soccer,WORLD_CUP,1938-06-09,Germany,Switzerland,2.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|1938-06-09|GERMANY|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,1938-06-12,Brazil,Czechoslovakia,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1938-06-12|BRAZIL|CZECHOSLOVAKIA
+world_cup_results,soccer,WORLD_CUP,1938-06-12,Cuba,Sweden,0.0,8.0,,,,True,False,False,False,soccer|WORLDCUP|1938-06-12|CUBA|SWEDEN
+world_cup_results,soccer,WORLD_CUP,1938-06-12,France,Italy,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1938-06-12|FRANCE|ITALY
+world_cup_results,soccer,WORLD_CUP,1938-06-12,Hungary,Switzerland,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1938-06-12|HUNGARY|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,1938-06-14,Brazil,Czechoslovakia,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1938-06-14|BRAZIL|CZECHOSLOVAKIA
+world_cup_results,soccer,WORLD_CUP,1938-06-16,Brazil,Italy,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1938-06-16|BRAZIL|ITALY
+world_cup_results,soccer,WORLD_CUP,1938-06-16,Hungary,Sweden,5.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1938-06-16|HUNGARY|SWEDEN
+world_cup_results,soccer,WORLD_CUP,1938-06-19,Brazil,Sweden,4.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1938-06-19|BRAZIL|SWEDEN
+world_cup_results,soccer,WORLD_CUP,1938-06-19,Hungary,Italy,2.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|1938-06-19|HUNGARY|ITALY
+world_cup_results,soccer,WORLD_CUP,1950-06-24,Brazil,Mexico,4.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1950-06-24|BRAZIL|MEXICO
+world_cup_results,soccer,WORLD_CUP,1950-06-25,Chile,England,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1950-06-25|CHILE|ENGLAND
+world_cup_results,soccer,WORLD_CUP,1950-06-25,Italy,Sweden,2.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1950-06-25|ITALY|SWEDEN
+world_cup_results,soccer,WORLD_CUP,1950-06-25,Spain,United States,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1950-06-25|SPAIN|UNITEDSTATES
+world_cup_results,soccer,WORLD_CUP,1950-06-25,Switzerland,Yugoslavia,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1950-06-25|SWITZERLAND|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1950-06-28,Brazil,Switzerland,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1950-06-28|BRAZIL|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,1950-06-28,Mexico,Yugoslavia,1.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|1950-06-28|MEXICO|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1950-06-29,Chile,Spain,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1950-06-29|CHILE|SPAIN
+world_cup_results,soccer,WORLD_CUP,1950-06-29,England,United States,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1950-06-29|ENGLAND|UNITEDSTATES
+world_cup_results,soccer,WORLD_CUP,1950-06-29,Paraguay,Sweden,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1950-06-29|PARAGUAY|SWEDEN
+world_cup_results,soccer,WORLD_CUP,1950-07-01,Brazil,Yugoslavia,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1950-07-01|BRAZIL|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1950-07-02,Bolivia,Uruguay,0.0,8.0,,,,True,False,False,False,soccer|WORLDCUP|1950-07-02|BOLIVIA|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1950-07-02,Chile,United States,5.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1950-07-02|CHILE|UNITEDSTATES
+world_cup_results,soccer,WORLD_CUP,1950-07-02,England,Spain,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1950-07-02|ENGLAND|SPAIN
+world_cup_results,soccer,WORLD_CUP,1950-07-02,Italy,Paraguay,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1950-07-02|ITALY|PARAGUAY
+world_cup_results,soccer,WORLD_CUP,1950-07-02,Mexico,Switzerland,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1950-07-02|MEXICO|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,1950-07-09,Brazil,Sweden,7.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1950-07-09|BRAZIL|SWEDEN
+world_cup_results,soccer,WORLD_CUP,1950-07-09,Spain,Uruguay,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1950-07-09|SPAIN|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1950-07-13,Brazil,Spain,6.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1950-07-13|BRAZIL|SPAIN
+world_cup_results,soccer,WORLD_CUP,1950-07-13,Sweden,Uruguay,2.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1950-07-13|SWEDEN|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1950-07-16,Brazil,Uruguay,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1950-07-16|BRAZIL|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1950-07-16,Spain,Sweden,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1950-07-16|SPAIN|SWEDEN
+world_cup_results,soccer,WORLD_CUP,1954-06-16,Austria,Scotland,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1954-06-16|AUSTRIA|SCOTLAND
+world_cup_results,soccer,WORLD_CUP,1954-06-16,Brazil,Mexico,5.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1954-06-16|BRAZIL|MEXICO
+world_cup_results,soccer,WORLD_CUP,1954-06-16,Czechoslovakia,Uruguay,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1954-06-16|CZECHOSLOVAKIA|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1954-06-16,France,Yugoslavia,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1954-06-16|FRANCE|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1954-06-17,Belgium,England,4.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|1954-06-17|BELGIUM|ENGLAND
+world_cup_results,soccer,WORLD_CUP,1954-06-17,Germany,Turkey,4.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1954-06-17|GERMANY|TURKEY
+world_cup_results,soccer,WORLD_CUP,1954-06-17,Hungary,South Korea,9.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1954-06-17|HUNGARY|SOUTHKOREA
+world_cup_results,soccer,WORLD_CUP,1954-06-17,Switzerland,Italy,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1954-06-17|SWITZERLAND|ITALY
+world_cup_results,soccer,WORLD_CUP,1954-06-19,Austria,Czechoslovakia,5.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1954-06-19|AUSTRIA|CZECHOSLOVAKIA
+world_cup_results,soccer,WORLD_CUP,1954-06-19,Brazil,Yugoslavia,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1954-06-19|BRAZIL|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1954-06-19,France,Mexico,3.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1954-06-19|FRANCE|MEXICO
+world_cup_results,soccer,WORLD_CUP,1954-06-19,Scotland,Uruguay,0.0,7.0,,,,True,False,False,False,soccer|WORLDCUP|1954-06-19|SCOTLAND|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1954-06-20,Belgium,Italy,1.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|1954-06-20|BELGIUM|ITALY
+world_cup_results,soccer,WORLD_CUP,1954-06-20,Germany,Hungary,3.0,8.0,,,,True,False,False,False,soccer|WORLDCUP|1954-06-20|GERMANY|HUNGARY
+world_cup_results,soccer,WORLD_CUP,1954-06-20,South Korea,Turkey,0.0,7.0,,,,True,False,False,False,soccer|WORLDCUP|1954-06-20|SOUTHKOREA|TURKEY
+world_cup_results,soccer,WORLD_CUP,1954-06-20,Switzerland,England,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1954-06-20|SWITZERLAND|ENGLAND
+world_cup_results,soccer,WORLD_CUP,1954-06-23,Germany,Turkey,7.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1954-06-23|GERMANY|TURKEY
+world_cup_results,soccer,WORLD_CUP,1954-06-23,Switzerland,Italy,4.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1954-06-23|SWITZERLAND|ITALY
+world_cup_results,soccer,WORLD_CUP,1954-06-26,England,Uruguay,2.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|1954-06-26|ENGLAND|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1954-06-26,Switzerland,Austria,5.0,7.0,,,,True,False,False,False,soccer|WORLDCUP|1954-06-26|SWITZERLAND|AUSTRIA
+world_cup_results,soccer,WORLD_CUP,1954-06-27,Brazil,Hungary,2.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|1954-06-27|BRAZIL|HUNGARY
+world_cup_results,soccer,WORLD_CUP,1954-06-27,Germany,Yugoslavia,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1954-06-27|GERMANY|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1954-06-30,Austria,Germany,1.0,6.0,,,,True,False,False,False,soccer|WORLDCUP|1954-06-30|AUSTRIA|GERMANY
+world_cup_results,soccer,WORLD_CUP,1954-06-30,Hungary,Uruguay,4.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1954-06-30|HUNGARY|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1954-07-03,Austria,Uruguay,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1954-07-03|AUSTRIA|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1954-07-04,Germany,Hungary,3.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1954-07-04|GERMANY|HUNGARY
+world_cup_results,soccer,WORLD_CUP,1958-06-08,Argentina,Germany,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-08|ARGENTINA|GERMANY
+world_cup_results,soccer,WORLD_CUP,1958-06-08,Austria,Brazil,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-08|AUSTRIA|BRAZIL
+world_cup_results,soccer,WORLD_CUP,1958-06-08,Czechoslovakia,Northern Ireland,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-08|CZECHOSLOVAKIA|NORTHERNIRELAND
+world_cup_results,soccer,WORLD_CUP,1958-06-08,England,Russia,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-08|ENGLAND|RUSSIA
+world_cup_results,soccer,WORLD_CUP,1958-06-08,France,Paraguay,7.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-08|FRANCE|PARAGUAY
+world_cup_results,soccer,WORLD_CUP,1958-06-08,Hungary,Wales,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-08|HUNGARY|WALES
+world_cup_results,soccer,WORLD_CUP,1958-06-08,Scotland,Yugoslavia,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-08|SCOTLAND|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1958-06-08,Sweden,Mexico,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-08|SWEDEN|MEXICO
+world_cup_results,soccer,WORLD_CUP,1958-06-11,Argentina,Northern Ireland,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-11|ARGENTINA|NORTHERNIRELAND
+world_cup_results,soccer,WORLD_CUP,1958-06-11,Austria,Russia,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-11|AUSTRIA|RUSSIA
+world_cup_results,soccer,WORLD_CUP,1958-06-11,Brazil,England,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-11|BRAZIL|ENGLAND
+world_cup_results,soccer,WORLD_CUP,1958-06-11,Czechoslovakia,Germany,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-11|CZECHOSLOVAKIA|GERMANY
+world_cup_results,soccer,WORLD_CUP,1958-06-11,France,Yugoslavia,2.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-11|FRANCE|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1958-06-11,Mexico,Wales,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-11|MEXICO|WALES
+world_cup_results,soccer,WORLD_CUP,1958-06-11,Paraguay,Scotland,3.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-11|PARAGUAY|SCOTLAND
+world_cup_results,soccer,WORLD_CUP,1958-06-12,Sweden,Hungary,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-12|SWEDEN|HUNGARY
+world_cup_results,soccer,WORLD_CUP,1958-06-15,Argentina,Czechoslovakia,1.0,6.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-15|ARGENTINA|CZECHOSLOVAKIA
+world_cup_results,soccer,WORLD_CUP,1958-06-15,Austria,England,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-15|AUSTRIA|ENGLAND
+world_cup_results,soccer,WORLD_CUP,1958-06-15,Brazil,Russia,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-15|BRAZIL|RUSSIA
+world_cup_results,soccer,WORLD_CUP,1958-06-15,France,Scotland,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-15|FRANCE|SCOTLAND
+world_cup_results,soccer,WORLD_CUP,1958-06-15,Germany,Northern Ireland,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-15|GERMANY|NORTHERNIRELAND
+world_cup_results,soccer,WORLD_CUP,1958-06-15,Hungary,Mexico,4.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-15|HUNGARY|MEXICO
+world_cup_results,soccer,WORLD_CUP,1958-06-15,Paraguay,Yugoslavia,3.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-15|PARAGUAY|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1958-06-15,Sweden,Wales,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-15|SWEDEN|WALES
+world_cup_results,soccer,WORLD_CUP,1958-06-17,Czechoslovakia,Northern Ireland,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-17|CZECHOSLOVAKIA|NORTHERNIRELAND
+world_cup_results,soccer,WORLD_CUP,1958-06-17,England,Russia,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-17|ENGLAND|RUSSIA
+world_cup_results,soccer,WORLD_CUP,1958-06-17,Hungary,Wales,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-17|HUNGARY|WALES
+world_cup_results,soccer,WORLD_CUP,1958-06-19,Brazil,Wales,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-19|BRAZIL|WALES
+world_cup_results,soccer,WORLD_CUP,1958-06-19,France,Northern Ireland,4.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-19|FRANCE|NORTHERNIRELAND
+world_cup_results,soccer,WORLD_CUP,1958-06-19,Germany,Yugoslavia,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-19|GERMANY|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1958-06-19,Sweden,Russia,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-19|SWEDEN|RUSSIA
+world_cup_results,soccer,WORLD_CUP,1958-06-24,Brazil,France,5.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-24|BRAZIL|FRANCE
+world_cup_results,soccer,WORLD_CUP,1958-06-24,Sweden,Germany,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-24|SWEDEN|GERMANY
+world_cup_results,soccer,WORLD_CUP,1958-06-28,France,Germany,6.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-28|FRANCE|GERMANY
+world_cup_results,soccer,WORLD_CUP,1958-06-29,Sweden,Brazil,2.0,5.0,,,,True,False,False,False,soccer|WORLDCUP|1958-06-29|SWEDEN|BRAZIL
+world_cup_results,soccer,WORLD_CUP,1962-05-30,Argentina,Bulgaria,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1962-05-30|ARGENTINA|BULGARIA
+world_cup_results,soccer,WORLD_CUP,1962-05-30,Brazil,Mexico,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1962-05-30|BRAZIL|MEXICO
+world_cup_results,soccer,WORLD_CUP,1962-05-30,Chile,Switzerland,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1962-05-30|CHILE|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,1962-05-30,Colombia,Uruguay,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1962-05-30|COLOMBIA|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1962-05-31,Czechoslovakia,Spain,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1962-05-31|CZECHOSLOVAKIA|SPAIN
+world_cup_results,soccer,WORLD_CUP,1962-05-31,England,Hungary,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1962-05-31|ENGLAND|HUNGARY
+world_cup_results,soccer,WORLD_CUP,1962-05-31,Germany,Italy,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1962-05-31|GERMANY|ITALY
+world_cup_results,soccer,WORLD_CUP,1962-05-31,Russia,Yugoslavia,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1962-05-31|RUSSIA|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1962-06-02,Argentina,England,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1962-06-02|ARGENTINA|ENGLAND
+world_cup_results,soccer,WORLD_CUP,1962-06-02,Brazil,Czechoslovakia,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1962-06-02|BRAZIL|CZECHOSLOVAKIA
+world_cup_results,soccer,WORLD_CUP,1962-06-02,Chile,Italy,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1962-06-02|CHILE|ITALY
+world_cup_results,soccer,WORLD_CUP,1962-06-02,Uruguay,Yugoslavia,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1962-06-02|URUGUAY|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1962-06-03,Bulgaria,Hungary,1.0,6.0,,,,True,False,False,False,soccer|WORLDCUP|1962-06-03|BULGARIA|HUNGARY
+world_cup_results,soccer,WORLD_CUP,1962-06-03,Colombia,Russia,4.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|1962-06-03|COLOMBIA|RUSSIA
+world_cup_results,soccer,WORLD_CUP,1962-06-03,Germany,Switzerland,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1962-06-03|GERMANY|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,1962-06-03,Mexico,Spain,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1962-06-03|MEXICO|SPAIN
+world_cup_results,soccer,WORLD_CUP,1962-06-06,Argentina,Hungary,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1962-06-06|ARGENTINA|HUNGARY
+world_cup_results,soccer,WORLD_CUP,1962-06-06,Brazil,Spain,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1962-06-06|BRAZIL|SPAIN
+world_cup_results,soccer,WORLD_CUP,1962-06-06,Chile,Germany,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1962-06-06|CHILE|GERMANY
+world_cup_results,soccer,WORLD_CUP,1962-06-06,Russia,Uruguay,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1962-06-06|RUSSIA|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1962-06-07,Bulgaria,England,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1962-06-07|BULGARIA|ENGLAND
+world_cup_results,soccer,WORLD_CUP,1962-06-07,Colombia,Yugoslavia,0.0,5.0,,,,True,False,False,False,soccer|WORLDCUP|1962-06-07|COLOMBIA|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1962-06-07,Czechoslovakia,Mexico,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1962-06-07|CZECHOSLOVAKIA|MEXICO
+world_cup_results,soccer,WORLD_CUP,1962-06-07,Italy,Switzerland,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1962-06-07|ITALY|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,1962-06-10,Brazil,England,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1962-06-10|BRAZIL|ENGLAND
+world_cup_results,soccer,WORLD_CUP,1962-06-10,Chile,Russia,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1962-06-10|CHILE|RUSSIA
+world_cup_results,soccer,WORLD_CUP,1962-06-10,Czechoslovakia,Hungary,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1962-06-10|CZECHOSLOVAKIA|HUNGARY
+world_cup_results,soccer,WORLD_CUP,1962-06-10,Germany,Yugoslavia,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1962-06-10|GERMANY|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1962-06-13,Chile,Brazil,2.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|1962-06-13|CHILE|BRAZIL
+world_cup_results,soccer,WORLD_CUP,1962-06-13,Czechoslovakia,Yugoslavia,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1962-06-13|CZECHOSLOVAKIA|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1962-06-16,Chile,Yugoslavia,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1962-06-16|CHILE|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1962-06-17,Brazil,Czechoslovakia,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1962-06-17|BRAZIL|CZECHOSLOVAKIA
+world_cup_results,soccer,WORLD_CUP,1966-07-11,England,Uruguay,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-11|ENGLAND|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1966-07-12,Brazil,Bulgaria,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-12|BRAZIL|BULGARIA
+world_cup_results,soccer,WORLD_CUP,1966-07-12,Germany,Switzerland,5.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-12|GERMANY|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,1966-07-12,North Korea,Russia,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-12|NORTHKOREA|RUSSIA
+world_cup_results,soccer,WORLD_CUP,1966-07-13,Argentina,Spain,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-13|ARGENTINA|SPAIN
+world_cup_results,soccer,WORLD_CUP,1966-07-13,Chile,Italy,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-13|CHILE|ITALY
+world_cup_results,soccer,WORLD_CUP,1966-07-13,France,Mexico,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-13|FRANCE|MEXICO
+world_cup_results,soccer,WORLD_CUP,1966-07-13,Hungary,Portugal,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-13|HUNGARY|PORTUGAL
+world_cup_results,soccer,WORLD_CUP,1966-07-15,Brazil,Hungary,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-15|BRAZIL|HUNGARY
+world_cup_results,soccer,WORLD_CUP,1966-07-15,Chile,North Korea,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-15|CHILE|NORTHKOREA
+world_cup_results,soccer,WORLD_CUP,1966-07-15,France,Uruguay,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-15|FRANCE|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1966-07-15,Spain,Switzerland,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-15|SPAIN|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,1966-07-16,Argentina,Germany,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-16|ARGENTINA|GERMANY
+world_cup_results,soccer,WORLD_CUP,1966-07-16,Bulgaria,Portugal,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-16|BULGARIA|PORTUGAL
+world_cup_results,soccer,WORLD_CUP,1966-07-16,England,Mexico,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-16|ENGLAND|MEXICO
+world_cup_results,soccer,WORLD_CUP,1966-07-16,Italy,Russia,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-16|ITALY|RUSSIA
+world_cup_results,soccer,WORLD_CUP,1966-07-19,Argentina,Switzerland,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-19|ARGENTINA|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,1966-07-19,Brazil,Portugal,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-19|BRAZIL|PORTUGAL
+world_cup_results,soccer,WORLD_CUP,1966-07-19,Italy,North Korea,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-19|ITALY|NORTHKOREA
+world_cup_results,soccer,WORLD_CUP,1966-07-19,Mexico,Uruguay,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-19|MEXICO|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1966-07-20,Bulgaria,Hungary,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-20|BULGARIA|HUNGARY
+world_cup_results,soccer,WORLD_CUP,1966-07-20,Chile,Russia,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-20|CHILE|RUSSIA
+world_cup_results,soccer,WORLD_CUP,1966-07-20,England,France,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-20|ENGLAND|FRANCE
+world_cup_results,soccer,WORLD_CUP,1966-07-20,Germany,Spain,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-20|GERMANY|SPAIN
+world_cup_results,soccer,WORLD_CUP,1966-07-23,England,Argentina,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-23|ENGLAND|ARGENTINA
+world_cup_results,soccer,WORLD_CUP,1966-07-23,Germany,Uruguay,4.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-23|GERMANY|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1966-07-23,Hungary,Russia,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-23|HUNGARY|RUSSIA
+world_cup_results,soccer,WORLD_CUP,1966-07-23,North Korea,Portugal,3.0,5.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-23|NORTHKOREA|PORTUGAL
+world_cup_results,soccer,WORLD_CUP,1966-07-25,Germany,Russia,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-25|GERMANY|RUSSIA
+world_cup_results,soccer,WORLD_CUP,1966-07-26,England,Portugal,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-26|ENGLAND|PORTUGAL
+world_cup_results,soccer,WORLD_CUP,1966-07-28,Portugal,Russia,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-28|PORTUGAL|RUSSIA
+world_cup_results,soccer,WORLD_CUP,1966-07-30,England,Germany,4.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1966-07-30|ENGLAND|GERMANY
+world_cup_results,soccer,WORLD_CUP,1970-05-31,Mexico,Russia,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1970-05-31|MEXICO|RUSSIA
+world_cup_results,soccer,WORLD_CUP,1970-06-02,Bulgaria,Peru,2.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-02|BULGARIA|PERU
+world_cup_results,soccer,WORLD_CUP,1970-06-02,England,Romania,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-02|ENGLAND|ROMANIA
+world_cup_results,soccer,WORLD_CUP,1970-06-02,Israel,Uruguay,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-02|ISRAEL|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1970-06-03,Belgium,El Salvador,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-03|BELGIUM|ELSALVADOR
+world_cup_results,soccer,WORLD_CUP,1970-06-03,Brazil,Czechoslovakia,4.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-03|BRAZIL|CZECHOSLOVAKIA
+world_cup_results,soccer,WORLD_CUP,1970-06-03,Germany,Morocco,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-03|GERMANY|MOROCCO
+world_cup_results,soccer,WORLD_CUP,1970-06-03,Italy,Sweden,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-03|ITALY|SWEDEN
+world_cup_results,soccer,WORLD_CUP,1970-06-06,Belgium,Russia,1.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-06|BELGIUM|RUSSIA
+world_cup_results,soccer,WORLD_CUP,1970-06-06,Czechoslovakia,Romania,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-06|CZECHOSLOVAKIA|ROMANIA
+world_cup_results,soccer,WORLD_CUP,1970-06-06,Italy,Uruguay,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-06|ITALY|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1970-06-06,Morocco,Peru,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-06|MOROCCO|PERU
+world_cup_results,soccer,WORLD_CUP,1970-06-07,Brazil,England,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-07|BRAZIL|ENGLAND
+world_cup_results,soccer,WORLD_CUP,1970-06-07,Bulgaria,Germany,2.0,5.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-07|BULGARIA|GERMANY
+world_cup_results,soccer,WORLD_CUP,1970-06-07,Israel,Sweden,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-07|ISRAEL|SWEDEN
+world_cup_results,soccer,WORLD_CUP,1970-06-07,Mexico,El Salvador,4.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-07|MEXICO|ELSALVADOR
+world_cup_results,soccer,WORLD_CUP,1970-06-10,Brazil,Romania,3.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-10|BRAZIL|ROMANIA
+world_cup_results,soccer,WORLD_CUP,1970-06-10,El Salvador,Russia,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-10|ELSALVADOR|RUSSIA
+world_cup_results,soccer,WORLD_CUP,1970-06-10,Germany,Peru,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-10|GERMANY|PERU
+world_cup_results,soccer,WORLD_CUP,1970-06-10,Sweden,Uruguay,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-10|SWEDEN|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1970-06-11,Bulgaria,Morocco,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-11|BULGARIA|MOROCCO
+world_cup_results,soccer,WORLD_CUP,1970-06-11,Czechoslovakia,England,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-11|CZECHOSLOVAKIA|ENGLAND
+world_cup_results,soccer,WORLD_CUP,1970-06-11,Israel,Italy,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-11|ISRAEL|ITALY
+world_cup_results,soccer,WORLD_CUP,1970-06-11,Mexico,Belgium,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-11|MEXICO|BELGIUM
+world_cup_results,soccer,WORLD_CUP,1970-06-14,Brazil,Peru,4.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-14|BRAZIL|PERU
+world_cup_results,soccer,WORLD_CUP,1970-06-14,England,Germany,2.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-14|ENGLAND|GERMANY
+world_cup_results,soccer,WORLD_CUP,1970-06-14,Mexico,Italy,1.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-14|MEXICO|ITALY
+world_cup_results,soccer,WORLD_CUP,1970-06-14,Russia,Uruguay,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-14|RUSSIA|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1970-06-17,Brazil,Uruguay,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-17|BRAZIL|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1970-06-17,Germany,Italy,3.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-17|GERMANY|ITALY
+world_cup_results,soccer,WORLD_CUP,1970-06-20,Germany,Uruguay,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-20|GERMANY|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1970-06-21,Brazil,Italy,4.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1970-06-21|BRAZIL|ITALY
+world_cup_results,soccer,WORLD_CUP,1974-06-13,Brazil,Yugoslavia,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-13|BRAZIL|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1974-06-14,DR Congo,Scotland,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-14|DRCONGO|SCOTLAND
+world_cup_results,soccer,WORLD_CUP,1974-06-14,German DR,Australia,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-14|GERMANDR|AUSTRALIA
+world_cup_results,soccer,WORLD_CUP,1974-06-14,Germany,Chile,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-14|GERMANY|CHILE
+world_cup_results,soccer,WORLD_CUP,1974-06-15,Italy,Haiti,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-15|ITALY|HAITI
+world_cup_results,soccer,WORLD_CUP,1974-06-15,Poland,Argentina,3.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-15|POLAND|ARGENTINA
+world_cup_results,soccer,WORLD_CUP,1974-06-15,Sweden,Bulgaria,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-15|SWEDEN|BULGARIA
+world_cup_results,soccer,WORLD_CUP,1974-06-15,Uruguay,Netherlands,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-15|URUGUAY|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,1974-06-18,Chile,German DR,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-18|CHILE|GERMANDR
+world_cup_results,soccer,WORLD_CUP,1974-06-18,Germany,Australia,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-18|GERMANY|AUSTRALIA
+world_cup_results,soccer,WORLD_CUP,1974-06-18,Scotland,Brazil,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-18|SCOTLAND|BRAZIL
+world_cup_results,soccer,WORLD_CUP,1974-06-18,Yugoslavia,DR Congo,9.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-18|YUGOSLAVIA|DRCONGO
+world_cup_results,soccer,WORLD_CUP,1974-06-19,Argentina,Italy,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-19|ARGENTINA|ITALY
+world_cup_results,soccer,WORLD_CUP,1974-06-19,Bulgaria,Uruguay,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-19|BULGARIA|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1974-06-19,Haiti,Poland,0.0,7.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-19|HAITI|POLAND
+world_cup_results,soccer,WORLD_CUP,1974-06-19,Netherlands,Sweden,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-19|NETHERLANDS|SWEDEN
+world_cup_results,soccer,WORLD_CUP,1974-06-22,Australia,Chile,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-22|AUSTRALIA|CHILE
+world_cup_results,soccer,WORLD_CUP,1974-06-22,DR Congo,Brazil,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-22|DRCONGO|BRAZIL
+world_cup_results,soccer,WORLD_CUP,1974-06-22,Germany,German DR,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-22|GERMANY|GERMANDR
+world_cup_results,soccer,WORLD_CUP,1974-06-22,Scotland,Yugoslavia,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-22|SCOTLAND|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1974-06-23,Argentina,Haiti,4.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-23|ARGENTINA|HAITI
+world_cup_results,soccer,WORLD_CUP,1974-06-23,Bulgaria,Netherlands,1.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-23|BULGARIA|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,1974-06-23,Poland,Italy,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-23|POLAND|ITALY
+world_cup_results,soccer,WORLD_CUP,1974-06-23,Sweden,Uruguay,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-23|SWEDEN|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1974-06-26,Brazil,German DR,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-26|BRAZIL|GERMANDR
+world_cup_results,soccer,WORLD_CUP,1974-06-26,Germany,Yugoslavia,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-26|GERMANY|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1974-06-26,Netherlands,Argentina,4.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-26|NETHERLANDS|ARGENTINA
+world_cup_results,soccer,WORLD_CUP,1974-06-26,Sweden,Poland,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-26|SWEDEN|POLAND
+world_cup_results,soccer,WORLD_CUP,1974-06-30,Argentina,Brazil,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-30|ARGENTINA|BRAZIL
+world_cup_results,soccer,WORLD_CUP,1974-06-30,German DR,Netherlands,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-30|GERMANDR|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,1974-06-30,Germany,Sweden,4.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-30|GERMANY|SWEDEN
+world_cup_results,soccer,WORLD_CUP,1974-06-30,Poland,Yugoslavia,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1974-06-30|POLAND|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1974-07-03,Argentina,German DR,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1974-07-03|ARGENTINA|GERMANDR
+world_cup_results,soccer,WORLD_CUP,1974-07-03,Germany,Poland,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1974-07-03|GERMANY|POLAND
+world_cup_results,soccer,WORLD_CUP,1974-07-03,Netherlands,Brazil,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1974-07-03|NETHERLANDS|BRAZIL
+world_cup_results,soccer,WORLD_CUP,1974-07-03,Sweden,Yugoslavia,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1974-07-03|SWEDEN|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1974-07-06,Brazil,Poland,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1974-07-06|BRAZIL|POLAND
+world_cup_results,soccer,WORLD_CUP,1974-07-07,Germany,Netherlands,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1974-07-07|GERMANY|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,1978-06-01,Germany,Poland,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-01|GERMANY|POLAND
+world_cup_results,soccer,WORLD_CUP,1978-06-02,Argentina,Hungary,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-02|ARGENTINA|HUNGARY
+world_cup_results,soccer,WORLD_CUP,1978-06-02,France,Italy,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-02|FRANCE|ITALY
+world_cup_results,soccer,WORLD_CUP,1978-06-02,Mexico,Tunisia,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-02|MEXICO|TUNISIA
+world_cup_results,soccer,WORLD_CUP,1978-06-03,Austria,Spain,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-03|AUSTRIA|SPAIN
+world_cup_results,soccer,WORLD_CUP,1978-06-03,Brazil,Sweden,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-03|BRAZIL|SWEDEN
+world_cup_results,soccer,WORLD_CUP,1978-06-03,Iran,Netherlands,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-03|IRAN|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,1978-06-03,Peru,Scotland,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-03|PERU|SCOTLAND
+world_cup_results,soccer,WORLD_CUP,1978-06-06,Argentina,France,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-06|ARGENTINA|FRANCE
+world_cup_results,soccer,WORLD_CUP,1978-06-06,Germany,Mexico,6.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-06|GERMANY|MEXICO
+world_cup_results,soccer,WORLD_CUP,1978-06-06,Hungary,Italy,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-06|HUNGARY|ITALY
+world_cup_results,soccer,WORLD_CUP,1978-06-06,Poland,Tunisia,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-06|POLAND|TUNISIA
+world_cup_results,soccer,WORLD_CUP,1978-06-07,Austria,Sweden,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-07|AUSTRIA|SWEDEN
+world_cup_results,soccer,WORLD_CUP,1978-06-07,Brazil,Spain,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-07|BRAZIL|SPAIN
+world_cup_results,soccer,WORLD_CUP,1978-06-07,Iran,Scotland,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-07|IRAN|SCOTLAND
+world_cup_results,soccer,WORLD_CUP,1978-06-07,Netherlands,Peru,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-07|NETHERLANDS|PERU
+world_cup_results,soccer,WORLD_CUP,1978-06-10,Argentina,Italy,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-10|ARGENTINA|ITALY
+world_cup_results,soccer,WORLD_CUP,1978-06-10,France,Hungary,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-10|FRANCE|HUNGARY
+world_cup_results,soccer,WORLD_CUP,1978-06-10,Germany,Tunisia,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-10|GERMANY|TUNISIA
+world_cup_results,soccer,WORLD_CUP,1978-06-10,Mexico,Poland,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-10|MEXICO|POLAND
+world_cup_results,soccer,WORLD_CUP,1978-06-11,Austria,Brazil,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-11|AUSTRIA|BRAZIL
+world_cup_results,soccer,WORLD_CUP,1978-06-11,Iran,Peru,1.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-11|IRAN|PERU
+world_cup_results,soccer,WORLD_CUP,1978-06-11,Netherlands,Scotland,2.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-11|NETHERLANDS|SCOTLAND
+world_cup_results,soccer,WORLD_CUP,1978-06-11,Spain,Sweden,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-11|SPAIN|SWEDEN
+world_cup_results,soccer,WORLD_CUP,1978-06-14,Argentina,Poland,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-14|ARGENTINA|POLAND
+world_cup_results,soccer,WORLD_CUP,1978-06-14,Austria,Netherlands,1.0,5.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-14|AUSTRIA|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,1978-06-14,Brazil,Peru,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-14|BRAZIL|PERU
+world_cup_results,soccer,WORLD_CUP,1978-06-14,Germany,Italy,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-14|GERMANY|ITALY
+world_cup_results,soccer,WORLD_CUP,1978-06-18,Argentina,Brazil,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-18|ARGENTINA|BRAZIL
+world_cup_results,soccer,WORLD_CUP,1978-06-18,Austria,Italy,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-18|AUSTRIA|ITALY
+world_cup_results,soccer,WORLD_CUP,1978-06-18,Germany,Netherlands,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-18|GERMANY|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,1978-06-18,Peru,Poland,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-18|PERU|POLAND
+world_cup_results,soccer,WORLD_CUP,1978-06-21,Argentina,Peru,6.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-21|ARGENTINA|PERU
+world_cup_results,soccer,WORLD_CUP,1978-06-21,Austria,Germany,3.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-21|AUSTRIA|GERMANY
+world_cup_results,soccer,WORLD_CUP,1978-06-21,Brazil,Poland,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-21|BRAZIL|POLAND
+world_cup_results,soccer,WORLD_CUP,1978-06-21,Italy,Netherlands,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-21|ITALY|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,1978-06-24,Brazil,Italy,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-24|BRAZIL|ITALY
+world_cup_results,soccer,WORLD_CUP,1978-06-25,Argentina,Netherlands,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1978-06-25|ARGENTINA|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,1982-06-13,Argentina,Belgium,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-13|ARGENTINA|BELGIUM
+world_cup_results,soccer,WORLD_CUP,1982-06-14,Brazil,Russia,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-14|BRAZIL|RUSSIA
+world_cup_results,soccer,WORLD_CUP,1982-06-14,Italy,Poland,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-14|ITALY|POLAND
+world_cup_results,soccer,WORLD_CUP,1982-06-15,Hungary,El Salvador,10.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-15|HUNGARY|ELSALVADOR
+world_cup_results,soccer,WORLD_CUP,1982-06-15,Peru,Cameroon,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-15|PERU|CAMEROON
+world_cup_results,soccer,WORLD_CUP,1982-06-15,Scotland,New Zealand,5.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-15|SCOTLAND|NEWZEALAND
+world_cup_results,soccer,WORLD_CUP,1982-06-16,England,France,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-16|ENGLAND|FRANCE
+world_cup_results,soccer,WORLD_CUP,1982-06-16,Germany,Algeria,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-16|GERMANY|ALGERIA
+world_cup_results,soccer,WORLD_CUP,1982-06-16,Spain,Honduras,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-16|SPAIN|HONDURAS
+world_cup_results,soccer,WORLD_CUP,1982-06-17,Chile,Austria,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-17|CHILE|AUSTRIA
+world_cup_results,soccer,WORLD_CUP,1982-06-17,Czechoslovakia,Kuwait,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-17|CZECHOSLOVAKIA|KUWAIT
+world_cup_results,soccer,WORLD_CUP,1982-06-17,Yugoslavia,Northern Ireland,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-17|YUGOSLAVIA|NORTHERNIRELAND
+world_cup_results,soccer,WORLD_CUP,1982-06-18,Argentina,Hungary,4.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-18|ARGENTINA|HUNGARY
+world_cup_results,soccer,WORLD_CUP,1982-06-18,Brazil,Scotland,4.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-18|BRAZIL|SCOTLAND
+world_cup_results,soccer,WORLD_CUP,1982-06-18,Italy,Peru,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-18|ITALY|PERU
+world_cup_results,soccer,WORLD_CUP,1982-06-19,Belgium,El Salvador,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-19|BELGIUM|ELSALVADOR
+world_cup_results,soccer,WORLD_CUP,1982-06-19,Poland,Cameroon,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-19|POLAND|CAMEROON
+world_cup_results,soccer,WORLD_CUP,1982-06-19,Russia,New Zealand,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-19|RUSSIA|NEWZEALAND
+world_cup_results,soccer,WORLD_CUP,1982-06-20,England,Czechoslovakia,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-20|ENGLAND|CZECHOSLOVAKIA
+world_cup_results,soccer,WORLD_CUP,1982-06-20,Germany,Chile,4.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-20|GERMANY|CHILE
+world_cup_results,soccer,WORLD_CUP,1982-06-20,Spain,Yugoslavia,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-20|SPAIN|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1982-06-21,Algeria,Austria,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-21|ALGERIA|AUSTRIA
+world_cup_results,soccer,WORLD_CUP,1982-06-21,France,Kuwait,4.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-21|FRANCE|KUWAIT
+world_cup_results,soccer,WORLD_CUP,1982-06-21,Honduras,Northern Ireland,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-21|HONDURAS|NORTHERNIRELAND
+world_cup_results,soccer,WORLD_CUP,1982-06-22,Belgium,Hungary,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-22|BELGIUM|HUNGARY
+world_cup_results,soccer,WORLD_CUP,1982-06-22,Poland,Peru,5.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-22|POLAND|PERU
+world_cup_results,soccer,WORLD_CUP,1982-06-22,Russia,Scotland,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-22|RUSSIA|SCOTLAND
+world_cup_results,soccer,WORLD_CUP,1982-06-23,Argentina,El Salvador,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-23|ARGENTINA|ELSALVADOR
+world_cup_results,soccer,WORLD_CUP,1982-06-23,Brazil,New Zealand,4.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-23|BRAZIL|NEWZEALAND
+world_cup_results,soccer,WORLD_CUP,1982-06-23,Italy,Cameroon,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-23|ITALY|CAMEROON
+world_cup_results,soccer,WORLD_CUP,1982-06-24,Algeria,Chile,3.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-24|ALGERIA|CHILE
+world_cup_results,soccer,WORLD_CUP,1982-06-24,France,Czechoslovakia,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-24|FRANCE|CZECHOSLOVAKIA
+world_cup_results,soccer,WORLD_CUP,1982-06-24,Honduras,Yugoslavia,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-24|HONDURAS|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1982-06-25,England,Kuwait,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-25|ENGLAND|KUWAIT
+world_cup_results,soccer,WORLD_CUP,1982-06-25,Germany,Austria,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-25|GERMANY|AUSTRIA
+world_cup_results,soccer,WORLD_CUP,1982-06-25,Spain,Northern Ireland,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-25|SPAIN|NORTHERNIRELAND
+world_cup_results,soccer,WORLD_CUP,1982-06-28,Austria,France,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-28|AUSTRIA|FRANCE
+world_cup_results,soccer,WORLD_CUP,1982-06-28,Poland,Belgium,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-28|POLAND|BELGIUM
+world_cup_results,soccer,WORLD_CUP,1982-06-29,Germany,England,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-29|GERMANY|ENGLAND
+world_cup_results,soccer,WORLD_CUP,1982-06-29,Italy,Argentina,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1982-06-29|ITALY|ARGENTINA
+world_cup_results,soccer,WORLD_CUP,1982-07-01,Austria,Northern Ireland,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1982-07-01|AUSTRIA|NORTHERNIRELAND
+world_cup_results,soccer,WORLD_CUP,1982-07-01,Belgium,Russia,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1982-07-01|BELGIUM|RUSSIA
+world_cup_results,soccer,WORLD_CUP,1982-07-02,Argentina,Brazil,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1982-07-02|ARGENTINA|BRAZIL
+world_cup_results,soccer,WORLD_CUP,1982-07-02,Spain,Germany,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1982-07-02|SPAIN|GERMANY
+world_cup_results,soccer,WORLD_CUP,1982-07-04,France,Northern Ireland,4.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1982-07-04|FRANCE|NORTHERNIRELAND
+world_cup_results,soccer,WORLD_CUP,1982-07-04,Poland,Russia,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1982-07-04|POLAND|RUSSIA
+world_cup_results,soccer,WORLD_CUP,1982-07-05,Italy,Brazil,3.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1982-07-05|ITALY|BRAZIL
+world_cup_results,soccer,WORLD_CUP,1982-07-05,Spain,England,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1982-07-05|SPAIN|ENGLAND
+world_cup_results,soccer,WORLD_CUP,1982-07-08,Germany,France,3.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1982-07-08|GERMANY|FRANCE
+world_cup_results,soccer,WORLD_CUP,1982-07-08,Poland,Italy,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1982-07-08|POLAND|ITALY
+world_cup_results,soccer,WORLD_CUP,1982-07-10,Poland,France,3.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1982-07-10|POLAND|FRANCE
+world_cup_results,soccer,WORLD_CUP,1982-07-11,Italy,Germany,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1982-07-11|ITALY|GERMANY
+world_cup_results,soccer,WORLD_CUP,1986-05-31,Bulgaria,Italy,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1986-05-31|BULGARIA|ITALY
+world_cup_results,soccer,WORLD_CUP,1986-06-01,Canada,France,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-01|CANADA|FRANCE
+world_cup_results,soccer,WORLD_CUP,1986-06-01,Spain,Brazil,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-01|SPAIN|BRAZIL
+world_cup_results,soccer,WORLD_CUP,1986-06-02,Argentina,South Korea,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-02|ARGENTINA|SOUTHKOREA
+world_cup_results,soccer,WORLD_CUP,1986-06-02,Morocco,Poland,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-02|MOROCCO|POLAND
+world_cup_results,soccer,WORLD_CUP,1986-06-02,Russia,Hungary,6.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-02|RUSSIA|HUNGARY
+world_cup_results,soccer,WORLD_CUP,1986-06-03,Algeria,Northern Ireland,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-03|ALGERIA|NORTHERNIRELAND
+world_cup_results,soccer,WORLD_CUP,1986-06-03,Mexico,Belgium,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-03|MEXICO|BELGIUM
+world_cup_results,soccer,WORLD_CUP,1986-06-03,Portugal,England,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-03|PORTUGAL|ENGLAND
+world_cup_results,soccer,WORLD_CUP,1986-06-04,Paraguay,Iraq,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-04|PARAGUAY|IRAQ
+world_cup_results,soccer,WORLD_CUP,1986-06-04,Scotland,Denmark,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-04|SCOTLAND|DENMARK
+world_cup_results,soccer,WORLD_CUP,1986-06-04,Uruguay,Germany,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-04|URUGUAY|GERMANY
+world_cup_results,soccer,WORLD_CUP,1986-06-05,France,Russia,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-05|FRANCE|RUSSIA
+world_cup_results,soccer,WORLD_CUP,1986-06-05,Italy,Argentina,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-05|ITALY|ARGENTINA
+world_cup_results,soccer,WORLD_CUP,1986-06-05,South Korea,Bulgaria,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-05|SOUTHKOREA|BULGARIA
+world_cup_results,soccer,WORLD_CUP,1986-06-06,Brazil,Algeria,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-06|BRAZIL|ALGERIA
+world_cup_results,soccer,WORLD_CUP,1986-06-06,England,Morocco,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-06|ENGLAND|MOROCCO
+world_cup_results,soccer,WORLD_CUP,1986-06-06,Hungary,Canada,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-06|HUNGARY|CANADA
+world_cup_results,soccer,WORLD_CUP,1986-06-07,Mexico,Paraguay,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-07|MEXICO|PARAGUAY
+world_cup_results,soccer,WORLD_CUP,1986-06-07,Northern Ireland,Spain,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-07|NORTHERNIRELAND|SPAIN
+world_cup_results,soccer,WORLD_CUP,1986-06-07,Poland,Portugal,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-07|POLAND|PORTUGAL
+world_cup_results,soccer,WORLD_CUP,1986-06-08,Denmark,Uruguay,6.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-08|DENMARK|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1986-06-08,Germany,Scotland,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-08|GERMANY|SCOTLAND
+world_cup_results,soccer,WORLD_CUP,1986-06-08,Iraq,Belgium,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-08|IRAQ|BELGIUM
+world_cup_results,soccer,WORLD_CUP,1986-06-09,Hungary,France,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-09|HUNGARY|FRANCE
+world_cup_results,soccer,WORLD_CUP,1986-06-09,Russia,Canada,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-09|RUSSIA|CANADA
+world_cup_results,soccer,WORLD_CUP,1986-06-10,Argentina,Bulgaria,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-10|ARGENTINA|BULGARIA
+world_cup_results,soccer,WORLD_CUP,1986-06-10,South Korea,Italy,2.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-10|SOUTHKOREA|ITALY
+world_cup_results,soccer,WORLD_CUP,1986-06-11,England,Poland,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-11|ENGLAND|POLAND
+world_cup_results,soccer,WORLD_CUP,1986-06-11,Mexico,Iraq,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-11|MEXICO|IRAQ
+world_cup_results,soccer,WORLD_CUP,1986-06-11,Paraguay,Belgium,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-11|PARAGUAY|BELGIUM
+world_cup_results,soccer,WORLD_CUP,1986-06-11,Portugal,Morocco,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-11|PORTUGAL|MOROCCO
+world_cup_results,soccer,WORLD_CUP,1986-06-12,Algeria,Spain,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-12|ALGERIA|SPAIN
+world_cup_results,soccer,WORLD_CUP,1986-06-12,Northern Ireland,Brazil,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-12|NORTHERNIRELAND|BRAZIL
+world_cup_results,soccer,WORLD_CUP,1986-06-13,Denmark,Germany,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-13|DENMARK|GERMANY
+world_cup_results,soccer,WORLD_CUP,1986-06-13,Scotland,Uruguay,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-13|SCOTLAND|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1986-06-15,Mexico,Bulgaria,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-15|MEXICO|BULGARIA
+world_cup_results,soccer,WORLD_CUP,1986-06-15,Russia,Belgium,3.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-15|RUSSIA|BELGIUM
+world_cup_results,soccer,WORLD_CUP,1986-06-16,Argentina,Uruguay,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-16|ARGENTINA|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1986-06-16,Brazil,Poland,4.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-16|BRAZIL|POLAND
+world_cup_results,soccer,WORLD_CUP,1986-06-17,Italy,France,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-17|ITALY|FRANCE
+world_cup_results,soccer,WORLD_CUP,1986-06-17,Morocco,Germany,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-17|MOROCCO|GERMANY
+world_cup_results,soccer,WORLD_CUP,1986-06-18,Denmark,Spain,1.0,5.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-18|DENMARK|SPAIN
+world_cup_results,soccer,WORLD_CUP,1986-06-18,England,Paraguay,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-18|ENGLAND|PARAGUAY
+world_cup_results,soccer,WORLD_CUP,1986-06-21,Brazil,France,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-21|BRAZIL|FRANCE
+world_cup_results,soccer,WORLD_CUP,1986-06-21,Mexico,Germany,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-21|MEXICO|GERMANY
+world_cup_results,soccer,WORLD_CUP,1986-06-22,Argentina,England,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-22|ARGENTINA|ENGLAND
+world_cup_results,soccer,WORLD_CUP,1986-06-22,Spain,Belgium,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-22|SPAIN|BELGIUM
+world_cup_results,soccer,WORLD_CUP,1986-06-25,Argentina,Belgium,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-25|ARGENTINA|BELGIUM
+world_cup_results,soccer,WORLD_CUP,1986-06-25,France,Germany,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-25|FRANCE|GERMANY
+world_cup_results,soccer,WORLD_CUP,1986-06-28,France,Belgium,4.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-28|FRANCE|BELGIUM
+world_cup_results,soccer,WORLD_CUP,1986-06-29,Argentina,Germany,3.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1986-06-29|ARGENTINA|GERMANY
+world_cup_results,soccer,WORLD_CUP,1990-06-08,Argentina,Cameroon,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-08|ARGENTINA|CAMEROON
+world_cup_results,soccer,WORLD_CUP,1990-06-09,Italy,Austria,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-09|ITALY|AUSTRIA
+world_cup_results,soccer,WORLD_CUP,1990-06-09,Russia,Romania,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-09|RUSSIA|ROMANIA
+world_cup_results,soccer,WORLD_CUP,1990-06-09,United Arab Emirates,Colombia,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-09|UNITEDARABEMIRATES|COLOMBIA
+world_cup_results,soccer,WORLD_CUP,1990-06-10,Brazil,Sweden,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-10|BRAZIL|SWEDEN
+world_cup_results,soccer,WORLD_CUP,1990-06-10,Germany,Yugoslavia,4.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-10|GERMANY|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1990-06-10,United States,Czechoslovakia,1.0,5.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-10|UNITEDSTATES|CZECHOSLOVAKIA
+world_cup_results,soccer,WORLD_CUP,1990-06-11,Costa Rica,Scotland,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-11|COSTARICA|SCOTLAND
+world_cup_results,soccer,WORLD_CUP,1990-06-11,England,Republic of Ireland,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-11|ENGLAND|REPUBLICOFIRELAND
+world_cup_results,soccer,WORLD_CUP,1990-06-12,Belgium,South Korea,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-12|BELGIUM|SOUTHKOREA
+world_cup_results,soccer,WORLD_CUP,1990-06-12,Netherlands,Egypt,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-12|NETHERLANDS|EGYPT
+world_cup_results,soccer,WORLD_CUP,1990-06-13,Argentina,Russia,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-13|ARGENTINA|RUSSIA
+world_cup_results,soccer,WORLD_CUP,1990-06-13,Uruguay,Spain,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-13|URUGUAY|SPAIN
+world_cup_results,soccer,WORLD_CUP,1990-06-14,Cameroon,Romania,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-14|CAMEROON|ROMANIA
+world_cup_results,soccer,WORLD_CUP,1990-06-14,Italy,United States,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-14|ITALY|UNITEDSTATES
+world_cup_results,soccer,WORLD_CUP,1990-06-14,Yugoslavia,Colombia,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-14|YUGOSLAVIA|COLOMBIA
+world_cup_results,soccer,WORLD_CUP,1990-06-15,Austria,Czechoslovakia,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-15|AUSTRIA|CZECHOSLOVAKIA
+world_cup_results,soccer,WORLD_CUP,1990-06-15,Germany,United Arab Emirates,5.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-15|GERMANY|UNITEDARABEMIRATES
+world_cup_results,soccer,WORLD_CUP,1990-06-16,Brazil,Costa Rica,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-16|BRAZIL|COSTARICA
+world_cup_results,soccer,WORLD_CUP,1990-06-16,England,Netherlands,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-16|ENGLAND|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,1990-06-16,Sweden,Scotland,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-16|SWEDEN|SCOTLAND
+world_cup_results,soccer,WORLD_CUP,1990-06-17,Belgium,Uruguay,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-17|BELGIUM|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1990-06-17,Republic of Ireland,Egypt,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-17|REPUBLICOFIRELAND|EGYPT
+world_cup_results,soccer,WORLD_CUP,1990-06-17,South Korea,Spain,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-17|SOUTHKOREA|SPAIN
+world_cup_results,soccer,WORLD_CUP,1990-06-18,Argentina,Romania,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-18|ARGENTINA|ROMANIA
+world_cup_results,soccer,WORLD_CUP,1990-06-18,Cameroon,Russia,0.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-18|CAMEROON|RUSSIA
+world_cup_results,soccer,WORLD_CUP,1990-06-19,Austria,United States,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-19|AUSTRIA|UNITEDSTATES
+world_cup_results,soccer,WORLD_CUP,1990-06-19,Germany,Colombia,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-19|GERMANY|COLOMBIA
+world_cup_results,soccer,WORLD_CUP,1990-06-19,Italy,Czechoslovakia,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-19|ITALY|CZECHOSLOVAKIA
+world_cup_results,soccer,WORLD_CUP,1990-06-19,Yugoslavia,United Arab Emirates,4.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-19|YUGOSLAVIA|UNITEDARABEMIRATES
+world_cup_results,soccer,WORLD_CUP,1990-06-20,Brazil,Scotland,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-20|BRAZIL|SCOTLAND
+world_cup_results,soccer,WORLD_CUP,1990-06-20,Sweden,Costa Rica,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-20|SWEDEN|COSTARICA
+world_cup_results,soccer,WORLD_CUP,1990-06-21,Belgium,Spain,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-21|BELGIUM|SPAIN
+world_cup_results,soccer,WORLD_CUP,1990-06-21,England,Egypt,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-21|ENGLAND|EGYPT
+world_cup_results,soccer,WORLD_CUP,1990-06-21,Republic of Ireland,Netherlands,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-21|REPUBLICOFIRELAND|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,1990-06-21,South Korea,Uruguay,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-21|SOUTHKOREA|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1990-06-23,Cameroon,Colombia,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-23|CAMEROON|COLOMBIA
+world_cup_results,soccer,WORLD_CUP,1990-06-23,Czechoslovakia,Costa Rica,4.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-23|CZECHOSLOVAKIA|COSTARICA
+world_cup_results,soccer,WORLD_CUP,1990-06-24,Brazil,Argentina,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-24|BRAZIL|ARGENTINA
+world_cup_results,soccer,WORLD_CUP,1990-06-24,Germany,Netherlands,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-24|GERMANY|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,1990-06-25,Republic of Ireland,Romania,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-25|REPUBLICOFIRELAND|ROMANIA
+world_cup_results,soccer,WORLD_CUP,1990-06-25,Italy,Uruguay,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-25|ITALY|URUGUAY
+world_cup_results,soccer,WORLD_CUP,1990-06-26,England,Belgium,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-26|ENGLAND|BELGIUM
+world_cup_results,soccer,WORLD_CUP,1990-06-26,Spain,Yugoslavia,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-26|SPAIN|YUGOSLAVIA
+world_cup_results,soccer,WORLD_CUP,1990-06-30,Italy,Republic of Ireland,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-30|ITALY|REPUBLICOFIRELAND
+world_cup_results,soccer,WORLD_CUP,1990-06-30,Yugoslavia,Argentina,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1990-06-30|YUGOSLAVIA|ARGENTINA
+world_cup_results,soccer,WORLD_CUP,1990-07-01,Cameroon,England,2.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1990-07-01|CAMEROON|ENGLAND
+world_cup_results,soccer,WORLD_CUP,1990-07-01,Germany,Czechoslovakia,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1990-07-01|GERMANY|CZECHOSLOVAKIA
+world_cup_results,soccer,WORLD_CUP,1990-07-03,Italy,Argentina,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1990-07-03|ITALY|ARGENTINA
+world_cup_results,soccer,WORLD_CUP,1990-07-04,Germany,England,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1990-07-04|GERMANY|ENGLAND
+world_cup_results,soccer,WORLD_CUP,1990-07-07,Italy,England,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1990-07-07|ITALY|ENGLAND
+world_cup_results,soccer,WORLD_CUP,1990-07-08,Germany,Argentina,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1990-07-08|GERMANY|ARGENTINA
+world_cup_results,soccer,WORLD_CUP,1994-06-17,Germany,Bolivia,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-17|GERMANY|BOLIVIA
+world_cup_results,soccer,WORLD_CUP,1994-06-17,Spain,South Korea,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-17|SPAIN|SOUTHKOREA
+world_cup_results,soccer,WORLD_CUP,1994-06-18,Colombia,Romania,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-18|COLOMBIA|ROMANIA
+world_cup_results,soccer,WORLD_CUP,1994-06-18,Italy,Republic of Ireland,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-18|ITALY|REPUBLICOFIRELAND
+world_cup_results,soccer,WORLD_CUP,1994-06-18,United States,Switzerland,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-18|UNITEDSTATES|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,1994-06-19,Belgium,Morocco,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-19|BELGIUM|MOROCCO
+world_cup_results,soccer,WORLD_CUP,1994-06-19,Cameroon,Sweden,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-19|CAMEROON|SWEDEN
+world_cup_results,soccer,WORLD_CUP,1994-06-19,Norway,Mexico,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-19|NORWAY|MEXICO
+world_cup_results,soccer,WORLD_CUP,1994-06-20,Brazil,Russia,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-20|BRAZIL|RUSSIA
+world_cup_results,soccer,WORLD_CUP,1994-06-20,Netherlands,Saudi Arabia,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-20|NETHERLANDS|SAUDIARABIA
+world_cup_results,soccer,WORLD_CUP,1994-06-21,Argentina,Greece,4.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-21|ARGENTINA|GREECE
+world_cup_results,soccer,WORLD_CUP,1994-06-21,Germany,Spain,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-21|GERMANY|SPAIN
+world_cup_results,soccer,WORLD_CUP,1994-06-21,Nigeria,Bulgaria,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-21|NIGERIA|BULGARIA
+world_cup_results,soccer,WORLD_CUP,1994-06-22,Romania,Switzerland,1.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-22|ROMANIA|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,1994-06-22,United States,Colombia,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-22|UNITEDSTATES|COLOMBIA
+world_cup_results,soccer,WORLD_CUP,1994-06-23,Italy,Norway,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-23|ITALY|NORWAY
+world_cup_results,soccer,WORLD_CUP,1994-06-23,South Korea,Bolivia,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-23|SOUTHKOREA|BOLIVIA
+world_cup_results,soccer,WORLD_CUP,1994-06-24,Brazil,Cameroon,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-24|BRAZIL|CAMEROON
+world_cup_results,soccer,WORLD_CUP,1994-06-24,Mexico,Republic of Ireland,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-24|MEXICO|REPUBLICOFIRELAND
+world_cup_results,soccer,WORLD_CUP,1994-06-24,Sweden,Russia,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-24|SWEDEN|RUSSIA
+world_cup_results,soccer,WORLD_CUP,1994-06-25,Argentina,Nigeria,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-25|ARGENTINA|NIGERIA
+world_cup_results,soccer,WORLD_CUP,1994-06-25,Belgium,Netherlands,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-25|BELGIUM|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,1994-06-25,Saudi Arabia,Morocco,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-25|SAUDIARABIA|MOROCCO
+world_cup_results,soccer,WORLD_CUP,1994-06-26,Bulgaria,Greece,4.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-26|BULGARIA|GREECE
+world_cup_results,soccer,WORLD_CUP,1994-06-26,Switzerland,Colombia,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-26|SWITZERLAND|COLOMBIA
+world_cup_results,soccer,WORLD_CUP,1994-06-26,United States,Romania,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-26|UNITEDSTATES|ROMANIA
+world_cup_results,soccer,WORLD_CUP,1994-06-27,Bolivia,Spain,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-27|BOLIVIA|SPAIN
+world_cup_results,soccer,WORLD_CUP,1994-06-27,Germany,South Korea,3.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-27|GERMANY|SOUTHKOREA
+world_cup_results,soccer,WORLD_CUP,1994-06-28,Brazil,Sweden,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-28|BRAZIL|SWEDEN
+world_cup_results,soccer,WORLD_CUP,1994-06-28,Republic of Ireland,Norway,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-28|REPUBLICOFIRELAND|NORWAY
+world_cup_results,soccer,WORLD_CUP,1994-06-28,Italy,Mexico,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-28|ITALY|MEXICO
+world_cup_results,soccer,WORLD_CUP,1994-06-28,Russia,Cameroon,6.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-28|RUSSIA|CAMEROON
+world_cup_results,soccer,WORLD_CUP,1994-06-29,Belgium,Saudi Arabia,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-29|BELGIUM|SAUDIARABIA
+world_cup_results,soccer,WORLD_CUP,1994-06-29,Morocco,Netherlands,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-29|MOROCCO|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,1994-06-30,Argentina,Bulgaria,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-30|ARGENTINA|BULGARIA
+world_cup_results,soccer,WORLD_CUP,1994-06-30,Greece,Nigeria,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1994-06-30|GREECE|NIGERIA
+world_cup_results,soccer,WORLD_CUP,1994-07-02,Germany,Belgium,3.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1994-07-02|GERMANY|BELGIUM
+world_cup_results,soccer,WORLD_CUP,1994-07-02,Spain,Switzerland,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1994-07-02|SPAIN|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,1994-07-03,Romania,Argentina,3.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1994-07-03|ROMANIA|ARGENTINA
+world_cup_results,soccer,WORLD_CUP,1994-07-03,Saudi Arabia,Sweden,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1994-07-03|SAUDIARABIA|SWEDEN
+world_cup_results,soccer,WORLD_CUP,1994-07-04,Netherlands,Republic of Ireland,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1994-07-04|NETHERLANDS|REPUBLICOFIRELAND
+world_cup_results,soccer,WORLD_CUP,1994-07-04,United States,Brazil,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1994-07-04|UNITEDSTATES|BRAZIL
+world_cup_results,soccer,WORLD_CUP,1994-07-05,Mexico,Bulgaria,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1994-07-05|MEXICO|BULGARIA
+world_cup_results,soccer,WORLD_CUP,1994-07-05,Nigeria,Italy,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1994-07-05|NIGERIA|ITALY
+world_cup_results,soccer,WORLD_CUP,1994-07-09,Italy,Spain,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1994-07-09|ITALY|SPAIN
+world_cup_results,soccer,WORLD_CUP,1994-07-09,Netherlands,Brazil,2.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1994-07-09|NETHERLANDS|BRAZIL
+world_cup_results,soccer,WORLD_CUP,1994-07-10,Bulgaria,Germany,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1994-07-10|BULGARIA|GERMANY
+world_cup_results,soccer,WORLD_CUP,1994-07-10,Romania,Sweden,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1994-07-10|ROMANIA|SWEDEN
+world_cup_results,soccer,WORLD_CUP,1994-07-13,Bulgaria,Italy,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1994-07-13|BULGARIA|ITALY
+world_cup_results,soccer,WORLD_CUP,1994-07-13,Sweden,Brazil,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1994-07-13|SWEDEN|BRAZIL
+world_cup_results,soccer,WORLD_CUP,1994-07-16,Sweden,Bulgaria,4.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1994-07-16|SWEDEN|BULGARIA
+world_cup_results,soccer,WORLD_CUP,1994-07-17,Brazil,Italy,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1994-07-17|BRAZIL|ITALY
+world_cup_results,soccer,WORLD_CUP,1998-06-10,Brazil,Scotland,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-10|BRAZIL|SCOTLAND
+world_cup_results,soccer,WORLD_CUP,1998-06-10,Morocco,Norway,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-10|MOROCCO|NORWAY
+world_cup_results,soccer,WORLD_CUP,1998-06-11,Cameroon,Austria,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-11|CAMEROON|AUSTRIA
+world_cup_results,soccer,WORLD_CUP,1998-06-11,Italy,Chile,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-11|ITALY|CHILE
+world_cup_results,soccer,WORLD_CUP,1998-06-12,France,South Africa,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-12|FRANCE|SOUTHAFRICA
+world_cup_results,soccer,WORLD_CUP,1998-06-12,Paraguay,Bulgaria,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-12|PARAGUAY|BULGARIA
+world_cup_results,soccer,WORLD_CUP,1998-06-12,Saudi Arabia,Denmark,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-12|SAUDIARABIA|DENMARK
+world_cup_results,soccer,WORLD_CUP,1998-06-13,South Korea,Mexico,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-13|SOUTHKOREA|MEXICO
+world_cup_results,soccer,WORLD_CUP,1998-06-13,Netherlands,Belgium,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-13|NETHERLANDS|BELGIUM
+world_cup_results,soccer,WORLD_CUP,1998-06-13,Spain,Nigeria,2.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-13|SPAIN|NIGERIA
+world_cup_results,soccer,WORLD_CUP,1998-06-14,Argentina,Japan,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-14|ARGENTINA|JAPAN
+world_cup_results,soccer,WORLD_CUP,1998-06-14,Jamaica,Croatia,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-14|JAMAICA|CROATIA
+world_cup_results,soccer,WORLD_CUP,1998-06-14,Serbia,Iran,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-14|SERBIA|IRAN
+world_cup_results,soccer,WORLD_CUP,1998-06-15,England,Tunisia,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-15|ENGLAND|TUNISIA
+world_cup_results,soccer,WORLD_CUP,1998-06-15,Germany,United States,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-15|GERMANY|UNITEDSTATES
+world_cup_results,soccer,WORLD_CUP,1998-06-15,Romania,Colombia,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-15|ROMANIA|COLOMBIA
+world_cup_results,soccer,WORLD_CUP,1998-06-16,Brazil,Morocco,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-16|BRAZIL|MOROCCO
+world_cup_results,soccer,WORLD_CUP,1998-06-16,Scotland,Norway,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-16|SCOTLAND|NORWAY
+world_cup_results,soccer,WORLD_CUP,1998-06-17,Chile,Austria,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-17|CHILE|AUSTRIA
+world_cup_results,soccer,WORLD_CUP,1998-06-17,Italy,Cameroon,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-17|ITALY|CAMEROON
+world_cup_results,soccer,WORLD_CUP,1998-06-18,France,Saudi Arabia,4.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-18|FRANCE|SAUDIARABIA
+world_cup_results,soccer,WORLD_CUP,1998-06-18,South Africa,Denmark,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-18|SOUTHAFRICA|DENMARK
+world_cup_results,soccer,WORLD_CUP,1998-06-19,Nigeria,Bulgaria,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-19|NIGERIA|BULGARIA
+world_cup_results,soccer,WORLD_CUP,1998-06-19,Spain,Paraguay,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-19|SPAIN|PARAGUAY
+world_cup_results,soccer,WORLD_CUP,1998-06-20,Belgium,Mexico,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-20|BELGIUM|MEXICO
+world_cup_results,soccer,WORLD_CUP,1998-06-20,Japan,Croatia,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-20|JAPAN|CROATIA
+world_cup_results,soccer,WORLD_CUP,1998-06-20,Netherlands,South Korea,5.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-20|NETHERLANDS|SOUTHKOREA
+world_cup_results,soccer,WORLD_CUP,1998-06-21,Argentina,Jamaica,5.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-21|ARGENTINA|JAMAICA
+world_cup_results,soccer,WORLD_CUP,1998-06-21,Germany,Serbia,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-21|GERMANY|SERBIA
+world_cup_results,soccer,WORLD_CUP,1998-06-21,United States,Iran,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-21|UNITEDSTATES|IRAN
+world_cup_results,soccer,WORLD_CUP,1998-06-22,Colombia,Tunisia,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-22|COLOMBIA|TUNISIA
+world_cup_results,soccer,WORLD_CUP,1998-06-22,Romania,England,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-22|ROMANIA|ENGLAND
+world_cup_results,soccer,WORLD_CUP,1998-06-23,Brazil,Norway,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-23|BRAZIL|NORWAY
+world_cup_results,soccer,WORLD_CUP,1998-06-23,Chile,Cameroon,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-23|CHILE|CAMEROON
+world_cup_results,soccer,WORLD_CUP,1998-06-23,Italy,Austria,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-23|ITALY|AUSTRIA
+world_cup_results,soccer,WORLD_CUP,1998-06-23,Scotland,Morocco,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-23|SCOTLAND|MOROCCO
+world_cup_results,soccer,WORLD_CUP,1998-06-24,France,Denmark,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-24|FRANCE|DENMARK
+world_cup_results,soccer,WORLD_CUP,1998-06-24,Nigeria,Paraguay,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-24|NIGERIA|PARAGUAY
+world_cup_results,soccer,WORLD_CUP,1998-06-24,South Africa,Saudi Arabia,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-24|SOUTHAFRICA|SAUDIARABIA
+world_cup_results,soccer,WORLD_CUP,1998-06-24,Spain,Bulgaria,6.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-24|SPAIN|BULGARIA
+world_cup_results,soccer,WORLD_CUP,1998-06-25,Belgium,South Korea,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-25|BELGIUM|SOUTHKOREA
+world_cup_results,soccer,WORLD_CUP,1998-06-25,Germany,Iran,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-25|GERMANY|IRAN
+world_cup_results,soccer,WORLD_CUP,1998-06-25,Netherlands,Mexico,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-25|NETHERLANDS|MEXICO
+world_cup_results,soccer,WORLD_CUP,1998-06-25,United States,Serbia,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-25|UNITEDSTATES|SERBIA
+world_cup_results,soccer,WORLD_CUP,1998-06-26,Argentina,Croatia,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-26|ARGENTINA|CROATIA
+world_cup_results,soccer,WORLD_CUP,1998-06-26,Colombia,England,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-26|COLOMBIA|ENGLAND
+world_cup_results,soccer,WORLD_CUP,1998-06-26,Japan,Jamaica,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-26|JAPAN|JAMAICA
+world_cup_results,soccer,WORLD_CUP,1998-06-26,Romania,Tunisia,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-26|ROMANIA|TUNISIA
+world_cup_results,soccer,WORLD_CUP,1998-06-27,Brazil,Chile,4.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-27|BRAZIL|CHILE
+world_cup_results,soccer,WORLD_CUP,1998-06-27,Italy,Norway,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-27|ITALY|NORWAY
+world_cup_results,soccer,WORLD_CUP,1998-06-28,France,Paraguay,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-28|FRANCE|PARAGUAY
+world_cup_results,soccer,WORLD_CUP,1998-06-28,Nigeria,Denmark,1.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-28|NIGERIA|DENMARK
+world_cup_results,soccer,WORLD_CUP,1998-06-29,Germany,Mexico,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-29|GERMANY|MEXICO
+world_cup_results,soccer,WORLD_CUP,1998-06-29,Netherlands,Serbia,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-29|NETHERLANDS|SERBIA
+world_cup_results,soccer,WORLD_CUP,1998-06-30,Argentina,England,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-30|ARGENTINA|ENGLAND
+world_cup_results,soccer,WORLD_CUP,1998-06-30,Romania,Croatia,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1998-06-30|ROMANIA|CROATIA
+world_cup_results,soccer,WORLD_CUP,1998-07-03,Brazil,Denmark,3.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1998-07-03|BRAZIL|DENMARK
+world_cup_results,soccer,WORLD_CUP,1998-07-03,France,Italy,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1998-07-03|FRANCE|ITALY
+world_cup_results,soccer,WORLD_CUP,1998-07-04,Germany,Croatia,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|1998-07-04|GERMANY|CROATIA
+world_cup_results,soccer,WORLD_CUP,1998-07-04,Netherlands,Argentina,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1998-07-04|NETHERLANDS|ARGENTINA
+world_cup_results,soccer,WORLD_CUP,1998-07-07,Brazil,Netherlands,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1998-07-07|BRAZIL|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,1998-07-08,France,Croatia,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|1998-07-08|FRANCE|CROATIA
+world_cup_results,soccer,WORLD_CUP,1998-07-11,Netherlands,Croatia,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|1998-07-11|NETHERLANDS|CROATIA
+world_cup_results,soccer,WORLD_CUP,1998-07-12,France,Brazil,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|1998-07-12|FRANCE|BRAZIL
+world_cup_results,soccer,WORLD_CUP,2002-05-31,France,Senegal,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2002-05-31|FRANCE|SENEGAL
+world_cup_results,soccer,WORLD_CUP,2002-06-01,Germany,Saudi Arabia,8.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-01|GERMANY|SAUDIARABIA
+world_cup_results,soccer,WORLD_CUP,2002-06-01,Republic of Ireland,Cameroon,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-01|REPUBLICOFIRELAND|CAMEROON
+world_cup_results,soccer,WORLD_CUP,2002-06-01,Uruguay,Denmark,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-01|URUGUAY|DENMARK
+world_cup_results,soccer,WORLD_CUP,2002-06-02,Argentina,Nigeria,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-02|ARGENTINA|NIGERIA
+world_cup_results,soccer,WORLD_CUP,2002-06-02,England,Sweden,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-02|ENGLAND|SWEDEN
+world_cup_results,soccer,WORLD_CUP,2002-06-02,Paraguay,South Africa,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-02|PARAGUAY|SOUTHAFRICA
+world_cup_results,soccer,WORLD_CUP,2002-06-02,Spain,Slovenia,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-02|SPAIN|SLOVENIA
+world_cup_results,soccer,WORLD_CUP,2002-06-03,Brazil,Turkey,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-03|BRAZIL|TURKEY
+world_cup_results,soccer,WORLD_CUP,2002-06-03,Croatia,Mexico,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-03|CROATIA|MEXICO
+world_cup_results,soccer,WORLD_CUP,2002-06-03,Italy,Ecuador,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-03|ITALY|ECUADOR
+world_cup_results,soccer,WORLD_CUP,2002-06-04,China,Costa Rica,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-04|CHINA|COSTARICA
+world_cup_results,soccer,WORLD_CUP,2002-06-04,Japan,Belgium,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-04|JAPAN|BELGIUM
+world_cup_results,soccer,WORLD_CUP,2002-06-04,South Korea,Poland,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-04|SOUTHKOREA|POLAND
+world_cup_results,soccer,WORLD_CUP,2002-06-05,Germany,Republic of Ireland,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-05|GERMANY|REPUBLICOFIRELAND
+world_cup_results,soccer,WORLD_CUP,2002-06-05,Russia,Tunisia,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-05|RUSSIA|TUNISIA
+world_cup_results,soccer,WORLD_CUP,2002-06-05,United States,Portugal,3.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-05|UNITEDSTATES|PORTUGAL
+world_cup_results,soccer,WORLD_CUP,2002-06-06,Cameroon,Saudi Arabia,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-06|CAMEROON|SAUDIARABIA
+world_cup_results,soccer,WORLD_CUP,2002-06-06,Denmark,Senegal,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-06|DENMARK|SENEGAL
+world_cup_results,soccer,WORLD_CUP,2002-06-06,France,Uruguay,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-06|FRANCE|URUGUAY
+world_cup_results,soccer,WORLD_CUP,2002-06-07,Argentina,England,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-07|ARGENTINA|ENGLAND
+world_cup_results,soccer,WORLD_CUP,2002-06-07,Spain,Paraguay,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-07|SPAIN|PARAGUAY
+world_cup_results,soccer,WORLD_CUP,2002-06-07,Sweden,Nigeria,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-07|SWEDEN|NIGERIA
+world_cup_results,soccer,WORLD_CUP,2002-06-08,Brazil,China,4.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-08|BRAZIL|CHINA
+world_cup_results,soccer,WORLD_CUP,2002-06-08,Italy,Croatia,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-08|ITALY|CROATIA
+world_cup_results,soccer,WORLD_CUP,2002-06-08,South Africa,Slovenia,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-08|SOUTHAFRICA|SLOVENIA
+world_cup_results,soccer,WORLD_CUP,2002-06-09,Costa Rica,Turkey,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-09|COSTARICA|TURKEY
+world_cup_results,soccer,WORLD_CUP,2002-06-09,Japan,Russia,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-09|JAPAN|RUSSIA
+world_cup_results,soccer,WORLD_CUP,2002-06-09,Mexico,Ecuador,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-09|MEXICO|ECUADOR
+world_cup_results,soccer,WORLD_CUP,2002-06-10,South Korea,United States,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-10|SOUTHKOREA|UNITEDSTATES
+world_cup_results,soccer,WORLD_CUP,2002-06-10,Portugal,Poland,4.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-10|PORTUGAL|POLAND
+world_cup_results,soccer,WORLD_CUP,2002-06-10,Tunisia,Belgium,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-10|TUNISIA|BELGIUM
+world_cup_results,soccer,WORLD_CUP,2002-06-11,Cameroon,Germany,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-11|CAMEROON|GERMANY
+world_cup_results,soccer,WORLD_CUP,2002-06-11,Denmark,France,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-11|DENMARK|FRANCE
+world_cup_results,soccer,WORLD_CUP,2002-06-11,Saudi Arabia,Republic of Ireland,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-11|SAUDIARABIA|REPUBLICOFIRELAND
+world_cup_results,soccer,WORLD_CUP,2002-06-11,Senegal,Uruguay,3.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-11|SENEGAL|URUGUAY
+world_cup_results,soccer,WORLD_CUP,2002-06-12,Nigeria,England,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-12|NIGERIA|ENGLAND
+world_cup_results,soccer,WORLD_CUP,2002-06-12,Slovenia,Paraguay,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-12|SLOVENIA|PARAGUAY
+world_cup_results,soccer,WORLD_CUP,2002-06-12,South Africa,Spain,2.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-12|SOUTHAFRICA|SPAIN
+world_cup_results,soccer,WORLD_CUP,2002-06-12,Sweden,Argentina,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-12|SWEDEN|ARGENTINA
+world_cup_results,soccer,WORLD_CUP,2002-06-13,Costa Rica,Brazil,2.0,5.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-13|COSTARICA|BRAZIL
+world_cup_results,soccer,WORLD_CUP,2002-06-13,Ecuador,Croatia,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-13|ECUADOR|CROATIA
+world_cup_results,soccer,WORLD_CUP,2002-06-13,Mexico,Italy,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-13|MEXICO|ITALY
+world_cup_results,soccer,WORLD_CUP,2002-06-13,Turkey,China,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-13|TURKEY|CHINA
+world_cup_results,soccer,WORLD_CUP,2002-06-14,Belgium,Russia,3.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-14|BELGIUM|RUSSIA
+world_cup_results,soccer,WORLD_CUP,2002-06-14,Japan,Tunisia,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-14|JAPAN|TUNISIA
+world_cup_results,soccer,WORLD_CUP,2002-06-14,South Korea,Portugal,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-14|SOUTHKOREA|PORTUGAL
+world_cup_results,soccer,WORLD_CUP,2002-06-14,Poland,United States,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-14|POLAND|UNITEDSTATES
+world_cup_results,soccer,WORLD_CUP,2002-06-15,Denmark,England,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-15|DENMARK|ENGLAND
+world_cup_results,soccer,WORLD_CUP,2002-06-15,Germany,Paraguay,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-15|GERMANY|PARAGUAY
+world_cup_results,soccer,WORLD_CUP,2002-06-16,Spain,Republic of Ireland,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-16|SPAIN|REPUBLICOFIRELAND
+world_cup_results,soccer,WORLD_CUP,2002-06-16,Sweden,Senegal,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-16|SWEDEN|SENEGAL
+world_cup_results,soccer,WORLD_CUP,2002-06-17,Brazil,Belgium,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-17|BRAZIL|BELGIUM
+world_cup_results,soccer,WORLD_CUP,2002-06-17,Mexico,United States,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-17|MEXICO|UNITEDSTATES
+world_cup_results,soccer,WORLD_CUP,2002-06-18,Japan,Turkey,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-18|JAPAN|TURKEY
+world_cup_results,soccer,WORLD_CUP,2002-06-18,South Korea,Italy,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-18|SOUTHKOREA|ITALY
+world_cup_results,soccer,WORLD_CUP,2002-06-21,England,Brazil,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-21|ENGLAND|BRAZIL
+world_cup_results,soccer,WORLD_CUP,2002-06-21,Germany,United States,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-21|GERMANY|UNITEDSTATES
+world_cup_results,soccer,WORLD_CUP,2002-06-22,South Korea,Spain,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-22|SOUTHKOREA|SPAIN
+world_cup_results,soccer,WORLD_CUP,2002-06-22,Senegal,Turkey,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-22|SENEGAL|TURKEY
+world_cup_results,soccer,WORLD_CUP,2002-06-25,South Korea,Germany,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-25|SOUTHKOREA|GERMANY
+world_cup_results,soccer,WORLD_CUP,2002-06-26,Brazil,Turkey,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-26|BRAZIL|TURKEY
+world_cup_results,soccer,WORLD_CUP,2002-06-29,South Korea,Turkey,2.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-29|SOUTHKOREA|TURKEY
+world_cup_results,soccer,WORLD_CUP,2002-06-30,Germany,Brazil,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2002-06-30|GERMANY|BRAZIL
+world_cup_results,soccer,WORLD_CUP,2006-06-09,Germany,Costa Rica,4.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-09|GERMANY|COSTARICA
+world_cup_results,soccer,WORLD_CUP,2006-06-09,Poland,Ecuador,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-09|POLAND|ECUADOR
+world_cup_results,soccer,WORLD_CUP,2006-06-10,Argentina,Ivory Coast,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-10|ARGENTINA|IVORYCOAST
+world_cup_results,soccer,WORLD_CUP,2006-06-10,England,Paraguay,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-10|ENGLAND|PARAGUAY
+world_cup_results,soccer,WORLD_CUP,2006-06-10,Trinidad and Tobago,Sweden,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-10|TRINIDADANDTOBAGO|SWEDEN
+world_cup_results,soccer,WORLD_CUP,2006-06-11,Angola,Portugal,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-11|ANGOLA|PORTUGAL
+world_cup_results,soccer,WORLD_CUP,2006-06-11,Mexico,Iran,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-11|MEXICO|IRAN
+world_cup_results,soccer,WORLD_CUP,2006-06-11,Serbia,Netherlands,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-11|SERBIA|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,2006-06-12,Australia,Japan,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-12|AUSTRALIA|JAPAN
+world_cup_results,soccer,WORLD_CUP,2006-06-12,Italy,Ghana,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-12|ITALY|GHANA
+world_cup_results,soccer,WORLD_CUP,2006-06-12,United States,Czech Republic,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-12|UNITEDSTATES|CZECHREPUBLIC
+world_cup_results,soccer,WORLD_CUP,2006-06-13,Brazil,Croatia,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-13|BRAZIL|CROATIA
+world_cup_results,soccer,WORLD_CUP,2006-06-13,France,Switzerland,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-13|FRANCE|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,2006-06-13,South Korea,Togo,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-13|SOUTHKOREA|TOGO
+world_cup_results,soccer,WORLD_CUP,2006-06-14,Germany,Poland,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-14|GERMANY|POLAND
+world_cup_results,soccer,WORLD_CUP,2006-06-14,Spain,Ukraine,4.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-14|SPAIN|UKRAINE
+world_cup_results,soccer,WORLD_CUP,2006-06-14,Tunisia,Saudi Arabia,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-14|TUNISIA|SAUDIARABIA
+world_cup_results,soccer,WORLD_CUP,2006-06-15,Ecuador,Costa Rica,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-15|ECUADOR|COSTARICA
+world_cup_results,soccer,WORLD_CUP,2006-06-15,England,Trinidad and Tobago,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-15|ENGLAND|TRINIDADANDTOBAGO
+world_cup_results,soccer,WORLD_CUP,2006-06-15,Sweden,Paraguay,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-15|SWEDEN|PARAGUAY
+world_cup_results,soccer,WORLD_CUP,2006-06-16,Argentina,Serbia,6.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-16|ARGENTINA|SERBIA
+world_cup_results,soccer,WORLD_CUP,2006-06-16,Mexico,Angola,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-16|MEXICO|ANGOLA
+world_cup_results,soccer,WORLD_CUP,2006-06-16,Netherlands,Ivory Coast,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-16|NETHERLANDS|IVORYCOAST
+world_cup_results,soccer,WORLD_CUP,2006-06-17,Czech Republic,Ghana,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-17|CZECHREPUBLIC|GHANA
+world_cup_results,soccer,WORLD_CUP,2006-06-17,Italy,United States,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-17|ITALY|UNITEDSTATES
+world_cup_results,soccer,WORLD_CUP,2006-06-17,Portugal,Iran,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-17|PORTUGAL|IRAN
+world_cup_results,soccer,WORLD_CUP,2006-06-18,Brazil,Australia,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-18|BRAZIL|AUSTRALIA
+world_cup_results,soccer,WORLD_CUP,2006-06-18,France,South Korea,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-18|FRANCE|SOUTHKOREA
+world_cup_results,soccer,WORLD_CUP,2006-06-18,Japan,Croatia,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-18|JAPAN|CROATIA
+world_cup_results,soccer,WORLD_CUP,2006-06-19,Saudi Arabia,Ukraine,0.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-19|SAUDIARABIA|UKRAINE
+world_cup_results,soccer,WORLD_CUP,2006-06-19,Spain,Tunisia,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-19|SPAIN|TUNISIA
+world_cup_results,soccer,WORLD_CUP,2006-06-19,Togo,Switzerland,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-19|TOGO|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,2006-06-20,Costa Rica,Poland,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-20|COSTARICA|POLAND
+world_cup_results,soccer,WORLD_CUP,2006-06-20,Germany,Ecuador,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-20|GERMANY|ECUADOR
+world_cup_results,soccer,WORLD_CUP,2006-06-20,Paraguay,Trinidad and Tobago,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-20|PARAGUAY|TRINIDADANDTOBAGO
+world_cup_results,soccer,WORLD_CUP,2006-06-20,Sweden,England,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-20|SWEDEN|ENGLAND
+world_cup_results,soccer,WORLD_CUP,2006-06-21,Iran,Angola,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-21|IRAN|ANGOLA
+world_cup_results,soccer,WORLD_CUP,2006-06-21,Ivory Coast,Serbia,3.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-21|IVORYCOAST|SERBIA
+world_cup_results,soccer,WORLD_CUP,2006-06-21,Netherlands,Argentina,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-21|NETHERLANDS|ARGENTINA
+world_cup_results,soccer,WORLD_CUP,2006-06-21,Portugal,Mexico,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-21|PORTUGAL|MEXICO
+world_cup_results,soccer,WORLD_CUP,2006-06-22,Croatia,Australia,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-22|CROATIA|AUSTRALIA
+world_cup_results,soccer,WORLD_CUP,2006-06-22,Czech Republic,Italy,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-22|CZECHREPUBLIC|ITALY
+world_cup_results,soccer,WORLD_CUP,2006-06-22,Ghana,United States,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-22|GHANA|UNITEDSTATES
+world_cup_results,soccer,WORLD_CUP,2006-06-22,Japan,Brazil,1.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-22|JAPAN|BRAZIL
+world_cup_results,soccer,WORLD_CUP,2006-06-23,Saudi Arabia,Spain,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-23|SAUDIARABIA|SPAIN
+world_cup_results,soccer,WORLD_CUP,2006-06-23,Switzerland,South Korea,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-23|SWITZERLAND|SOUTHKOREA
+world_cup_results,soccer,WORLD_CUP,2006-06-23,Togo,France,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-23|TOGO|FRANCE
+world_cup_results,soccer,WORLD_CUP,2006-06-23,Ukraine,Tunisia,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-23|UKRAINE|TUNISIA
+world_cup_results,soccer,WORLD_CUP,2006-06-24,Argentina,Mexico,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-24|ARGENTINA|MEXICO
+world_cup_results,soccer,WORLD_CUP,2006-06-24,Germany,Sweden,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-24|GERMANY|SWEDEN
+world_cup_results,soccer,WORLD_CUP,2006-06-25,England,Ecuador,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-25|ENGLAND|ECUADOR
+world_cup_results,soccer,WORLD_CUP,2006-06-25,Portugal,Netherlands,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-25|PORTUGAL|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,2006-06-26,Italy,Australia,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-26|ITALY|AUSTRALIA
+world_cup_results,soccer,WORLD_CUP,2006-06-26,Switzerland,Ukraine,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-26|SWITZERLAND|UKRAINE
+world_cup_results,soccer,WORLD_CUP,2006-06-27,Brazil,Ghana,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-27|BRAZIL|GHANA
+world_cup_results,soccer,WORLD_CUP,2006-06-27,Spain,France,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-27|SPAIN|FRANCE
+world_cup_results,soccer,WORLD_CUP,2006-06-30,Germany,Argentina,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-30|GERMANY|ARGENTINA
+world_cup_results,soccer,WORLD_CUP,2006-06-30,Italy,Ukraine,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-06-30|ITALY|UKRAINE
+world_cup_results,soccer,WORLD_CUP,2006-07-01,Brazil,France,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2006-07-01|BRAZIL|FRANCE
+world_cup_results,soccer,WORLD_CUP,2006-07-01,England,Portugal,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-07-01|ENGLAND|PORTUGAL
+world_cup_results,soccer,WORLD_CUP,2006-07-04,Germany,Italy,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2006-07-04|GERMANY|ITALY
+world_cup_results,soccer,WORLD_CUP,2006-07-05,Portugal,France,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2006-07-05|PORTUGAL|FRANCE
+world_cup_results,soccer,WORLD_CUP,2006-07-08,Germany,Portugal,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2006-07-08|GERMANY|PORTUGAL
+world_cup_results,soccer,WORLD_CUP,2006-07-09,Italy,France,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2006-07-09|ITALY|FRANCE
+world_cup_results,soccer,WORLD_CUP,2006-11-20,Monaco,Ambazonia,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-11-20|MONACO|AMBAZONIA
+world_cup_results,soccer,WORLD_CUP,2006-11-20,Occitania,Sápmi,0.0,7.0,,,,True,False,False,False,soccer|WORLDCUP|2006-11-20|OCCITANIA|SPMI
+world_cup_results,soccer,WORLD_CUP,2006-11-21,Sápmi,Ambazonia,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-11-21|SPMI|AMBAZONIA
+world_cup_results,soccer,WORLD_CUP,2006-11-21,Occitania,Monaco,2.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2006-11-21|OCCITANIA|MONACO
+world_cup_results,soccer,WORLD_CUP,2006-11-23,Occitania,Ambazonia,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-11-23|OCCITANIA|AMBAZONIA
+world_cup_results,soccer,WORLD_CUP,2006-11-23,Sápmi,Monaco,14.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-11-23|SPMI|MONACO
+world_cup_results,soccer,WORLD_CUP,2006-11-24,Occitania,Ambazonia,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2006-11-24|OCCITANIA|AMBAZONIA
+world_cup_results,soccer,WORLD_CUP,2006-11-24,Sápmi,Monaco,21.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2006-11-24|SPMI|MONACO
+world_cup_results,soccer,WORLD_CUP,2008-07-07,Sápmi,Iraqi Kurdistan,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2008-07-07|SPMI|IRAQIKURDISTAN
+world_cup_results,soccer,WORLD_CUP,2008-07-08,Provence,Padania,1.0,6.0,,,,True,False,False,False,soccer|WORLDCUP|2008-07-08|PROVENCE|PADANIA
+world_cup_results,soccer,WORLD_CUP,2008-07-09,Provence,Iraqi Kurdistan,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2008-07-09|PROVENCE|IRAQIKURDISTAN
+world_cup_results,soccer,WORLD_CUP,2008-07-09,Sápmi,Arameans Suryoye,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2008-07-09|SPMI|ARAMEANSSURYOYE
+world_cup_results,soccer,WORLD_CUP,2008-07-10,Arameans Suryoye,Provence,5.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2008-07-10|ARAMEANSSURYOYE|PROVENCE
+world_cup_results,soccer,WORLD_CUP,2008-07-10,Padania,Iraqi Kurdistan,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2008-07-10|PADANIA|IRAQIKURDISTAN
+world_cup_results,soccer,WORLD_CUP,2008-07-11,Sápmi,Padania,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2008-07-11|SPMI|PADANIA
+world_cup_results,soccer,WORLD_CUP,2008-07-11,Iraqi Kurdistan,Arameans Suryoye,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2008-07-11|IRAQIKURDISTAN|ARAMEANSSURYOYE
+world_cup_results,soccer,WORLD_CUP,2008-07-12,Padania,Arameans Suryoye,4.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2008-07-12|PADANIA|ARAMEANSSURYOYE
+world_cup_results,soccer,WORLD_CUP,2008-07-12,Sápmi,Provence,4.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2008-07-12|SPMI|PROVENCE
+world_cup_results,soccer,WORLD_CUP,2008-07-13,Sápmi,Iraqi Kurdistan,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2008-07-13|SPMI|IRAQIKURDISTAN
+world_cup_results,soccer,WORLD_CUP,2008-07-13,Padania,Arameans Suryoye,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2008-07-13|PADANIA|ARAMEANSSURYOYE
+world_cup_results,soccer,WORLD_CUP,2009-06-22,Padania,Occitania,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2009-06-22|PADANIA|OCCITANIA
+world_cup_results,soccer,WORLD_CUP,2009-06-22,Provence,Gozo,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2009-06-22|PROVENCE|GOZO
+world_cup_results,soccer,WORLD_CUP,2009-06-23,Occitania,Iraqi Kurdistan,0.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|2009-06-23|OCCITANIA|IRAQIKURDISTAN
+world_cup_results,soccer,WORLD_CUP,2009-06-23,Sápmi,Provence,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2009-06-23|SPMI|PROVENCE
+world_cup_results,soccer,WORLD_CUP,2009-06-24,Padania,Iraqi Kurdistan,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2009-06-24|PADANIA|IRAQIKURDISTAN
+world_cup_results,soccer,WORLD_CUP,2009-06-24,Sápmi,Gozo,7.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2009-06-24|SPMI|GOZO
+world_cup_results,soccer,WORLD_CUP,2009-06-25,Provence,Iraqi Kurdistan,0.0,6.0,,,,True,False,False,False,soccer|WORLDCUP|2009-06-25|PROVENCE|IRAQIKURDISTAN
+world_cup_results,soccer,WORLD_CUP,2009-06-25,Padania,Sápmi,4.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2009-06-25|PADANIA|SPMI
+world_cup_results,soccer,WORLD_CUP,2009-06-26,Occitania,Gozo,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2009-06-26|OCCITANIA|GOZO
+world_cup_results,soccer,WORLD_CUP,2009-06-26,Provence,Sápmi,4.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|2009-06-26|PROVENCE|SPMI
+world_cup_results,soccer,WORLD_CUP,2009-06-27,Padania,Iraqi Kurdistan,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2009-06-27|PADANIA|IRAQIKURDISTAN
+world_cup_results,soccer,WORLD_CUP,2010-05-31,Gozo,Padania,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2010-05-31|GOZO|PADANIA
+world_cup_results,soccer,WORLD_CUP,2010-05-31,Iraqi Kurdistan,Two Sicilies,4.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-05-31|IRAQIKURDISTAN|TWOSICILIES
+world_cup_results,soccer,WORLD_CUP,2010-06-01,Occitania,Padania,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-01|OCCITANIA|PADANIA
+world_cup_results,soccer,WORLD_CUP,2010-06-01,Provence,Two Sicilies,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-01|PROVENCE|TWOSICILIES
+world_cup_results,soccer,WORLD_CUP,2010-06-02,Gozo,Occitania,0.0,5.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-02|GOZO|OCCITANIA
+world_cup_results,soccer,WORLD_CUP,2010-06-02,Iraqi Kurdistan,Provence,3.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-02|IRAQIKURDISTAN|PROVENCE
+world_cup_results,soccer,WORLD_CUP,2010-06-04,Iraqi Kurdistan,Occitania,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-04|IRAQIKURDISTAN|OCCITANIA
+world_cup_results,soccer,WORLD_CUP,2010-06-04,Padania,Two Sicilies,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-04|PADANIA|TWOSICILIES
+world_cup_results,soccer,WORLD_CUP,2010-06-04,Gozo,Provence,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-04|GOZO|PROVENCE
+world_cup_results,soccer,WORLD_CUP,2010-06-05,Occitania,Two Sicilies,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-05|OCCITANIA|TWOSICILIES
+world_cup_results,soccer,WORLD_CUP,2010-06-05,Iraqi Kurdistan,Padania,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-05|IRAQIKURDISTAN|PADANIA
+world_cup_results,soccer,WORLD_CUP,2010-06-11,South Africa,Mexico,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-11|SOUTHAFRICA|MEXICO
+world_cup_results,soccer,WORLD_CUP,2010-06-11,Uruguay,France,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-11|URUGUAY|FRANCE
+world_cup_results,soccer,WORLD_CUP,2010-06-12,Argentina,Nigeria,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-12|ARGENTINA|NIGERIA
+world_cup_results,soccer,WORLD_CUP,2010-06-12,England,United States,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-12|ENGLAND|UNITEDSTATES
+world_cup_results,soccer,WORLD_CUP,2010-06-12,South Korea,Greece,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-12|SOUTHKOREA|GREECE
+world_cup_results,soccer,WORLD_CUP,2010-06-13,Algeria,Slovenia,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-13|ALGERIA|SLOVENIA
+world_cup_results,soccer,WORLD_CUP,2010-06-13,Germany,Australia,4.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-13|GERMANY|AUSTRALIA
+world_cup_results,soccer,WORLD_CUP,2010-06-13,Serbia,Ghana,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-13|SERBIA|GHANA
+world_cup_results,soccer,WORLD_CUP,2010-06-14,Italy,Paraguay,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-14|ITALY|PARAGUAY
+world_cup_results,soccer,WORLD_CUP,2010-06-14,Japan,Cameroon,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-14|JAPAN|CAMEROON
+world_cup_results,soccer,WORLD_CUP,2010-06-14,Netherlands,Denmark,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-14|NETHERLANDS|DENMARK
+world_cup_results,soccer,WORLD_CUP,2010-06-15,Brazil,North Korea,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-15|BRAZIL|NORTHKOREA
+world_cup_results,soccer,WORLD_CUP,2010-06-15,Ivory Coast,Portugal,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-15|IVORYCOAST|PORTUGAL
+world_cup_results,soccer,WORLD_CUP,2010-06-15,New Zealand,Slovakia,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-15|NEWZEALAND|SLOVAKIA
+world_cup_results,soccer,WORLD_CUP,2010-06-16,Honduras,Chile,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-16|HONDURAS|CHILE
+world_cup_results,soccer,WORLD_CUP,2010-06-16,South Africa,Uruguay,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-16|SOUTHAFRICA|URUGUAY
+world_cup_results,soccer,WORLD_CUP,2010-06-16,Spain,Switzerland,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-16|SPAIN|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,2010-06-17,Argentina,South Korea,4.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-17|ARGENTINA|SOUTHKOREA
+world_cup_results,soccer,WORLD_CUP,2010-06-17,France,Mexico,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-17|FRANCE|MEXICO
+world_cup_results,soccer,WORLD_CUP,2010-06-17,Greece,Nigeria,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-17|GREECE|NIGERIA
+world_cup_results,soccer,WORLD_CUP,2010-06-18,England,Algeria,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-18|ENGLAND|ALGERIA
+world_cup_results,soccer,WORLD_CUP,2010-06-18,Germany,Serbia,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-18|GERMANY|SERBIA
+world_cup_results,soccer,WORLD_CUP,2010-06-18,Slovenia,United States,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-18|SLOVENIA|UNITEDSTATES
+world_cup_results,soccer,WORLD_CUP,2010-06-19,Cameroon,Denmark,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-19|CAMEROON|DENMARK
+world_cup_results,soccer,WORLD_CUP,2010-06-19,Ghana,Australia,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-19|GHANA|AUSTRALIA
+world_cup_results,soccer,WORLD_CUP,2010-06-19,Netherlands,Japan,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-19|NETHERLANDS|JAPAN
+world_cup_results,soccer,WORLD_CUP,2010-06-20,Brazil,Ivory Coast,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-20|BRAZIL|IVORYCOAST
+world_cup_results,soccer,WORLD_CUP,2010-06-20,Italy,New Zealand,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-20|ITALY|NEWZEALAND
+world_cup_results,soccer,WORLD_CUP,2010-06-20,Slovakia,Paraguay,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-20|SLOVAKIA|PARAGUAY
+world_cup_results,soccer,WORLD_CUP,2010-06-21,Chile,Switzerland,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-21|CHILE|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,2010-06-21,Portugal,North Korea,7.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-21|PORTUGAL|NORTHKOREA
+world_cup_results,soccer,WORLD_CUP,2010-06-21,Spain,Honduras,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-21|SPAIN|HONDURAS
+world_cup_results,soccer,WORLD_CUP,2010-06-22,Greece,Argentina,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-22|GREECE|ARGENTINA
+world_cup_results,soccer,WORLD_CUP,2010-06-22,Mexico,Uruguay,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-22|MEXICO|URUGUAY
+world_cup_results,soccer,WORLD_CUP,2010-06-22,Nigeria,South Korea,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-22|NIGERIA|SOUTHKOREA
+world_cup_results,soccer,WORLD_CUP,2010-06-22,South Africa,France,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-22|SOUTHAFRICA|FRANCE
+world_cup_results,soccer,WORLD_CUP,2010-06-23,Australia,Serbia,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-23|AUSTRALIA|SERBIA
+world_cup_results,soccer,WORLD_CUP,2010-06-23,Ghana,Germany,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-23|GHANA|GERMANY
+world_cup_results,soccer,WORLD_CUP,2010-06-23,Slovenia,England,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-23|SLOVENIA|ENGLAND
+world_cup_results,soccer,WORLD_CUP,2010-06-23,United States,Algeria,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-23|UNITEDSTATES|ALGERIA
+world_cup_results,soccer,WORLD_CUP,2010-06-24,Cameroon,Netherlands,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-24|CAMEROON|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,2010-06-24,Denmark,Japan,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-24|DENMARK|JAPAN
+world_cup_results,soccer,WORLD_CUP,2010-06-24,Paraguay,New Zealand,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-24|PARAGUAY|NEWZEALAND
+world_cup_results,soccer,WORLD_CUP,2010-06-24,Slovakia,Italy,3.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-24|SLOVAKIA|ITALY
+world_cup_results,soccer,WORLD_CUP,2010-06-25,Chile,Spain,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-25|CHILE|SPAIN
+world_cup_results,soccer,WORLD_CUP,2010-06-25,North Korea,Ivory Coast,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-25|NORTHKOREA|IVORYCOAST
+world_cup_results,soccer,WORLD_CUP,2010-06-25,Portugal,Brazil,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-25|PORTUGAL|BRAZIL
+world_cup_results,soccer,WORLD_CUP,2010-06-25,Switzerland,Honduras,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-25|SWITZERLAND|HONDURAS
+world_cup_results,soccer,WORLD_CUP,2010-06-26,Uruguay,South Korea,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-26|URUGUAY|SOUTHKOREA
+world_cup_results,soccer,WORLD_CUP,2010-06-26,United States,Ghana,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-26|UNITEDSTATES|GHANA
+world_cup_results,soccer,WORLD_CUP,2010-06-27,Argentina,Mexico,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-27|ARGENTINA|MEXICO
+world_cup_results,soccer,WORLD_CUP,2010-06-27,Germany,England,4.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-27|GERMANY|ENGLAND
+world_cup_results,soccer,WORLD_CUP,2010-06-28,Brazil,Chile,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-28|BRAZIL|CHILE
+world_cup_results,soccer,WORLD_CUP,2010-06-28,Netherlands,Slovakia,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-28|NETHERLANDS|SLOVAKIA
+world_cup_results,soccer,WORLD_CUP,2010-06-29,Paraguay,Japan,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-29|PARAGUAY|JAPAN
+world_cup_results,soccer,WORLD_CUP,2010-06-29,Spain,Portugal,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2010-06-29|SPAIN|PORTUGAL
+world_cup_results,soccer,WORLD_CUP,2010-07-02,Netherlands,Brazil,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-07-02|NETHERLANDS|BRAZIL
+world_cup_results,soccer,WORLD_CUP,2010-07-02,Uruguay,Ghana,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-07-02|URUGUAY|GHANA
+world_cup_results,soccer,WORLD_CUP,2010-07-03,Argentina,Germany,0.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|2010-07-03|ARGENTINA|GERMANY
+world_cup_results,soccer,WORLD_CUP,2010-07-03,Paraguay,Spain,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-07-03|PARAGUAY|SPAIN
+world_cup_results,soccer,WORLD_CUP,2010-07-06,Uruguay,Netherlands,2.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2010-07-06|URUGUAY|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,2010-07-07,Germany,Spain,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-07-07|GERMANY|SPAIN
+world_cup_results,soccer,WORLD_CUP,2010-07-10,Uruguay,Germany,2.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2010-07-10|URUGUAY|GERMANY
+world_cup_results,soccer,WORLD_CUP,2010-07-11,Netherlands,Spain,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2010-07-11|NETHERLANDS|SPAIN
+world_cup_results,soccer,WORLD_CUP,2012-06-04,Iraqi Kurdistan,Western Sahara,6.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2012-06-04|IRAQIKURDISTAN|WESTERNSAHARA
+world_cup_results,soccer,WORLD_CUP,2012-06-04,Zanzibar,Raetia,6.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2012-06-04|ZANZIBAR|RAETIA
+world_cup_results,soccer,WORLD_CUP,2012-06-04,Northern Cyprus,Darfur,15.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2012-06-04|NORTHERNCYPRUS|DARFUR
+world_cup_results,soccer,WORLD_CUP,2012-06-05,Western Sahara,Occitania,2.0,6.0,,,,True,False,False,False,soccer|WORLDCUP|2012-06-05|WESTERNSAHARA|OCCITANIA
+world_cup_results,soccer,WORLD_CUP,2012-06-05,Raetia,Tamil Eelam,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2012-06-05|RAETIA|TAMILEELAM
+world_cup_results,soccer,WORLD_CUP,2012-06-05,Darfur,Provence,0.0,18.0,,,,True,False,False,False,soccer|WORLDCUP|2012-06-05|DARFUR|PROVENCE
+world_cup_results,soccer,WORLD_CUP,2012-06-06,Iraqi Kurdistan,Occitania,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2012-06-06|IRAQIKURDISTAN|OCCITANIA
+world_cup_results,soccer,WORLD_CUP,2012-06-06,Tamil Eelam,Zanzibar,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2012-06-06|TAMILEELAM|ZANZIBAR
+world_cup_results,soccer,WORLD_CUP,2012-06-06,Provence,Northern Cyprus,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2012-06-06|PROVENCE|NORTHERNCYPRUS
+world_cup_results,soccer,WORLD_CUP,2012-06-07,Western Sahara,Darfur,5.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2012-06-07|WESTERNSAHARA|DARFUR
+world_cup_results,soccer,WORLD_CUP,2012-06-07,Occitania,Tamil Eelam,7.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2012-06-07|OCCITANIA|TAMILEELAM
+world_cup_results,soccer,WORLD_CUP,2012-06-08,Western Sahara,Raetia,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2012-06-08|WESTERNSAHARA|RAETIA
+world_cup_results,soccer,WORLD_CUP,2012-06-08,Iraqi Kurdistan,Provence,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2012-06-08|IRAQIKURDISTAN|PROVENCE
+world_cup_results,soccer,WORLD_CUP,2012-06-08,Zanzibar,Northern Cyprus,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2012-06-08|ZANZIBAR|NORTHERNCYPRUS
+world_cup_results,soccer,WORLD_CUP,2012-06-09,Tamil Eelam,Raetia,4.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2012-06-09|TAMILEELAM|RAETIA
+world_cup_results,soccer,WORLD_CUP,2012-06-09,Occitania,Western Sahara,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2012-06-09|OCCITANIA|WESTERNSAHARA
+world_cup_results,soccer,WORLD_CUP,2012-06-09,Provence,Zanzibar,2.0,7.0,,,,True,False,False,False,soccer|WORLDCUP|2012-06-09|PROVENCE|ZANZIBAR
+world_cup_results,soccer,WORLD_CUP,2012-06-09,Iraqi Kurdistan,Northern Cyprus,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2012-06-09|IRAQIKURDISTAN|NORTHERNCYPRUS
+world_cup_results,soccer,WORLD_CUP,2014-06-12,Brazil,Croatia,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-12|BRAZIL|CROATIA
+world_cup_results,soccer,WORLD_CUP,2014-06-13,Chile,Australia,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-13|CHILE|AUSTRALIA
+world_cup_results,soccer,WORLD_CUP,2014-06-13,Mexico,Cameroon,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-13|MEXICO|CAMEROON
+world_cup_results,soccer,WORLD_CUP,2014-06-13,Spain,Netherlands,1.0,5.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-13|SPAIN|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,2014-06-14,Colombia,Greece,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-14|COLOMBIA|GREECE
+world_cup_results,soccer,WORLD_CUP,2014-06-14,England,Italy,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-14|ENGLAND|ITALY
+world_cup_results,soccer,WORLD_CUP,2014-06-14,Ivory Coast,Japan,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-14|IVORYCOAST|JAPAN
+world_cup_results,soccer,WORLD_CUP,2014-06-14,Uruguay,Costa Rica,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-14|URUGUAY|COSTARICA
+world_cup_results,soccer,WORLD_CUP,2014-06-15,Argentina,Bosnia and Herzegovina,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-15|ARGENTINA|BOSNIAANDHERZEGOVINA
+world_cup_results,soccer,WORLD_CUP,2014-06-15,France,Honduras,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-15|FRANCE|HONDURAS
+world_cup_results,soccer,WORLD_CUP,2014-06-15,Switzerland,Ecuador,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-15|SWITZERLAND|ECUADOR
+world_cup_results,soccer,WORLD_CUP,2014-06-16,Germany,Portugal,4.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-16|GERMANY|PORTUGAL
+world_cup_results,soccer,WORLD_CUP,2014-06-16,Ghana,United States,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-16|GHANA|UNITEDSTATES
+world_cup_results,soccer,WORLD_CUP,2014-06-16,Iran,Nigeria,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-16|IRAN|NIGERIA
+world_cup_results,soccer,WORLD_CUP,2014-06-17,Belgium,Algeria,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-17|BELGIUM|ALGERIA
+world_cup_results,soccer,WORLD_CUP,2014-06-17,Brazil,Mexico,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-17|BRAZIL|MEXICO
+world_cup_results,soccer,WORLD_CUP,2014-06-17,Russia,South Korea,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-17|RUSSIA|SOUTHKOREA
+world_cup_results,soccer,WORLD_CUP,2014-06-18,Australia,Netherlands,2.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-18|AUSTRALIA|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,2014-06-18,Cameroon,Croatia,0.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-18|CAMEROON|CROATIA
+world_cup_results,soccer,WORLD_CUP,2014-06-18,Spain,Chile,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-18|SPAIN|CHILE
+world_cup_results,soccer,WORLD_CUP,2014-06-19,Colombia,Ivory Coast,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-19|COLOMBIA|IVORYCOAST
+world_cup_results,soccer,WORLD_CUP,2014-06-19,Japan,Greece,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-19|JAPAN|GREECE
+world_cup_results,soccer,WORLD_CUP,2014-06-19,Uruguay,England,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-19|URUGUAY|ENGLAND
+world_cup_results,soccer,WORLD_CUP,2014-06-20,Honduras,Ecuador,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-20|HONDURAS|ECUADOR
+world_cup_results,soccer,WORLD_CUP,2014-06-20,Italy,Costa Rica,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-20|ITALY|COSTARICA
+world_cup_results,soccer,WORLD_CUP,2014-06-20,Switzerland,France,2.0,5.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-20|SWITZERLAND|FRANCE
+world_cup_results,soccer,WORLD_CUP,2014-06-21,Argentina,Iran,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-21|ARGENTINA|IRAN
+world_cup_results,soccer,WORLD_CUP,2014-06-21,Germany,Ghana,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-21|GERMANY|GHANA
+world_cup_results,soccer,WORLD_CUP,2014-06-21,Nigeria,Bosnia and Herzegovina,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-21|NIGERIA|BOSNIAANDHERZEGOVINA
+world_cup_results,soccer,WORLD_CUP,2014-06-22,Belgium,Russia,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-22|BELGIUM|RUSSIA
+world_cup_results,soccer,WORLD_CUP,2014-06-22,South Korea,Algeria,2.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-22|SOUTHKOREA|ALGERIA
+world_cup_results,soccer,WORLD_CUP,2014-06-22,United States,Portugal,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-22|UNITEDSTATES|PORTUGAL
+world_cup_results,soccer,WORLD_CUP,2014-06-23,Australia,Spain,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-23|AUSTRALIA|SPAIN
+world_cup_results,soccer,WORLD_CUP,2014-06-23,Brazil,Cameroon,4.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-23|BRAZIL|CAMEROON
+world_cup_results,soccer,WORLD_CUP,2014-06-23,Croatia,Mexico,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-23|CROATIA|MEXICO
+world_cup_results,soccer,WORLD_CUP,2014-06-23,Netherlands,Chile,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-23|NETHERLANDS|CHILE
+world_cup_results,soccer,WORLD_CUP,2014-06-24,Costa Rica,England,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-24|COSTARICA|ENGLAND
+world_cup_results,soccer,WORLD_CUP,2014-06-24,Greece,Ivory Coast,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-24|GREECE|IVORYCOAST
+world_cup_results,soccer,WORLD_CUP,2014-06-24,Italy,Uruguay,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-24|ITALY|URUGUAY
+world_cup_results,soccer,WORLD_CUP,2014-06-24,Japan,Colombia,1.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-24|JAPAN|COLOMBIA
+world_cup_results,soccer,WORLD_CUP,2014-06-25,Bosnia and Herzegovina,Iran,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-25|BOSNIAANDHERZEGOVINA|IRAN
+world_cup_results,soccer,WORLD_CUP,2014-06-25,Ecuador,France,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-25|ECUADOR|FRANCE
+world_cup_results,soccer,WORLD_CUP,2014-06-25,Honduras,Switzerland,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-25|HONDURAS|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,2014-06-25,Nigeria,Argentina,2.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-25|NIGERIA|ARGENTINA
+world_cup_results,soccer,WORLD_CUP,2014-06-26,Algeria,Russia,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-26|ALGERIA|RUSSIA
+world_cup_results,soccer,WORLD_CUP,2014-06-26,South Korea,Belgium,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-26|SOUTHKOREA|BELGIUM
+world_cup_results,soccer,WORLD_CUP,2014-06-26,Portugal,Ghana,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-26|PORTUGAL|GHANA
+world_cup_results,soccer,WORLD_CUP,2014-06-26,United States,Germany,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-26|UNITEDSTATES|GERMANY
+world_cup_results,soccer,WORLD_CUP,2014-06-28,Brazil,Chile,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-28|BRAZIL|CHILE
+world_cup_results,soccer,WORLD_CUP,2014-06-28,Colombia,Uruguay,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-28|COLOMBIA|URUGUAY
+world_cup_results,soccer,WORLD_CUP,2014-06-29,Costa Rica,Greece,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-29|COSTARICA|GREECE
+world_cup_results,soccer,WORLD_CUP,2014-06-29,Netherlands,Mexico,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-29|NETHERLANDS|MEXICO
+world_cup_results,soccer,WORLD_CUP,2014-06-30,France,Nigeria,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-30|FRANCE|NIGERIA
+world_cup_results,soccer,WORLD_CUP,2014-06-30,Germany,Algeria,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2014-06-30|GERMANY|ALGERIA
+world_cup_results,soccer,WORLD_CUP,2014-07-01,Argentina,Switzerland,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2014-07-01|ARGENTINA|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,2014-07-01,Belgium,United States,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2014-07-01|BELGIUM|UNITEDSTATES
+world_cup_results,soccer,WORLD_CUP,2014-07-04,Brazil,Colombia,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2014-07-04|BRAZIL|COLOMBIA
+world_cup_results,soccer,WORLD_CUP,2014-07-04,France,Germany,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2014-07-04|FRANCE|GERMANY
+world_cup_results,soccer,WORLD_CUP,2014-07-05,Argentina,Belgium,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2014-07-05|ARGENTINA|BELGIUM
+world_cup_results,soccer,WORLD_CUP,2014-07-05,Netherlands,Costa Rica,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2014-07-05|NETHERLANDS|COSTARICA
+world_cup_results,soccer,WORLD_CUP,2014-07-08,Brazil,Germany,1.0,7.0,,,,True,False,False,False,soccer|WORLDCUP|2014-07-08|BRAZIL|GERMANY
+world_cup_results,soccer,WORLD_CUP,2014-07-09,Netherlands,Argentina,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2014-07-09|NETHERLANDS|ARGENTINA
+world_cup_results,soccer,WORLD_CUP,2014-07-12,Brazil,Netherlands,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2014-07-12|BRAZIL|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,2014-07-13,Germany,Argentina,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2014-07-13|GERMANY|ARGENTINA
+world_cup_results,soccer,WORLD_CUP,2018-06-14,Russia,Saudi Arabia,5.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-14|RUSSIA|SAUDIARABIA
+world_cup_results,soccer,WORLD_CUP,2018-06-15,Egypt,Uruguay,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-15|EGYPT|URUGUAY
+world_cup_results,soccer,WORLD_CUP,2018-06-15,Morocco,Iran,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-15|MOROCCO|IRAN
+world_cup_results,soccer,WORLD_CUP,2018-06-15,Portugal,Spain,3.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-15|PORTUGAL|SPAIN
+world_cup_results,soccer,WORLD_CUP,2018-06-16,France,Australia,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-16|FRANCE|AUSTRALIA
+world_cup_results,soccer,WORLD_CUP,2018-06-16,Argentina,Iceland,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-16|ARGENTINA|ICELAND
+world_cup_results,soccer,WORLD_CUP,2018-06-16,Peru,Denmark,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-16|PERU|DENMARK
+world_cup_results,soccer,WORLD_CUP,2018-06-16,Croatia,Nigeria,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-16|CROATIA|NIGERIA
+world_cup_results,soccer,WORLD_CUP,2018-06-17,Costa Rica,Serbia,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-17|COSTARICA|SERBIA
+world_cup_results,soccer,WORLD_CUP,2018-06-17,Germany,Mexico,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-17|GERMANY|MEXICO
+world_cup_results,soccer,WORLD_CUP,2018-06-17,Brazil,Switzerland,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-17|BRAZIL|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,2018-06-18,Sweden,South Korea,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-18|SWEDEN|SOUTHKOREA
+world_cup_results,soccer,WORLD_CUP,2018-06-18,Belgium,Panama,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-18|BELGIUM|PANAMA
+world_cup_results,soccer,WORLD_CUP,2018-06-18,Tunisia,England,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-18|TUNISIA|ENGLAND
+world_cup_results,soccer,WORLD_CUP,2018-06-19,Colombia,Japan,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-19|COLOMBIA|JAPAN
+world_cup_results,soccer,WORLD_CUP,2018-06-19,Poland,Senegal,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-19|POLAND|SENEGAL
+world_cup_results,soccer,WORLD_CUP,2018-06-19,Russia,Egypt,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-19|RUSSIA|EGYPT
+world_cup_results,soccer,WORLD_CUP,2018-06-20,Portugal,Morocco,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-20|PORTUGAL|MOROCCO
+world_cup_results,soccer,WORLD_CUP,2018-06-20,Uruguay,Saudi Arabia,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-20|URUGUAY|SAUDIARABIA
+world_cup_results,soccer,WORLD_CUP,2018-06-20,Iran,Spain,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-20|IRAN|SPAIN
+world_cup_results,soccer,WORLD_CUP,2018-06-21,Denmark,Australia,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-21|DENMARK|AUSTRALIA
+world_cup_results,soccer,WORLD_CUP,2018-06-21,France,Peru,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-21|FRANCE|PERU
+world_cup_results,soccer,WORLD_CUP,2018-06-21,Argentina,Croatia,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-21|ARGENTINA|CROATIA
+world_cup_results,soccer,WORLD_CUP,2018-06-22,Brazil,Costa Rica,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-22|BRAZIL|COSTARICA
+world_cup_results,soccer,WORLD_CUP,2018-06-22,Nigeria,Iceland,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-22|NIGERIA|ICELAND
+world_cup_results,soccer,WORLD_CUP,2018-06-22,Serbia,Switzerland,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-22|SERBIA|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,2018-06-23,Belgium,Tunisia,5.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-23|BELGIUM|TUNISIA
+world_cup_results,soccer,WORLD_CUP,2018-06-23,South Korea,Mexico,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-23|SOUTHKOREA|MEXICO
+world_cup_results,soccer,WORLD_CUP,2018-06-23,Germany,Sweden,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-23|GERMANY|SWEDEN
+world_cup_results,soccer,WORLD_CUP,2018-06-24,England,Panama,6.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-24|ENGLAND|PANAMA
+world_cup_results,soccer,WORLD_CUP,2018-06-24,Japan,Senegal,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-24|JAPAN|SENEGAL
+world_cup_results,soccer,WORLD_CUP,2018-06-24,Poland,Colombia,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-24|POLAND|COLOMBIA
+world_cup_results,soccer,WORLD_CUP,2018-06-25,Russia,Uruguay,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-25|RUSSIA|URUGUAY
+world_cup_results,soccer,WORLD_CUP,2018-06-25,Saudi Arabia,Egypt,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-25|SAUDIARABIA|EGYPT
+world_cup_results,soccer,WORLD_CUP,2018-06-25,Spain,Morocco,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-25|SPAIN|MOROCCO
+world_cup_results,soccer,WORLD_CUP,2018-06-25,Iran,Portugal,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-25|IRAN|PORTUGAL
+world_cup_results,soccer,WORLD_CUP,2018-06-26,Australia,Peru,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-26|AUSTRALIA|PERU
+world_cup_results,soccer,WORLD_CUP,2018-06-26,Denmark,France,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-26|DENMARK|FRANCE
+world_cup_results,soccer,WORLD_CUP,2018-06-26,Nigeria,Argentina,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-26|NIGERIA|ARGENTINA
+world_cup_results,soccer,WORLD_CUP,2018-06-26,Iceland,Croatia,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-26|ICELAND|CROATIA
+world_cup_results,soccer,WORLD_CUP,2018-06-27,South Korea,Germany,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-27|SOUTHKOREA|GERMANY
+world_cup_results,soccer,WORLD_CUP,2018-06-27,Mexico,Sweden,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-27|MEXICO|SWEDEN
+world_cup_results,soccer,WORLD_CUP,2018-06-27,Serbia,Brazil,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-27|SERBIA|BRAZIL
+world_cup_results,soccer,WORLD_CUP,2018-06-27,Switzerland,Costa Rica,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-27|SWITZERLAND|COSTARICA
+world_cup_results,soccer,WORLD_CUP,2018-06-28,Japan,Poland,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-28|JAPAN|POLAND
+world_cup_results,soccer,WORLD_CUP,2018-06-28,Senegal,Colombia,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-28|SENEGAL|COLOMBIA
+world_cup_results,soccer,WORLD_CUP,2018-06-28,Panama,Tunisia,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-28|PANAMA|TUNISIA
+world_cup_results,soccer,WORLD_CUP,2018-06-28,England,Belgium,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-28|ENGLAND|BELGIUM
+world_cup_results,soccer,WORLD_CUP,2018-06-30,France,Argentina,4.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-30|FRANCE|ARGENTINA
+world_cup_results,soccer,WORLD_CUP,2018-06-30,Uruguay,Portugal,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2018-06-30|URUGUAY|PORTUGAL
+world_cup_results,soccer,WORLD_CUP,2018-07-01,Russia,Spain,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2018-07-01|RUSSIA|SPAIN
+world_cup_results,soccer,WORLD_CUP,2018-07-01,Croatia,Denmark,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2018-07-01|CROATIA|DENMARK
+world_cup_results,soccer,WORLD_CUP,2018-07-02,Brazil,Mexico,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2018-07-02|BRAZIL|MEXICO
+world_cup_results,soccer,WORLD_CUP,2018-07-02,Belgium,Japan,3.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2018-07-02|BELGIUM|JAPAN
+world_cup_results,soccer,WORLD_CUP,2018-07-03,Sweden,Switzerland,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2018-07-03|SWEDEN|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,2018-07-03,Colombia,England,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2018-07-03|COLOMBIA|ENGLAND
+world_cup_results,soccer,WORLD_CUP,2018-07-06,Uruguay,France,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2018-07-06|URUGUAY|FRANCE
+world_cup_results,soccer,WORLD_CUP,2018-07-06,Brazil,Belgium,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2018-07-06|BRAZIL|BELGIUM
+world_cup_results,soccer,WORLD_CUP,2018-07-07,Sweden,England,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2018-07-07|SWEDEN|ENGLAND
+world_cup_results,soccer,WORLD_CUP,2018-07-07,Russia,Croatia,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2018-07-07|RUSSIA|CROATIA
+world_cup_results,soccer,WORLD_CUP,2018-07-10,France,Belgium,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2018-07-10|FRANCE|BELGIUM
+world_cup_results,soccer,WORLD_CUP,2018-07-11,Croatia,England,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2018-07-11|CROATIA|ENGLAND
+world_cup_results,soccer,WORLD_CUP,2018-07-14,Belgium,England,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2018-07-14|BELGIUM|ENGLAND
+world_cup_results,soccer,WORLD_CUP,2018-07-15,France,Croatia,4.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2018-07-15|FRANCE|CROATIA
+world_cup_results,soccer,WORLD_CUP,2022-11-20,Qatar,Ecuador,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-20|QATAR|ECUADOR
+world_cup_results,soccer,WORLD_CUP,2022-11-21,Senegal,Netherlands,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-21|SENEGAL|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,2022-11-21,England,Iran,6.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-21|ENGLAND|IRAN
+world_cup_results,soccer,WORLD_CUP,2022-11-21,United States,Wales,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-21|UNITEDSTATES|WALES
+world_cup_results,soccer,WORLD_CUP,2022-11-22,Argentina,Saudi Arabia,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-22|ARGENTINA|SAUDIARABIA
+world_cup_results,soccer,WORLD_CUP,2022-11-22,Mexico,Poland,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-22|MEXICO|POLAND
+world_cup_results,soccer,WORLD_CUP,2022-11-22,Denmark,Tunisia,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-22|DENMARK|TUNISIA
+world_cup_results,soccer,WORLD_CUP,2022-11-22,France,Australia,4.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-22|FRANCE|AUSTRALIA
+world_cup_results,soccer,WORLD_CUP,2022-11-23,Germany,Japan,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-23|GERMANY|JAPAN
+world_cup_results,soccer,WORLD_CUP,2022-11-23,Spain,Costa Rica,7.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-23|SPAIN|COSTARICA
+world_cup_results,soccer,WORLD_CUP,2022-11-23,Morocco,Croatia,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-23|MOROCCO|CROATIA
+world_cup_results,soccer,WORLD_CUP,2022-11-23,Belgium,Canada,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-23|BELGIUM|CANADA
+world_cup_results,soccer,WORLD_CUP,2022-11-24,Switzerland,Cameroon,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-24|SWITZERLAND|CAMEROON
+world_cup_results,soccer,WORLD_CUP,2022-11-24,Brazil,Serbia,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-24|BRAZIL|SERBIA
+world_cup_results,soccer,WORLD_CUP,2022-11-24,Uruguay,South Korea,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-24|URUGUAY|SOUTHKOREA
+world_cup_results,soccer,WORLD_CUP,2022-11-24,Portugal,Ghana,3.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-24|PORTUGAL|GHANA
+world_cup_results,soccer,WORLD_CUP,2022-11-25,Qatar,Senegal,1.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-25|QATAR|SENEGAL
+world_cup_results,soccer,WORLD_CUP,2022-11-25,Netherlands,Ecuador,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-25|NETHERLANDS|ECUADOR
+world_cup_results,soccer,WORLD_CUP,2022-11-25,Wales,Iran,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-25|WALES|IRAN
+world_cup_results,soccer,WORLD_CUP,2022-11-25,England,United States,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-25|ENGLAND|UNITEDSTATES
+world_cup_results,soccer,WORLD_CUP,2022-11-26,Poland,Saudi Arabia,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-26|POLAND|SAUDIARABIA
+world_cup_results,soccer,WORLD_CUP,2022-11-26,Argentina,Mexico,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-26|ARGENTINA|MEXICO
+world_cup_results,soccer,WORLD_CUP,2022-11-26,Tunisia,Australia,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-26|TUNISIA|AUSTRALIA
+world_cup_results,soccer,WORLD_CUP,2022-11-26,France,Denmark,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-26|FRANCE|DENMARK
+world_cup_results,soccer,WORLD_CUP,2022-11-27,Japan,Costa Rica,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-27|JAPAN|COSTARICA
+world_cup_results,soccer,WORLD_CUP,2022-11-27,Spain,Germany,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-27|SPAIN|GERMANY
+world_cup_results,soccer,WORLD_CUP,2022-11-27,Belgium,Morocco,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-27|BELGIUM|MOROCCO
+world_cup_results,soccer,WORLD_CUP,2022-11-27,Croatia,Canada,4.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-27|CROATIA|CANADA
+world_cup_results,soccer,WORLD_CUP,2022-11-28,Cameroon,Serbia,3.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-28|CAMEROON|SERBIA
+world_cup_results,soccer,WORLD_CUP,2022-11-28,Brazil,Switzerland,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-28|BRAZIL|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,2022-11-28,South Korea,Ghana,2.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-28|SOUTHKOREA|GHANA
+world_cup_results,soccer,WORLD_CUP,2022-11-28,Portugal,Uruguay,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-28|PORTUGAL|URUGUAY
+world_cup_results,soccer,WORLD_CUP,2022-11-29,Ecuador,Senegal,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-29|ECUADOR|SENEGAL
+world_cup_results,soccer,WORLD_CUP,2022-11-29,Qatar,Netherlands,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-29|QATAR|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,2022-11-29,Wales,England,0.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-29|WALES|ENGLAND
+world_cup_results,soccer,WORLD_CUP,2022-11-29,Iran,United States,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-29|IRAN|UNITEDSTATES
+world_cup_results,soccer,WORLD_CUP,2022-11-30,Poland,Argentina,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-30|POLAND|ARGENTINA
+world_cup_results,soccer,WORLD_CUP,2022-11-30,Saudi Arabia,Mexico,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-30|SAUDIARABIA|MEXICO
+world_cup_results,soccer,WORLD_CUP,2022-11-30,Australia,Denmark,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-30|AUSTRALIA|DENMARK
+world_cup_results,soccer,WORLD_CUP,2022-11-30,Tunisia,France,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2022-11-30|TUNISIA|FRANCE
+world_cup_results,soccer,WORLD_CUP,2022-12-01,Japan,Spain,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2022-12-01|JAPAN|SPAIN
+world_cup_results,soccer,WORLD_CUP,2022-12-01,Costa Rica,Germany,2.0,4.0,,,,True,False,False,False,soccer|WORLDCUP|2022-12-01|COSTARICA|GERMANY
+world_cup_results,soccer,WORLD_CUP,2022-12-01,Croatia,Belgium,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2022-12-01|CROATIA|BELGIUM
+world_cup_results,soccer,WORLD_CUP,2022-12-01,Canada,Morocco,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2022-12-01|CANADA|MOROCCO
+world_cup_results,soccer,WORLD_CUP,2022-12-02,Serbia,Switzerland,2.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2022-12-02|SERBIA|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,2022-12-02,Cameroon,Brazil,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2022-12-02|CAMEROON|BRAZIL
+world_cup_results,soccer,WORLD_CUP,2022-12-02,Ghana,Uruguay,0.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2022-12-02|GHANA|URUGUAY
+world_cup_results,soccer,WORLD_CUP,2022-12-02,South Korea,Portugal,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2022-12-02|SOUTHKOREA|PORTUGAL
+world_cup_results,soccer,WORLD_CUP,2022-12-03,Netherlands,United States,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2022-12-03|NETHERLANDS|UNITEDSTATES
+world_cup_results,soccer,WORLD_CUP,2022-12-03,Argentina,Australia,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2022-12-03|ARGENTINA|AUSTRALIA
+world_cup_results,soccer,WORLD_CUP,2022-12-04,France,Poland,3.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2022-12-04|FRANCE|POLAND
+world_cup_results,soccer,WORLD_CUP,2022-12-04,England,Senegal,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2022-12-04|ENGLAND|SENEGAL
+world_cup_results,soccer,WORLD_CUP,2022-12-05,Japan,Croatia,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2022-12-05|JAPAN|CROATIA
+world_cup_results,soccer,WORLD_CUP,2022-12-05,Brazil,South Korea,4.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2022-12-05|BRAZIL|SOUTHKOREA
+world_cup_results,soccer,WORLD_CUP,2022-12-06,Morocco,Spain,0.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2022-12-06|MOROCCO|SPAIN
+world_cup_results,soccer,WORLD_CUP,2022-12-06,Portugal,Switzerland,6.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2022-12-06|PORTUGAL|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,2022-12-09,Croatia,Brazil,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2022-12-09|CROATIA|BRAZIL
+world_cup_results,soccer,WORLD_CUP,2022-12-09,Netherlands,Argentina,2.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2022-12-09|NETHERLANDS|ARGENTINA
+world_cup_results,soccer,WORLD_CUP,2022-12-10,Morocco,Portugal,1.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2022-12-10|MOROCCO|PORTUGAL
+world_cup_results,soccer,WORLD_CUP,2022-12-10,England,France,1.0,2.0,,,,True,False,False,False,soccer|WORLDCUP|2022-12-10|ENGLAND|FRANCE
+world_cup_results,soccer,WORLD_CUP,2022-12-13,Argentina,Croatia,3.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2022-12-13|ARGENTINA|CROATIA
+world_cup_results,soccer,WORLD_CUP,2022-12-14,France,Morocco,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2022-12-14|FRANCE|MOROCCO
+world_cup_results,soccer,WORLD_CUP,2022-12-17,Croatia,Morocco,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2022-12-17|CROATIA|MOROCCO
+world_cup_results,soccer,WORLD_CUP,2022-12-18,Argentina,France,3.0,3.0,,,,True,False,False,False,soccer|WORLDCUP|2022-12-18|ARGENTINA|FRANCE
+world_cup_results,soccer,WORLD_CUP,2026-06-11,Mexico,South Africa,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2026-06-11|MEXICO|SOUTHAFRICA
+world_cup_results,soccer,WORLD_CUP,2026-06-11,South Korea,Czech Republic,2.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2026-06-11|SOUTHKOREA|CZECHREPUBLIC
+world_cup_results,soccer,WORLD_CUP,2026-06-12,Canada,Bosnia and Herzegovina,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2026-06-12|CANADA|BOSNIAANDHERZEGOVINA
+world_cup_results,soccer,WORLD_CUP,2026-06-12,United States,Paraguay,4.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2026-06-12|UNITEDSTATES|PARAGUAY
+world_cup_results,soccer,WORLD_CUP,2026-06-13,Qatar,Switzerland,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2026-06-13|QATAR|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,2026-06-13,Brazil,Morocco,1.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2026-06-13|BRAZIL|MOROCCO
+world_cup_results,soccer,WORLD_CUP,2026-06-13,Haiti,Scotland,0.0,1.0,,,,True,False,False,False,soccer|WORLDCUP|2026-06-13|HAITI|SCOTLAND
+world_cup_results,soccer,WORLD_CUP,2026-06-13,Australia,Turkey,2.0,0.0,,,,True,False,False,False,soccer|WORLDCUP|2026-06-13|AUSTRALIA|TURKEY
+world_cup_results,soccer,WORLD_CUP,2026-06-14,Germany,Curaçao,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-14|GERMANY|CURAAO
+world_cup_results,soccer,WORLD_CUP,2026-06-14,Ivory Coast,Ecuador,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-14|IVORYCOAST|ECUADOR
+world_cup_results,soccer,WORLD_CUP,2026-06-14,Netherlands,Japan,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-14|NETHERLANDS|JAPAN
+world_cup_results,soccer,WORLD_CUP,2026-06-14,Sweden,Tunisia,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-14|SWEDEN|TUNISIA
+world_cup_results,soccer,WORLD_CUP,2026-06-15,Belgium,Egypt,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-15|BELGIUM|EGYPT
+world_cup_results,soccer,WORLD_CUP,2026-06-15,Iran,New Zealand,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-15|IRAN|NEWZEALAND
+world_cup_results,soccer,WORLD_CUP,2026-06-15,Spain,Cape Verde,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-15|SPAIN|CAPEVERDE
+world_cup_results,soccer,WORLD_CUP,2026-06-15,Saudi Arabia,Uruguay,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-15|SAUDIARABIA|URUGUAY
+world_cup_results,soccer,WORLD_CUP,2026-06-16,France,Senegal,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-16|FRANCE|SENEGAL
+world_cup_results,soccer,WORLD_CUP,2026-06-16,Iraq,Norway,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-16|IRAQ|NORWAY
+world_cup_results,soccer,WORLD_CUP,2026-06-16,Argentina,Algeria,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-16|ARGENTINA|ALGERIA
+world_cup_results,soccer,WORLD_CUP,2026-06-16,Austria,Jordan,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-16|AUSTRIA|JORDAN
+world_cup_results,soccer,WORLD_CUP,2026-06-17,Portugal,DR Congo,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-17|PORTUGAL|DRCONGO
+world_cup_results,soccer,WORLD_CUP,2026-06-17,Uzbekistan,Colombia,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-17|UZBEKISTAN|COLOMBIA
+world_cup_results,soccer,WORLD_CUP,2026-06-17,England,Croatia,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-17|ENGLAND|CROATIA
+world_cup_results,soccer,WORLD_CUP,2026-06-17,Ghana,Panama,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-17|GHANA|PANAMA
+world_cup_results,soccer,WORLD_CUP,2026-06-18,Czech Republic,South Africa,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-18|CZECHREPUBLIC|SOUTHAFRICA
+world_cup_results,soccer,WORLD_CUP,2026-06-18,Mexico,South Korea,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-18|MEXICO|SOUTHKOREA
+world_cup_results,soccer,WORLD_CUP,2026-06-18,Switzerland,Bosnia and Herzegovina,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-18|SWITZERLAND|BOSNIAANDHERZEGOVINA
+world_cup_results,soccer,WORLD_CUP,2026-06-18,Canada,Qatar,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-18|CANADA|QATAR
+world_cup_results,soccer,WORLD_CUP,2026-06-19,Scotland,Morocco,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-19|SCOTLAND|MOROCCO
+world_cup_results,soccer,WORLD_CUP,2026-06-19,Brazil,Haiti,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-19|BRAZIL|HAITI
+world_cup_results,soccer,WORLD_CUP,2026-06-19,United States,Australia,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-19|UNITEDSTATES|AUSTRALIA
+world_cup_results,soccer,WORLD_CUP,2026-06-19,Turkey,Paraguay,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-19|TURKEY|PARAGUAY
+world_cup_results,soccer,WORLD_CUP,2026-06-20,Germany,Ivory Coast,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-20|GERMANY|IVORYCOAST
+world_cup_results,soccer,WORLD_CUP,2026-06-20,Ecuador,Curaçao,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-20|ECUADOR|CURAAO
+world_cup_results,soccer,WORLD_CUP,2026-06-20,Netherlands,Sweden,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-20|NETHERLANDS|SWEDEN
+world_cup_results,soccer,WORLD_CUP,2026-06-20,Tunisia,Japan,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-20|TUNISIA|JAPAN
+world_cup_results,soccer,WORLD_CUP,2026-06-21,Belgium,Iran,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-21|BELGIUM|IRAN
+world_cup_results,soccer,WORLD_CUP,2026-06-21,New Zealand,Egypt,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-21|NEWZEALAND|EGYPT
+world_cup_results,soccer,WORLD_CUP,2026-06-21,Spain,Saudi Arabia,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-21|SPAIN|SAUDIARABIA
+world_cup_results,soccer,WORLD_CUP,2026-06-21,Uruguay,Cape Verde,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-21|URUGUAY|CAPEVERDE
+world_cup_results,soccer,WORLD_CUP,2026-06-22,France,Iraq,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-22|FRANCE|IRAQ
+world_cup_results,soccer,WORLD_CUP,2026-06-22,Norway,Senegal,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-22|NORWAY|SENEGAL
+world_cup_results,soccer,WORLD_CUP,2026-06-22,Argentina,Austria,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-22|ARGENTINA|AUSTRIA
+world_cup_results,soccer,WORLD_CUP,2026-06-22,Jordan,Algeria,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-22|JORDAN|ALGERIA
+world_cup_results,soccer,WORLD_CUP,2026-06-23,Portugal,Uzbekistan,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-23|PORTUGAL|UZBEKISTAN
+world_cup_results,soccer,WORLD_CUP,2026-06-23,Colombia,DR Congo,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-23|COLOMBIA|DRCONGO
+world_cup_results,soccer,WORLD_CUP,2026-06-23,England,Ghana,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-23|ENGLAND|GHANA
+world_cup_results,soccer,WORLD_CUP,2026-06-23,Panama,Croatia,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-23|PANAMA|CROATIA
+world_cup_results,soccer,WORLD_CUP,2026-06-24,Mexico,Czech Republic,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-24|MEXICO|CZECHREPUBLIC
+world_cup_results,soccer,WORLD_CUP,2026-06-24,South Africa,South Korea,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-24|SOUTHAFRICA|SOUTHKOREA
+world_cup_results,soccer,WORLD_CUP,2026-06-24,Canada,Switzerland,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-24|CANADA|SWITZERLAND
+world_cup_results,soccer,WORLD_CUP,2026-06-24,Bosnia and Herzegovina,Qatar,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-24|BOSNIAANDHERZEGOVINA|QATAR
+world_cup_results,soccer,WORLD_CUP,2026-06-24,Scotland,Brazil,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-24|SCOTLAND|BRAZIL
+world_cup_results,soccer,WORLD_CUP,2026-06-24,Morocco,Haiti,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-24|MOROCCO|HAITI
+world_cup_results,soccer,WORLD_CUP,2026-06-25,United States,Turkey,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-25|UNITEDSTATES|TURKEY
+world_cup_results,soccer,WORLD_CUP,2026-06-25,Paraguay,Australia,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-25|PARAGUAY|AUSTRALIA
+world_cup_results,soccer,WORLD_CUP,2026-06-25,Curaçao,Ivory Coast,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-25|CURAAO|IVORYCOAST
+world_cup_results,soccer,WORLD_CUP,2026-06-25,Ecuador,Germany,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-25|ECUADOR|GERMANY
+world_cup_results,soccer,WORLD_CUP,2026-06-25,Japan,Sweden,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-25|JAPAN|SWEDEN
+world_cup_results,soccer,WORLD_CUP,2026-06-25,Tunisia,Netherlands,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-25|TUNISIA|NETHERLANDS
+world_cup_results,soccer,WORLD_CUP,2026-06-26,Egypt,Iran,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-26|EGYPT|IRAN
+world_cup_results,soccer,WORLD_CUP,2026-06-26,New Zealand,Belgium,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-26|NEWZEALAND|BELGIUM
+world_cup_results,soccer,WORLD_CUP,2026-06-26,Cape Verde,Saudi Arabia,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-26|CAPEVERDE|SAUDIARABIA
+world_cup_results,soccer,WORLD_CUP,2026-06-26,Uruguay,Spain,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-26|URUGUAY|SPAIN
+world_cup_results,soccer,WORLD_CUP,2026-06-26,Norway,France,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-26|NORWAY|FRANCE
+world_cup_results,soccer,WORLD_CUP,2026-06-26,Senegal,Iraq,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-26|SENEGAL|IRAQ
+world_cup_results,soccer,WORLD_CUP,2026-06-27,Algeria,Austria,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-27|ALGERIA|AUSTRIA
+world_cup_results,soccer,WORLD_CUP,2026-06-27,Jordan,Argentina,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-27|JORDAN|ARGENTINA
+world_cup_results,soccer,WORLD_CUP,2026-06-27,Colombia,Portugal,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-27|COLOMBIA|PORTUGAL
+world_cup_results,soccer,WORLD_CUP,2026-06-27,DR Congo,Uzbekistan,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-27|DRCONGO|UZBEKISTAN
+world_cup_results,soccer,WORLD_CUP,2026-06-27,Panama,England,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-27|PANAMA|ENGLAND
+world_cup_results,soccer,WORLD_CUP,2026-06-27,Croatia,Ghana,,,,,,False,False,False,False,soccer|WORLDCUP|2026-06-27|CROATIA|GHANA

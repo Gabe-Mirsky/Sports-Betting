@@ -1,0 +1,37 @@
+{% extends "predictions/base.html" %}
+
+{% block title %}{{ parlay }}{% endblock %}
+
+{% block content %}
+<a class="link back" href="{% url 'predictions:parlay_creator' %}">← Parlay creator</a>
+<div class="section-head"><h1>{{ parlay }}</h1></div>
+{% if parlay.notes %}<p class="muted">{{ parlay.notes }}</p>{% endif %}
+
+<div class="parlay-metrics card">
+  <div class="metric"><span class="metric-label">Legs</span><span class="metric-val">{{ parlay.leg_count }}</span></div>
+  <div class="metric"><span class="metric-label">Combined prob.</span>
+    <span class="metric-val">{% if parlay.combined_probability_pct %}{{ parlay.combined_probability_pct }}%{% else %}n/a{% endif %}</span></div>
+  <div class="metric"><span class="metric-label">Fair decimal</span>
+    <span class="metric-val">{{ parlay.fair_decimal_odds|default:"n/a" }}</span></div>
+  <div class="metric"><span class="metric-label">Fair American</span>
+    <span class="metric-val">{{ parlay.fair_american_odds }}</span></div>
+</div>
+
+<div class="table-wrap">
+  <table class="pred-table">
+    <thead><tr><th>Pick</th><th>Match</th><th class="col-num">Prob.</th></tr></thead>
+    <tbody>
+      {% for leg in parlay.legs.all %}
+      <tr>
+        <td>
+          {% if leg.prediction %}<a href="{{ leg.prediction.get_absolute_url }}">{{ leg.pick_label }}</a>
+          {% else %}{{ leg.pick_label }}{% endif %}
+        </td>
+        <td>{{ leg.match_label }}</td>
+        <td class="col-num">{% if leg.pick_probability_pct %}{{ leg.pick_probability_pct }}%{% else %}—{% endif %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

@@ -47,6 +47,8 @@ class DataConfig(_ConfigModel):
     cache_dir: str = "data/raw/nba"
     player_cache_dir: str = "data/raw/nba/player"
     availability_report_path: str = "data/raw/nba/injuries/availability.csv"
+    sportsbook_odds_path: str = "data/raw/sportsbook/nba_moneyline_odds.csv"
+    free_odds_split_mode: str = "strict_full_seasons"
     processed_dir: str = "data/processed"
 
 
@@ -61,7 +63,8 @@ class ModelConfig(_ConfigModel):
     target: str = "target_home_win"
     train_start_season: int = 2018
     train_end_season: int = 2023
-    test_season: int = 2024
+    validation_season: int = 2024
+    test_season: int = 2025
     model_type: str = "logistic_regression"
 
 
@@ -72,9 +75,18 @@ class StrategyConfig(_ConfigModel):
     min_market_price: float = 0.05
     max_market_price: float = 0.95
     use_yes_ask_for_buys: bool = True
-    allow_no_trades: bool = False
+    allow_no_trades: bool = True
     use_fractional_kelly: bool = False
     kelly_fraction: float = 0.25
+    use_side_specific_shrinkage: bool = False
+
+
+class SideSpecificShrinkageConfig(_ConfigModel):
+    enabled_for_research: bool = True
+    yes_shrink_factor: float = 0.5
+    no_shrink_factor: float = 0.75
+    uncertainty_penalty_mode: str = "side-only"
+    min_prior_samples: int = 50
 
 
 class KalshiConfig(_ConfigModel):
@@ -104,6 +116,7 @@ class BacktestConfig(_ConfigModel):
     allowed_price_qualities: str = "bid_ask_available"
     require_bid_ask: bool = True
     max_candle_interval_minutes: int = 60
+    max_bid_ask_spread_cents: float = 10.0
 
 
 class AppConfig(_ConfigModel):
@@ -112,6 +125,7 @@ class AppConfig(_ConfigModel):
     data: DataConfig = DataConfig()
     model: ModelConfig = ModelConfig()
     strategy: StrategyConfig = StrategyConfig()
+    side_specific_shrinkage: SideSpecificShrinkageConfig = SideSpecificShrinkageConfig()
     kalshi: KalshiConfig = KalshiConfig()
     matching: MatchingConfig = MatchingConfig()
     backtest: BacktestConfig = BacktestConfig()
@@ -197,6 +211,7 @@ def _read_simple_yaml_mapping(text: str, path: Path) -> dict[str, Any]:
 
 def _apply_env_overrides(config: dict[str, Any]) -> dict[str, Any]:
     kalshi_config = dict(config.get("kalshi", {}))
+    data_config = dict(config.get("data", {}))
 
     if os.getenv("KALSHI_ENV"):
         kalshi_config["env"] = os.environ["KALSHI_ENV"]
@@ -220,6 +235,9 @@ def _apply_env_overrides(config: dict[str, Any]) -> dict[str, Any]:
         }
 
     config["kalshi"] = kalshi_config
+    if os.getenv("FREE_ODDS_SPLIT_MODE"):
+        data_config["free_odds_split_mode"] = os.environ["FREE_ODDS_SPLIT_MODE"].strip()
+    config["data"] = data_config
     return config
 
 

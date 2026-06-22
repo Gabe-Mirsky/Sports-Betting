@@ -10,6 +10,7 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
+from data.seasons import TRAIN_START_SEASON
 from models.evaluate import evaluate_binary_probabilities
 from models.predict import PREDICTION_ID_COLUMNS
 from models.train_model import (
@@ -64,7 +65,7 @@ def _train_single_model(
 def walk_forward_predict(
     modeling_df: pd.DataFrame,
     target_column: str = "target_home_win",
-    train_start_season: int = 2018,
+    train_start_season: int = TRAIN_START_SEASON,
     first_test_season: int | None = None,
     last_test_season: int | None = None,
     model_type: str = "logistic_regression",
@@ -183,7 +184,7 @@ def walk_forward_and_save(
     predictions_output_path: str | Path,
     metrics_output_path: str | Path,
     target_column: str = "target_home_win",
-    train_start_season: int = 2018,
+    train_start_season: int = TRAIN_START_SEASON,
     first_test_season: int | None = None,
     last_test_season: int | None = None,
     model_type: str = "logistic_regression",

@@ -1,0 +1,49 @@
+{% extends "predictions/base.html" %}
+
+{% block title %}Matchup Predictions — Home{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <h1>Model matchup predictions</h1>
+  <p class="lede">Browse model-implied win probabilities across sports and leagues, then
+     combine your favourites into a parlay. These are probability estimates, not betting odds.</p>
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="{% url 'predictions:list' %}">View predictions</a>
+    <a class="btn" href="{% url 'predictions:parlay_creator' %}">Build a parlay</a>
+  </div>
+</section>
+
+<section class="stat-grid">
+  <div class="stat"><div class="stat-num">{{ prediction_count }}</div><div class="stat-label">Predictions</div></div>
+  <div class="stat"><div class="stat-num">{{ sport_count }}</div><div class="stat-label">Sports</div></div>
+  <div class="stat"><div class="stat-num">{{ league_count }}</div><div class="stat-label">Leagues</div></div>
+  <div class="stat"><div class="stat-num">{{ parlay_count }}</div><div class="stat-label">Saved parlays</div></div>
+</section>
+
+<section>
+  <div class="section-head">
+    <h2>Top confidence picks</h2>
+    <a class="link" href="{% url 'predictions:leaderboard' %}">Full leaderboard →</a>
+  </div>
+  {% if top_predictions %}
+    <div class="card-grid">
+      {% for p in top_predictions %}
+        <a class="pred-card" href="{{ p.get_absolute_url }}">
+          <div class="pred-card-meta">{{ p.sport }} · {{ p.league }}</div>
+          <div class="pred-card-teams">{{ p.team_a }} <span class="vs">vs</span> {{ p.team_b }}</div>
+          <div class="pred-card-pick">{{ p.predicted_outcome }}</div>
+          <div class="pred-card-foot">
+            <span class="badge badge-{{ p.confidence_level|slugify }}">{{ p.confidence_level }}</span>
+            {% if p.pick_probability_pct %}<span class="prob">{{ p.pick_probability_pct }}%</span>{% endif %}
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty">
+      No predictions yet. Run <code>python manage.py import_predictions</code> or
+      <code>python manage.py seed_demo</code> to populate the site.
+    </div>
+  {% endif %}
+</section>
+{% endblock %}

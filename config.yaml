@@ -13,13 +13,16 @@ data:
   cache_dir: data/raw/nba
   player_cache_dir: data/raw/nba/player
   availability_report_path: data/raw/nba/injuries/availability.csv
+  sportsbook_odds_path: data/raw/sportsbook/nba_moneyline_odds.csv
+  free_odds_split_mode: strict_full_seasons
   processed_dir: data/processed
 
 model:
   target: target_home_win
   train_start_season: 2018
   train_end_season: 2023
-  test_season: 2024
+  validation_season: 2024
+  test_season: 2025
   model_type: logistic_regression
 
 strategy:
@@ -29,9 +32,17 @@ strategy:
   min_market_price: 0.05
   max_market_price: 0.95
   use_yes_ask_for_buys: true
-  allow_no_trades: false
+  allow_no_trades: true
   use_fractional_kelly: false
   kelly_fraction: 0.25
+  use_side_specific_shrinkage: false
+
+side_specific_shrinkage:
+  enabled_for_research: true
+  yes_shrink_factor: 0.5
+  no_shrink_factor: 0.75
+  uncertainty_penalty_mode: "side-only"
+  min_prior_samples: 50
 
 kalshi:
   enabled: true
@@ -55,3 +66,4 @@ backtest:
   allowed_price_qualities: "bid_ask_available"
   require_bid_ask: true
   max_candle_interval_minutes: 60
+  max_bid_ask_spread_cents: 10.0

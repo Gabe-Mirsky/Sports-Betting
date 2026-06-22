@@ -1,0 +1,99 @@
+{% extends "predictions/base.html" %}
+{% load static %}
+
+{% block title %}Parlay Creator{% endblock %}
+
+{% block content %}
+<div class="section-head">
+  <h1>Parlay creator</h1>
+</div>
+<p class="lede">Tick predictions to add them as legs. The combined probability multiplies each
+   leg's model probability (legs assumed independent — different games). Fair odds are the
+   break-even price implied by that probability, not sportsbook prices.</p>
+
+<div class="parlay-layout">
+  <form method="post" action="{% url 'predictions:parlay_creator' %}" id="parlay-form">
+    {% csrf_token %}
+
+    <aside class="parlay-summary card" id="parlay-summary">
+      <h2>Your parlay</h2>
+      <ul class="parlay-legs" id="parlay-legs"></ul>
+      <p class="muted" id="parlay-empty">No legs selected yet.</p>
+      <div class="parlay-metrics">
+        <div class="metric"><span class="metric-label">Legs</span><span class="metric-val" id="m-count">0</span></div>
+        <div class="metric"><span class="metric-label">Combined prob.</span><span class="metric-val" id="m-prob">n/a</span></div>
+        <div class="metric"><span class="metric-label">Fair decimal</span><span class="metric-val" id="m-dec">n/a</span></div>
+        <div class="metric"><span class="metric-label">Fair American</span><span class="metric-val" id="m-am">n/a</span></div>
+      </div>
+      <div class="parlay-save">
+        {{ form.name }}
+        {{ form.notes }}
+        <button class="btn btn-primary" type="submit" id="parlay-save" disabled>Save parlay</button>
+      </div>
+    </aside>
+
+    <div class="parlay-picks">
+      {% include "predictions/_filters.html" with action="" %}
+      {% if predictions %}
+      <div class="table-wrap">
+        <table class="pred-table">
+          <thead>
+            <tr>
+              <th class="col-pick">+</th>
+              <th class="col-date">Date</th>
+              <th class="col-sport">Sport</th>
+              <th class="col-league">League</th>
+              <th class="col-teams">Teams</th>
+              <th class="col-pred">Prediction</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for p in predictions %}
+            <tr>
+              <td class="col-pick">
+                {% if p.pick_probability is not None %}
+                <input type="checkbox" class="pick-box" name="legs" value="{{ p.pk }}"
+                       data-prob="{{ p.pick_probability }}"
+                       data-label="{{ p.predicted_outcome|default:p.matchup }}"
+                       data-match="{{ p.matchup }}">
+                {% else %}<span class="muted">—</span>{% endif %}
+              </td>
+              <td class="col-date">{{ p.game_date|date:"M j, g:i A"|default:"—" }}</td>
+              <td class="col-sport">{{ p.sport|default:"—" }}</td>
+              <td class="col-league">{{ p.league|default:"—" }}</td>
+              <td class="col-teams">{{ p.team_a }} <span class="vs">vs</span> {{ p.team_b }}</td>
+              <td class="col-pred">
+                <span class="pick">{{ p.predicted_outcome }}</span>
+                <span class="badge badge-{{ p.confidence_level|slugify }}">{{ p.confidence_level }}</span>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% else %}
+        <div class="empty">No predictions match these filters.</div>
+      {% endif %}
+    </div>
+  </form>
+</div>
+
+{% if saved_parlays %}
+<section>
+  <h2>Recently saved parlays</h2>
+  <ul class="saved-list">
+    {% for parlay in saved_parlays %}
+      <li>
+        <a href="{{ parlay.get_absolute_url }}">{{ parlay }}</a>
+        <span class="muted">{{ parlay.leg_count }} legs ·
+          {% if parlay.combined_probability_pct %}{{ parlay.combined_probability_pct }}%{% else %}n/a{% endif %}</span>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'predictions/js/parlay.js' %}"></script>
+{% endblock %}

@@ -8,6 +8,8 @@ from typing import Any
 
 import pandas as pd
 
+from data.kalshi_backfill import _parse_kxnbagame_ticker
+
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
@@ -314,3 +316,288 @@ def save_kalshi_coverage_report(
     if gap_report is not None:
         gap_output.parent.mkdir(parents=True, exist_ok=True)
         gap_report.to_csv(gap_output, index=False)
+
+
+SNAPSHOT_PRICE_COLUMNS = {
+    "pregame_60m": "pregame_price_60m",
+    "pregame_30m": "pregame_price_30m",
+    "pregame_5m": "pregame_price_5m",
+    "pregame_best_le_120m": "pregame_price_best_le_120m",
+}
+
+
+def _first_present(row: pd.Series, columns: list[str]) -> Any:
+    for column in columns:
+        if column in row and pd.notna(row[column]) and str(row[column]).strip():
+            return row[column]
+    return ""
+
+
+def _game_start_lookup(root: Path, games: pd.DataFrame) -> pd.DataFrame:
+    starts = _read_table(root / "data" / "interim" / "nba_game_start_times.csv")
+    if starts.empty:
+        return games.copy()
+    merged = games.copy()
+    for frame in [merged, starts]:
+        if "game_date" in frame.columns:
+            frame["game_date"] = _parse_dates(frame["game_date"]).dt.normalize()
+    required = {"game_date", "home_team_abbr", "away_team_abbr"}
+    if not required.issubset(merged.columns) or not required.issubset(starts.columns):
+        return merged
+    start_columns = [
+        column
+        for column in [
+            "game_date",
+            "home_team_abbr",
+            "away_team_abbr",
+            "game_start_time",
+            "game_time_source",
+            "espn_event_id",
+        ]
+        if column in starts.columns
+    ]
+    return merged.merge(
+        starts[start_columns].drop_duplicates(["game_date", "home_team_abbr", "away_team_abbr"]),
+        on=["game_date", "home_team_abbr", "away_team_abbr"],
+        how="left",
+    )
+
+
+def _chosen_snapshot(prices: pd.DataFrame) -> pd.DataFrame:
+    if prices.empty:
+        return pd.DataFrame(columns=["game_id", "market_ticker"])
+    working = prices.copy()
+    working["yes_price"] = pd.to_numeric(working.get("yes_price"), errors="coerce")
+    working["snapshot_priority"] = working.get("snapshot_target", "").map(
+        {"pregame_60m": 0, "pregame_30m": 1, "pregame_5m": 2}
+    ).fillna(99)
+    working = working[working["yes_price"].notna()].copy()
+    if working.empty:
+        return pd.DataFrame(columns=["game_id", "market_ticker"])
+    return (
+        working.sort_values(["game_id", "market_ticker", "snapshot_priority"])
+        .drop_duplicates(["game_id", "market_ticker"], keep="first")
+        .copy()
+    )
+
+
+def _snapshot_price_pivot(prices: pd.DataFrame) -> pd.DataFrame:
+    columns = ["game_id", "market_ticker", *SNAPSHOT_PRICE_COLUMNS.values()]
+    if prices.empty or "snapshot_target" not in prices.columns:
+        return pd.DataFrame(columns=columns)
+    working = prices.copy()
+    working["yes_price"] = pd.to_numeric(working.get("yes_price"), errors="coerce")
+    usable = working[
+        working["snapshot_target"].isin(SNAPSHOT_PRICE_COLUMNS)
+        & working["yes_price"].notna()
+    ].copy()
+    if usable.empty:
+        return pd.DataFrame(columns=columns)
+    pivot = usable.pivot_table(
+        index=["game_id", "market_ticker"],
+        columns="snapshot_target",
+        values="yes_price",
+        aggfunc="first",
+    ).reset_index()
+    return pivot.rename(columns=SNAPSHOT_PRICE_COLUMNS)
+
+
+def _ticker_mapping_mismatch(row: pd.Series) -> bool:
+    parsed = _parse_kxnbagame_ticker(str(row.get("market_ticker", "")))
+    if not parsed:
+        return False
+    checks = [
+        parsed.get("home_team_abbr") == str(row.get("home_team_abbr", "")),
+        parsed.get("away_team_abbr") == str(row.get("away_team_abbr", "")),
+    ]
+    yes_team = str(row.get("yes_team_abbr", ""))
+    if yes_team:
+        checks.append(parsed.get("yes_team_abbr") == yes_team)
+    return not all(checks)
+
+
+def build_market_truth_audit(
+    project_root: str | Path | None = None,
+    max_spread_cents: float = 10.0,
+    min_volume: float = 10.0,
+) -> tuple[pd.DataFrame, dict[str, Any]]:
+    """Build one row per matched game-market pair with tradable pregame price evidence."""
+
+    root = Path(project_root) if project_root else PROJECT_ROOT
+    matches = _read_table(root / "data" / "processed" / "kalshi_game_market_matches.csv")
+    prices = _read_table(root / "data" / "processed" / "kalshi_pregame_prices.csv")
+    try:
+        games = _read_table(root / "data" / "interim" / "nba_games.parquet")
+    except (ImportError, ValueError, RuntimeError):
+        games = pd.DataFrame()
+    if games.empty:
+        games = load_default_game_universe(root)
+    games = _game_start_lookup(root, games)
+
+    output_columns = [
+        "game_id",
+        "date",
+        "home_team",
+        "away_team",
+        "market_ticker",
+        "series_ticker",
+        "tipoff_time",
+        "market_close_time",
+        "pregame_price_60m",
+        "pregame_price_30m",
+        "pregame_price_5m",
+        "pregame_price_best_le_120m",
+        "yes_bid",
+        "yes_ask",
+        "mid_price",
+        "spread",
+        "volume",
+        "open_interest",
+        "match_status",
+        "price_quality",
+        "selected_snapshot",
+        "ticker_mapping_mismatch",
+        "wide_spread",
+        "low_liquidity",
+    ]
+    if matches.empty:
+        return pd.DataFrame(columns=output_columns), {
+            "matched_game_markets": 0,
+            "auto_matched": 0,
+            "needs_review": 0,
+            "usable_price_counts": {
+                "pregame_60m": 0,
+                "pregame_30m": 0,
+                "pregame_5m": 0,
+                "pregame_best_le_120m": 0,
+            },
+            "ticker_mapping_mismatch_count": 0,
+            "wide_spread_count": 0,
+            "low_liquidity_count": 0,
+        }
+
+    for frame in [matches, prices, games]:
+        if not frame.empty and "game_id" in frame.columns:
+            frame["game_id"] = frame["game_id"].astype(str)
+        if not frame.empty and "game_date" in frame.columns:
+            frame["game_date"] = _parse_dates(frame["game_date"]).dt.normalize()
+
+    price_pivot = _snapshot_price_pivot(prices)
+    chosen = _chosen_snapshot(prices)
+    chosen_columns = [
+        column
+        for column in [
+            "game_id",
+            "market_ticker",
+            "yes_bid",
+            "yes_ask",
+            "mid_price",
+            "volume",
+            "open_interest",
+            "snapshot_target",
+            "price_quality",
+            "period_interval",
+        ]
+        if column in chosen.columns
+    ]
+    chosen = chosen[chosen_columns] if not chosen.empty else chosen
+
+    audit = matches.copy()
+    if "match_status" in audit.columns:
+        audit = audit[audit["match_status"].astype(str).isin(["auto_matched", "needs_review"])].copy()
+    audit = audit[audit["market_ticker"].fillna("").astype(str).str.strip().ne("")].copy()
+    audit = audit.merge(price_pivot, on=["game_id", "market_ticker"], how="left")
+    audit = audit.merge(chosen, on=["game_id", "market_ticker"], how="left", suffixes=("", "_chosen"))
+    if not games.empty and {"game_id", "game_start_time"}.issubset(games.columns):
+        audit = audit.merge(
+            games[["game_id", "game_start_time"]].drop_duplicates("game_id"),
+            on="game_id",
+            how="left",
+        )
+    else:
+        audit["game_start_time"] = ""
+
+    for column in ["yes_bid", "yes_ask", "mid_price", "volume", "open_interest"]:
+        if column not in audit.columns:
+            audit[column] = pd.NA
+        audit[column] = pd.to_numeric(audit[column], errors="coerce")
+    audit["spread"] = audit["yes_ask"] - audit["yes_bid"]
+    audit["ticker_mapping_mismatch"] = audit.apply(_ticker_mapping_mismatch, axis=1)
+    audit["wide_spread"] = audit["spread"].gt(float(max_spread_cents))
+    audit["low_liquidity"] = audit["volume"].fillna(0).lt(float(min_volume))
+
+    output = pd.DataFrame(
+        {
+            "game_id": audit["game_id"],
+            "date": audit["game_date"].dt.date.astype(str) if "game_date" in audit.columns else "",
+            "home_team": audit.get("home_team_abbr", ""),
+            "away_team": audit.get("away_team_abbr", ""),
+            "market_ticker": audit["market_ticker"],
+            "series_ticker": audit.get("series_ticker", ""),
+            "tipoff_time": audit.get("game_start_time", ""),
+            "market_close_time": audit.apply(
+                lambda row: _first_present(
+                    row,
+                    ["close_time", "expected_expiration_time", "expiration_time", "latest_expiration_time"],
+                ),
+                axis=1,
+            ),
+            "pregame_price_60m": audit.get("pregame_price_60m", pd.NA),
+            "pregame_price_30m": audit.get("pregame_price_30m", pd.NA),
+            "pregame_price_5m": audit.get("pregame_price_5m", pd.NA),
+            "pregame_price_best_le_120m": audit.get("pregame_price_best_le_120m", pd.NA),
+            "yes_bid": audit["yes_bid"],
+            "yes_ask": audit["yes_ask"],
+            "mid_price": audit["mid_price"],
+            "spread": audit["spread"],
+            "volume": audit["volume"],
+            "open_interest": audit["open_interest"],
+            "match_status": audit.get("match_status", ""),
+            "price_quality": audit.get("price_quality", ""),
+            "selected_snapshot": audit.get("snapshot_target", ""),
+            "ticker_mapping_mismatch": audit["ticker_mapping_mismatch"],
+            "wide_spread": audit["wide_spread"],
+            "low_liquidity": audit["low_liquidity"],
+        }
+    )
+    matched_status = output["match_status"].astype(str)
+    summary = {
+        "matched_game_markets": int(len(output)),
+        "auto_matched": int(matched_status.eq("auto_matched").sum()),
+        "needs_review": int(matched_status.eq("needs_review").sum()),
+        "usable_price_counts": {
+            "pregame_60m": int(output["pregame_price_60m"].notna().sum()),
+            "pregame_30m": int(output["pregame_price_30m"].notna().sum()),
+            "pregame_5m": int(output["pregame_price_5m"].notna().sum()),
+            "pregame_best_le_120m": int(output["pregame_price_best_le_120m"].notna().sum()),
+        },
+        "ticker_mapping_mismatch_count": int(output["ticker_mapping_mismatch"].sum()),
+        "wide_spread_count": int(output["wide_spread"].sum()),
+        "low_liquidity_count": int(output["low_liquidity"].sum()),
+        "max_spread_cents": float(max_spread_cents),
+        "min_volume": float(min_volume),
+        "note": "Backtests should use tradable bid/ask prices from this audit, not last-price-only rows.",
+    }
+    return output[output_columns].sort_values(["date", "game_id", "market_ticker"]).reset_index(drop=True), summary
+
+
+def save_market_truth_audit(
+    audit: pd.DataFrame,
+    summary: dict[str, Any],
+    audit_path: str | Path | None = None,
+    summary_path: str | Path | None = None,
+) -> None:
+    audit_output = (
+        Path(audit_path)
+        if audit_path
+        else PROJECT_ROOT / "data" / "reports" / "market_truth_audit.csv"
+    )
+    summary_output = (
+        Path(summary_path)
+        if summary_path
+        else PROJECT_ROOT / "data" / "reports" / "market_truth_audit_summary.json"
+    )
+    audit_output.parent.mkdir(parents=True, exist_ok=True)
+    summary_output.parent.mkdir(parents=True, exist_ok=True)
+    audit.to_csv(audit_output, index=False)
+    summary_output.write_text(json.dumps(summary, indent=2), encoding="utf-8")

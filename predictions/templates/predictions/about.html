@@ -1,0 +1,25 @@
+{% extends "predictions/base.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+<div class="section-head"><h1>About</h1></div>
+<div class="prose card">
+  <p>This site presents <b>model-implied matchup probabilities</b> for games across multiple
+     sports and leagues. The numbers estimate what the model thinks is most likely to happen
+     based on history, team strength, recent form, rest, schedule and availability.</p>
+  <p><b>These are not sportsbook odds, betting prices, or recommendations.</b> Treat
+     low-confidence and weak-data rows with extra caution.</p>
+  <h2>How it works</h2>
+  <ul>
+    <li>Predictions are imported from the analysis pipeline's report files
+        (<code>matchup_predictions_today.csv</code>) via
+        <code>python manage.py import_predictions</code>.</li>
+    <li>The owner approves, edits or hides predictions in the Django admin.</li>
+    <li>The <a href="{% url 'predictions:parlay_creator' %}">parlay creator</a> lets you combine
+        approved picks into a parlay and see the combined model probability and fair odds.</li>
+    <li>New manual matchups added through <a href="{% url 'predictions:add' %}">Add</a> are
+        drafted by the AI reasoning service and held for review before they appear.</li>
+  </ul>
+</div>
+{% endblock %}

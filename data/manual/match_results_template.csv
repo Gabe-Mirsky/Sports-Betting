@@ -1,0 +1,9 @@
+game_id,sport,league,season,game_date,team_a,team_b,team_a_score,team_b_score,team_a_home_flag,team_b_home_flag,neutral_site,competition_type,venue,country,status
+intl_2025_001,soccer,international,2025,2025-09-06,Japan,Australia,2,1,1,0,0,qualifier,Saitama Stadium,Japan,completed
+intl_2025_002,soccer,international,2025,2025-09-09,South Korea,Japan,1,1,1,0,0,qualifier,Seoul World Cup Stadium,South Korea,completed
+intl_2025_003,soccer,international,2025,2025-10-10,Tunisia,Morocco,0,2,1,0,0,qualifier,Stade Olympique de Rades,Tunisia,completed
+intl_2025_004,soccer,international,2025,2025-10-13,USA,Japan,1,3,1,0,0,friendly,Dignity Health Sports Park,United States,completed
+intl_2025_005,soccer,international,2025,2025-11-15,Morocco,Tunisia,1,1,0,0,1,tournament,Neutral Tournament Venue,Qatar,completed
+intl_2025_006,soccer,international,2025,2025-11-18,Australia,South Korea,0,1,1,0,0,friendly,Stadium Australia,Australia,completed
+intl_2026_007,soccer,international,2026,2026-03-25,Japan,Tunisia,2,0,1,0,0,friendly,Panasonic Stadium Suita,Japan,completed
+intl_2026_008,soccer,international,2026,2026-03-28,Morocco,USA,2,2,1,0,0,friendly,Stade Mohammed V,Morocco,completed

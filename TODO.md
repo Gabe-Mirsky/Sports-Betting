@@ -1,0 +1,116 @@
+# TODO
+
+## Completed
+- Fixed README conflict and documented the single-game-first project path.
+- Built public Kalshi sports/NBA backfill and game-market matching.
+- Added market truth audit and realistic bid/ask backtest pricing.
+- Added YES/NO signal handling, CLV reports, CLV filters, defensive filters, proof gates, and fair-price signals.
+- Added NO-side, corrected-CLV, market-movement, residual, and residual-guardrail audits.
+- Found and fixed the NO-candidate CLV bug where untraded NO rows inherited YES-side CLV.
+- Confirmed the current edge-bin calibration overstates cheap-contract win probability and does not prove repeatable single-game edge.
+- Added price-aware side + price + edge calibration and a calibration-setting sweep.
+- Added automatic materialization of the best price-aware calibration sweep rule.
+- Wired price-aware calibration, best-rule calibration, residual audits, corrected CLV sweeps, and residual guardrails into the repeatable research pipeline.
+- Updated README and dashboard with the new diagnostics and current failure mode.
+- Fixed Kalshi market cache parquet writes when appended API rows mix `Timestamp`, string, bytes, and nested object values in object columns.
+- Fixed CLV and defensive empty-output handling so no-signal walk-forward stages write schema-correct CSVs and downstream audits fail closed instead of crashing.
+- Updated the CLV-filter builder to use the best price-aware calibration artifact by default when it exists.
+- Verified the current canonical CLV-filtered and defensive strategies produce zero trades under conservative gates; proof gates correctly remain `not_proven`.
+- Validated the cached end-to-end single-game pipeline through all 38 steps with market pulls and candle downloads skipped.
+- Added proof-gated fair-price output: current actionable bets are zero while proof is `not_proven`, with ungated research signals retained for audit.
+- Added VS Code-friendly local runners: `run_single_game_pipeline.ps1` and `run_cached_pipeline.bat`.
+- Validated `run_cached_pipeline.bat -SkipDashboard`; it completes the cached single-game pipeline and automatically works around the broken `.venv` executable.
+- Added `diagnose_edge_failures.py` and `edge_failure_*` reports to rank the slices driving CLV/profit failure.
+- Validated the cached runner again after wiring edge-failure diagnosis into the pipeline; rebuilt `dashboard.html`.
+- Added `sweep_side_suppression.py` to test YES suppression and NO-only policies with nested monthly walk-forward selection.
+- Validated the cached runner with the side-suppression step included; the pipeline now runs 39 cached steps and remains green.
+- Added `audit_no_regimes.py` and expanded NO-side audit buckets for calibrated NO-only market-regime diagnosis.
+- Validated the cached runner with the NO-regime audit included; the pipeline now runs 40 cached steps and remains green.
+- Added `audit_no_calibration.py` to compare calibrated NO win probabilities against settlement outcomes and CLV buckets.
+- Added `sweep_no_calibration_guardrails.py` for research-only walk-forward testing of NO price and forecast-probability filters.
+- Validated the cached runner with NO calibration and guardrail stages included; the pipeline now runs 42 cached steps and remains green.
+- Rebuilt `dashboard.html` after the full cached run.
+- Replaced the static dashboard with a simpler sports-prediction layout: Upcoming Games, Best Spots, Backtest, and Model Info.
+- Added conservative frontend bet sizing tied to a user-entered portfolio amount, capped at 5% of bankroll.
+- Added a client-side backtest view with bankroll/date/edge controls, simple result cards, a bankroll chart, and example bets.
+- Cleaned up the dashboard navigation to Upcoming Games, Backtest, and Model Info, and made team-specific odds/edge labels explicit on each game card.
+- Audited and cleaned the project tree: archived old Streamlit dashboard files, placeholder notebooks, generated test/probe outputs, and a nested duplicate project folder; deleted obvious bytecode/temp junk where Windows allowed it.
+- Added `CLEANUP_REPORT.md` documenting the active workflow, kept files, archived files, deleted files, and remaining questionable folders.
+- Added `audit_player_data.py` and player-data coverage reports showing the current cache has 216,475 player-game rows, 8 seasons, and 100% row coverage for 23 player rotation feature columns.
+- Wired the player-data audit into the single-game research pipeline after feature building.
+- Ran the team-only versus player-aware model comparison; player-aware features are slightly better in both single split and walk-forward metrics.
+- Added the configured empty injury/availability input file at `data/raw/nba/injuries/availability.csv`; keep filling it from free/allowed sources or use `availability_template.csv`.
+- Added conservative two-leg parlay recommendation logic and reports, blocked until single-game proof gates pass and excluding same-game parlays.
+- Added `compare_player_market_edges.py`: player-aware features improve both model metrics and realistic Kalshi-price market metrics, but the raw strategy remains negative.
+- Added player-aware/team-only edge agreement sweeps; NO-side player-edge-higher filters are promising descriptively but still fail walk-forward selection.
+- Added a simple dashboard Parlays tab backed by `parlay_recommendations.csv`, showing a blocked state until single-game proof gates pass.
+- Extended NO guardrail sweeps with player-edge agreement policies and added a calibrated player-agreement NO guardrail report.
+- Validated the cached end-to-end pipeline with the new player, NO-guardrail, parlay, shrinkage, residual-guardrail, and dashboard steps; it now runs 51 steps in cached mode.
+- Added a research-only NO probability shrinkage sweep to test conservative NO probability haircuts before trusting NO-side edges.
+- Added a best-price-aware residual guardrail pipeline step so the current calibration artifact gets the same prior-history fail-closed test as the older default calibration output.
+- Wired existing rest/back-to-back schedule context into the defensive failure-month audit.
+- Added `pregame_best_le_120m` candle extraction so matched markets keep the best tradable bid/ask candle within two hours of official tipoff.
+- Updated game-start-time refresh logic to prefer NBA Stats official scoreboard data, fall back to ESPN, and avoid overwriting an existing cache if refresh requests fail.
+- Added `--refresh-game-times` to candle refresh commands and narrowed matched-game start-time refreshes to Kalshi-matched games.
+- Added `compare_pregame_snapshot_entries.py` and wired it into the repeatable pipeline to compare fixed 60m, fixed 30m, best <=120m, and current-default entry snapshots.
+- Validated the cached end-to-end pipeline with snapshot comparison included; it now runs 52 steps in cached mode.
+- Added `audit_availability_gaps.py` and availability-gap reports so missing free/manual player availability statuses are explicit and ranked by impact.
+- Added `audit_snapshot_clv.py` and snapshot CLV distribution reports to test whether the best <=120m entry snapshot improvement is broad-based.
+- Validated the cached end-to-end pipeline with the snapshot CLV audit and prior-month CLV slice sweep included; it now runs 55 steps in cached mode with dashboard build, or 54 steps with `-SkipDashboard`.
+- Added `sweep_prior_clv_slice_filters.py` to test prior-month-only side/price/edge/liquidity CLV filters directly on calibrated candidates.
+- Added `sweep_market_anchor.py` to test research-only probability blends that shrink model odds toward Kalshi market mid before two-sided backtesting.
+
+## Current
+- SportsGameOdds is live as a second NBA player-prop source (2026-06-11): probe + first collection succeeded (710 rows, 6 books, SAS@NYK Finals game), wired into config/sportsgameodds.yaml, the master prop pipeline, the dashboard, and tests. Quota: 2,500 entities/month; ~1 event = 1 entity; usage guard floor 300.
+- API-Sports is probe-only and BLOCKED for current-season data on the free plan (seasons 2022-2024 only); see data/reports/apisports_probe.md. No collector built, per the proof-first rule.
+- Cross-source prop comparison reports exist but show no overlap yet (sources collected different game windows); overlap is expected once The Odds API horizon reaches the next Finals game. After agreement is verified, consider lowering the Odds API NBA event cap (see the SportsGameOdds offload section of odds_api_quota_report.md).
+- Cached end-to-end pipeline is green. Current outputs correctly show no actionable bets because proof gates remain `not_proven`.
+- Use `edge_failure_worst_segments.csv` as the next model-research guide.
+- Side suppression result is research-only: `no_only` is descriptively best, but nested walk-forward is still `not_ready`.
+- NO regime audit says bid/ask spread is not the cause; low positive-CLV frequency persists across most NO price/liquidity regimes.
+- Current hypothesis under test: NO-only may have small market-movement signal but overconfident settlement calibration.
+- NO guardrail sweep is now part of the pipeline; use it to reject hindsight-only NO filters.
+- Latest NO guardrail walk-forward result is `not_ready`: 57 signals, -0.07c average CLV, 26.3% positive CLV.
+- Dashboard is now user-facing and simple; live suggestions still show `No bet` while proof gates remain `not_proven`.
+- Keep the single-game edge status as not proven until CLV and walk-forward gates improve.
+- Cleanup validation passes: dashboard build succeeds, dashboard JavaScript parses, and `python -m unittest discover tests` passes.
+- Player-data audit status is `ready`; the current missing player-adjacent input is free/manual availability data (`data/raw/nba/injuries/availability.csv`).
+- Parlay recommendation status is `blocked_single_game_edge_not_proven`, which is expected until single-game proof gates pass.
+- Player market comparison decision is `player_features_help_market_edge`: +0.04c average CLV, +1.9 percentage points positive CLV rate, and improved return versus team-only, but still not profitable.
+- Player/team agreement sweep status is `not_ready`; descriptive NO-only agreement filters should guide research but must not become betting logic yet.
+- Calibrated player-agreement NO guardrail status is `not_ready`; player-edge-higher NO slices remain descriptive research only.
+- NO probability shrinkage is the current calibration hypothesis: keep it research-only unless it improves month-by-month CLV, profit, and repeatability.
+- Best-price-aware residual guardrails should be inspected alongside NO shrinkage; both are research-only until proof gates pass.
+- Latest cached pipeline status remains correct: single-game proof is `not_proven`, fair-price bets are zero, and parlay recommendations are blocked.
+- Defensive failure audits now use schedule context from `data/processed/modeling_dataset.parquet` when available.
+- Candle coverage now includes `pregame_best_le_120m`: current cache has 1,231 matched markets with a usable two-hour-window pregame snapshot.
+- Latest backtest has 1,224 usable pregame-price markets and remains negative: ending bankroll $28.90 from $100.00, average CLV -0.03c.
+- Snapshot comparison is research-only: `best_le_120m` has the best average CLV (+0.05c) and better ending bankroll ($37.11), but still loses money and does not pass proof gates.
+- Availability gap status is `needs_availability_input`: 240 template rows are missing statuses, including 121 high-impact player rows across 12 games.
+- Snapshot CLV audit status is `not_ready`: best <=120m signals have +0.05c average CLV, but only 11.7% positive CLV and 81.5% flat CLV, so the improvement is not broad enough to promote.
+- Prior-month CLV slice filter status is `not_ready`: best policy has only 34 signals and 20.6% positive CLV, so simple historical slices do not rescue the proof gates.
+- Market-anchor sweep status is `not_ready`: small samples can show profit, but the best broad setting still has negative average CLV (-0.15c) and only 21.6% positive CLV.
+
+## Next
+- From VS Code, run `.\run_cached_pipeline.bat` for the default cached pipeline.
+- To refresh official NBA start times before candle extraction, run `python scripts\kalshi_download_candles.py --refresh-game-times` from an activated environment; it now prefers NBA Stats and preserves the existing cache on total refresh failure.
+- From an activated PowerShell `.venv`, rerun `python scripts\run_single_game_research_pipeline.py --kalshi-start-date 2023-10-01 --kalshi-end-date 2026-05-11`.
+- If market pulls become slow or rate-limited, rerun with `--skip-market-pull --skip-candles` to validate downstream cached-data stages.
+- Explore model-side improvements or additional free features that improve price movement, not just settlement variance.
+- Consider schedule context/rest features in residual and CLV audits if the existing feature table exposes them cleanly.
+- Investigate the worst edge-failure segments before adding new model types or loosening betting gates.
+- Investigate why NO-only improves average CLV only marginally and still has low positive CLV frequency.
+- Use `no_calibration_*` outputs to decide whether the next fix is probability recalibration, feature work, or stricter NO market filters.
+- Inspect `no_calibration_guardrail_*` after each run; only promote a NO filter if it improves out-of-sample CLV frequency and repeatability.
+- Continue blocking parlay work until single-game proof gates pass.
+- Add real team logo assets only if a reliable local source is added; current dashboard uses team-color initials as a no-network fallback.
+- Investigate why `.pip_tmp` and `tmpmvt2s4u0` are locked on Windows before deleting them manually.
+- Compare player-aware versus team-only features on the current data and promote only changes that improve walk-forward CLV/backtest behavior.
+- Add or maintain free injury/availability input if reliable data is available; otherwise keep the manual availability template path.
+- Improve the single-game strategy enough to pass proof gates before exposing parlays in the dashboard.
+- Once proof gates pass, run `scripts/build_parlay_recommendations.py` and add a simple dashboard Parlays tab from `parlay_recommendations.csv`.
+- Use the player/team agreement reports to design the next NO-side calibration hypothesis, then validate it with month-by-month walk-forward before touching fair-price betting gates.
+- The next useful model hypothesis is not a frontend change: improve NO probability calibration or add availability/injury data, because player-edge agreement alone did not fix walk-forward CLV.
+- Use `snapshot_clv_best_le_120m_by_side_price.csv` and `snapshot_clv_best_le_120m_by_side_month.csv` to decide whether any entry-time change is worth a walk-forward rule; do not switch the default entry snapshot from 60m unless proof gates improve.
+- Use `prior_clv_slice_filter_policies.csv` as a rejection report for simple slice filters; the next useful research step needs better features/calibration, not looser side/price slicing.
+- Use `market_anchor_sweep.csv` as a calibration rejection report; market shrinkage alone reduces overconfidence but does not prove repeatable line-beating edge.

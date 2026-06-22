@@ -7,9 +7,9 @@ import time
 from pathlib import Path
 
 import pandas as pd
-from tqdm import tqdm
 
 from .cache import league_game_log_cache_path, read_dataframe, write_dataframe
+from .progress import tqdm
 
 
 logger = logging.getLogger(__name__)

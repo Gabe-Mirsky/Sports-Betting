@@ -34,23 +34,31 @@ def prepare_portfolio_candidates(
 
     if trades.empty:
         return pd.DataFrame()
-    required = ["date", "game_id", "market_ticker", "price_cents", "model_yes_prob", "edge", "actual_yes_win"]
+    required = ["date", "game_id", "market_ticker", "price_cents", "edge", "actual_yes_win"]
     missing = [column for column in required if column not in trades.columns]
     if missing:
         raise ValueError(f"Trade file is missing portfolio columns: {missing}")
+    if "model_prob" not in trades.columns and "model_yes_prob" not in trades.columns:
+        raise ValueError("Trade file must include model_prob or model_yes_prob.")
 
     candidates = trades.copy()
     candidates["date"] = pd.to_datetime(candidates["date"], errors="coerce")
     candidates["price_cents"] = pd.to_numeric(candidates["price_cents"], errors="coerce")
-    candidates["model_yes_prob"] = pd.to_numeric(candidates["model_yes_prob"], errors="coerce")
+    if "model_prob" not in candidates.columns:
+        candidates["model_prob"] = candidates["model_yes_prob"]
+    candidates["model_prob"] = pd.to_numeric(candidates["model_prob"], errors="coerce")
+    if "model_yes_prob" in candidates.columns:
+        candidates["model_yes_prob"] = pd.to_numeric(candidates["model_yes_prob"], errors="coerce")
+    else:
+        candidates["model_yes_prob"] = candidates["model_prob"]
     candidates["edge"] = pd.to_numeric(candidates["edge"], errors="coerce")
-    candidates = candidates.dropna(subset=["date", "price_cents", "model_yes_prob", "edge"]).copy()
+    candidates = candidates.dropna(subset=["date", "price_cents", "model_prob", "edge"]).copy()
     if trade_column in candidates.columns:
         candidates = candidates[_is_true(candidates[trade_column])].copy()
     candidates = candidates[candidates["edge"] >= float(min_edge)].copy()
     candidates["contract_cost"] = candidates["price_cents"] / 100.0
     candidates = candidates[(candidates["contract_cost"] > 0) & (candidates["contract_cost"] < 1)].copy()
-    candidates["expected_profit_per_share"] = candidates["model_yes_prob"] - candidates["contract_cost"]
+    candidates["expected_profit_per_share"] = candidates["model_prob"] - candidates["contract_cost"]
     candidates["expected_roi"] = candidates["expected_profit_per_share"] / candidates["contract_cost"]
     if expected_roi_column and expected_roi_column in candidates.columns:
         candidates["selection_expected_roi"] = pd.to_numeric(candidates[expected_roi_column], errors="coerce")
@@ -156,7 +164,12 @@ def optimize_individual_bet_slate(
 
             cost = shares * contract_cost
             actual_yes_win = str(row["actual_yes_win"]).lower() in ["true", "1", "yes"]
-            payout = float(shares) if actual_yes_win else 0.0
+            if "actual_contract_win" in row.index:
+                actual_contract_win = str(row["actual_contract_win"]).lower() in ["true", "1", "yes"]
+            else:
+                side = str(row.get("calibrated_side", row.get("candidate_side", row.get("side", "")))).upper()
+                actual_contract_win = (not actual_yes_win) if side == "NO" else actual_yes_win
+            payout = float(shares) if actual_contract_win else 0.0
             profit = payout - cost
             remaining_slate_budget -= cost
             selected_count += 1
@@ -174,6 +187,10 @@ def optimize_individual_bet_slate(
                     "away_team_abbr": row.get("away_team_abbr", ""),
                     "yes_team_abbr": row.get("yes_team_abbr", ""),
                     "model_yes_prob": row["model_yes_prob"],
+                    "model_prob": row["model_prob"],
+                    "side": row.get("side", ""),
+                    "candidate_side": row.get("candidate_side", ""),
+                    "calibrated_side": row.get("calibrated_side", ""),
                     "market_prob": row.get("market_prob", np.nan),
                     "edge": row["edge"],
                     "expected_roi": row["expected_roi"],
@@ -184,6 +201,7 @@ def optimize_individual_bet_slate(
                     "payout": payout,
                     "profit": profit,
                     "actual_yes_win": actual_yes_win,
+                    "actual_contract_win": actual_contract_win,
                     "bankroll_before_slate": bankroll_before_slate,
                     "slate_date": pd.Timestamp(slate_date),
                     "involved_team_abbrs": ",".join(involved_teams),

@@ -31,13 +31,24 @@ def summarize_signal_stability(
     frame = frame.dropna(subset=["date"]).copy()
     frame["signal"] = _coerce_bool(frame[signal_column])
     frame["actual_yes_win"] = _coerce_bool(frame["actual_yes_win"])
+    if "actual_contract_win" in frame.columns:
+        frame["actual_contract_win"] = _coerce_bool(frame["actual_contract_win"])
+    elif "calibration_side" in frame.columns:
+        side = frame["calibration_side"].fillna("").astype(str).str.upper()
+        frame["actual_contract_win"] = frame["actual_yes_win"].where(~side.eq("NO"), ~frame["actual_yes_win"])
+    elif "candidate_side" in frame.columns:
+        side = frame["candidate_side"].fillna("").astype(str).str.upper()
+        frame["actual_contract_win"] = frame["actual_yes_win"].where(~side.eq("NO"), ~frame["actual_yes_win"])
+    else:
+        side = frame.get("side", pd.Series("", index=frame.index)).fillna("").astype(str).str.upper()
+        frame["actual_contract_win"] = frame["actual_yes_win"].where(~side.eq("NO"), ~frame["actual_yes_win"])
     if "realized_profit_per_share" in frame.columns:
         frame["realized_profit_per_share"] = pd.to_numeric(frame["realized_profit_per_share"], errors="coerce")
     else:
         cost_column = "contract_cost" if "contract_cost" in frame.columns else "market_prob"
         frame[cost_column] = pd.to_numeric(frame[cost_column], errors="coerce")
         frame["realized_profit_per_share"] = np.where(
-            frame["actual_yes_win"],
+            frame["actual_contract_win"],
             1.0 - frame[cost_column],
             -frame[cost_column],
         )
@@ -62,7 +73,7 @@ def summarize_signal_stability(
         signals.groupby("month", as_index=False)
         .agg(
             signals=("signal", "size"),
-            win_rate=("actual_yes_win", "mean"),
+            win_rate=("actual_contract_win", "mean"),
             avg_profit_per_share=("realized_profit_per_share", "mean"),
             total_profit_per_share=("realized_profit_per_share", "sum"),
             avg_edge=("edge", "mean"),
@@ -84,7 +95,7 @@ def summarize_signal_stability(
         "months": int(len(monthly)),
         "positive_months": positive_months,
         "positive_month_share": float(positive_months / len(monthly)) if len(monthly) else 0.0,
-        "overall_win_rate": float(signals["actual_yes_win"].mean()),
+        "overall_win_rate": float(signals["actual_contract_win"].mean()),
         "overall_avg_profit_per_share": float(signals["realized_profit_per_share"].mean()),
         "worst_month": str(monthly.loc[worst_index, "month"]) if len(monthly) else None,
         "worst_month_avg_profit_per_share": float(monthly.loc[worst_index, "avg_profit_per_share"])

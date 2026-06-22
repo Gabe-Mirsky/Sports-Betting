@@ -7,10 +7,20 @@ import time
 from datetime import date, datetime, timedelta
 
 import pandas as pd
-from nba_api.stats.endpoints import scoreboardv2, scoreboardv3
 
 
 logger = logging.getLogger(__name__)
+
+
+def _load_nba_scoreboard_endpoints():
+    try:
+        from nba_api.stats.endpoints import scoreboardv2, scoreboardv3
+    except ModuleNotFoundError as exc:
+        raise RuntimeError(
+            "nba_api is required to fetch official NBA scoreboard data. "
+            "Install project requirements before running live scoreboard refreshes."
+        ) from exc
+    return scoreboardv2, scoreboardv3
 
 
 def _to_naive_datetime(values: pd.Series) -> pd.Series:
@@ -210,10 +220,12 @@ def fetch_scoreboard_games(
     retries: int = 3,
     sleep_seconds: float = 1.5,
     timeout: int = 30,
+    log_warnings: bool = True,
 ) -> pd.DataFrame:
     """Fetch scheduled NBA games for one date from ScoreboardV2."""
 
     date_text = pd.Timestamp(game_date).date().isoformat()
+    scoreboardv2, scoreboardv3 = _load_nba_scoreboard_endpoints()
     last_error: Exception | None = None
     for attempt in range(1, retries + 1):
         try:
@@ -234,13 +246,14 @@ def fetch_scoreboard_games(
             )
         except Exception as exc:  # pragma: no cover - network failures vary
             last_error = exc
-            logger.warning(
-                "Scoreboard request failed for %s on attempt %s/%s: %s",
-                date_text,
-                attempt,
-                retries,
-                exc,
-            )
+            if log_warnings:
+                logger.warning(
+                    "Scoreboard request failed for %s on attempt %s/%s: %s",
+                    date_text,
+                    attempt,
+                    retries,
+                    exc,
+                )
             if attempt < retries:
                 time.sleep(sleep_seconds * attempt)
     raise RuntimeError(f"Could not fetch scoreboard for {date_text}") from last_error

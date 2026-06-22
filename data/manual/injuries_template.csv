@@ -1,0 +1,7 @@
+team,player_name,status,injury_type,position,importance_score,expected_minutes_or_role,last_updated,return_estimate
+Tunisia,Example Striker,out,hamstring,FW,0.9,star,2026-06-19T12:00:00,2026-07-05
+Tunisia,Example Fullback,doubtful,knock,DF,0.55,starter,2026-06-19T12:00:00,2026-06-22
+Japan,Example Winger,questionable,ankle,FW,0.8,star,2026-06-19T12:00:00,unknown
+Japan,Example Holding Mid,probable,illness,MF,0.65,starter,2026-06-19T12:00:00,2026-06-20
+South Korea,Example Keeper,available,none,GK,0.7,starter,2026-06-19T12:00:00,n/a
+Australia,Example Bench Forward,unknown,undisclosed,FW,0.25,bench,2026-06-19T12:00:00,unknown

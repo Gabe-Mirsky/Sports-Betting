@@ -23,6 +23,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
+from data.seasons import TRAIN_START_SEASON
 from models.train_model import available_feature_columns
 
 
@@ -183,7 +184,7 @@ def _fit_predict_target(
 def walk_forward_margin_total_models(
     modeling_df: pd.DataFrame,
     games_df: pd.DataFrame | None = None,
-    train_start_season: int = 2018,
+    train_start_season: int = TRAIN_START_SEASON,
     first_test_season: int | None = None,
     last_test_season: int | None = None,
     model_type: str = "ridge",
@@ -422,7 +423,7 @@ def train_market_type_models_and_save(
     metrics_output_path: str | Path,
     calibration_output_path: str | Path | None = None,
     calibration_summary_output_path: str | Path | None = None,
-    train_start_season: int = 2018,
+    train_start_season: int = TRAIN_START_SEASON,
     first_test_season: int | None = None,
     last_test_season: int | None = None,
     model_type: str = "ridge",

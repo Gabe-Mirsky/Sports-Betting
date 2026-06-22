@@ -1,0 +1,53 @@
+{% extends "predictions/base.html" %}
+
+{% block title %}Recommended parlays{% endblock %}
+
+{% block content %}
+<div class="section-head"><h1>Recommended parlays</h1></div>
+<p class="lede">The model picks a few parlays it likes and explains why. A parlay only wins if
+   <b>every</b> pick wins, so more legs means a bigger payout but a smaller chance. These are
+   model-implied ideas, not betting advice.</p>
+
+{% if recommendations %}
+  <div class="rec-grid">
+    {% for rec in recommendations %}
+    <article class="rec-card card">
+      <div class="rec-head">
+        <h2>{{ rec.title }}</h2>
+        <span class="badge badge-high">{{ rec.combined_probability_pct }}% to hit</span>
+      </div>
+
+      <ol class="rec-legs">
+        {% for leg in rec.legs %}
+          <li>
+            <span class="leg-main">{{ leg.pick_label }}</span>
+            <span class="leg-sub">{{ leg.match_label }}{% if leg.league %} · {{ leg.league }}{% endif %}</span>
+            <span class="leg-prob">{{ leg.probability_pct }}%</span>
+          </li>
+        {% endfor %}
+      </ol>
+
+      <div class="rec-metrics">
+        <div class="metric"><span class="metric-label">Combined chance</span><span class="metric-val">{{ rec.combined_probability_pct }}%</span></div>
+        <div class="metric"><span class="metric-label">Fair decimal</span><span class="metric-val">{{ rec.fair_decimal_odds|default:"n/a" }}</span></div>
+        <div class="metric"><span class="metric-label">Fair American</span><span class="metric-val">{{ rec.fair_american_odds }}</span></div>
+      </div>
+
+      <div class="rec-why">
+        <h3>Why this parlay</h3>
+        <ul class="reason-list">
+          {% for line in rec.rationale %}<li>{{ line }}</li>{% endfor %}
+        </ul>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  <p class="muted">Want to build your own? Try the
+     <a href="{% url 'predictions:parlay_creator' %}">parlay creator</a>.</p>
+{% else %}
+  <div class="empty">
+    Not enough strong picks to recommend a parlay right now. Check the
+    <a href="{% url 'predictions:list' %}">predictions</a> or add more data.
+  </div>
+{% endif %}
+{% endblock %}

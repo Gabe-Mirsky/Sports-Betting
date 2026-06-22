@@ -73,6 +73,31 @@ class TestPortfolio(unittest.TestCase):
         self.assertEqual(candidates["market_ticker"].tolist(), ["A"])
         self.assertAlmostEqual(float(candidates.loc[0, "selection_expected_roi"]), 0.08)
 
+    def test_prepare_candidates_uses_side_specific_model_probability(self) -> None:
+        trades = pd.DataFrame(
+            [
+                {
+                    "date": "2025-01-01",
+                    "game_id": "g1",
+                    "market_ticker": "A",
+                    "calibrated_trade": True,
+                    "price_cents": 40,
+                    "model_yes_prob": 0.30,
+                    "model_prob": 0.70,
+                    "edge": 0.30,
+                    "actual_yes_win": False,
+                }
+            ]
+        )
+
+        candidates = prepare_portfolio_candidates(
+            trades,
+            min_edge=0.05,
+            trade_column="calibrated_trade",
+        )
+
+        self.assertAlmostEqual(float(candidates.loc[0, "expected_profit_per_share"]), 0.30)
+
     def test_optimizer_limits_one_market_per_game_and_reports_timeline(self) -> None:
         trades = pd.DataFrame(
             [

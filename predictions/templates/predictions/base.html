@@ -1,0 +1,46 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Matchup Predictions{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'predictions/css/style.css' %}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="{% url 'predictions:home' %}">
+        <span class="brand-mark">◎</span> Matchup&nbsp;Predictor
+      </a>
+      <nav class="nav">
+        <a href="{% url 'predictions:list' %}">Predictions</a>
+        <a href="{% url 'predictions:leaderboard' %}">Leaderboard</a>
+        <a href="{% url 'predictions:recommendations' %}">Recommended</a>
+        <a href="{% url 'predictions:parlay_creator' %}">Parlay Creator</a>
+        <a href="{% url 'predictions:how_it_works' %}">How It Works</a>
+        <a href="{% url 'predictions:add' %}">Add</a>
+        <a href="{% url 'predictions:about' %}">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    {% if messages %}
+      <div class="messages">
+        {% for message in messages %}
+          <div class="flash flash-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Model-implied probabilities &mdash; not sportsbook odds or betting recommendations.</p>
+    </div>
+  </footer>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

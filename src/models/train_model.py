@@ -23,6 +23,13 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
+from data.seasons import (
+    TEST_SEASON,
+    TRAIN_END_SEASON,
+    TRAIN_START_SEASON,
+    VALIDATION_SEASON,
+    assign_dataset_split,
+)
 from models.evaluate import evaluate_binary_probabilities
 from models.predict import predict_game_probabilities
 
@@ -209,43 +216,48 @@ def make_model_candidates(random_seed: int = 42) -> dict[str, Any]:
 
 def time_based_split(
     modeling_df: pd.DataFrame,
-    train_start_season: int,
-    train_end_season: int,
-    test_season: int | None = None,
-) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Split games by season without shuffling."""
+    train_start_season: int = TRAIN_START_SEASON,
+    train_end_season: int = TRAIN_END_SEASON,
+    validation_season: int = VALIDATION_SEASON,
+    test_season: int = TEST_SEASON,
+) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    """Split games by fixed chronological seasons without shuffling."""
 
-    working = modeling_df.sort_values(["game_date", "game_id"]).copy()
-    train = working[
-        (working["season"] >= train_start_season) & (working["season"] <= train_end_season)
-    ].copy()
+    working = assign_dataset_split(
+        modeling_df,
+        train_start_season=train_start_season,
+        train_end_season=train_end_season,
+        validation_season=validation_season,
+        test_season=test_season,
+        allow_outside=True,
+    ).sort_values(["game_date", "game_id"]).copy()
+    train = working[working["dataset_split"].eq("train")].copy()
+    validation = working[working["dataset_split"].eq("validation")].copy()
+    test = working[working["dataset_split"].eq("test")].copy()
 
-    if test_season is None:
-        later_seasons = sorted(working.loc[working["season"] > train_end_season, "season"].dropna().unique())
-        if not later_seasons:
-            raise ValueError("No season is available after the training window.")
-        test_season = int(later_seasons[0])
-
-    test = working[working["season"] == test_season].copy()
     if train.empty:
         raise ValueError("Training split is empty. Check train_start_season/train_end_season.")
+    if validation.empty:
+        raise ValueError(f"Validation split is empty for season {validation_season}.")
     if test.empty:
-        later_seasons = sorted(working.loc[working["season"] > train_end_season, "season"].dropna().unique())
-        if not later_seasons:
-            raise ValueError("Test split is empty and no later seasons are available.")
-        fallback = int(later_seasons[-1])
-        logger.warning("Configured test season %s is empty; using %s instead", test_season, fallback)
-        test = working[working["season"] == fallback].copy()
+        raise ValueError(f"Test split is empty for season {test_season}.")
 
-    return train, test
+    train_seasons = set(pd.to_numeric(train["season"], errors="coerce").dropna().astype(int))
+    forbidden = {validation_season, test_season}
+    leaked = sorted(train_seasons & forbidden)
+    if leaked:
+        raise ValueError(f"Training data contains held-out seasons: {leaked}")
+
+    return train, validation, test
 
 
 def train_models(
     modeling_df: pd.DataFrame,
     target_column: str = "target_home_win",
-    train_start_season: int = 2018,
-    train_end_season: int = 2023,
-    test_season: int | None = 2024,
+    train_start_season: int = TRAIN_START_SEASON,
+    train_end_season: int = TRAIN_END_SEASON,
+    validation_season: int = VALIDATION_SEASON,
+    test_season: int = TEST_SEASON,
     random_seed: int = 42,
     feature_columns: list[str] | None = None,
 ) -> tuple[dict[str, Any], dict[str, Any], pd.DataFrame]:
@@ -257,15 +269,28 @@ def train_models(
         raise ValueError(f"Target column not found: {target_column}")
 
     feature_columns = available_feature_columns(modeling_df, feature_columns)
-    train, test = time_based_split(
+    train, validation, test = time_based_split(
         modeling_df,
         train_start_season=train_start_season,
         train_end_season=train_end_season,
+        validation_season=validation_season,
         test_season=test_season,
+    )
+
+    print(
+        "Dataset split counts before training: "
+        f"train={len(train):,}, validation={len(validation):,}, test={len(test):,}"
+    )
+    print(
+        "Leakage checks passed: no "
+        f"{validation_season}-{(validation_season + 1) % 100:02d} or "
+        f"{test_season}-{(test_season + 1) % 100:02d} games appear in training."
     )
 
     x_train = train[feature_columns]
     y_train = train[target_column].astype(int)
+    x_validation = validation[feature_columns]
+    y_validation = validation[target_column].astype(int)
     x_test = test[feature_columns]
     y_test = test[target_column].astype(int)
 
@@ -273,16 +298,22 @@ def train_models(
         "split": {
             "train_start_season": train_start_season,
             "train_end_season": train_end_season,
-            "test_season": int(test["season"].iloc[0]),
+            "validation_season": validation_season,
+            "test_season": test_season,
             "train_rows": int(len(train)),
+            "validation_rows": int(len(validation)),
             "test_rows": int(len(test)),
         },
         "features": feature_columns,
         "models": {},
+        "final_test": {},
     }
 
-    elo_metrics = evaluate_binary_probabilities(y_test, test["elo_home_win_prob"])
-    metrics["models"]["elo_baseline"] = elo_metrics
+    metrics["models"]["elo_baseline"] = evaluate_binary_probabilities(
+        y_validation,
+        validation["elo_home_win_prob"],
+    )
+    metrics["final_test"]["elo_baseline"] = evaluate_binary_probabilities(y_test, test["elo_home_win_prob"])
 
     candidates = make_model_candidates(random_seed=random_seed)
     trained_models: dict[str, Any] = {}
@@ -290,9 +321,9 @@ def train_models(
         logger.info("Training %s on %s games", name, len(train))
         try:
             model.fit(x_train, y_train)
-            probabilities = model.predict_proba(x_test)[:, 1]
+            probabilities = model.predict_proba(x_validation)[:, 1]
             trained_models[name] = model
-            metrics["models"][name] = evaluate_binary_probabilities(y_test, probabilities)
+            metrics["models"][name] = evaluate_binary_probabilities(y_validation, probabilities)
         except Exception as exc:
             logger.warning("Skipping %s because training failed: %s", name, exc)
             metrics["models"][name] = {"error": str(exc)}
@@ -308,6 +339,8 @@ def train_models(
 
     best_model_name = min(trained_models, key=score_for_selection)
     metrics["best_model"] = best_model_name
+    test_probabilities = trained_models[best_model_name].predict_proba(x_test)[:, 1]
+    metrics["final_test"][best_model_name] = evaluate_binary_probabilities(y_test, test_probabilities)
     predictions = predict_game_probabilities(
         {
             "model": trained_models[best_model_name],
@@ -317,17 +350,20 @@ def train_models(
     )
     predictions["actual_home_win"] = y_test.to_numpy()
     predictions["split"] = "test"
+    predictions["dataset_split"] = "test"
 
     final_model = clone(trained_models[best_model_name])
-    final_model.fit(modeling_df[feature_columns], modeling_df[target_column].astype(int))
-    metrics["final_fit_rows"] = int(len(modeling_df))
+    final_model.fit(x_train, y_train)
+    metrics["final_fit_rows"] = int(len(train))
+    metrics["final_fit_split"] = "train"
 
     best_bundle = {
         "model": final_model,
         "model_name": best_model_name,
         "feature_columns": feature_columns,
         "target_column": target_column,
-        "final_fit_rows": int(len(modeling_df)),
+        "final_fit_rows": int(len(train)),
+        "final_fit_split": "train",
     }
     return best_bundle, metrics, predictions
 
@@ -338,9 +374,10 @@ def train_and_save(
     metrics_output_path: str | Path,
     predictions_output_path: str | Path,
     target_column: str = "target_home_win",
-    train_start_season: int = 2018,
-    train_end_season: int = 2023,
-    test_season: int | None = 2024,
+    train_start_season: int = TRAIN_START_SEASON,
+    train_end_season: int = TRAIN_END_SEASON,
+    validation_season: int = VALIDATION_SEASON,
+    test_season: int = TEST_SEASON,
     random_seed: int = 42,
 ) -> tuple[dict[str, Any], dict[str, Any], pd.DataFrame]:
     """Load modeling data, train candidates, and save model artifacts."""
@@ -351,6 +388,7 @@ def train_and_save(
         target_column=target_column,
         train_start_season=train_start_season,
         train_end_season=train_end_season,
+        validation_season=validation_season,
         test_season=test_season,
         random_seed=random_seed,
     )

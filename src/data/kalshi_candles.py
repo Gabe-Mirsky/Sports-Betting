@@ -21,6 +21,8 @@ SNAPSHOT_TARGETS = {
     "pregame_30m": 30,
     "pregame_5m": 5,
 }
+BEST_PREGAME_TARGET = "pregame_best_le_120m"
+BEST_PREGAME_WINDOW_MINUTES = 120
 
 
 def _to_utc_timestamp(value: Any) -> pd.Timestamp | pd.NaT:
@@ -153,9 +155,50 @@ def _download_market_candles(
     return pd.DataFrame()
 
 
+def _download_batch_market_candles(
+    client: KalshiAPIClient,
+    market_tickers: list[str],
+    start_ts: int,
+    end_ts: int,
+    interval: int,
+    batch_size: int = 100,
+) -> pd.DataFrame:
+    """Download recent candles in ticker batches, returning an empty frame on unsupported clients."""
+
+    if not hasattr(client, "get_batch_market_candlesticks"):
+        return pd.DataFrame()
+    frames: list[pd.DataFrame] = []
+    for index in range(0, len(market_tickers), batch_size):
+        batch = market_tickers[index : index + batch_size]
+        try:
+            candles = client.get_batch_market_candlesticks(
+                batch,
+                start_ts,
+                end_ts,
+                interval,
+            )
+        except (AttributeError, TypeError, NotImplementedError):
+            return pd.DataFrame()
+        if candles.empty:
+            continue
+        candles = _with_normalized_candle_columns(candles)
+        candles["period_interval"] = interval
+        candles["endpoint_used"] = "batch_recent"
+        frames.append(candles)
+    if not frames:
+        return pd.DataFrame()
+    return pd.concat(frames, ignore_index=True)
+
+
 def _read_candle_cache(path: Path) -> pd.DataFrame:
     if path.exists():
-        return read_dataframe(path)
+        try:
+            return read_dataframe(path)
+        except RuntimeError:
+            csv_path = path.with_suffix(".csv")
+            if csv_path.exists():
+                return pd.read_csv(csv_path)
+            return pd.DataFrame()
     csv_path = path.with_suffix(".csv")
     if csv_path.exists():
         return pd.read_csv(csv_path)
@@ -181,6 +224,7 @@ def _extract_snapshot(
     snapshot_target: str,
     minutes_before_tipoff: int,
     time_quality: str,
+    max_minutes_before_tipoff: int | None = None,
 ) -> dict[str, Any]:
     base_row = {
         "game_id": game_id,
@@ -205,6 +249,9 @@ def _extract_snapshot(
 
     usable = candles[pd.to_numeric(candles["snapshot_ts"], errors="coerce") <= game_start_ts].copy()
     usable = usable[pd.to_numeric(usable["snapshot_ts"], errors="coerce").notna()]
+    if max_minutes_before_tipoff is not None:
+        earliest_ts = game_start_ts - int(max_minutes_before_tipoff) * 60
+        usable = usable[usable["snapshot_ts"].astype(float).ge(earliest_ts)].copy()
     if usable.empty:
         return base_row
 
@@ -260,6 +307,8 @@ def download_candles_for_matches(
     force: bool = False,
     candle_dir: str | Path | None = None,
     output_path: str | Path | None = None,
+    use_batch: bool = True,
+    batch_size: int = 100,
 ) -> pd.DataFrame:
     """Download candles for matched markets and save extracted pregame prices."""
 
@@ -286,6 +335,9 @@ def download_candles_for_matches(
     rows: list[dict[str, Any]] = []
     intervals = [1, 60, 1440]
     now_ts = int(pd.Timestamp.now(tz="UTC").timestamp())
+    cache: dict[tuple[str, int, int, str], pd.DataFrame] = {}
+    missing_downloads: list[dict[str, Any]] = []
+
     for _, match in matches.iterrows():
         game_id = str(match["game_id"])
         if game_id not in game_lookup.index:
@@ -301,20 +353,7 @@ def download_candles_for_matches(
         candle_path = candle_root / f"{market_ticker}.parquet"
 
         if game_start_ts > now_ts:
-            future_time_quality = f"{time_quality};future_game_not_downloaded"
-            for snapshot_target, minutes in SNAPSHOT_TARGETS.items():
-                rows.append(
-                    _extract_snapshot(
-                        candles=pd.DataFrame(),
-                        game_id=game_id,
-                        market_ticker=market_ticker,
-                        series_ticker=series_ticker,
-                        game_start_ts=game_start_ts,
-                        snapshot_target=snapshot_target,
-                        minutes_before_tipoff=minutes,
-                        time_quality=future_time_quality,
-                    )
-                )
+            cache[(game_id, game_start_ts, 0, market_ticker)] = pd.DataFrame()
             continue
 
         if not force:
@@ -324,19 +363,90 @@ def download_candles_for_matches(
             candles = pd.DataFrame()
 
         if candles.empty:
-            if cutoff_ts is None:
-                cutoff_ts = _extract_cutoff_ts(kalshi.get_historical_cutoff())
-            candles = _download_market_candles(
-                kalshi,
-                market_ticker=market_ticker,
-                series_ticker=series_ticker,
-                start_ts=start_ts,
-                end_ts=game_start_ts,
-                intervals=intervals,
-                cutoff_ts=cutoff_ts,
+            missing_downloads.append(
+                {
+                    "game_id": game_id,
+                    "market_ticker": market_ticker,
+                    "series_ticker": series_ticker,
+                    "start_ts": start_ts,
+                    "end_ts": game_start_ts,
+                    "candle_path": candle_path,
+                }
             )
-            if not candles.empty:
-                _write_candle_cache(candles, candle_path)
+        cache[(game_id, game_start_ts, start_ts, market_ticker)] = candles
+
+    if missing_downloads and cutoff_ts is None:
+        cutoff_ts = _extract_cutoff_ts(kalshi.get_historical_cutoff())
+
+    if use_batch and missing_downloads:
+        for interval in intervals:
+            remaining = [
+                spec for spec in missing_downloads
+                if cache[(spec["game_id"], spec["end_ts"], spec["start_ts"], spec["market_ticker"])].empty
+            ]
+            groups: dict[tuple[int, int], list[dict[str, Any]]] = {}
+            for spec in remaining:
+                if _endpoint_order(int(spec["end_ts"]), cutoff_ts)[0] != "recent":
+                    continue
+                groups.setdefault((int(spec["start_ts"]), int(spec["end_ts"])), []).append(spec)
+            for (start_ts, end_ts), group in groups.items():
+                tickers = [str(spec["market_ticker"]) for spec in group]
+                batch_candles = _download_batch_market_candles(
+                    kalshi,
+                    tickers,
+                    start_ts=start_ts,
+                    end_ts=end_ts,
+                    interval=interval,
+                    batch_size=batch_size,
+                )
+                if batch_candles.empty or "market_ticker" not in batch_candles.columns:
+                    continue
+                for spec in group:
+                    market_ticker = str(spec["market_ticker"])
+                    candles = batch_candles[batch_candles["market_ticker"].astype(str).eq(market_ticker)].copy()
+                    if candles.empty:
+                        continue
+                    series_ticker = str(spec["series_ticker"])
+                    candles["series_ticker"] = series_ticker
+                    cache[(spec["game_id"], spec["end_ts"], spec["start_ts"], market_ticker)] = candles
+                    _write_candle_cache(candles, Path(spec["candle_path"]))
+
+    for spec in missing_downloads:
+        key = (spec["game_id"], spec["end_ts"], spec["start_ts"], spec["market_ticker"])
+        if not cache[key].empty:
+            continue
+        candles = _download_market_candles(
+            kalshi,
+            market_ticker=str(spec["market_ticker"]),
+            series_ticker=str(spec["series_ticker"]),
+            start_ts=int(spec["start_ts"]),
+            end_ts=int(spec["end_ts"]),
+            intervals=intervals,
+            cutoff_ts=cutoff_ts,
+        )
+        if not candles.empty:
+            _write_candle_cache(candles, Path(spec["candle_path"]))
+        cache[key] = candles
+
+    for _, match in matches.iterrows():
+        game_id = str(match["game_id"])
+        if game_id not in game_lookup.index:
+            continue
+        game = game_lookup.loc[game_id]
+        if isinstance(game, pd.DataFrame):
+            game = game.iloc[0]
+        game_start, time_quality = _game_start_timestamp(game)
+        game_start_ts = int(game_start.timestamp())
+        start_ts = game_start_ts - 24 * 60 * 60
+        market_ticker = str(match["market_ticker"])
+        series_ticker = str(match.get("series_ticker") or NBA_GAME_SERIES_TICKER)
+        future_time_quality = f"{time_quality};future_game_not_downloaded"
+        if game_start_ts > now_ts:
+            candles = pd.DataFrame()
+            row_time_quality = future_time_quality
+        else:
+            candles = cache.get((game_id, game_start_ts, start_ts, market_ticker), pd.DataFrame())
+            row_time_quality = time_quality
 
         for snapshot_target, minutes in SNAPSHOT_TARGETS.items():
             rows.append(
@@ -348,9 +458,22 @@ def download_candles_for_matches(
                     game_start_ts=game_start_ts,
                     snapshot_target=snapshot_target,
                     minutes_before_tipoff=minutes,
-                    time_quality=time_quality,
+                    time_quality=row_time_quality,
                 )
             )
+        rows.append(
+            _extract_snapshot(
+                candles=candles,
+                game_id=game_id,
+                market_ticker=market_ticker,
+                series_ticker=series_ticker,
+                game_start_ts=game_start_ts,
+                snapshot_target=BEST_PREGAME_TARGET,
+                minutes_before_tipoff=0,
+                time_quality=row_time_quality,
+                max_minutes_before_tipoff=BEST_PREGAME_WINDOW_MINUTES,
+            )
+        )
 
     prices = pd.DataFrame(rows)
     prices.to_csv(prices_path, index=False)

@@ -1,0 +1,31 @@
+# Render blueprint: a web service + a managed Postgres database.
+# Push this repo to GitHub, then in Render: New > Blueprint, point it at the repo.
+services:
+  - type: web
+    name: matchup-predictor
+    runtime: python
+    plan: free
+    buildCommand: "bash ./build.sh"
+    startCommand: "gunicorn webapp.wsgi --log-file -"
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.10"
+      - key: DJANGO_DEBUG
+        value: "0"
+      - key: DJANGO_SECRET_KEY
+        generateValue: true        # Render generates a strong secret
+      - key: DATABASE_URL
+        fromDatabase:
+          name: matchup-predictor-db
+          property: connectionString
+      # Optional AI reasoning (leave unset to use the offline fallback):
+      - key: AI_PROVIDER
+        sync: false
+      - key: AI_API_KEY
+        sync: false
+      - key: AI_MODEL
+        sync: false
+
+databases:
+  - name: matchup-predictor-db
+    plan: free

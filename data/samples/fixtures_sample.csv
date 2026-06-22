@@ -1,0 +1,5 @@
+fixture_id,date,team_a,team_b,neutral,sport,league,competition_type,venue,status
+fx_jp_tn,2025-04-25,Japan,Tunisia,True,soccer,international_friendly,friendly,Neutral Stadium,scheduled
+fx_br_ar,2025-04-25,Brazil,Argentina,False,soccer,qualifier,qualifier,Maracana,scheduled
+fx_us_mx,2025-04-25,USA,Mexico,False,soccer,qualifier,qualifier,Austin,scheduled
+fx_kr_ir,2025-04-25,South Korea,Iran,True,soccer,tournament,tournament,,scheduled

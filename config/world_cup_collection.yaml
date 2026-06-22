@@ -1,0 +1,77 @@
+# World Cup (FIFA) game-market odds collection config (research-only).
+#
+# This file is SEPARATE from config/prop_collection.yaml on purpose:
+#   * World Cup value is in GAME/TEAM markets (1X2 / match winner, totals,
+#     both-teams-to-score), NOT player props.
+#   * The player-prop schema (src/data/player_prop_schema.py) requires
+#     player_name + prop_type and must NOT be forced to hold game markets.
+# Keeping World Cup config/collection separate means NBA player-prop automation
+# is completely untouched.
+#
+# This file only controls DATA COLLECTION. It enables NO models, recommendations,
+# approved bets, approved parlays, or predictions. collect_only, research-only.
+
+schema_version: 1
+research_only: true
+
+source:
+  enabled: true
+  api_key_env: ODDS_API_KEY
+  base_url: https://api.the-odds-api.com/v4
+  regions: us
+  odds_format: decimal
+
+defaults:
+  # Consider matches starting within this many hours from now.
+  event_horizon_hours: 48
+  # Early-snapshot window: collect an early line when a match is 24-48h out.
+  early_snapshot_min_hours: 24
+  early_snapshot_max_hours: 48
+  # Snapshots within this many minutes of kickoff are "closing-like".
+  closing_window_minutes: 60
+  # A match is treated as ended once it kicked off at least this many minutes
+  # ago (soccer ~ 2h incl. stoppage/half-time), and is still results-checkable
+  # up to postgame_lookback_minutes after kickoff.
+  postgame_after_minutes: 150
+  postgame_lookback_minutes: 420
+  # HARD cap: a single real collection run processes at most this many events.
+  max_events_per_run: 1
+
+# Strict World Cup quota guard. World Cup collection must NEVER drain the Odds
+# API budget that NBA closing-snapshot capture depends on. These are checked
+# against the x-requests-remaining response header BEFORE any credit-spending
+# (odds) request. The /events list endpoint costs 0 credits and is always safe.
+quota:
+  # Skip all World Cup ODDS pulls when remaining monthly credits are below this.
+  # Deliberately stricter than the NBA floor (25) so NBA always wins ties.
+  min_remaining_requests: 100
+  # Never spend more than this many credits in a single World Cup run.
+  max_credits_per_run: 2
+
+# Game/team markets only. The Odds API bulk /sports/{key}/odds endpoint returns
+# every match for the sport and costs (n_markets x n_regions) credits regardless
+# of match count, so h2h+totals for all matches is ~2 credits. Maps the
+# source-native Odds API market key -> canonical world-cup market_type.
+# NO player props: international player props are sparse and cost extra credits;
+# add them only after a probe proves they exist (see audit report).
+markets:
+  h2h: match_winner_1x2
+  totals: total_goals
+  # btts / team_totals need the per-event endpoint; enable deliberately later.
+
+output:
+  raw_dir: data/raw/world_cup
+  processed_path: data/processed/world_cup_odds_snapshots_normalized.csv
+  run_summary_path: data/reports/world_cup_collection_summary.json
+  run_md_path: data/reports/world_cup_collection.md
+  run_history_path: data/reports/world_cup_run_history.jsonl
+  watcher_status_path: data/reports/world_cup_watcher_status.json
+
+# Optional secondary source for results/fixtures only (Phase 7). Probe before
+# use: the free API-Sports/API-Football plan may block the current season.
+results_sources:
+  apisports:
+    enabled: false            # enable only after a successful probe
+    api_key_env: APISPORTS_KEY
+    league_id: 1              # FIFA World Cup
+    season: 2026

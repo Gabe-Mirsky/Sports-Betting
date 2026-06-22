@@ -24,6 +24,8 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Match NBA games to possible Kalshi NBA markets.")
     parser.add_argument("--games-path", default=None)
     parser.add_argument("--markets-path", default=None)
+    parser.add_argument("--output-path", default=None)
+    parser.add_argument("--review-output-path", default=None)
     parser.add_argument("--config", default=None)
     parser.add_argument("--log-level", default="INFO")
     return parser.parse_args()
@@ -44,7 +46,14 @@ def _load_markets(path: Path) -> pd.DataFrame:
 def _default_markets_path() -> Path:
     csv_path = PROJECT_ROOT / "data" / "processed" / "kalshi_possible_nba_markets.csv"
     parquet_path = PROJECT_ROOT / "data" / "processed" / "kalshi_possible_nba_markets.parquet"
-    return csv_path if csv_path.exists() else parquet_path
+    public_path = PROJECT_ROOT / "data" / "processed" / "kalshi_public_possible_nba_markets.csv"
+    if public_path.exists():
+        return public_path
+    if csv_path.exists():
+        return csv_path
+    if parquet_path.exists():
+        return parquet_path
+    return public_path
 
 
 def _load_games(path: Path) -> pd.DataFrame:
@@ -109,7 +118,11 @@ def main() -> None:
         search_days_before=config.kalshi.market_search_days_before_game,
         search_days_after=config.kalshi.market_search_days_after_game,
     )
-    save_match_outputs(matches)
+    save_match_outputs(
+        matches,
+        matches_path=Path(args.output_path) if args.output_path else None,
+        review_path=Path(args.review_output_path) if args.review_output_path else None,
+    )
 
     auto_count = int((matches["match_status"] == "auto_matched").sum())
     review_count = int((matches["match_status"] == "needs_review").sum())
@@ -121,8 +134,14 @@ def main() -> None:
     print(f"Auto matches: {auto_count:,}")
     print(f"Needs review: {review_count:,}")
     print(f"No match: {no_match_count:,}")
-    print(f"Saved matches to: {PROJECT_ROOT / 'data' / 'processed' / 'kalshi_game_market_matches.csv'}")
-    print(f"Saved review file to: {PROJECT_ROOT / 'data' / 'processed' / 'kalshi_matches_needs_review.csv'}")
+    print(
+        "Saved matches to: "
+        f"{Path(args.output_path) if args.output_path else PROJECT_ROOT / 'data' / 'processed' / 'kalshi_game_market_matches.csv'}"
+    )
+    print(
+        "Saved review file to: "
+        f"{Path(args.review_output_path) if args.review_output_path else PROJECT_ROOT / 'data' / 'processed' / 'kalshi_matches_needs_review.csv'}"
+    )
 
 
 if __name__ == "__main__":

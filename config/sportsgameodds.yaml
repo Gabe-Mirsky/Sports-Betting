@@ -1,0 +1,98 @@
+# SportsGameOdds player-prop collection config (research-only).
+#
+# Probe 2026-06-11 (data/reports/sportsgameodds_probe.md) proved:
+#   - key works (tier "amateur"), NBA player props visible with per-book lines
+#   - quota: 10 requests/minute, 2,500 ENTITIES/month
+#   - 1 event ~= 1 entity even with ~1,000 odds objects inside, but metadata
+#     endpoints are expensive (the probe alone consumed 473 entities: stats=353,
+#     markets=100, sports+leagues=19, events=1)
+# => collection spends entities almost exclusively on /events, with a hard
+#    monthly-entity guard checked via /account/usage before every run.
+#
+# This file only controls data collection. No models, recommendations,
+# approved bets, or approved parlays are enabled by anything here.
+
+schema_version: 1
+research_only: true
+
+source:
+  # Enabled because the 2026-06-11 probe proved NBA player props are available
+  # and quota-safe. Disable here to stop all SportsGameOdds requests.
+  enabled: true
+  api_key_env: SPORTSGAMEODDS_API_KEY
+  base_url: https://api.sportsgameodds.com/v2
+
+defaults:
+  # Only collect events starting within this many hours from now.
+  event_horizon_hours: 36
+  # Snapshots within this many minutes of tip are closing-like.
+  closing_window_minutes: 60
+  # Per-league cap on events per run (1 event ~= 1 monthly entity).
+  max_events_per_run: 5
+  # At most this many leagues actually collect per run (priority order).
+  max_leagues_per_run: 2
+
+quota:
+  # Check /account/usage before collecting; skip the run when the remaining
+  # monthly entity budget drops below this floor (protects month-end NBA
+  # closing snapshots). The usage check itself costs requests, not entities.
+  check_usage_before_run: true
+  min_remaining_monthly_entities: 300
+
+output:
+  raw_dir: data/raw/sportsgameodds/player_props
+  source_processed_path: data/processed/player_prop_snapshots_sportsgameodds.csv
+  processed_path: data/processed/player_prop_snapshots_normalized.csv
+  run_summary_path: data/reports/sportsgameodds_collection_summary.json
+  run_md_path: data/reports/sportsgameodds_collection.md
+  run_history_path: data/reports/sportsgameodds_run_history.jsonl
+
+# league_id is the SGO leagueID. Only NBA collects by default: the monthly
+# entity budget (2,500) is reserved for NBA (Finals) line movement + closing
+# snapshots first. Other leagues are configured but disabled (collect-only
+# candidates); enable deliberately after checking the entity math in
+# data/reports/odds_source_usage_summary.md.
+# stat_map entries override/extend the adapter defaults
+# (src/data/sportsgameodds_prop_adapter.py DEFAULT_STAT_MAP).
+leagues:
+  NBA:
+    sport: basketball
+    enabled: true
+    priority: 1
+    league_id: NBA
+  MLB:
+    sport: baseball
+    enabled: false
+    priority: 2
+    league_id: MLB
+    max_events_per_run: 3
+  NHL:
+    sport: hockey
+    enabled: false
+    priority: 3
+    league_id: NHL
+    max_events_per_run: 3
+  NFL:
+    sport: football
+    enabled: false
+    priority: 4
+    league_id: NFL
+    max_events_per_run: 3
+  NCAAB:
+    sport: basketball
+    enabled: false
+    priority: 5
+    league_id: NCAAB
+    max_events_per_run: 3
+  MLS:
+    sport: soccer
+    enabled: false
+    priority: 6
+    league_id: MLS
+    max_events_per_run: 3
+  UEFA_CL:
+    sport: soccer
+    enabled: false
+    priority: 7
+    league_id: UEFA_CHAMPIONS_LEAGUE
+    max_events_per_run: 3

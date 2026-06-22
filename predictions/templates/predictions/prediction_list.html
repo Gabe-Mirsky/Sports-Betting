@@ -1,0 +1,56 @@
+{% extends "predictions/base.html" %}
+
+{% block title %}Predictions{% endblock %}
+
+{% block content %}
+<div class="section-head">
+  <h1>Predictions</h1>
+  <span class="muted">{{ predictions|length }} shown</span>
+</div>
+
+{% include "predictions/_filters.html" with action="" %}
+
+{% if predictions %}
+<div class="table-wrap">
+  <table class="pred-table">
+    <thead>
+      <tr>
+        <th class="col-date">Date</th>
+        <th class="col-sport">Sport</th>
+        <th class="col-league">League</th>
+        <th class="col-teams">Teams</th>
+        <th class="col-pred">Prediction</th>
+        <th class="col-reason">Reasoning</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in predictions %}
+      <tr>
+        <td class="col-date">{{ p.game_date|date:"M j, Y g:i A"|default:"—" }}</td>
+        <td class="col-sport">{{ p.sport|default:"—" }}</td>
+        <td class="col-league">{{ p.league|default:"—" }}</td>
+        <td class="col-teams"><a href="{{ p.get_absolute_url }}">{{ p.team_a }} <span class="vs">vs</span> {{ p.team_b }}</a></td>
+        <td class="col-pred">
+          <span class="pick">{{ p.predicted_outcome }}</span>
+          <span class="probs">
+            <b>{{ p.prob_team_a_win|floatformat:2 }}</b> {{ p.team_a }}
+            {% if p.has_draw %}· <b>{{ p.prob_draw|floatformat:2 }}</b> Draw{% endif %}
+            · <b>{{ p.prob_team_b_win|floatformat:2 }}</b> {{ p.team_b }}
+          </span>
+          <span class="badge badge-{{ p.confidence_level|slugify }}">{{ p.confidence_level }}</span>
+        </td>
+        <td class="col-reason">
+          {% if p.reasons_list %}
+            <ul class="reason-list">{% for r in p.reasons_list %}<li>{{ r }}</li>{% endfor %}</ul>
+          {% endif %}
+          {% if p.risks_list %}<div class="risk-note"><b>Risks:</b> {{ p.risks_list|join:"; " }}</div>{% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+  <div class="empty">No predictions match these filters.</div>
+{% endif %}
+{% endblock %}

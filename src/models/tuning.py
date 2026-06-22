@@ -31,6 +31,13 @@ from models.train_model import (
     RICH_TEAM_FORM_FEATURE_COLUMNS,
     _json_safe,
 )
+from data.seasons import (
+    TEST_SEASON,
+    TRAIN_END_SEASON,
+    TRAIN_START_SEASON,
+    VALIDATION_SEASON,
+    assign_dataset_split,
+)
 from models.walk_forward import available_walk_forward_seasons
 
 
@@ -115,7 +122,7 @@ def evaluate_tuning_candidate(
     modeling_df: pd.DataFrame,
     candidate: TuningCandidate,
     target_column: str = "target_home_win",
-    train_start_season: int = 2018,
+    train_start_season: int = TRAIN_START_SEASON,
     first_test_season: int | None = None,
     last_test_season: int | None = None,
 ) -> tuple[pd.DataFrame, dict[str, Any]]:
@@ -185,13 +192,19 @@ def evaluate_tuning_candidate(
 def tune_home_win_model(
     modeling_df: pd.DataFrame,
     target_column: str = "target_home_win",
-    train_start_season: int = 2018,
+    train_start_season: int = TRAIN_START_SEASON,
+    validation_season: int = VALIDATION_SEASON,
     first_test_season: int | None = None,
     last_test_season: int | None = None,
     random_seed: int = 42,
     selection_metric: str = "log_loss",
 ) -> tuple[pd.DataFrame, pd.DataFrame, dict[str, Any], pd.DataFrame]:
     """Evaluate candidates and return results, best predictions, and best metrics."""
+
+    if first_test_season is None:
+        first_test_season = validation_season
+    if last_test_season is None:
+        last_test_season = validation_season
 
     candidates = make_tuning_candidates(modeling_df, random_seed=random_seed)
     rows: list[dict[str, Any]] = []
@@ -246,23 +259,38 @@ def train_final_tuned_model(
     modeling_df: pd.DataFrame,
     summary: dict[str, Any],
     target_column: str = "target_home_win",
+    train_start_season: int = TRAIN_START_SEASON,
+    train_end_season: int = TRAIN_END_SEASON,
+    validation_season: int = VALIDATION_SEASON,
+    test_season: int = TEST_SEASON,
     random_seed: int = 42,
 ) -> dict[str, Any]:
-    """Fit the tuned best candidate on all completed games."""
+    """Fit the tuned best candidate on the training split only."""
 
     best_model_name = str(summary["best_model_name"])
     best_feature_set = str(summary["best_feature_set"])
     c_value = float(best_model_name.replace("logistic_c_", ""))
     feature_columns = available_feature_sets(modeling_df)[best_feature_set]
+    split_df = assign_dataset_split(
+        modeling_df,
+        train_start_season=train_start_season,
+        train_end_season=train_end_season,
+        validation_season=validation_season,
+        test_season=test_season,
+    )
+    train = split_df[split_df["dataset_split"].eq("train")].copy()
+    if train.empty:
+        raise ValueError("Training split is empty for tuned model final fit.")
     model = logistic_candidate(best_model_name, c_value, random_seed)
-    model.fit(modeling_df[feature_columns], modeling_df[target_column].astype(int))
+    model.fit(train[feature_columns], train[target_column].astype(int))
     return {
         "model": model,
         "model_name": best_model_name,
         "feature_set": best_feature_set,
         "feature_columns": feature_columns,
         "target_column": target_column,
-        "final_fit_rows": int(len(modeling_df)),
+        "final_fit_rows": int(len(train)),
+        "final_fit_split": "train",
         "tuning_summary": summary,
     }
 
@@ -274,7 +302,10 @@ def tune_and_save(
     predictions_output_path: str | Path,
     model_output_path: str | Path,
     target_column: str = "target_home_win",
-    train_start_season: int = 2018,
+    train_start_season: int = TRAIN_START_SEASON,
+    train_end_season: int = TRAIN_END_SEASON,
+    validation_season: int = VALIDATION_SEASON,
+    test_season: int = TEST_SEASON,
     first_test_season: int | None = None,
     last_test_season: int | None = None,
     random_seed: int = 42,
@@ -282,10 +313,15 @@ def tune_and_save(
     """Run tuning and save all artifacts."""
 
     modeling_df = pd.read_parquet(modeling_path)
+    if first_test_season is None:
+        first_test_season = validation_season
+    if last_test_season is None:
+        last_test_season = validation_season
     results, predictions, summary, _ = tune_home_win_model(
         modeling_df,
         target_column=target_column,
         train_start_season=train_start_season,
+        validation_season=validation_season,
         first_test_season=first_test_season,
         last_test_season=last_test_season,
         random_seed=random_seed,
@@ -294,6 +330,10 @@ def tune_and_save(
         modeling_df,
         summary,
         target_column=target_column,
+        train_start_season=train_start_season,
+        train_end_season=train_end_season,
+        validation_season=validation_season,
+        test_season=test_season,
         random_seed=random_seed,
     )
 

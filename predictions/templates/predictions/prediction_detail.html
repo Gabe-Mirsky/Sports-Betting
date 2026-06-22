@@ -1,0 +1,78 @@
+{% extends "predictions/base.html" %}
+
+{% block title %}{{ prediction.matchup }}{% endblock %}
+
+{% block content %}
+<a class="link back" href="{% url 'predictions:list' %}">← All predictions</a>
+
+{% if prediction.status == "pending" %}
+  <div class="flash flash-info">This prediction is pending review and is not yet public.</div>
+{% endif %}
+
+<article class="detail">
+  <div class="detail-head">
+    <div class="detail-meta">{{ prediction.sport }} · {{ prediction.league }}
+      · {{ prediction.game_date|date:"M j, Y g:i A"|default:"date TBD" }}</div>
+    <h1>{{ prediction.team_a }} <span class="vs">vs</span> {{ prediction.team_b }}</h1>
+    <div class="detail-pick">
+      <span class="pick-big">{{ prediction.predicted_outcome }}</span>
+      <span class="badge badge-{{ prediction.confidence_level|slugify }}">{{ prediction.confidence_level }}</span>
+      {% if prediction.data_quality %}<span class="badge badge-quality">{{ prediction.data_quality }}</span>{% endif %}
+    </div>
+  </div>
+
+  <div class="prob-bars">
+    <div class="prob-row">
+      <span class="prob-team">{{ prediction.team_a }}</span>
+      <span class="prob-bar"><span style="width: {% widthratio prediction.prob_team_a_win 1 100 %}%"></span></span>
+      <span class="prob-val">{{ prediction.prob_team_a_win|floatformat:2 }}</span>
+    </div>
+    {% if prediction.has_draw %}
+    <div class="prob-row">
+      <span class="prob-team">Draw</span>
+      <span class="prob-bar"><span style="width: {% widthratio prediction.prob_draw 1 100 %}%"></span></span>
+      <span class="prob-val">{{ prediction.prob_draw|floatformat:2 }}</span>
+    </div>
+    {% endif %}
+    <div class="prob-row">
+      <span class="prob-team">{{ prediction.team_b }}</span>
+      <span class="prob-bar"><span style="width: {% widthratio prediction.prob_team_b_win 1 100 %}%"></span></span>
+      <span class="prob-val">{{ prediction.prob_team_b_win|floatformat:2 }}</span>
+    </div>
+  </div>
+
+  <div class="detail-cols">
+    <section class="panel">
+      <h2>Key reasons</h2>
+      {% if prediction.reasons_list %}
+        <ul class="reason-list">{% for r in prediction.reasons_list %}<li>{{ r }}</li>{% endfor %}</ul>
+      {% else %}<p class="muted">No reasons recorded.</p>{% endif %}
+    </section>
+    <section class="panel">
+      <h2>Main risks</h2>
+      {% if prediction.risks_list %}
+        <ul class="reason-list">{% for r in prediction.risks_list %}<li>{{ r }}</li>{% endfor %}</ul>
+      {% else %}<p class="muted">No risks recorded.</p>{% endif %}
+    </section>
+  </div>
+
+  {% if prediction.ai_reasoning %}
+  <section class="panel">
+    <h2>Analysis</h2>
+    <p>{{ prediction.ai_reasoning }}</p>
+  </section>
+  {% endif %}
+
+  {% if prediction.warnings_list %}
+  <section class="panel panel-warn">
+    <h2>Data warnings</h2>
+    <ul class="reason-list">{% for w in prediction.warnings_list %}<li>{{ w }}</li>{% endfor %}</ul>
+  </section>
+  {% endif %}
+
+  <div class="detail-foot muted">
+    Model: {{ prediction.model_version|default:"n/a" }}
+    {% if prediction.confidence_score is not None %}· Confidence score: {{ prediction.confidence_score|floatformat:3 }}{% endif %}
+  </div>
+</article>
+{% endblock %}

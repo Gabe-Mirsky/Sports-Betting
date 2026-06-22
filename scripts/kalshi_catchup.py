@@ -42,6 +42,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--skip-broad-discovery", action="store_true")
     parser.add_argument("--timeout", type=int, default=30)
     parser.add_argument("--fetch-game-times", action="store_true")
+    parser.add_argument("--refresh-game-times", action="store_true")
     parser.add_argument("--force-candles", action="store_true")
     parser.add_argument("--config", default=None)
     parser.add_argument("--log-level", default="INFO")
@@ -96,15 +97,20 @@ def _load_default_game_sources() -> pd.DataFrame:
     return games.reset_index(drop=True)
 
 
-def _add_available_game_times(games: pd.DataFrame, fetch_missing: bool = False) -> pd.DataFrame:
+def _add_available_game_times(games: pd.DataFrame, fetch_missing: bool = False, refresh: bool = False) -> pd.DataFrame:
     game_times_path = PROJECT_ROOT / "data" / "interim" / "nba_game_start_times.csv"
     starts = pd.DataFrame()
-    if game_times_path.exists():
+    if refresh:
+        starts = download_game_start_times_for_games(games, output_path=game_times_path, sleep_seconds=0.1)
+    elif game_times_path.exists():
         starts = pd.read_csv(game_times_path)
     elif fetch_missing:
         starts = download_game_start_times_for_games(games, output_path=game_times_path, sleep_seconds=0.1)
     if starts.empty:
         return games
+    if "game_time_source" in starts.columns:
+        source_counts = starts["game_time_source"].fillna("unknown").astype(str).value_counts().to_dict()
+        print(f"Game start-time sources: {source_counts}")
     enriched = add_game_start_times(games, starts)
     if fetch_missing and "game_start_time" in enriched.columns:
         missing = enriched[enriched["game_start_time"].isna()].copy()
@@ -135,7 +141,7 @@ def main() -> None:
     games = _load_default_game_sources()
     if games.empty:
         raise SystemExit("No readable NBA game source found. Run scripts/build_features.py or scripts/predict_upcoming.py first.")
-    games = _add_available_game_times(games, fetch_missing=args.fetch_game_times)
+    games = _add_available_game_times(games, fetch_missing=args.fetch_game_times, refresh=args.refresh_game_times)
     possible_markets = backfill_all_markets(
         start_date,
         end_date,

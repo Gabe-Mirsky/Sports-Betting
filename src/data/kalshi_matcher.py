@@ -201,6 +201,9 @@ def _score_market_for_game(
     if market_ticker.startswith(f"{expected_event_ticker}-"):
         score += 0.70
         notes.append("exact Kalshi matchup ticker found")
+    elif market_ticker.startswith("KXNBAGAME-"):
+        score -= 0.70
+        notes.append("Kalshi matchup ticker does not match expected away-home orientation")
 
     market_date = row.get("market_date")
     if pd.notna(market_date) and pd.Timestamp(market_date).normalize() == game_date:
@@ -304,7 +307,16 @@ def match_games_to_kalshi_markets(
             for _, row in candidates.iterrows()
         ]
         if scored:
-            best = sorted(scored, key=lambda item: item["match_score"], reverse=True)[0]
+            home_team = normalize_team_abbr(game["home_team_abbr"])
+            best = sorted(
+                scored,
+                key=lambda item: (
+                    item["match_score"],
+                    1 if normalize_team_abbr(item.get("yes_team_abbr", "")) == home_team else 0,
+                    str(item.get("market_ticker", "")),
+                ),
+                reverse=True,
+            )[0]
         else:
             best = {
                 "market_ticker": "",

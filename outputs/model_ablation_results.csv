@@ -1,0 +1,121 @@
+accuracy,brier_score,log_loss,roc_auc,calibration_error,model_name,feature_count,model_kind,avg_predicted_probability,min_predicted_probability,max_predicted_probability,"bucket_(0.2, 0.3]","bucket_(0.3, 0.4]","bucket_(0.4, 0.5]","bucket_(0.5, 0.6]","bucket_(0.6, 0.7]","bucket_(0.7, 0.8]","bucket_(0.8, 0.9]","bucket_(0.1, 0.2]","bucket_(0.9, 1.0]",home_team_baseline_log_loss,elo_baseline_log_loss,team_only_model_log_loss,sportsbook_benchmark_log_loss,beats_home_team_baseline,beats_elo_baseline,beats_team_only_model,beats_sportsbook_benchmark,row_type,probability_bucket,games,realized_home_win_rate
+0.6227642276422765,0.230799353553185,0.653937207578867,0.6539518103749177,0.024503136466632044,team_features_plus_selected_player_features_random_forest,24.0,random_forest,0.5684055754910222,0.2739165381633383,0.8131939300066049,12.0,153.0,250.0,264.0,304.0,228.0,19.0,,,0.7119484915939236,0.6539658748317975,0.6709685697632788,0.6047117495950075,True,True,True,False,,,,
+0.6284552845528455,0.23009312434380338,0.6539658748317975,0.6611538758729474,0.035952109411895444,elo_only,3.0,logistic_l2,0.5668984570049007,0.15583974428132338,0.9251292717955323,82.0,141.0,218.0,224.0,240.0,214.0,96.0,9.0,6.0,0.7119484915939236,0.6539658748317975,0.6709685697632788,0.6047117495950075,True,False,True,False,,,,
+0.6235772357723577,0.23092649901911308,0.6542862958605276,0.6539931096776257,0.02637779294984295,team_features_plus_selected_player_features_gradient_boosting,24.0,gradient_boosting,0.5692743449182762,0.25125393147908726,0.8597218839925478,12.0,174.0,250.0,234.0,306.0,200.0,54.0,,,0.7119484915939236,0.6539658748317975,0.6709685697632788,0.6047117495950075,True,False,True,False,,,,
+0.6252032520325204,0.2311732410093428,0.6550850092187644,0.6539944419131969,0.040463319370663206,team_features_plus_selected_player_features_l1,24.0,logistic_l1,0.52376159277854,0.11845023136893879,0.8755728282187354,96.0,183.0,254.0,261.0,235.0,144.0,42.0,15.0,,0.7119484915939236,0.6539658748317975,0.6709685697632788,0.6047117495950075,True,False,True,False,,,,
+0.6195121951219512,0.23199778895405063,0.6569995915691096,0.6509995763490883,0.03940339546272875,team_features_plus_selected_player_features_elasticnet,24.0,logistic_elasticnet,0.525256845146094,0.12943176329333972,0.8810515765466295,95.0,177.0,246.0,278.0,242.0,139.0,40.0,13.0,,0.7119484915939236,0.6539658748317975,0.6709685697632788,0.6047117495950075,True,False,True,False,,,,
+0.6284552845528455,0.23228694299180389,0.6580435795727736,0.6522518777860377,0.03984929990719972,team_features_plus_selected_player_features_xgboost,24.0,xgboost,0.5616621724110309,0.2083989977836609,0.9052882194519043,73.0,160.0,227.0,240.0,240.0,195.0,94.0,,1.0,0.7119484915939236,0.6539658748317975,0.6709685697632788,0.6047117495950075,True,False,True,False,,,,
+0.6016260162601627,0.23690472936311732,0.6682973349850163,0.6371176816969484,0.05129341123684903,team_features_plus_selected_player_features_l2,24.0,logistic_l2,0.5249216171607303,0.11415472841224263,0.915574340762383,115.0,182.0,231.0,233.0,232.0,160.0,49.0,23.0,5.0,0.7119484915939236,0.6539658748317975,0.6709685697632788,0.6047117495950075,True,False,True,False,,,,
+0.6065040650406504,0.23830274128698564,0.6709685697632788,0.6323536072942563,0.050482527250349095,team_only_fair_l2,12.0,logistic_l2,0.5164687289983582,0.1115327027089452,0.902035124615645,112.0,191.0,255.0,258.0,220.0,140.0,39.0,13.0,2.0,0.7119484915939236,0.6539658748317975,0.6709685697632788,0.6047117495950075,True,False,False,False,,,,
+0.5951219512195122,0.23866397550039117,0.6720786150298532,0.6316075553743715,0.059557798574889985,team_features_plus_player_features_l2,78.0,logistic_l2,0.5250766263991598,0.1257678207883985,0.9164723208892943,122.0,174.0,225.0,228.0,237.0,157.0,54.0,28.0,5.0,0.7119484915939236,0.6539658748317975,0.6709685697632788,0.6047117495950075,True,False,False,False,,,,
+0.6056910569105691,0.23898185884400333,0.6735171986679128,0.6311625886935832,0.0472487371838981,rolling_team_stats_only,25.0,logistic_l2,0.5787874549144818,0.14979046153787776,0.9349880846542229,51.0,121.0,226.0,248.0,280.0,200.0,96.0,2.0,6.0,0.7119484915939236,0.6539658748317975,0.6709685697632788,0.6047117495950075,True,False,False,False,,,,
+0.6048780487804878,0.24061636525066787,0.6785333236194192,0.6253860152567619,0.045440983318686026,player_features_only,66.0,logistic_l2,0.5740061083403439,0.16292655235858347,0.9359497554252664,53.0,147.0,208.0,244.0,274.0,197.0,90.0,7.0,10.0,0.7119484915939236,0.6539658748317975,0.6709685697632788,0.6047117495950075,True,False,False,False,,,,
+0.5227642276422764,0.25790166142691195,0.7119484915939236,0.5400176920883859,0.09955954570467603,home_court_only,1.0,logistic_l2,0.564645393937828,0.22010030067855751,0.8900882177324291,25.0,123.0,274.0,303.0,280.0,174.0,51.0,,,0.7119484915939236,0.6539658748317975,0.6709685697632788,0.6047117495950075,False,False,False,False,,,,
+0.5422764227642276,0.2578509299012892,0.7127242779389987,0.5456810255016533,0.08439756485217395,rest_and_schedule_only,8.0,logistic_l2,0.5642766931956258,0.2066972839671032,0.9241977193467433,26.0,134.0,264.0,301.0,267.0,187.0,49.0,,2.0,0.7119484915939236,0.6539658748317975,0.6709685697632788,0.6047117495950075,False,False,False,False,,,,
+,,,,,home_court_only,,,0.2659046971439455,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.2, 0.3]",25.0,0.68
+,,,,,home_court_only,,,0.3605058146993898,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.3, 0.4]",123.0,0.5365853658536586
+,,,,,home_court_only,,,0.4545181168860034,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.4, 0.5]",274.0,0.5145985401459854
+,,,,,home_court_only,,,0.5498003761636187,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.5, 0.6]",303.0,0.48184818481848185
+,,,,,home_court_only,,,0.6470260125335259,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.6, 0.7]",280.0,0.5357142857142857
+,,,,,home_court_only,,,0.739895838326808,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.7, 0.8]",174.0,0.6609195402298851
+,,,,,home_court_only,,,0.833085578908073,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.8, 0.9]",51.0,0.6666666666666666
+,,,,,elo_only,,,0.18768548067791596,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.1, 0.2]",9.0,0.3333333333333333
+,,,,,elo_only,,,0.2582219740338169,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.2, 0.3]",82.0,0.25609756097560976
+,,,,,elo_only,,,0.3616174141024766,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.3, 0.4]",141.0,0.3617021276595745
+,,,,,elo_only,,,0.4512902459193293,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.4, 0.5]",218.0,0.44954128440366975
+,,,,,elo_only,,,0.5529675250882453,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.5, 0.6]",224.0,0.5223214285714286
+,,,,,elo_only,,,0.6473115793964491,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.6, 0.7]",240.0,0.675
+,,,,,elo_only,,,0.7472877810820789,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.7, 0.8]",214.0,0.6635514018691588
+,,,,,elo_only,,,0.8379929965192595,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.8, 0.9]",96.0,0.7395833333333334
+,,,,,elo_only,,,0.910997404660349,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.9, 1.0]",6.0,0.6666666666666666
+,,,,,rolling_team_stats_only,,,0.1507185614898246,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.1, 0.2]",2.0,0.0
+,,,,,rolling_team_stats_only,,,0.2626727726335093,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.2, 0.3]",51.0,0.4117647058823529
+,,,,,rolling_team_stats_only,,,0.35584077300341604,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.3, 0.4]",121.0,0.35537190082644626
+,,,,,rolling_team_stats_only,,,0.4524006609707014,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.4, 0.5]",226.0,0.4336283185840708
+,,,,,rolling_team_stats_only,,,0.5518960752845727,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.5, 0.6]",248.0,0.532258064516129
+,,,,,rolling_team_stats_only,,,0.6454054942470453,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.6, 0.7]",280.0,0.6107142857142858
+,,,,,rolling_team_stats_only,,,0.7476707236442214,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.7, 0.8]",200.0,0.655
+,,,,,rolling_team_stats_only,,,0.8363060494380089,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.8, 0.9]",96.0,0.7291666666666666
+,,,,,rolling_team_stats_only,,,0.9180412616820463,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.9, 1.0]",6.0,0.5
+,,,,,rest_and_schedule_only,,,0.25975294864774756,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.2, 0.3]",26.0,0.6923076923076923
+,,,,,rest_and_schedule_only,,,0.35659095539130087,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.3, 0.4]",134.0,0.4925373134328358
+,,,,,rest_and_schedule_only,,,0.45170779812703715,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.4, 0.5]",264.0,0.48863636363636365
+,,,,,rest_and_schedule_only,,,0.549851159220989,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.5, 0.6]",301.0,0.5016611295681063
+,,,,,rest_and_schedule_only,,,0.6507461678780132,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.6, 0.7]",267.0,0.5842696629213483
+,,,,,rest_and_schedule_only,,,0.7392124999241401,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.7, 0.8]",187.0,0.6149732620320856
+,,,,,rest_and_schedule_only,,,0.8356633768292943,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.8, 0.9]",49.0,0.6530612244897959
+,,,,,rest_and_schedule_only,,,0.9190202692046663,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.9, 1.0]",2.0,1.0
+,,,,,player_features_only,,,0.17047990757761658,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.1, 0.2]",7.0,0.42857142857142855
+,,,,,player_features_only,,,0.2614844488005409,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.2, 0.3]",53.0,0.3018867924528302
+,,,,,player_features_only,,,0.3564178184406613,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.3, 0.4]",147.0,0.35374149659863946
+,,,,,player_features_only,,,0.44959383052330576,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.4, 0.5]",208.0,0.47596153846153844
+,,,,,player_features_only,,,0.5522342412881064,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.5, 0.6]",244.0,0.5450819672131147
+,,,,,player_features_only,,,0.652652785955002,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.6, 0.7]",274.0,0.5985401459854015
+,,,,,player_features_only,,,0.7450065132060506,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.7, 0.8]",197.0,0.6802030456852792
+,,,,,player_features_only,,,0.8395614086945552,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.8, 0.9]",90.0,0.7
+,,,,,player_features_only,,,0.9167713949455765,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.9, 1.0]",10.0,0.5
+,,,,,team_only_fair_l2,,,0.17509836879793064,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.1, 0.2]",13.0,0.15384615384615385
+,,,,,team_only_fair_l2,,,0.25740549200955093,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.2, 0.3]",112.0,0.38392857142857145
+,,,,,team_only_fair_l2,,,0.35037501214798294,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.3, 0.4]",191.0,0.4083769633507853
+,,,,,team_only_fair_l2,,,0.4507647700703579,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.4, 0.5]",255.0,0.48627450980392156
+,,,,,team_only_fair_l2,,,0.5480056406269375,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.5, 0.6]",258.0,0.6007751937984496
+,,,,,team_only_fair_l2,,,0.646980281241098,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.6, 0.7]",220.0,0.6363636363636364
+,,,,,team_only_fair_l2,,,0.7425520213153434,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.7, 0.8]",140.0,0.6928571428571428
+,,,,,team_only_fair_l2,,,0.8410998400664841,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.8, 0.9]",39.0,0.7692307692307693
+,,,,,team_only_fair_l2,,,0.9014525893996856,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.9, 1.0]",2.0,0.0
+,,,,,team_features_plus_player_features_l2,,,0.17583820917513676,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.1, 0.2]",28.0,0.32142857142857145
+,,,,,team_features_plus_player_features_l2,,,0.2616578378154337,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.2, 0.3]",122.0,0.29508196721311475
+,,,,,team_features_plus_player_features_l2,,,0.3546276421202992,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.3, 0.4]",174.0,0.41379310344827586
+,,,,,team_features_plus_player_features_l2,,,0.45224783612064556,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.4, 0.5]",225.0,0.56
+,,,,,team_features_plus_player_features_l2,,,0.5503832464274644,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.5, 0.6]",228.0,0.5745614035087719
+,,,,,team_features_plus_player_features_l2,,,0.6474513846864678,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.6, 0.7]",237.0,0.6286919831223629
+,,,,,team_features_plus_player_features_l2,,,0.7437125849617586,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.7, 0.8]",157.0,0.6624203821656051
+,,,,,team_features_plus_player_features_l2,,,0.8386139941597557,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.8, 0.9]",54.0,0.7037037037037037
+,,,,,team_features_plus_player_features_l2,,,0.9112323329449629,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.9, 1.0]",5.0,0.8
+,,,,,team_features_plus_selected_player_features_l2,,,0.17264975091884222,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.1, 0.2]",23.0,0.21739130434782608
+,,,,,team_features_plus_selected_player_features_l2,,,0.25638578614329344,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.2, 0.3]",115.0,0.34782608695652173
+,,,,,team_features_plus_selected_player_features_l2,,,0.3542353417459921,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.3, 0.4]",182.0,0.38461538461538464
+,,,,,team_features_plus_selected_player_features_l2,,,0.4545163616273395,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.4, 0.5]",231.0,0.5411255411255411
+,,,,,team_features_plus_selected_player_features_l2,,,0.5487636276046732,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.5, 0.6]",233.0,0.575107296137339
+,,,,,team_features_plus_selected_player_features_l2,,,0.6480401644717653,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.6, 0.7]",232.0,0.646551724137931
+,,,,,team_features_plus_selected_player_features_l2,,,0.7429345300377687,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.7, 0.8]",160.0,0.65
+,,,,,team_features_plus_selected_player_features_l2,,,0.8391974429943735,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.8, 0.9]",49.0,0.7755102040816326
+,,,,,team_features_plus_selected_player_features_l2,,,0.907344958858892,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.9, 1.0]",5.0,0.6
+,,,,,team_features_plus_selected_player_features_l1,,,0.16464170824810093,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.1, 0.2]",15.0,0.2
+,,,,,team_features_plus_selected_player_features_l1,,,0.260138655197197,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.2, 0.3]",96.0,0.2708333333333333
+,,,,,team_features_plus_selected_player_features_l1,,,0.3520254027784712,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.3, 0.4]",183.0,0.40437158469945356
+,,,,,team_features_plus_selected_player_features_l1,,,0.4526334274545856,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.4, 0.5]",254.0,0.4763779527559055
+,,,,,team_features_plus_selected_player_features_l1,,,0.55132552621175,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.5, 0.6]",261.0,0.6283524904214559
+,,,,,team_features_plus_selected_player_features_l1,,,0.6460734515074853,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.6, 0.7]",235.0,0.6212765957446809
+,,,,,team_features_plus_selected_player_features_l1,,,0.7436134309640092,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.7, 0.8]",144.0,0.7361111111111112
+,,,,,team_features_plus_selected_player_features_l1,,,0.8235887097305608,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.8, 0.9]",42.0,0.6904761904761905
+,,,,,team_features_plus_selected_player_features_elasticnet,,,0.17139361142077172,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.1, 0.2]",13.0,0.07692307692307693
+,,,,,team_features_plus_selected_player_features_elasticnet,,,0.2600341786244441,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.2, 0.3]",95.0,0.29473684210526313
+,,,,,team_features_plus_selected_player_features_elasticnet,,,0.352899663138824,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.3, 0.4]",177.0,0.3954802259887006
+,,,,,team_features_plus_selected_player_features_elasticnet,,,0.44865374657136875,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.4, 0.5]",246.0,0.4878048780487805
+,,,,,team_features_plus_selected_player_features_elasticnet,,,0.5495128149417946,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.5, 0.6]",278.0,0.60431654676259
+,,,,,team_features_plus_selected_player_features_elasticnet,,,0.6478563659462029,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.6, 0.7]",242.0,0.6446280991735537
+,,,,,team_features_plus_selected_player_features_elasticnet,,,0.7459380795589283,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.7, 0.8]",139.0,0.7122302158273381
+,,,,,team_features_plus_selected_player_features_elasticnet,,,0.826782435207096,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.8, 0.9]",40.0,0.675
+,,,,,team_features_plus_selected_player_features_random_forest,,,0.28752295426772007,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.2, 0.3]",12.0,0.16666666666666666
+,,,,,team_features_plus_selected_player_features_random_forest,,,0.353798959140813,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.3, 0.4]",153.0,0.32679738562091504
+,,,,,team_features_plus_selected_player_features_random_forest,,,0.45242589006616424,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.4, 0.5]",250.0,0.428
+,,,,,team_features_plus_selected_player_features_random_forest,,,0.5512653232678096,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.5, 0.6]",264.0,0.5265151515151515
+,,,,,team_features_plus_selected_player_features_random_forest,,,0.652002372004724,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.6, 0.7]",304.0,0.6447368421052632
+,,,,,team_features_plus_selected_player_features_random_forest,,,0.7428795445975303,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.7, 0.8]",228.0,0.706140350877193
+,,,,,team_features_plus_selected_player_features_random_forest,,,0.8069245545939252,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.8, 0.9]",19.0,0.7368421052631579
+,,,,,team_features_plus_selected_player_features_gradient_boosting,,,0.2817816217155384,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.2, 0.3]",12.0,0.3333333333333333
+,,,,,team_features_plus_selected_player_features_gradient_boosting,,,0.3579980436235394,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.3, 0.4]",174.0,0.3218390804597701
+,,,,,team_features_plus_selected_player_features_gradient_boosting,,,0.4539526489283762,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.4, 0.5]",250.0,0.436
+,,,,,team_features_plus_selected_player_features_gradient_boosting,,,0.5512937909922718,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.5, 0.6]",234.0,0.5341880341880342
+,,,,,team_features_plus_selected_player_features_gradient_boosting,,,0.6527112424404372,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.6, 0.7]",306.0,0.630718954248366
+,,,,,team_features_plus_selected_player_features_gradient_boosting,,,0.7414365647295841,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.7, 0.8]",200.0,0.695
+,,,,,team_features_plus_selected_player_features_gradient_boosting,,,0.8153063470633548,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.8, 0.9]",54.0,0.7962962962962963
+,,,,,team_features_plus_selected_player_features_xgboost,,,0.265314204031474,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.2, 0.3]",73.0,0.3150684931506849
+,,,,,team_features_plus_selected_player_features_xgboost,,,0.34960298109799626,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.3, 0.4]",160.0,0.3625
+,,,,,team_features_plus_selected_player_features_xgboost,,,0.44898831581754306,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.4, 0.5]",227.0,0.42731277533039647
+,,,,,team_features_plus_selected_player_features_xgboost,,,0.5508550604184469,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.5, 0.6]",240.0,0.5833333333333334
+,,,,,team_features_plus_selected_player_features_xgboost,,,0.6497269794344902,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.6, 0.7]",240.0,0.6083333333333333
+,,,,,team_features_plus_selected_player_features_xgboost,,,0.7450135710911873,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.7, 0.8]",195.0,0.6820512820512821
+,,,,,team_features_plus_selected_player_features_xgboost,,,0.843586025085855,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.8, 0.9]",94.0,0.7553191489361702
+,,,,,team_features_plus_selected_player_features_xgboost,,,0.9052882194519043,,,,,,,,,,,,,,,,,,,,calibration_bucket,"(0.9, 1.0]",1.0,1.0

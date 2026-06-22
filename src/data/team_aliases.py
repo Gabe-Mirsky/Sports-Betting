@@ -40,6 +40,40 @@ CURRENT_TEAM_ABBRS: Final[set[str]] = {
 }
 
 
+TEAM_FULL_NAMES: Final[dict[str, str]] = {
+    "ATL": "Atlanta Hawks",
+    "BKN": "Brooklyn Nets",
+    "BOS": "Boston Celtics",
+    "CHA": "Charlotte Hornets",
+    "CHI": "Chicago Bulls",
+    "CLE": "Cleveland Cavaliers",
+    "DAL": "Dallas Mavericks",
+    "DEN": "Denver Nuggets",
+    "DET": "Detroit Pistons",
+    "GSW": "Golden State Warriors",
+    "HOU": "Houston Rockets",
+    "IND": "Indiana Pacers",
+    "LAC": "Los Angeles Clippers",
+    "LAL": "Los Angeles Lakers",
+    "MEM": "Memphis Grizzlies",
+    "MIA": "Miami Heat",
+    "MIL": "Milwaukee Bucks",
+    "MIN": "Minnesota Timberwolves",
+    "NOP": "New Orleans Pelicans",
+    "NYK": "New York Knicks",
+    "OKC": "Oklahoma City Thunder",
+    "ORL": "Orlando Magic",
+    "PHI": "Philadelphia 76ers",
+    "PHX": "Phoenix Suns",
+    "POR": "Portland Trail Blazers",
+    "SAC": "Sacramento Kings",
+    "SAS": "San Antonio Spurs",
+    "TOR": "Toronto Raptors",
+    "UTA": "Utah Jazz",
+    "WAS": "Washington Wizards",
+}
+
+
 TEAM_ALIASES: Final[dict[str, str]] = {
     "ATL": "ATL",
     "ATLANTA": "ATL",
@@ -82,6 +116,7 @@ TEAM_ALIASES: Final[dict[str, str]] = {
     "PISTONS": "DET",
     "GS": "GSW",
     "GSW": "GSW",
+    "GSWARRIORS": "GSW",
     "GOLDENSTATE": "GSW",
     "GOLDENSTATEWARRIORS": "GSW",
     "WARRIORS": "GSW",
@@ -94,12 +129,14 @@ TEAM_ALIASES: Final[dict[str, str]] = {
     "INDIANAPACERS": "IND",
     "PACERS": "IND",
     "LAC": "LAC",
+    "LACLIPPER": "LAC",
     "LACLIPPERS": "LAC",
     "LACLIP": "LAC",
     "LACLIPPERSNBA": "LAC",
     "LOSANGELESCLIPPERS": "LAC",
     "CLIPPERS": "LAC",
     "LAL": "LAL",
+    "LALAKER": "LAL",
     "LALAKERS": "LAL",
     "LOSANGELESLAKERS": "LAL",
     "LAKERS": "LAL",
@@ -128,6 +165,8 @@ TEAM_ALIASES: Final[dict[str, str]] = {
     "PELICANS": "NOP",
     "NY": "NYK",
     "NYK": "NYK",
+    "NYKNICK": "NYK",
+    "NYKNICKS": "NYK",
     "NEWYORK": "NYK",
     "NEWYORKKNICKS": "NYK",
     "KNICKS": "NYK",
@@ -194,3 +233,10 @@ def normalize_team_abbr(value: object) -> str:
     if compact in CURRENT_TEAM_ABBRS:
         return compact
     return compact
+
+
+def normalize_team_name(value: object) -> str:
+    """Normalize a team value to a canonical full NBA team name when known."""
+
+    abbr = normalize_team_abbr(value)
+    return TEAM_FULL_NAMES.get(abbr, str(value).strip())

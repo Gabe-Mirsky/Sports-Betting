@@ -25,6 +25,20 @@ def _default_specs(reports_dir: Path) -> list[dict[str, str]]:
             "portfolio_summary_path": str(reports_dir / "portfolio_summary_calibrated.json"),
         },
         {
+            "name": "clv_filtered_calibrated",
+            "input_path": str(reports_dir / "clv_filtered_trades.csv"),
+            "signal_column": "clv_filtered_trade",
+            "expected_roi_column": "calibrated_expected_roi",
+            "portfolio_summary_path": str(reports_dir / "portfolio_summary_clv_filtered.json"),
+        },
+        {
+            "name": "defensive_clv_filtered",
+            "input_path": str(reports_dir / "defensive_filtered_trades.csv"),
+            "signal_column": "defensive_trade",
+            "expected_roi_column": "calibrated_expected_roi",
+            "portfolio_summary_path": str(reports_dir / "portfolio_summary_defensive.json"),
+        },
+        {
             "name": "market_blend_calibrated",
             "input_path": str(reports_dir / "edge_calibrated_trades_market_blend.csv"),
             "signal_column": "calibrated_trade",

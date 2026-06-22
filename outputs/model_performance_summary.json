@@ -1,0 +1,367 @@
+{
+  "selected_split_mode": "strict_full_seasons",
+  "training_seasons": [
+    "2018-19",
+    "2019-20",
+    "2020-21"
+  ],
+  "validation_season": "2021-22",
+  "training_games_used": 3369,
+  "validation_games_used": 1230,
+  "model_metrics": {
+    "accuracy": 0.6065040650406504,
+    "brier_score": 0.23830274128698564,
+    "log_loss": 0.6709685697632788,
+    "roc_auc": 0.6323536072942563,
+    "calibration_error": 0.050482527250349095,
+    "model_name": "old_team_only_fair_uncalibrated"
+  },
+  "sportsbook_baseline_metrics": {
+    "accuracy": 0.6772357723577236,
+    "brier_score": 0.20880478188449986,
+    "log_loss": 0.6047117495950075,
+    "roc_auc": 0.7293070509899842,
+    "calibration_error": 0.02532177577411062,
+    "model_name": "sportsbook_baseline"
+  },
+  "old_baseline_metrics": {
+    "accuracy": 0.6065040650406504,
+    "brier_score": 0.23830274128698564,
+    "log_loss": 0.6709685697632788,
+    "roc_auc": 0.6323536072942563,
+    "calibration_error": 0.050482527250349095,
+    "model_name": "old_team_only_fair_uncalibrated"
+  },
+  "old_team_only_fair_metrics": {
+    "accuracy": 0.6065040650406504,
+    "brier_score": 0.23830274128698564,
+    "log_loss": 0.6709685697632788,
+    "roc_auc": 0.6323536072942563,
+    "calibration_error": 0.050482527250349095,
+    "model_name": "old_team_only_fair_uncalibrated"
+  },
+  "team_plus_player_fair_metrics": {
+    "accuracy": 0.5951219512195122,
+    "brier_score": 0.23866397550039117,
+    "log_loss": 0.6720786150298532,
+    "roc_auc": 0.6316075553743715,
+    "calibration_error": 0.059557798574889985,
+    "model_name": "team_plus_player_fair_uncalibrated"
+  },
+  "team_plus_selected_player_fair_metrics": {
+    "accuracy": 0.6016260162601627,
+    "brier_score": 0.23690472936311732,
+    "log_loss": 0.6682973349850163,
+    "roc_auc": 0.6371176816969484,
+    "calibration_error": 0.05129341123684903,
+    "model_name": "team_plus_selected_player_fair_uncalibrated"
+  },
+  "market_anchored_metrics": {
+    "accuracy": 0.634959349593496,
+    "brier_score": 0.22121331032139757,
+    "log_loss": 0.6326233972678025,
+    "roc_auc": 0.6909240119474886,
+    "calibration_error": 0.044209045300545015,
+    "model_name": "market_anchored_uncalibrated"
+  },
+  "all_model_metrics": [
+    {
+      "accuracy": 0.6772357723577236,
+      "brier_score": 0.20880478188449986,
+      "log_loss": 0.6047117495950075,
+      "roc_auc": 0.7293070509899842,
+      "calibration_error": 0.02532177577411062,
+      "model_name": "sportsbook_baseline"
+    },
+    {
+      "accuracy": 0.6065040650406504,
+      "brier_score": 0.23830274128698564,
+      "log_loss": 0.6709685697632788,
+      "roc_auc": 0.6323536072942563,
+      "calibration_error": 0.050482527250349095,
+      "model_name": "old_team_only_fair_uncalibrated"
+    },
+    {
+      "accuracy": 0.6056910569105691,
+      "brier_score": 0.23853449256203094,
+      "log_loss": 0.6710545649253364,
+      "roc_auc": 0.6323536072942563,
+      "calibration_error": 0.04997137151498363,
+      "model_name": "old_team_only_fair_platt"
+    },
+    {
+      "accuracy": 0.6008130081300813,
+      "brier_score": 0.24132851354264168,
+      "log_loss": 0.6820126212342563,
+      "roc_auc": 0.631508969942101,
+      "calibration_error": 0.07098579724061618,
+      "model_name": "old_team_only_fair_isotonic"
+    },
+    {
+      "accuracy": 0.5951219512195122,
+      "brier_score": 0.23866397550039117,
+      "log_loss": 0.6720786150298532,
+      "roc_auc": 0.6316075553743715,
+      "calibration_error": 0.059557798574889985,
+      "model_name": "team_plus_player_fair_uncalibrated"
+    },
+    {
+      "accuracy": 0.5951219512195122,
+      "brier_score": 0.23924417578892695,
+      "log_loss": 0.6728673677197928,
+      "roc_auc": 0.6316075553743715,
+      "calibration_error": 0.06320030290099753,
+      "model_name": "team_plus_player_fair_platt"
+    },
+    {
+      "accuracy": 0.5853658536585366,
+      "brier_score": 0.24241294626002924,
+      "log_loss": 0.6997437200365131,
+      "roc_auc": 0.6303259447548554,
+      "calibration_error": 0.07887859685966285,
+      "model_name": "team_plus_player_fair_isotonic"
+    },
+    {
+      "accuracy": 0.6016260162601627,
+      "brier_score": 0.23690472936311732,
+      "log_loss": 0.6682973349850163,
+      "roc_auc": 0.6371176816969484,
+      "calibration_error": 0.05129341123684903,
+      "model_name": "team_plus_selected_player_fair_uncalibrated"
+    },
+    {
+      "accuracy": 0.6016260162601627,
+      "brier_score": 0.2372225517959904,
+      "log_loss": 0.6684502529423936,
+      "roc_auc": 0.6371176816969484,
+      "calibration_error": 0.06484580923308159,
+      "model_name": "team_plus_selected_player_fair_platt"
+    },
+    {
+      "accuracy": 0.5951219512195122,
+      "brier_score": 0.23957894627757167,
+      "log_loss": 0.6929587170305925,
+      "roc_auc": 0.6382833878217681,
+      "calibration_error": 0.07337201324591354,
+      "model_name": "team_plus_selected_player_fair_isotonic"
+    },
+    {
+      "accuracy": 0.634959349593496,
+      "brier_score": 0.22121331032139757,
+      "log_loss": 0.6326233972678025,
+      "roc_auc": 0.6909240119474886,
+      "calibration_error": 0.044209045300545015,
+      "model_name": "market_anchored_uncalibrated"
+    },
+    {
+      "accuracy": 0.6382113821138211,
+      "brier_score": 0.22169200095394845,
+      "log_loss": 0.6332603333673706,
+      "roc_auc": 0.6909240119474886,
+      "calibration_error": 0.044967884606206855,
+      "model_name": "market_anchored_platt"
+    },
+    {
+      "accuracy": 0.6357723577235772,
+      "brier_score": 0.2207356915966699,
+      "log_loss": 0.6313162317737068,
+      "roc_auc": 0.6903498184162916,
+      "calibration_error": 0.051055421348923075,
+      "model_name": "market_anchored_isotonic"
+    },
+    {
+      "accuracy": 0.6227642276422765,
+      "brier_score": 0.23079935355318495,
+      "log_loss": 0.653937207578867,
+      "roc_auc": 0.6539518103749177,
+      "calibration_error": 0.024503136466632023,
+      "model_name": "walk_forward_champion_uncalibrated"
+    },
+    {
+      "accuracy": 0.6268292682926829,
+      "brier_score": 0.23265382563513948,
+      "log_loss": 0.6590437243079604,
+      "roc_auc": 0.6539518103749177,
+      "calibration_error": 0.05648326856889264,
+      "model_name": "walk_forward_champion_platt"
+    },
+    {
+      "accuracy": 0.6268292682926829,
+      "brier_score": 0.23619678489850873,
+      "log_loss": 0.6718256484107535,
+      "roc_auc": 0.6540943595810386,
+      "calibration_error": 0.07543696460611099,
+      "model_name": "walk_forward_champion_isotonic"
+    }
+  ],
+  "best_calibrated_model": "walk_forward_champion_uncalibrated",
+  "best_fair_model": "team_plus_selected_player_random_forest",
+  "best_calibrated_model_metrics": {
+    "accuracy": 0.6227642276422765,
+    "brier_score": 0.23079935355318495,
+    "log_loss": 0.653937207578867,
+    "roc_auc": 0.6539518103749177,
+    "calibration_error": 0.024503136466632023,
+    "model_name": "walk_forward_champion_uncalibrated"
+  },
+  "walk_forward_validation": {
+    "best_fair_model": "team_plus_selected_player_random_forest",
+    "average_walk_forward_log_loss": 0.6538449605332759,
+    "average_walk_forward_brier_score": 0.231020129535676,
+    "best_calibration_method": "uncalibrated",
+    "selected_player_features_improved_walk_forward": true,
+    "champion_beats_elo": true,
+    "champion_beats_team_only": true,
+    "champion_beats_sportsbook_benchmark": false,
+    "champion_reasonable_calibration": true,
+    "champion_no_extreme_probability_behavior": true,
+    "walk_forward_folds": 4
+  },
+  "walk_forward_results_path": "C:\\Users\\arilo\\Downloads\\Prediction Market Project\\nba_kalshi_predictor\\outputs\\fair_model_walk_forward_results.csv",
+  "walk_forward_summary_path": "C:\\Users\\arilo\\Downloads\\Prediction Market Project\\nba_kalshi_predictor\\outputs\\fair_model_walk_forward_summary.csv",
+  "kalshi_comparison_label": "Potential signal",
+  "walk_forward_potential_signal": true,
+  "walk_forward_beats_sportsbook_benchmark": false,
+  "kalshi_paper_trading": {
+    "paper_trades": 3433,
+    "closed_trades": 3433,
+    "open_trades": 0,
+    "best_paper_threshold": 0.05,
+    "paper_roi": -0.029326764659429624,
+    "small_sample_warning": "",
+    "payout_method": "profit_loss_per_dollar_staked",
+    "mapping_confidence_rate": 1.0,
+    "pregame_price_rate": 1.0,
+    "excluded_postgame_prices": 0,
+    "mapping_passed_audit": true,
+    "timing_passed_audit": true,
+    "best_edge_bucket": "7-10%",
+    "worst_edge_bucket": "3-5%",
+    "best_price_bucket": "60-80%",
+    "worst_price_bucket": "0-20%",
+    "champion_feature_count": 24
+  },
+  "kalshi_strategy_testing": {
+    "status": "potential_signal",
+    "validated_edge": false,
+    "warning": "Discovery was positive, but holdout failed or was too small.",
+    "recommended_default_rule": "No live trades. Research-only display. Hide 0-20% longshot signals from highlighted opportunities. Require at least 7% edge to appear as a potential signal.",
+    "selected_rule": {
+      "min_edge": 0.15,
+      "min_contract_price": 0.0,
+      "max_contract_price": 0.7,
+      "timing_filter": "within_30m",
+      "side_filter": "yes_only",
+      "favorite_filter": "underdogs_only",
+      "home_away_filter": "both"
+    },
+    "discovery": {
+      "trades": 32,
+      "wins": 20,
+      "losses": 12,
+      "win_rate": 0.625,
+      "average_edge": 0.19694820299476584,
+      "average_price": 0.29874999999999996,
+      "profit_loss_per_dollar_staked": 41.0952380952381,
+      "roi": 1.2842261904761907,
+      "max_drawdown": -8.0
+    },
+    "holdout": {
+      "trades": 24,
+      "wins": 4,
+      "losses": 20,
+      "win_rate": 0.16666666666666666,
+      "average_edge": 0.24551605000974608,
+      "average_price": 0.22666666666666666,
+      "profit_loss_per_dollar_staked": 6.7692307692307665,
+      "roi": 0.28205128205128194,
+      "max_drawdown": -12.0
+    }
+  },
+  "kalshi_paper_trades_path": "C:\\Users\\arilo\\Downloads\\Prediction Market Project\\nba_kalshi_predictor\\outputs\\kalshi_paper_trades.csv",
+  "kalshi_paper_summary_path": "C:\\Users\\arilo\\Downloads\\Prediction Market Project\\nba_kalshi_predictor\\outputs\\kalshi_paper_trade_summary.csv",
+  "kalshi_strategy_grid_path": "C:\\Users\\arilo\\Downloads\\Prediction Market Project\\nba_kalshi_predictor\\outputs\\kalshi_strategy_grid.csv",
+  "kalshi_strategy_selected_path": "C:\\Users\\arilo\\Downloads\\Prediction Market Project\\nba_kalshi_predictor\\outputs\\kalshi_strategy_selected.json",
+  "kalshi_strategy_holdout_path": "C:\\Users\\arilo\\Downloads\\Prediction Market Project\\nba_kalshi_predictor\\outputs\\kalshi_strategy_holdout_results.csv",
+  "paper_trading_warning": "Paper trading has not validated this strategy.",
+  "best_edge_threshold_by_validation_roi": 0.05,
+  "best_validation_roi": -0.02179984307723023,
+  "best_validation_bets": 889,
+  "validation_bets_by_threshold": {
+    "0.01": 1161,
+    "0.02": 1090,
+    "0.03": 1023,
+    "0.04": 953,
+    "0.05": 889,
+    "0.06": 822,
+    "0.07": 749,
+    "0.08": 664,
+    "0.10": 556
+  },
+  "validation_roi_by_threshold": {
+    "0.01": -0.03723227986656105,
+    "0.02": -0.03388055102525863,
+    "0.03": -0.028915597055575327,
+    "0.04": -0.03114486156984473,
+    "0.05": -0.02179984307723023,
+    "0.06": -0.0635066970335528,
+    "0.07": -0.10355535586067999,
+    "0.08": -0.16392482710863315,
+    "0.10": -0.16108059044337772
+  },
+  "fair_model_validated_historically": false,
+  "model_framing_note": "Our model estimates fair win probability. Sportsbook closing odds are used as a historical benchmark. Kalshi prices are used for live market comparison.",
+  "no_validated_edge_warning": "Fair model validation is not strong enough for a validated edge. Live Kalshi suggestions are research only unless marked as a potential signal.",
+  "strategy_warning": "Sportsbook closing odds are a benchmark, not the only goal. ROI by edge threshold is secondary.",
+  "player_feature_count": 66,
+  "selected_player_feature_count": 12,
+  "selected_player_features": [
+    "home_expected_top5_minutes_total",
+    "away_expected_top5_minutes_total",
+    "home_missing_key_players_count",
+    "away_missing_key_players_count",
+    "home_expected_points_from_active_rotation",
+    "away_expected_points_from_active_rotation",
+    "home_expected_plus_minus_from_active_rotation",
+    "away_expected_plus_minus_from_active_rotation",
+    "expected_top5_minutes_total_diff",
+    "missing_key_players_count_diff",
+    "expected_points_from_active_rotation_diff",
+    "expected_plus_minus_from_active_rotation_diff"
+  ],
+  "player_features_improved_validation": false,
+  "selected_player_features_improved_validation": true,
+  "player_feature_warning": "Player features are available but have not improved validation performance yet.",
+  "best_ablation_model": "team_features_plus_selected_player_features_random_forest",
+  "worst_ablation_model": "rest_and_schedule_only",
+  "best_ablation_log_loss": 0.653937207578867,
+  "worst_ablation_log_loss": 0.7127242779389987,
+  "player_data_coverage": 1.0,
+  "projected_rotation_coverage": 0.9609756097560975,
+  "leakage_checks": {
+    "no_validation_or_future_games_in_training": true,
+    "features_use_only_prior_games": true,
+    "player_features_use_only_prior_games": true,
+    "final_score_result_not_used_as_feature": true,
+    "sportsbook_odds_used_only_as_benchmark_except_market_anchored_model": true
+  },
+  "partial_validation_warning": "",
+  "diagnostic_outputs": {
+    "model_diagnostics": "C:\\Users\\arilo\\Downloads\\Prediction Market Project\\nba_kalshi_predictor\\outputs\\model_diagnostics.csv",
+    "edge_bucket_report": "C:\\Users\\arilo\\Downloads\\Prediction Market Project\\nba_kalshi_predictor\\outputs\\edge_bucket_report.csv",
+    "error_by_group": "C:\\Users\\arilo\\Downloads\\Prediction Market Project\\nba_kalshi_predictor\\outputs\\error_by_group.csv",
+    "player_feature_diagnostics": "C:\\Users\\arilo\\Downloads\\Prediction Market Project\\nba_kalshi_predictor\\outputs\\player_feature_diagnostics.csv",
+    "player_feature_importance": "C:\\Users\\arilo\\Downloads\\Prediction Market Project\\nba_kalshi_predictor\\outputs\\player_feature_importance.csv",
+    "model_ablation_results": "C:\\Users\\arilo\\Downloads\\Prediction Market Project\\nba_kalshi_predictor\\outputs\\model_ablation_results.csv",
+    "fair_model_walk_forward_results": "C:\\Users\\arilo\\Downloads\\Prediction Market Project\\nba_kalshi_predictor\\outputs\\fair_model_walk_forward_results.csv",
+    "fair_model_walk_forward_summary": "C:\\Users\\arilo\\Downloads\\Prediction Market Project\\nba_kalshi_predictor\\outputs\\fair_model_walk_forward_summary.csv",
+    "kalshi_paper_trades": "C:\\Users\\arilo\\Downloads\\Prediction Market Project\\nba_kalshi_predictor\\outputs\\kalshi_paper_trades.csv",
+    "kalshi_paper_trade_summary": "C:\\Users\\arilo\\Downloads\\Prediction Market Project\\nba_kalshi_predictor\\outputs\\kalshi_paper_trade_summary.csv",
+    "kalshi_market_mapping_audit": "C:\\Users\\arilo\\Downloads\\Prediction Market Project\\nba_kalshi_predictor\\outputs\\kalshi_market_mapping_audit.csv",
+    "kalshi_paper_trade_diagnostics": "C:\\Users\\arilo\\Downloads\\Prediction Market Project\\nba_kalshi_predictor\\outputs\\kalshi_paper_trade_diagnostics.csv",
+    "kalshi_losing_patterns": "C:\\Users\\arilo\\Downloads\\Prediction Market Project\\nba_kalshi_predictor\\outputs\\kalshi_losing_patterns.csv",
+    "kalshi_strategy_grid": "C:\\Users\\arilo\\Downloads\\Prediction Market Project\\nba_kalshi_predictor\\outputs\\kalshi_strategy_grid.csv",
+    "kalshi_strategy_selected": "C:\\Users\\arilo\\Downloads\\Prediction Market Project\\nba_kalshi_predictor\\outputs\\kalshi_strategy_selected.json",
+    "kalshi_strategy_holdout_results": "C:\\Users\\arilo\\Downloads\\Prediction Market Project\\nba_kalshi_predictor\\outputs\\kalshi_strategy_holdout_results.csv"
+  }
+}

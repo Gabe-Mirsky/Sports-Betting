@@ -1,0 +1,9 @@
+season,games,player_data_available_games,projected_rotation_available_games,player_data_coverage,projected_rotation_coverage,high_uncertainty_games,medium_uncertainty_games,low_uncertainty_games,raw_player_log_rows,leakage_check
+2018,1230,1230,1183,1.0,0.9617886178861789,54,268,908,216475,features_use_only_player_games_before_current_game_date
+2019,1059,1059,1011,1.0,0.9546742209631728,69,244,746,216475,features_use_only_player_games_before_current_game_date
+2020,1080,1080,1032,1.0,0.9555555555555556,80,333,667,216475,features_use_only_player_games_before_current_game_date
+2021,1230,1230,1182,1.0,0.9609756097560975,100,406,724,216475,features_use_only_player_games_before_current_game_date
+2022,1230,1230,1183,1.0,0.9617886178861789,89,367,774,216475,features_use_only_player_games_before_current_game_date
+2023,1230,1230,1182,1.0,0.9609756097560975,73,349,808,216475,features_use_only_player_games_before_current_game_date
+2024,1230,1230,1182,1.0,0.9609756097560975,86,395,749,216475,features_use_only_player_games_before_current_game_date
+2025,1230,1230,1182,1.0,0.9609756097560975,87,347,796,216475,features_use_only_player_games_before_current_game_date

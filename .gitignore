@@ -8,11 +8,16 @@ Kalshi API*.txt
 .venv/
 .codex_runtime_pkgs/
 .pip_tmp/
-data/raw/
+data/raw/*
+!data/raw/sportsbook/
+data/raw/sportsbook/*
+!data/raw/sportsbook/nba_moneyline_odds.schema.csv
 data/interim/
 data/processed/
 data/models/
 data/reports/
+data/backups/
+data/logs/
 data/kalshi/markets_today.csv
 data/kalshi/markets_to_fill.csv
 data/kalshi/markets_manual*.csv
@@ -20,4 +25,9 @@ __pycache__/
 .ipynb_checkpoints/
 *.pyc
 tmp*/
+
+# Django web app
+db.sqlite3
+staticfiles/
+_archive_unused_files/
 .DS_Store

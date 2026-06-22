@@ -99,6 +99,73 @@ class TestKalshiMatcher(unittest.TestCase):
         self.assertEqual(matches.loc[0, "match_status"], "auto_matched")
         self.assertEqual(matches.loc[0, "yes_team_abbr"], "LAL")
 
+    def test_tied_team_markets_prefer_home_yes_side(self) -> None:
+        games = pd.DataFrame(
+            [
+                {
+                    "game_id": "3",
+                    "game_date": "2026-03-10",
+                    "home_team_abbr": "HOU",
+                    "away_team_abbr": "TOR",
+                }
+            ]
+        )
+        markets = pd.DataFrame(
+            [
+                {
+                    "market_ticker": "KXNBAGAME-26MAR10TORHOU-TOR",
+                    "series_ticker": "KXNBAGAME",
+                    "event_ticker": "KXNBAGAME-26MAR10TORHOU",
+                    "market_title": "Toronto at Houston Winner?",
+                    "market_subtitle": "",
+                    "close_time": "2026-03-11T00:00:00Z",
+                },
+                {
+                    "market_ticker": "KXNBAGAME-26MAR10TORHOU-HOU",
+                    "series_ticker": "KXNBAGAME",
+                    "event_ticker": "KXNBAGAME-26MAR10TORHOU",
+                    "market_title": "Toronto at Houston Winner?",
+                    "market_subtitle": "",
+                    "close_time": "2026-03-11T00:00:00Z",
+                },
+            ]
+        )
+
+        matches = match_games_to_kalshi_markets(games, markets)
+
+        self.assertEqual(matches.loc[0, "match_status"], "auto_matched")
+        self.assertEqual(matches.loc[0, "yes_team_abbr"], "HOU")
+        self.assertEqual(matches.loc[0, "market_ticker"], "KXNBAGAME-26MAR10TORHOU-HOU")
+
+    def test_rejects_reversed_kxnbagame_orientation(self) -> None:
+        games = pd.DataFrame(
+            [
+                {
+                    "game_id": "4",
+                    "game_date": "2026-01-15",
+                    "home_team_abbr": "MEM",
+                    "away_team_abbr": "ORL",
+                }
+            ]
+        )
+        markets = pd.DataFrame(
+            [
+                {
+                    "market_ticker": "KXNBAGAME-26JAN15MEMORL-MEM",
+                    "series_ticker": "KXNBAGAME",
+                    "event_ticker": "KXNBAGAME-26JAN15MEMORL",
+                    "market_title": "Memphis at Orlando Winner?",
+                    "market_subtitle": "",
+                    "expected_expiration_time": "2026-01-15T22:00:00Z",
+                }
+            ]
+        )
+
+        matches = match_games_to_kalshi_markets(games, markets)
+
+        self.assertEqual(matches.loc[0, "match_status"], "no_match")
+        self.assertIn("does not match", matches.loc[0, "match_notes"])
+
 
 if __name__ == "__main__":
     unittest.main()

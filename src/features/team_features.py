@@ -12,6 +12,7 @@ from data.injury_availability import (
     build_game_availability_features,
     enrich_availability_reports_with_player_impact,
 )
+from data.seasons import assign_dataset_split
 from data.validation import require_columns
 from features.elo import add_elo_features, add_upcoming_elo_features
 from features.player_features import PLAYER_BASE_FEATURE_COLUMNS, build_player_game_features
@@ -185,6 +186,7 @@ def build_modeling_dataset(
     modeling["target_home_win"] = modeling["home_win"].astype(int)
     modeling["home_team_win"] = modeling["target_home_win"]
     modeling = _add_difference_features(modeling)
+    modeling = assign_dataset_split(modeling)
     modeling = modeling.sort_values(["game_date", "game_id"]).reset_index(drop=True)
     return modeling
 

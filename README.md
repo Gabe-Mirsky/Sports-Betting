@@ -1,899 +1,507 @@
-# NBA Kalshi Market Predictor and Paper Trading Simulator
+# NBA Kalshi Single-Game Edge Research
 
-This is a free, local research project for predicting NBA team-based Kalshi-style markets and testing a paper-trading strategy with a fake bankroll. It does not place real trades.
+> **Web UI:** Matchup predictions and the parlay creator now live in a Django site
+> (`predictions/` app). It replaces the old static HTML dashboard. See
+> [WEBAPP.md](WEBAPP.md) — quick start: `python manage.py migrate` then
+> `python manage.py import_predictions` then `python manage.py runserver`.
 
-The project is designed so it does not need to run 24/7. Kalshi candlestick history is the main market-price source: if you miss a live pregame snapshot, the catch-up scripts can later download the market's historical candles and recover the closest available pregame price. Live snapshots are useful, but optional.
+This is a local research project for NBA prediction-market analysis. It does not place real trades. The current goal is not to find optimal parlays. The goal is to prove that the model has real, repeatable edge on single-game Kalshi-style markets.
 
-The current working version downloads and caches NBA data, builds leak-safe pre-game features, trains baseline home-win models, backfills likely Kalshi NBA markets, matches games to markets, downloads candlesticks, extracts pregame prices, and runs a fake $100 paper-trading backtest.
+Parlays are intentionally deferred until straight single-game bets pass the evidence gates:
 
-## Recommended Workflow
+- at least 300 historical matched markets
+- positive closing-line value
+- positive backtest after spread and realistic tradable prices
+- good calibration in high-edge buckets
+- no single season driving all profit
+- no one team or price range driving all profit
+
+## Main Command
+
+Run the cached single-game research path from the project folder in VS Code:
+
+```powershell
+.\run_cached_pipeline.bat
+```
+
+That wrapper defaults to cached market data and cached candles, finds a runnable Python, and works around a broken local `.venv` executable by reusing the installed `.venv` packages with the bundled Python.
+
+To refresh public Kalshi markets and candles too:
+
+```powershell
+.\run_cached_pipeline.bat -RefreshMarkets -RefreshCandles
+```
+
+To refresh NBA data too:
+
+```powershell
+.\run_cached_pipeline.bat -Download
+```
+
+The direct Python command is still available when your active Python environment is healthy:
+
+```powershell
+python scripts/run_single_game_research_pipeline.py --skip-market-pull --skip-candles --kalshi-start-date 2023-10-01 --kalshi-end-date 2026-05-11
+```
+
+This command runs the boring repeatable path:
+
+1. refresh NBA data when `--download` is set
+2. build leak-safe features
+3. train home-win models
+4. run walk-forward evaluation
+5. tune calibrated home-win models
+6. train margin and total research models
+7. build the home-win ensemble audit
+8. backfill raw public Kalshi Sports/NBA series, events, and markets
+9. pull and cache Kalshi NBA markets
+10. match markets to games
+11. download candles and extract pregame prices
+12. build the market truth audit
+13. build the Kalshi coverage audit
+14. run a bid/ask-based fake-bankroll backtest
+15. calibrate edge bins
+16. calibrate side/price/edge bins
+17. sweep price-aware calibration settings
+18. build the best price-aware calibration artifact
+19. audit calibrated residuals
+20. audit best price-aware residuals
+21. audit market movement attribution
+22. audit best price-aware market movement
+23. diagnose edge failure drivers
+24. sweep side-suppression research policies
+25. audit NO-only market regimes
+26. audit NO probability calibration against CLV
+27. sweep NO calibration guardrails
+28. sweep corrected CLV rules
+29. sweep corrected best price-aware CLV rules
+30. sweep residual guardrails
+31. analyze closing-line value
+32. build side-specific CLV-filtered strategy
+33. sweep CLV price/month stability rules
+34. walk-forward validate CLV price/month rules
+35. analyze CLV decay drivers
+36. build defensive CLV-filtered strategy
+37. sweep defensive rule thresholds
+38. walk-forward validate defensive rules
+39. test defensive sample expansion
+40. audit defensive failure month
+41. optimize a conservative calibrated single-bet slate
+42. optimize a CLV-filtered single-bet slate
+43. optimize a defensive CLV-filtered single-bet slate
+44. score single-game strategy readiness
+45. build single-game proof gates
+46. build fair-price single-game signals
+47. build the dashboard
+
+Outputs are written under `data/reports/`, especially:
+
+- `market_truth_audit.csv`
+- `market_truth_audit_summary.json`
+- `data/raw/kalshi/public_api/sports_series.csv`
+- `data/raw/kalshi/public_api/nba_series.csv`
+- `data/raw/kalshi/public_api/nba_events.csv`
+- `data/raw/kalshi/public_api/nba_markets.csv`
+- `data/processed/kalshi_public_possible_nba_markets.csv`
+- `kalshi_coverage_summary.json`
+- `backtest_trades.csv`
+- `backtest_summary.json`
+- `edge_calibration_bins.csv`
+- `edge_calibrated_price_aware_trades.csv`
+- `edge_calibration_price_aware_bins.csv`
+- `edge_calibration_price_aware_summary.json`
+- `price_aware_calibration_sweep.csv`
+- `price_aware_calibration_sweep_summary.json`
+- `edge_calibration_price_aware_best_trades.csv`
+- `edge_calibration_price_aware_best_summary.json`
+- `residual_summary.json`
+- `residual_price_aware_best_summary.json`
+- `residual_by_side_calibrated_residual.csv`
+- `market_movement_summary.json`
+- `market_movement_price_aware_best_summary.json`
+- `market_movement_by_side_move.csv`
+- `edge_failure_summary.json`
+- `edge_failure_worst_segments.csv`
+- `edge_failure_by_side_price.csv`
+- `side_suppression_summary.json`
+- `side_suppression_descriptive.csv`
+- `side_suppression_walk_forward_folds.csv`
+- `no_regime_summary.json`
+- `no_regime_by_entry_price_bucket.csv`
+- `no_regime_by_liquidity_bucket.csv`
+- `no_regime_by_edge_bucket.csv`
+- `no_calibration_summary.json`
+- `no_calibration_by_forecast_win_bucket.csv`
+- `no_calibration_by_entry_price_bucket.csv`
+- `no_calibration_by_month_price.csv`
+- `no_calibration_guardrail_summary.json`
+- `no_calibration_guardrail_descriptive.csv`
+- `no_calibration_guardrail_walk_forward_folds.csv`
+- `corrected_clv_summary.json`
+- `corrected_clv_price_aware_best_summary.json`
+- `residual_guardrail_summary.json`
+- `clv_summary.json`
+- `clv_by_edge_bucket.csv`
+- `clv_by_price_bucket.csv`
+- `clv_by_team.csv`
+- `clv_by_side.csv`
+- `clv_by_season.csv`
+- `clv_by_liquidity.csv`
+- `clv_filtered_trades.csv`
+- `clv_filtered_side_audit.csv`
+- `clv_filtered_summary.json`
+- `clv_price_month_sweep.csv`
+- `clv_price_month_sweep_monthly.csv`
+- `clv_price_month_sweep_summary.json`
+- `clv_price_month_walk_forward_trades.csv`
+- `clv_price_month_walk_forward_folds.csv`
+- `clv_price_month_walk_forward_monthly.csv`
+- `clv_price_month_walk_forward_summary.json`
+- `clv_decay_summary.json`
+- `clv_decay_monthly.csv`
+- `clv_decay_decay_drivers.csv`
+- `clv_decay_negative_clv_rows.csv`
+- `defensive_filtered_trades.csv`
+- `defensive_filter_audit.csv`
+- `defensive_filter_summary.json`
+- `defensive_rule_sweep.csv`
+- `defensive_walk_forward_trades.csv`
+- `defensive_walk_forward_summary.json`
+- `defensive_sample_expansion.csv`
+- `defensive_sample_expansion_summary.json`
+- `defensive_failure_summary.json`
+- `defensive_failure_monthly.csv`
+- `defensive_failure_failure_month_rows.csv`
+- `fair_price_signals.csv`
+- `fair_price_summary.json`
+- `strategy_readiness.csv`
+- `single_game_proof_gates.csv`
+- `single_game_proof_summary.json`
+- `dashboard.html`
+
+## Manual Command Path
+
+Use this when you want to run or debug one stage at a time:
 
 ```powershell
 python scripts/download_nba_data.py --start-season 2018 --end-season 2025
 python scripts/download_nba_player_data.py --start-season 2018 --end-season 2025
-python scripts/download_nba_player_data.py --start-season 2018 --end-season 2025 --season-type Playoffs
 python scripts/build_features.py
 python scripts/train.py
 python scripts/walk_forward.py
 python scripts/tune_model.py
 python scripts/train_market_type_models.py
 python scripts/build_home_win_ensemble.py
-python scripts/compare_player_features.py
-python scripts/kalshi_backfill_markets.py --start-date 2023-10-01 --end-date 2026-05-07
-python scripts/discover_kalshi_nba_markets.py --start-date 2026-04-01 --end-date 2026-05-07
-python scripts/build_kalshi_market_taxonomy.py
+python scripts/kalshi_backfill_public_sports.py --series-ticker KXNBAGAME --event-status all --market-status all --sleep-seconds 0.5 --timeout 20
+python scripts/kalshi_backfill_markets.py --start-date 2023-10-01 --end-date 2026-05-08
 python scripts/kalshi_match_games.py
 python scripts/kalshi_download_candles.py --fetch-game-times
-python scripts/run_backtest.py --bankroll 100 --edge-threshold 0.05
-python scripts/market_blend.py
-python scripts/calibrate_edges.py
-python scripts/optimize_portfolio.py
-python scripts/optimize_portfolio.py --use-calibrated-edges
-python scripts/calibrate_edges.py --trades-path data/reports/backtest_trades_market_blend.csv --output-calibrated-path data/reports/edge_calibrated_trades_market_blend.csv --output-bins-path data/reports/edge_calibration_bins_market_blend.csv --output-summary-path data/reports/edge_calibration_summary_market_blend.json --output-audit-path data/reports/edge_calibration_audit_market_blend.csv --output-negative-edge-path data/reports/edge_calibration_negative_edge_signals_market_blend.csv --output-audit-summary-path data/reports/edge_calibration_audit_summary_market_blend.json
-python scripts/optimize_portfolio.py --use-calibrated-edges --trades-path data/reports/edge_calibrated_trades_market_blend.csv --output-trades-path data/reports/portfolio_trades_market_blend_calibrated.csv --output-slates-path data/reports/portfolio_slates_market_blend_calibrated.csv --output-summary-path data/reports/portfolio_summary_market_blend_calibrated.json
-python scripts/build_consensus_edges.py
-python scripts/screen_robust_edges.py
-python scripts/analyze_signal_stability.py
-python scripts/optimize_portfolio.py --use-calibrated-edges --trades-path data/reports/edge_consensus_calibrated_trades.csv --trade-column consensus_trade --expected-roi-column consensus_expected_roi --output-trades-path data/reports/portfolio_trades_consensus_calibrated.csv --output-slates-path data/reports/portfolio_slates_consensus_calibrated.csv --output-summary-path data/reports/portfolio_summary_consensus_calibrated.json
-python scripts/optimize_portfolio.py --use-calibrated-edges --trades-path data/reports/edge_robust_consensus_trades.csv --trade-column robust_calibrated_trade --expected-roi-column robust_expected_roi --output-trades-path data/reports/portfolio_trades_robust_consensus.csv --output-slates-path data/reports/portfolio_slates_robust_consensus.csv --output-summary-path data/reports/portfolio_summary_robust_consensus.json
-python scripts/strategy_readiness.py
-python scripts/sweep_signal_rules.py
-python scripts/analyze_parlay_correlations.py
-python scripts/build_forward_recommendations.py
+python scripts/market_truth_audit.py
 python scripts/kalshi_coverage_report.py
-python scripts/review_kalshi_market_quality.py
-python scripts/validate_research_data.py
+python scripts/run_backtest.py --predictions-path data/reports/walk_forward_predictions.csv --bankroll 100 --edge-threshold 0.05
+python scripts/calibrate_edges.py
+python scripts/calibrate_edges_price_aware.py
+python scripts/sweep_price_aware_calibration.py
+python scripts/build_best_price_aware_calibration.py
+python scripts/audit_residuals.py
+python scripts/audit_residuals.py --input-path data/reports/edge_calibration_price_aware_best_trades.csv --prefix residual_price_aware_best
+python scripts/audit_market_movement.py
+python scripts/audit_market_movement.py --input-path data/reports/edge_calibration_price_aware_best_trades.csv --prefix market_movement_price_aware_best
+python scripts/diagnose_edge_failures.py
+python scripts/sweep_side_suppression.py
+python scripts/audit_no_regimes.py
+python scripts/audit_no_calibration.py
+python scripts/sweep_no_calibration_guardrails.py
+python scripts/sweep_corrected_clv_rules.py
+python scripts/sweep_corrected_clv_rules.py --input-path data/reports/edge_calibration_price_aware_best_trades.csv --prefix corrected_clv_price_aware_best
+python scripts/sweep_residual_guardrails.py
+python scripts/analyze_clv.py
+python scripts/build_clv_filtered_strategy.py
+python scripts/sweep_clv_price_month_rules.py
+python scripts/sweep_clv_price_month_rules.py --walk-forward
+python scripts/analyze_clv_decay.py
+python scripts/build_defensive_strategy.py
+python scripts/build_defensive_strategy.py --sweep
+python scripts/build_defensive_strategy.py --walk-forward
+python scripts/build_defensive_strategy.py --sample-expansion
+python scripts/audit_defensive_failure_month.py
+python scripts/optimize_portfolio.py --use-calibrated-edges
+python scripts/optimize_portfolio.py --trades-path data/reports/clv_filtered_trades.csv --trade-column clv_filtered_trade --expected-roi-column calibrated_expected_roi --min-edge -1.0 --output-summary-path data/reports/portfolio_summary_clv_filtered.json
+python scripts/optimize_portfolio.py --trades-path data/reports/defensive_filtered_trades.csv --trade-column defensive_trade --expected-roi-column calibrated_expected_roi --min-edge -1.0 --output-summary-path data/reports/portfolio_summary_defensive.json
+python scripts/strategy_readiness.py
+python scripts/single_game_proof.py
+python scripts/build_fair_prices.py
 python scripts/build_dashboard.py
 ```
 
-To open the local website, double-click:
+## Market Truth Audit
 
-```text
-open_website.bat
+The market truth audit is the main pre-backtest quality gate. It creates one row per matched game-market pair with:
+
+- `game_id`
+- `date`
+- `home_team`
+- `away_team`
+- `market_ticker`
+- `series_ticker`
+- `tipoff_time`
+- `market_close_time`
+- `pregame_price_60m`
+- `pregame_price_30m`
+- `pregame_price_5m`
+- `yes_bid`
+- `yes_ask`
+- `mid_price`
+- `spread`
+- `volume`
+- `open_interest`
+- `match_status`
+
+It also flags ticker/team mapping mismatches, wide spreads, and low-liquidity rows. Bad market matching or bad historical prices can fake edge, so this report matters more than adding model complexity.
+
+## Pricing Rule
+
+Backtests should use realistic tradable bid/ask prices. Do not treat last price alone as a tradable entry. For YES bets, the entry is normally the YES ask. For NO bets, the program should use the tradable NO-side ask or a defensible ask-equivalent.
+
+The current backtest path filters candle prices to bid/ask-available rows by default through `config.yaml`:
+
+```yaml
+strategy:
+  allow_no_trades: true
+
+backtest:
+  allowed_price_qualities: "bid_ask_available"
+  require_bid_ask: true
+  max_bid_ask_spread_cents: 10.0
 ```
 
-or run:
+When `allow_no_trades` is true, the signal engine evaluates both sides:
+
+- buy YES at `yes_ask`
+- buy NO at `100 - yes_bid`
+
+It takes only the side with enough edge after the configured threshold and price filters.
+
+## Evaluation Priorities
+
+The model is useful only if its calibrated probability is meaningfully better than Kalshi's tradable price after spread, fees, uncertainty, and liquidity screens.
+
+Track these before adding more model types:
+
+- log loss
+- Brier score
+- calibration curve
+- edge-bin realized win rate
+- profit after spread and realistic pricing
+- closing-line value
+- season-by-season stability
+- team, price, and liquidity concentration
+
+CLV reports are generated from `backtest_trades.csv`:
 
 ```powershell
-python scripts/open_dashboard.py
+python scripts/analyze_clv.py
 ```
 
-Then, whenever you want to catch up after a day, week, or longer gap:
+This writes average and median CLV overall, by edge bucket, by price bucket, by side, by team, by season, and by liquidity bucket.
+
+The CLV-filtered strategy is generated with side-specific expanding history:
 
 ```powershell
-python scripts/kalshi_catchup.py
+python scripts/build_clv_filtered_strategy.py
 ```
 
-Optional same-day paper suggestions:
+YES and NO are gated separately. The default NO gate is stricter because the current raw NO path is the largest loss source.
+
+The price/month stability sweep checks whether the CLV-filtered YES-only strategy is concentrated in one price range or a few months:
 
 ```powershell
-python scripts/predict_upcoming.py --days 1
-python scripts/paper_trade_today.py
+python scripts/sweep_clv_price_month_rules.py
 ```
 
-Important caveats:
+This is descriptive research only. A narrow price rule still needs walk-forward proof before it can be trusted.
 
-- Old Kalshi markets may be unavailable or incomplete.
-- Not every NBA game has a Kalshi market.
-- Market matching is imperfect; automated backtests use only high-confidence `auto_matched` rows.
-- Exact pregame price quality depends on available candles. Daily candles are marked low quality.
-- This is paper trading only, not real trading.
+The nested walk-forward version chooses a price rule from prior months and applies it to the next month:
 
-## What It Will Do
+```powershell
+python scripts/sweep_clv_price_month_rules.py --walk-forward
+```
 
-1. Download historical NBA team game logs with `nba_api`.
-2. Build pre-game team and player-rotation features without data leakage.
-3. Train and tune models that estimate `P(home team wins)`.
-4. Train market-type models for predicted margin and total points.
-5. Backfill recent and archived Kalshi NBA markets.
-6. Classify NBA markets by type: winner, spread, total, team total, player prop, series, or ambiguous.
-7. Match NBA games to high-confidence Kalshi team-win markets.
-8. Download Kalshi candlesticks and extract 60-minute, 30-minute, and 5-minute pregame prices.
-9. Compare model probabilities to Kalshi-style binary market prices.
-10. Generate paper-trade signals only when the model edge is large enough.
-11. Simulate a fake $100 bankroll and save trade logs, metrics, and plots.
-12. Optimize a same-day slate of individual paper bets before considering parlays.
+Use the walk-forward result as the trust gate, not the in-sample sweep.
+
+Price-aware calibration is generated separately from the baseline edge-bin calibration:
+
+```powershell
+python scripts/calibrate_edges_price_aware.py
+python scripts/sweep_price_aware_calibration.py
+```
+
+This tests whether side + price + edge history reduces false cheap-contract edges. The current best in-sample price-aware setting improves profit slightly but still fails CLV:
+
+- best sweep status: `watchlist`
+- signals: `300`
+- average profit/share: `+0.014`
+- average CLV: `+0.01c`
+- positive CLV rate: `25.7%`
+
+Residual and market-movement audits explain whether calibrated edges are real price-discovery signals:
+
+```powershell
+python scripts/audit_residuals.py
+python scripts/audit_market_movement.py
+python scripts/diagnose_edge_failures.py
+python scripts/sweep_corrected_clv_rules.py
+python scripts/sweep_residual_guardrails.py
+```
+
+Current diagnosis: baseline edge-bin calibration overstates cheap-contract win probability, and price-aware calibration does not yet produce repeatable positive CLV. Treat any profitable slice as research-only until positive CLV and walk-forward proof improve.
+
+`diagnose_edge_failures.py` writes `edge_failure_worst_segments.csv`, which ranks side, price, edge, ROI, liquidity, and month slices by CLV/profit failure. Use it to pick model hypotheses; do not convert those slices directly into betting rules without walk-forward CLV proof.
+
+`sweep_side_suppression.py` tests whether YES suppression or NO-only selection helps. Current cached result: `no_only` is the descriptive best policy, but the nested walk-forward result remains `not_ready` with weak positive CLV rate, so it is research-only.
+
+`audit_no_regimes.py` audits calibrated NO-only signals by NO entry price, implied YES market price, spread, liquidity, edge, ROI, and month. Current cached result: spreads are not the issue; NO has slightly positive average CLV but low positive-CLV frequency across most regimes.
+
+CLV decay diagnostics explain whether later months degrade because of price bucket, edge bucket, liquidity, or team mix:
+
+```powershell
+python scripts/analyze_clv_decay.py
+```
+
+The defensive strategy blocks non-team decay-prone slices before portfolio selection:
+
+```powershell
+python scripts/build_defensive_strategy.py
+```
+
+Default defensive rules block very cheap `0-10c` YES contracts, extreme calibrated ROI `3+`, and very high-volume rows `>=1000`. Team exclusions are intentionally avoided unless a separate walk-forward test supports them.
+
+The defensive sweep now tests both lower and upper price bounds plus lower and upper calibrated ROI bounds. This was added after the March audit showed weakness in low-ROI and mid-price slices:
+
+```powershell
+python scripts/build_defensive_strategy.py --sweep
+```
+
+Current best in-sample rule family is `price=15-40c, roi=0.5-3.0, volume<=10000`. Treat that as a hypothesis until it survives walk-forward checks.
+
+Defensive rules must also be walk-forward validated:
+
+```powershell
+python scripts/build_defensive_strategy.py --walk-forward
+```
+
+This chooses thresholds from prior months and applies them to future months.
+
+The current expanded walk-forward validation improves March but still stays `not_ready` because the stricter rule set leaves fewer than 100 validated trades:
+
+- signals: `73`
+- positive CLV rate: `61.6%`
+- positive month share: `100.0%`
+- average CLV: `21.86c`
+- average profit/share: `+0.142`
+
+Sample expansion tests nearby broader thresholds:
+
+```powershell
+python scripts/build_defensive_strategy.py --sample-expansion
+```
+
+Current sample expansion result remains `not_ready`. A looser `price=15-40c, roi=0.25-3.0, volume<=10000` rule reaches `107` signals, but March positive CLV falls below 50%, so it is rejected. The best rule that preserves every evaluated month above 50% positive CLV is still undersized:
+
+- rule: `price=15-40c, roi=0.5-3.0, volume<=10000`
+- signals: `72`
+- positive CLV rate: `62.5%`
+- weakest monthly positive CLV: `51.5%`
+- average CLV: `22.17c`
+- average profit/share: `+0.146`
+
+If a walk-forward month fails, audit it before adding rules:
+
+```powershell
+python scripts/audit_defensive_failure_month.py --failure-month 2026-03
+```
+
+Schedule context is included only when those columns are present or supplied through `--schedule-context-path`.
+
+## Fair-Price Engine
+
+Fair-price signals are generated from `matched_markets.csv`:
+
+```powershell
+python scripts/build_fair_prices.py
+```
+
+For each game-market row, the fair-price engine evaluates both sides:
+
+- `model_prob`
+- `calibrated_prob`
+- `market_yes_ask`
+- `market_no_ask`
+- `fair_yes_price`
+- `fair_no_price`
+- `gross_edge`
+- `fee_adjusted_edge`
+- `spread_penalty`
+- `uncertainty_penalty`
+- `final_edge`
+- `recommendation`
+
+The output is explicit about "Bet YES", "Bet NO", and "No bet". It also keeps parlays blocked until single-game edge is proven.
+
+By default, `build_fair_prices.py` reads `single_game_proof_summary.json` and blocks action-looking recommendations unless `single_game_edge_proven` is true. When proof is not proven, rows keep `ungated_side`, `ungated_recommendation`, and `ungated_main_reason` for research, but the actionable `side` is blank, `recommendation` is `No bet`, and `max_size` is `0`.
+
+Current cached run:
+
+- proof gate status: `not_proven`
+- actionable fair-price bets: `0`
+- ungated research bets: `539`
+
+## Single-Game Proof Gates
+
+The proof report is generated from the saved audit, backtest, CLV, calibration, and readiness artifacts:
+
+```powershell
+python scripts/single_game_proof.py
+```
+
+It blocks parlay research unless the straight-bet system passes hard gates for market coverage, usable pregame prices, market matching quality, raw bid/ask backtest profit, positive CLV, calibrated readiness, enough months, and concentration risk.
+
+## Daily Output Goal
+
+The final user-facing interface should answer:
+
+- what single bets should be placed today
+- what games should be avoided
+- which bets are ineligible for parlays
+- why each recommendation exists
+
+Most games should be `no bet`.
 
 ## Install
 
-From this folder:
-
 ```powershell
-cd "C:\Users\arilo\Downloads\Prediction Market Project\nba_kalshi_predictor"
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-If PowerShell blocks activation with `running scripts is disabled on this system`,
-you can skip activation and call the virtual environment's Python directly:
-
-```powershell
-.\.venv\Scripts\python.exe -m pip install --upgrade pip
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-.\.venv\Scripts\python.exe scripts\download_nba_data.py --start-season 2018 --end-season 2025
-.\.venv\Scripts\python.exe scripts\build_features.py
-```
-
-Or, for only the current PowerShell window, allow activation temporarily:
-
-```powershell
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-.\.venv\Scripts\Activate.ps1
-```
-
-Python 3.10 or newer is recommended.
-
-## Run Without Kalshi Credentials
-
-Kalshi integration is optional. The project defaults to local/mock data mode.
-
-The first command to run is:
-
-```powershell
-python scripts/download_nba_data.py --start-season 2018 --end-season 2025
-```
-
-This downloads regular-season team logs and caches them under:
-
-```text
-data/raw/
-```
-
-To download both regular-season and playoff team logs:
-
-```powershell
-python scripts/download_all_nba_data.py --start-season 2018 --end-season 2025
-```
-
-To add player-level box-score history for rotation-strength features:
-
-```powershell
-python scripts/download_nba_player_data.py --start-season 2018 --end-season 2025
-python scripts/download_nba_player_data.py --start-season 2018 --end-season 2025 --season-type Playoffs
-```
-
-Player features are built from prior games only. They summarize recent rotation strength, top-player minutes, top-eight production, continuity, and active-count proxies. They do not use same-game player stats or confirmed lineups from after tipoff.
-
-Source choice:
-
-- `nba_api` / NBA Stats is the primary automated source for player box-score history because it is already in the project and maps official NBA.com stats endpoints.
-- `pbpstats` is a good optional next source for lineup and possession-level work, but it should stay separate until the main winner/spread/total pipeline is stable.
-- Basketball Reference is useful for manual research and CSV-style checks, but the project should not depend on aggressive automated scraping from it.
-
-To add free injury or availability data, create a local CSV at `data/raw/nba/injuries/availability.csv` with:
-
-```text
-report_date,game_date,team_abbr,player_name,status,impact_weight
-```
-
-Allowed statuses include `out`, `doubtful`, `questionable`, `probable`, and `available`. `impact_weight` is optional but useful: use expected minutes, recent average minutes, or another free rotation-weight estimate so an injured starter matters more than a bench player. If you do not provide `impact_weight`, the project uses `expected_minutes`, `avg_minutes`, `rotation_minutes`, or `minutes` if one of those columns exists; otherwise it falls back to `1`.
-
-The feature builder uses only reports dated on or before the game date, then adds home/away counts, weighted injury impact, projected minutes lost, and differences. Missing files are fine; the model simply runs without these features.
-
-To create an availability entry template with the likely rotation players and recent-minutes impact weights:
-
-```powershell
-python scripts/build_availability_template.py --start-date 2026-01-01 --end-date 2026-01-31
-```
-
-This writes `data/raw/nba/injuries/availability_template.csv`. Fill the `status` column from a free/allowed injury source, then save the rows you want as `data/raw/nba/injuries/availability.csv`.
-
-To rebuild the game-level dataset from cached raw files:
-
-```powershell
-python scripts/build_features.py
-```
-
-That script creates:
-
-```text
-data/interim/nba_games.parquet
-data/processed/modeling_dataset.parquet
-```
-
-Train the first models:
-
-```powershell
-python scripts/train.py
-```
-
-This also saves calibration data, model probability plots, and feature diagnostics under:
-
-```text
-data/reports/
-```
-
-Run the fake $100 mock-market backtest:
-
-```powershell
-python scripts/run_backtest.py --bankroll 100 --edge-threshold 0.05
-```
-
-This also saves matched-market diagnostics and edge distribution plots.
-
-Plain-English translation:
-
-- `edge-threshold 0.05` means only make a paper pick when our estimate is at least 5 percentage points better than the market price. If our model says 62% and the market is 55 cents, the advantage is 7 points.
-- `max-bet-fraction 0.03` means risk at most 3% of the fake bankroll on one paper pick. With a fake $100 bankroll, that is about $3.
-- `model_yes_prob` means our estimated chance that the selected YES team wins.
-- `market_prob` means the market-implied chance from the YES price. A 55-cent price is treated like 55%.
-- `trade=True` means the simulator made a paper pick. It never places a real trade.
-
-For a stronger out-of-sample research run, use walk-forward predictions:
-
-```powershell
-python scripts/walk_forward.py
-python scripts/compare_player_features.py
-```
-
-That trains on past seasons only, predicts the next season, then repeats. For example, 2024 predictions are trained on 2018 through 2023, and 2025 predictions are trained on 2018 through 2024.
-The comparison script writes `data/reports/player_feature_comparison.json`, showing whether player-aware features improved the same split versus the team-only feature set.
-
-NBA season years use the first year of the season. The current 2026 NBA season is `2025`, meaning `2025-26`.
-
-To refresh the current 2025-26 season and rebuild reports:
-
-```powershell
-python scripts/refresh_current_season.py
-```
-
-That command forces a fresh download for the current regular season and playoffs, rebuilds features, retrains reports, updates walk-forward predictions, reruns the mock/manual-market reports, and refreshes the dashboard files.
-
-If you only want regular-season data:
-
-```powershell
-python scripts/refresh_current_season.py --regular-season-only
-```
-
-You can backtest against the walk-forward file with:
-
-```powershell
-python scripts/run_backtest.py --bankroll 100 --edge-threshold 0.05 --predictions-path data/reports/walk_forward_predictions.csv
-```
-
-Run unit tests:
-
-```powershell
-python -m unittest discover -s tests
-```
-
-Run the saved-artifact validation report:
-
-```powershell
-python scripts/validate_research_data.py
-```
-
-That writes `data/reports/data_validation_summary.json` and `data/reports/data_validation_issues.csv`, and the dashboard shows the current validation status.
-
-## Add Kalshi Credentials Later
-
-Copy `.env.example` to `.env` and fill in values only if you want to experiment with demo or live API access later:
-
-```text
-KALSHI_API_KEY_ID=
-KALSHI_PRIVATE_KEY_PATH=
-KALSHI_ENV=prod
-```
-
-The project should still run without this file.
-
-If you have a local text file containing a Kalshi API key ID and RSA private key, you can set up the local ignored credential files without printing the secret:
-
-```powershell
-python scripts/setup_kalshi_credentials.py --source "$env:USERPROFILE\Downloads\Kalshi API.txt"
-```
-
-This writes `.secrets/kalshi_private_key.pem` and updates `.env`. Both are ignored by git. The project only uses authenticated GET requests for market data; it does not place orders.
-
-If an API key or private key has ever been pasted into chat, a non-ignored file, or a screenshot, rotate it in Kalshi before treating the local setup as clean. This project ignores `.env`, `.secrets/`, PEM/key files, and `Kalshi API*.txt`.
-
-Run the local secret hygiene check anytime:
-
-```powershell
-python scripts/security_audit.py
-```
-
-It saves `data/reports/security_audit_findings.csv` and `data/reports/security_audit_summary.json` without printing secret values.
-
-After installing requirements, verify authenticated read access with:
-
-```powershell
-python scripts/check_kalshi_auth.py
-```
-
-## Model Design
-
-The baseline model will predict the probability that the home team wins. The first model target will be:
-
-```text
-target_home_win
-```
-
-Current model features:
-
-- pre-game Elo difference
-- pre-game Elo home win probability
-- rest-day difference
-- back-to-back flags
-- whether the game is regular season or playoffs
-- rolling win percentage differences
-- rolling point differential differences
-- season-to-date win percentage and margin differences
-- rolling shooting percentage differences
-- rolling three-point percentage differences
-- rolling free-throw percentage differences
-- rolling rebound, assist, and turnover differences
-- optional local injury/availability counts and differences
-
-Same-game result columns like final score, plus/minus, and win/loss are not allowed as model inputs.
-
-The first training script compares:
-
-- Elo baseline
-- logistic regression
-- random forest
-- histogram gradient boosting
-
-The saved production artifact is whichever sklearn model has the best test log loss.
-
-For spread and total-point markets, the project trains separate market-type engines:
-
-```powershell
-python scripts/train_market_type_models.py
-```
-
-This creates predicted home margin, predicted total points, residual standard deviations, and probability helpers for `P(home covers spread)` and `P(total goes over line)`. It also writes an early spread/total calibration report using common historical line grids until real non-winner Kalshi lines are available. Outputs are saved to `data/reports/market_type_predictions.csv`, `data/reports/market_type_model_metrics.json`, `data/reports/market_type_probability_calibration.csv`, and `data/models/margin_total_model.joblib`.
-
-Before backtesting spread, total, team-total, or player-prop markets, audit whether the real Kalshi market text contains usable line values:
-
-```powershell
-python scripts/audit_market_type_lines.py
-```
-
-This writes `data/reports/market_line_coverage.csv` and `data/reports/market_line_coverage_summary.json`. Spread and total betting remain separate projects until this audit passes for real Kalshi lines.
-
-To tune the home-win model without random train/test leakage:
-
-```powershell
-python scripts/tune_model.py
-```
-
-That compares feature families and logistic-regression regularization values with walk-forward season splits. It saves `data/reports/model_tuning_results.csv`, `data/reports/model_tuning_summary.json`, `data/reports/tuned_walk_forward_predictions.csv`, and `data/models/home_win_model_tuned.joblib`. A tuned probability model can have better log loss while still producing worse paper-bet thresholds, so tuned model metrics and betting results are shown separately.
-
-To audit whether an ensemble improves the home-win model:
-
-```powershell
-python scripts/build_home_win_ensemble.py
-```
-
-This merges the standard walk-forward model, tuned walk-forward model, and margin-derived win probability. Expanding-season weights are selected from prior seasons only. It writes `data/reports/home_win_ensemble_predictions.csv`, `data/reports/home_win_ensemble_weights.csv`, `data/reports/home_win_ensemble_static_audit.csv`, and `data/reports/home_win_ensemble_summary.json`. If the ensemble does not clearly beat the best component, it stays research-only.
-
-## Paper-Trading Simulator
-
-The simulator will start with a fake bankroll, defaulting to `$100`.
-
-For a Kalshi-style YES contract:
-
-- a 52-cent price is treated as roughly 52% implied probability
-- cost per share is `price_cents / 100`
-- winning pays `$1` per share
-- losing pays `$0`
-
-The first strategy will only paper-trade YES contracts when:
-
-```text
-model_probability - market_probability >= edge_threshold
-```
-
-No real orders are placed.
-
-## Portfolio Before Parlays
-
-Before building parlays, run a constrained slate optimizer:
-
-```powershell
-python scripts/optimize_portfolio.py
-```
-
-It reads `data/reports/backtest_trades.csv`, ranks eligible individual paper bets by expected ROI, limits same-day bankroll exposure, caps same-team exposure, and avoids taking multiple markets from the same game by default. Outputs are saved to `data/reports/portfolio_trades.csv`, `data/reports/portfolio_slates.csv`, and `data/reports/portfolio_summary.json`. Trade counts are always reported with the date range they cover.
-
-The default headline paper-trading result is the best available slate-settled portfolio summary, not the looser row-by-row backtest:
-
-```powershell
-python scripts/build_headline_backtest.py
-```
-
-This writes `data/reports/headline_backtest_summary.json` and keeps parlays blocked unless individual strategy readiness and out-of-sample pair economics both pass.
-
-For the stricter pre-parlay version, first calibrate whether historical model-vs-market edges actually paid off:
-
-```powershell
-python scripts/calibrate_edges.py
-python scripts/optimize_portfolio.py --use-calibrated-edges
-```
-
-Edge calibration uses an expanding window by prior slate date only, so a market never learns from results on its own date. The calibrated optimizer writes `data/reports/portfolio_trades_calibrated.csv`, `data/reports/portfolio_slates_calibrated.csv`, and `data/reports/portfolio_summary_calibrated.json`.
-
-In calibrated mode, the portfolio step uses the `calibrated_trade` flag as the main filter instead of re-applying the raw 5% edge threshold. You can still force a raw-edge floor with `--min-edge` if you want to compare stricter variants.
-
-The market-blend path repeats the same calibration on `data/reports/backtest_trades_market_blend.csv`, then writes `data/reports/portfolio_trades_market_blend_calibrated.csv`, `data/reports/portfolio_slates_market_blend_calibrated.csv`, and `data/reports/portfolio_summary_market_blend_calibrated.json`. This is the preferred pre-parlay comparison because it checks model edges against the market's own probability signal.
-
-The consensus path is stricter: it only keeps markets where raw edge calibration and market-blend edge calibration both agree. It writes `data/reports/edge_consensus_calibrated_trades.csv`, `data/reports/edge_consensus_summary.json`, and `data/reports/portfolio_summary_consensus_calibrated.json`.
-
-The robust consensus path is stricter again. It requires the lower confidence bound of the calibrated win rate to clear the contract cost before the signal can enter the portfolio. It writes `data/reports/edge_robust_consensus_trades.csv`, `data/reports/edge_robust_consensus_summary.json`, and `data/reports/portfolio_summary_robust_consensus.json`.
-
-Signal stability is checked month by month with:
-
-```powershell
-python scripts/analyze_signal_stability.py
-```
-
-This writes `data/reports/signal_stability_consensus.csv` and `data/reports/signal_stability_consensus_summary.json`. A signal that makes money overall but only wins in one narrow month should not be trusted for parlays.
-
-Finally, score the strategy families with:
-
-```powershell
-python scripts/strategy_readiness.py
-```
-
-This writes `data/reports/strategy_readiness.csv`, `data/reports/strategy_readiness_monthly.csv`, and `data/reports/strategy_readiness_summary.json`. The readiness gate is intentionally conservative: anything with unstable month-by-month profit, a losing portfolio result, or excessive drawdown stays out of parlay research.
-
-To search for stricter paper-watch filters inside the consensus signal history:
-
-```powershell
-python scripts/sweep_signal_rules.py
-```
-
-This writes `data/reports/signal_rule_sweep.csv`, `data/reports/signal_rule_sweep_best_monthly.csv`, and `data/reports/signal_rule_sweep_summary.json`. Treat it as in-sample hypothesis generation only: a good-looking rule can move onto the watchlist, but it still does not become parlay-ready without forward evidence and correlation modeling.
-
-Then validate rule selection month by month:
-
-```powershell
-python scripts/validate_signal_rules_walk_forward.py
-```
-
-Each test month chooses its rule from prior months only. This writes `data/reports/signal_rule_walk_forward_trades.csv`, `data/reports/signal_rule_walk_forward_folds.csv`, `data/reports/signal_rule_walk_forward_monthly.csv`, and `data/reports/signal_rule_walk_forward_summary.json`.
-
-To measure same-slate dependency before building any parlay simulator:
-
-```powershell
-python scripts/analyze_parlay_correlations.py
-```
-
-This writes `data/reports/parlay_pair_rows.csv`, `data/reports/parlay_correlation_report.csv`, and `data/reports/parlay_correlation_summary.json`. It estimates historical two-leg signal behavior, pair win rate, independence-priced pair edge, and leg-outcome correlation. Parlays remain blocked unless individual strategy readiness and correlation diagnostics both pass.
-
-For the website's forward-looking tab, build upcoming recommendations from saved model predictions and saved Kalshi odds:
-
-```powershell
-python scripts/predict_upcoming.py --days 14
-python scripts/download_kalshi_markets.py
-python scripts/build_forward_recommendations.py
-```
-
-This writes `data/reports/forward_recommendations.csv` and `data/reports/forward_recommendations_summary.json`. The table shows model odds, Kalshi-implied odds, the edge signal, whether any sweep rule is allowed by nested walk-forward validation, readiness-gated paper stake, and a hypothetical paper stake for comparison. No real trades are placed.
-
-The included mock market file is:
-
-```text
-data/kalshi/markets_mock.csv
-```
-
-It is tiny on purpose and only exists to prove the pipeline works. Replace it with your own manually collected pre-game market snapshots for serious backtests.
-
-A blank CSV template is available here:
-
-```text
-data/kalshi/markets_template.csv
-```
-
-You can also generate a fill-in market CSV directly from model predictions:
-
-```powershell
-python scripts/export_market_template.py --date 2024-10-22 --yes-side both --output-path data/kalshi/markets_to_fill.csv
-```
-
-Then fill in `yes_mid_cents`, or fill `yes_bid_cents` and `yes_ask_cents` so the script can calculate the midpoint.
-
-Team fields are forgiving. The matcher accepts official abbreviations and common aliases, for example:
-
-- `NY`, `Knicks`, `New York Knicks` -> `NYK`
-- `GS`, `Warriors`, `Golden State Warriors` -> `GSW`
-- `SA`, `Spurs`, `San Antonio Spurs` -> `SAS`
-- `PHO`, `Suns`, `Phoenix Suns` -> `PHX`
-
-Validate a market CSV before using it:
-
-```powershell
-python scripts/validate_market_file.py --markets-path data/kalshi/markets_to_fill.csv
-```
-
-Validation also writes a market data quality report. It warns about issues like:
-
-- tiny sample sizes
-- missing prices
-- prices filled from close price instead of pre-game midpoint
-- missing bid/ask spread
-- unresolved settlements
-- unmatched prediction rows
-
-Print paper-trade suggestions from a manual CSV:
-
-```powershell
-python scripts/paper_trade_today.py --markets-path data/kalshi/markets_to_fill.csv --edge-threshold 0.05
-```
-
-That command only prints and saves suggestions. It never places real trades.
-
-Compare several edge thresholds:
-
-```powershell
-python scripts/sweep_thresholds.py --thresholds 0.00,0.02,0.05,0.08,0.10,0.12,0.15
-```
-
-With a manual CSV:
-
-```powershell
-python scripts/sweep_thresholds.py --markets-path data/kalshi/markets_to_fill.csv --predictions-path data/reports/walk_forward_predictions.csv
-```
-
-Generate extra result diagnostics:
-
-```powershell
-python scripts/analyze_results.py
-```
-
-That creates probability-bucket calibration tables, season-by-season model summaries, edge-bucket backtest summaries, and a largest paper P/L table.
-
-Audit where Kalshi prices beat the model:
-
-```powershell
-python scripts/audit_kalshi_vs_model.py
-```
-
-That creates `data/reports/kalshi_model_gap_audit.csv`, `data/reports/kalshi_model_gap_segments.csv`, `data/reports/kalshi_beat_model_examples.csv`, and `data/reports/kalshi_model_gap_summary.json`. Positive values in `kalshi_edge_over_model` mean Kalshi's pregame probability was closer to the actual result than our model.
-
-Build the local dashboard:
+Build the static dashboard:
 
 ```powershell
 python scripts/build_dashboard.py
 ```
 
-Open the generated file:
+Then open:
 
 ```text
 data/reports/dashboard.html
 ```
 
-Run the optional interactive dashboard:
-
-```powershell
-python -m pip install -r requirements-dashboard.txt
-python scripts/run_dashboard.py
-```
-
-This starts a local Streamlit app that reads the files in `data/reports/`. It does not place trades or call Kalshi. The main dashboard uses automatic paper-trading defaults so you do not need to choose an advantage threshold, bet fraction, or bankroll setting.
-
-To add the next scheduled games to the dashboard:
-
-```powershell
-python scripts/predict_upcoming.py --days 14
-```
-
-That creates `data/reports/upcoming_predictions.csv`.
-
-To add public Kalshi NBA game market prices:
-
-```powershell
-python scripts/download_kalshi_markets.py --status open
-```
-
-That creates `data/kalshi/markets_live.csv` and `data/reports/upcoming_market_suggestions.csv`. These are public market-data snapshots only; the project still does not place real trades.
-
-To search recent/live Kalshi markets across all series for NBA winners, spreads, totals, team totals, and player props:
-
-```powershell
-python scripts/discover_kalshi_nba_markets.py --start-date 2026-04-01 --end-date 2026-05-07
-```
-
-That creates `data/raw/kalshi/broad_nba_markets.csv`, `data/processed/kalshi_broad_market_taxonomy.csv`, and `data/reports/kalshi_broad_market_taxonomy_summary.json`. This is the first pass at finding non-winner NBA markets; it is intentionally separate from the high-confidence game-winner backtest path until each market type has its own model and calibration.
-
-To crawl older archived Kalshi NBA markets, use the historical series endpoint directly:
-
-```powershell
-python scripts/kalshi_backfill_historical_series.py --max-pages 100
-```
-
-This writes `data/raw/kalshi/historical_series_markets.csv`, updates `data/processed/kalshi_possible_nba_markets.csv`, and writes `data/reports/kalshi_historical_series_backfill_summary.json`. This is the preferred old-data path because Kalshi historical markets are paginated by `series_ticker`, not searched by date window. The default series list includes full-game winners, spreads, totals, team totals, half-game markets, player stat props, and playoff/series markets; only `KXNBAGAME` rows are allowed into the full-game winner backtest.
-
-To use Kalshi's series/events endpoints as a discovery layer for new NBA series:
-
-```powershell
-python scripts/kalshi_discover_series_events.py --event-max-pages 50 --market-max-pages 100
-```
-
-This writes `data/raw/kalshi/series_list.csv`, `data/raw/kalshi/events_discovery.csv`, candidate reports in `data/reports/`, and then crawls discovered `KXNBA...` historical market series. The event endpoint is especially useful because old events can still be listed even when nested historical markets are hidden from the event response.
-
-Some broad rows are multivariate combination markets. To inventory the NBA legs inside those combos without treating combo prices as single-leg prices:
-
-```powershell
-python scripts/extract_multivariate_nba_legs.py
-```
-
-This writes `data/processed/kalshi_multivariate_nba_legs.csv` and `data/reports/kalshi_multivariate_nba_legs_summary.json`. These rows are useful evidence of spread, total, and player-prop inventory, but they remain blocked for single-leg backtesting until direct underlying market prices are fetched.
-
-To try fetching direct market rows for the spread, total, and player-prop legs found inside those combo markets:
-
-```powershell
-python scripts/fetch_underlying_nba_leg_markets.py --max-tickers 25 --max-consecutive-failures 3
-```
-
-This writes `data/raw/kalshi/underlying_nba_leg_markets.csv`, `data/reports/underlying_nba_leg_market_requests.csv`, and `data/reports/underlying_nba_leg_market_summary.json`. The command tries spread and total legs first, then player props. It stops early if repeated requests fail, which keeps a blocked or rate-limited run from hanging for a long time. Player props remain deferred even if their lines parse cleanly; spread and total models come first.
-
-To download pregame candles for direct spread and total markets:
-
-```powershell
-python scripts/kalshi_download_line_candles.py
-```
-
-This writes `data/raw/kalshi/line_candles/`, `data/processed/kalshi_line_pregame_prices.csv`, and `data/reports/kalshi_line_candle_summary.json`. These prices are kept separate from the game-winner backtest until spread and total probability engines have their own validation.
-
-To evaluate direct spread and total markets against the margin/total prediction engines:
-
-```powershell
-python scripts/evaluate_line_markets.py --edge-threshold 0.05
-```
-
-This writes `data/reports/line_market_model_eval.csv` and `data/reports/line_market_model_eval_summary.json`. The result is exploratory only. It does not affect the headline slate backtest and it keeps parlays blocked unless individual spread/total economics become positive out-of-sample.
-
-To classify all cached NBA Kalshi markets by bet type:
-
-```powershell
-python scripts/build_kalshi_market_taxonomy.py
-```
-
-That creates `data/processed/kalshi_market_taxonomy.csv` and `data/reports/kalshi_market_taxonomy_summary.json`. The taxonomy is the broad all-bets inventory; the full-game winner backtest still uses only high-confidence `KXNBAGAME` rows until spread, total, team-total, and prop engines have separate validation.
-
-Inside the Streamlit app, the `Manual Markets` tab lets you:
-
-- load a local or uploaded Kalshi-style CSV
-- download a blank market template
-- preview model-vs-market YES signals
-- run a paper backtest for rows that include final settlement values
-
-The Streamlit labels are written for normal use:
-
-- `Our Picked Team Win Chance` is the old model YES probability.
-- `Market-Implied Chance` is the market price converted into a probability.
-
-Or refresh the main project outputs in one command:
-
-```powershell
-python scripts/run_full_pipeline.py
-```
-
-That uses cached NBA data, rebuilds features, trains models, runs walk-forward predictions, runs the mock/manual-market backtest, sweeps thresholds, analyzes results, and rebuilds the dashboard. Add `--download` only when you want it to fetch NBA data again.
-
-## Metrics
-
-Model metrics shown:
-
-- accuracy
-- log loss
-- Brier score
-- ROC AUC
-- calibration curve
-
-Backtest metrics shown:
-
-- ending bankroll
-- total return
-- number of trades
-- win rate
-- max drawdown
-- average edge
-- average profit per trade
-- ROI on amount risked
-
-Saved report files currently include:
-
-- `data/reports/model_metrics.json`
-- `data/reports/model_predictions.csv`
-- `data/reports/model_feature_diagnostics.csv`
-- `data/reports/model_tuning_results.csv`
-- `data/reports/model_tuning_summary.json`
-- `data/reports/tuned_walk_forward_predictions.csv`
-- `data/reports/home_win_ensemble_predictions.csv`
-- `data/reports/home_win_ensemble_summary.json`
-- `data/reports/calibration_curve.csv`
-- `data/reports/calibration_curve.png`
-- `data/reports/probability_distribution.png`
-- `data/reports/backtest_trades.csv`
-- `data/reports/backtest_summary.json`
-- `data/reports/edge_calibrated_trades.csv`
-- `data/reports/edge_calibration_bins.csv`
-- `data/reports/edge_calibration_summary.json`
-- `data/reports/edge_calibration_audit.csv`
-- `data/reports/edge_calibration_negative_edge_signals.csv`
-- `data/reports/edge_calibrated_trades_market_blend.csv`
-- `data/reports/edge_calibration_audit_market_blend.csv`
-- `data/reports/edge_consensus_calibrated_trades.csv`
-- `data/reports/edge_consensus_summary.json`
-- `data/reports/edge_robust_consensus_trades.csv`
-- `data/reports/edge_robust_consensus_summary.json`
-- `data/reports/signal_stability_consensus.csv`
-- `data/reports/signal_stability_robust_consensus.csv`
-- `data/reports/strategy_readiness.csv`
-- `data/reports/strategy_readiness_summary.json`
-- `data/reports/signal_rule_sweep.csv`
-- `data/reports/signal_rule_sweep_summary.json`
-- `data/reports/parlay_correlation_report.csv`
-- `data/reports/parlay_correlation_summary.json`
-- `data/reports/forward_recommendations.csv`
-- `data/reports/forward_recommendations_summary.json`
-- `data/reports/backtest_trades_tuned.csv`
-- `data/reports/backtest_summary_tuned.json`
-- `data/reports/matched_markets.csv`
-- `data/reports/market_matching_report.json`
-- `data/reports/market_validation_report.json`
-- `data/reports/market_data_quality_report.json`
-- `data/reports/paper_trade_suggestions.csv`
-- `data/reports/threshold_sweep.csv`
-- `data/reports/threshold_sweep.png`
-- `data/reports/portfolio_trades.csv`
-- `data/reports/portfolio_slates.csv`
-- `data/reports/portfolio_summary.json`
-- `data/reports/portfolio_trades_calibrated.csv`
-- `data/reports/portfolio_slates_calibrated.csv`
-- `data/reports/portfolio_summary_calibrated.json`
-- `data/reports/portfolio_trades_market_blend_calibrated.csv`
-- `data/reports/portfolio_slates_market_blend_calibrated.csv`
-- `data/reports/portfolio_summary_market_blend_calibrated.json`
-- `data/reports/portfolio_trades_consensus_calibrated.csv`
-- `data/reports/portfolio_slates_consensus_calibrated.csv`
-- `data/reports/portfolio_summary_consensus_calibrated.json`
-- `data/reports/portfolio_trades_robust_consensus.csv`
-- `data/reports/portfolio_slates_robust_consensus.csv`
-- `data/reports/portfolio_summary_robust_consensus.json`
-- `data/reports/headline_backtest_summary.json`
-- `data/reports/signal_rule_walk_forward_trades.csv`
-- `data/reports/signal_rule_walk_forward_folds.csv`
-- `data/reports/signal_rule_walk_forward_monthly.csv`
-- `data/reports/signal_rule_walk_forward_summary.json`
-- `data/reports/market_line_coverage.csv`
-- `data/reports/market_line_coverage_summary.json`
-- `data/reports/kalshi_multivariate_nba_legs_summary.json`
-- `data/reports/security_audit_findings.csv`
-- `data/reports/security_audit_summary.json`
-- `data/reports/prediction_probability_bins.csv`
-- `data/reports/prediction_probability_bins.png`
-- `data/reports/prediction_season_summary.csv`
-- `data/reports/prediction_season_summary.png`
-- `data/reports/backtest_edge_bins.csv`
-- `data/reports/backtest_edge_bins.png`
-- `data/reports/top_backtest_trades.csv`
-- `data/reports/diagnostics_summary.json`
-- `data/reports/dashboard.html`
-- `data/reports/equity_curve.png`
-- `data/reports/edge_distribution.png`
-- `data/reports/walk_forward_predictions.csv`
-- `data/reports/all_game_predictions.csv`
-- `data/reports/walk_forward_metrics.json`
-- `data/reports/market_type_predictions.csv`
-- `data/reports/market_type_model_metrics.json`
-- `data/reports/market_type_probability_calibration.csv`
-- `data/reports/market_type_calibration_summary.json`
-- `data/reports/player_feature_comparison.json`
-- `data/reports/upcoming_predictions.csv`
-- `data/reports/upcoming_market_suggestions.csv`
-- `data/kalshi/markets_live.csv`
-- `data/reports/walk_forward_calibration_curve.csv`
-- `data/reports/walk_forward_calibration_curve.png`
-- `data/reports/walk_forward_probability_distribution.png`
-- `data/reports/data_validation_summary.json`
-- `data/reports/data_validation_issues.csv`
-
-## Known Limitations
-
-- `nba_api` can timeout or reject rapid requests. The downloader uses retries and local cache, but slow requests can still happen.
-- Current code can cache regular-season and playoff data, but play-in coverage still depends on model game rows, start times, and candles being present.
-- Kalshi market matching is intentionally local/mock-first because market naming can vary.
-- Backtests use pregame candles only; if a candle source is missing or coarse, the row is filtered or marked lower quality.
-- The interactive dashboard requires the optional `requirements-dashboard.txt` install.
-- Player features are recent-rotation proxies from prior box scores. Optional availability features depend on the local CSV you provide; they are not a paid feed or guaranteed confirmed starting lineups.
-
-## Future Improvements
-
-- Add real pre-game Kalshi market snapshots once a clean free source or manual workflow is available.
-- Add richer dashboard controls for comparing models and market files side by side.
-- Add closing-line-value tracking.
-- Add fractional Kelly with strict caps.
-- Improve injury/player availability inputs only when the data source is free, clean, and allowed.
-- Compare player-aware models against team-only models with walk-forward splits before trusting any uplift.
-- Expand beyond team win markets only after the team model is stable.
-
-## Files To Inspect First
-
-- `src/data/nba_client.py` for NBA download and cache behavior.
-- `src/data/loaders.py` for loading raw logs and building one row per game.
-- `src/data/player_client.py` for player game-log download and cache behavior.
-- `src/features/team_features.py` for final modeling rows.
-- `src/features/player_features.py` for leak-safe player rotation features.
-- `src/features/rolling_stats.py` for leak-safe recent-form stats.
-- `src/reports/data_validation.py` for saved-artifact quality checks.
-- `src/models/train_model.py` for baseline model training.
-- `src/models/tuning.py` for time-aware model tuning.
-- `src/models/market_blend.py` for expanding-window model plus market probability blending.
-- `src/strategy/backtest.py` for fake bankroll accounting.
-- `src/strategy/edge_calibration.py` for expanding-window edge validation before portfolio selection.
-- `src/strategy/consensus.py` for requiring raw and market-blend calibrated signals to agree.
-- `src/strategy/robustness.py` for lower-confidence-bound signal screening.
-- `src/strategy/stability.py` for month-by-month signal stability diagnostics.
-- `src/strategy/readiness.py` for strategy readiness gates before parlay research.
-- `src/strategy/forward.py` for upcoming game recommendations and paper sizing.
-- `src/strategy/portfolio.py` for pre-parlay individual slate selection.
-- `config.yaml` for default settings.
-- `scripts/download_nba_data.py` for the first CLI command.
-- `scripts/download_all_nba_data.py` for regular-season plus playoff downloads.
-- `scripts/build_features.py` for turning cached logs into feature data.
-- `scripts/run_backtest.py` for the mock Kalshi paper-trading run.
-- `scripts/calibrate_edges.py` for validating edge buckets before selecting slates.
-- `scripts/build_consensus_edges.py` for the stricter pre-parlay consensus filter.
-- `scripts/screen_robust_edges.py` for lower-confidence-bound filtering.
-- `scripts/analyze_signal_stability.py` for signal stability diagnostics.
-- `scripts/strategy_readiness.py` for conservative paper-trade readiness scoring.
-- `scripts/build_forward_recommendations.py` for the website's current/upcoming games tab.
-- `scripts/market_blend.py` for market-aware probability blending and its paper backtest.
-- `scripts/optimize_portfolio.py` for constrained individual-bet slate selection before parlays.
-- `scripts/walk_forward.py` for multi-season out-of-sample predictions.
-- `scripts/tune_model.py` for walk-forward model tuning.
-- `scripts/train_market_type_models.py` for spread and total-points engines.
-- `scripts/predict_upcoming.py` for upcoming NBA schedule predictions.
-- `scripts/download_kalshi_markets.py` for public Kalshi NBA game market snapshots.
-- `scripts/discover_kalshi_nba_markets.py` for broader NBA market discovery across recent Kalshi series.
-- `scripts/sweep_thresholds.py` for comparing edge-threshold settings.
-- `scripts/analyze_results.py` for extra model and backtest diagnostics.
-- `scripts/dashboard_app.py` for the optional Streamlit dashboard.
-- `scripts/run_dashboard.py` for launching the optional Streamlit dashboard.
-- `scripts/refresh_current_season.py` for refreshing the current NBA season and rebuilding reports.
-- `scripts/run_full_pipeline.py` for refreshing all main outputs and the dashboard.
-
-## Dashboard Plan
-
-The project includes a self-contained local HTML dashboard:
-
-```powershell
-python scripts/build_dashboard.py
-```
-
-It reads from `data/reports/`, embeds the generated plots, and provides tabs for overview, model metrics, probability calibration, season diagnostics, backtest results, edge-bucket results, market quality, and searchable data tables.
-
-The project also includes an optional Streamlit dashboard:
-
-```powershell
-python -m pip install -r requirements-dashboard.txt
-python scripts/run_dashboard.py
-```
-
-It shows every historical game in the saved prediction dataset, the model's pick, whether the pick won, whether a market price was loaded, and whether the paper simulator chose to bet.
-
-Run this when you want the `Upcoming` tab populated:
-
-```powershell
-python scripts/predict_upcoming.py --days 14
-python scripts/download_kalshi_markets.py --status open
-```
-
-It also includes a `Manual Markets` workspace for testing a market CSV without overwriting saved reports. Historical backtests need `settlement` values; future or same-day files without settlements will show signal previews but cannot produce resolved P/L yet.
-
-Both dashboards use the same report files:
-
-- model metrics and calibration plots
-- walk-forward predictions
-- upcoming predictions
-- matched public Kalshi game prices
-- market validation and quality reports
-- paper-trade suggestions
-- backtest trades and summaries
-- threshold sweeps
+## Caveats
+
+- Old Kalshi markets can be unavailable or incomplete.
+- Not every NBA game has a Kalshi market.
+- Automated backtests should use only high-confidence `auto_matched` rows.
+- Daily candles are low quality for pregame pricing.
+- This project is paper trading and research only.

@@ -7,9 +7,9 @@ import time
 from pathlib import Path
 
 import pandas as pd
-from tqdm import tqdm
 
 from .nba_client import season_int_to_nba_season
+from .progress import tqdm
 
 
 logger = logging.getLogger(__name__)

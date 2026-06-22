@@ -79,6 +79,7 @@ def main() -> None:
         modeling,
         train_start_season=config.model.train_start_season,
         train_end_season=config.model.train_end_season,
+        validation_season=config.model.validation_season,
         test_season=config.model.test_season,
         random_seed=config.project.random_seed,
         feature_columns=team_only_features,
@@ -87,6 +88,7 @@ def main() -> None:
         modeling,
         train_start_season=config.model.train_start_season,
         train_end_season=config.model.train_end_season,
+        validation_season=config.model.validation_season,
         test_season=config.model.test_season,
         random_seed=config.project.random_seed,
         feature_columns=player_aware_features,
@@ -110,8 +112,8 @@ def main() -> None:
 
     team_best = team_only_metrics["best_model"]
     player_best = player_aware_metrics["best_model"]
-    team_best_metrics = team_only_metrics["models"][team_best]
-    player_best_metrics = player_aware_metrics["models"][player_best]
+    team_best_metrics = team_only_metrics["final_test"][team_best]
+    player_best_metrics = player_aware_metrics["final_test"][player_best]
     deltas = {
         "accuracy": player_best_metrics.get("accuracy", 0) - team_best_metrics.get("accuracy", 0),
         "brier_score": player_best_metrics.get("brier_score", 0) - team_best_metrics.get("brier_score", 0),

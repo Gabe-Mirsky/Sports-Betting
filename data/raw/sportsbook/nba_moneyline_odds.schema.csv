@@ -1,0 +1,11 @@
+column,required,type,description
+game_date,yes,date,NBA game date. Use YYYY-MM-DD when possible.
+home_team,yes,string,Home NBA team name or abbreviation. Aliases are normalized in src/data/team_aliases.py.
+away_team,yes,string,Away NBA team name or abbreviation. Aliases are normalized in src/data/team_aliases.py.
+home_moneyline,yes,number,American moneyline odds for the home team. Example: -145 or 125.
+away_moneyline,yes,number,American moneyline odds for the away team. Example: 125 or -145.
+sportsbook,no,string,Source label. For the free pipeline this is Kaggle christophertreasure/nba-odds-data.
+timestamp,no,datetime,Odds timestamp. Used to choose the latest row when no closing flag exists.
+is_closing,no,boolean,True when the row is known to be closing odds. Preferred when multiple rows exist for one game.
+spread,no,number,Closing point spread if available.
+total,no,number,Closing game total if available.

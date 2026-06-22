@@ -54,6 +54,26 @@ class TestSignalStability(unittest.TestCase):
         self.assertEqual(summary["signals"], 2)
         self.assertEqual(summary["positive_months"], 1)
 
+    def test_summarize_signal_stability_uses_contract_outcome_for_no_side(self) -> None:
+        rows = pd.DataFrame(
+            [
+                {
+                    "date": "2025-01-01",
+                    "calibrated_trade": True,
+                    "candidate_side": "NO",
+                    "actual_yes_win": False,
+                    "contract_cost": 0.40,
+                    "edge": 0.05,
+                }
+            ]
+        )
+
+        monthly, summary = summarize_signal_stability(rows, signal_column="calibrated_trade")
+
+        self.assertAlmostEqual(float(monthly.loc[0, "win_rate"]), 1.0)
+        self.assertAlmostEqual(float(monthly.loc[0, "avg_profit_per_share"]), 0.60)
+        self.assertAlmostEqual(float(summary["overall_win_rate"]), 1.0)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,4 @@
+fixture_id,sport,league,game_date,team_a,team_b,team_a_home_flag,team_b_home_flag,neutral_site,competition_type,venue,status
+fx_jpn_tun,soccer,international_friendly,2026-06-20,Japan,Tunisia,0,0,1,friendly,Neutral Stadium,scheduled
+fx_kor_aus,soccer,international,2026-06-20,South Korea,Australia,1,0,0,qualifier,Seoul World Cup Stadium,scheduled
+fx_mar_usa,soccer,international,2026-06-21,Morocco,USA,1,0,0,friendly,Stade Mohammed V,scheduled

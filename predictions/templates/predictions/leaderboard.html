@@ -1,0 +1,46 @@
+{% extends "predictions/base.html" %}
+
+{% block title %}Leaderboard{% endblock %}
+
+{% block content %}
+<div class="section-head">
+  <h1>Leaderboard</h1>
+  <div class="sort-toggle">
+    <a class="btn {% if sort == 'confidence' %}btn-primary{% endif %}" href="?sort=confidence">By confidence</a>
+    <a class="btn {% if sort == 'probability' %}btn-primary{% endif %}" href="?sort=probability">By pick probability</a>
+  </div>
+</div>
+
+{% if predictions %}
+<div class="table-wrap">
+  <table class="pred-table">
+    <thead>
+      <tr>
+        <th class="col-rank">#</th>
+        <th class="col-teams">Teams</th>
+        <th class="col-sport">Sport</th>
+        <th class="col-league">League</th>
+        <th class="col-pred">Prediction</th>
+        <th class="col-num">Pick prob.</th>
+        <th class="col-num">Confidence</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in predictions %}
+      <tr>
+        <td class="col-rank">{{ forloop.counter }}</td>
+        <td class="col-teams"><a href="{{ p.get_absolute_url }}">{{ p.team_a }} <span class="vs">vs</span> {{ p.team_b }}</a></td>
+        <td class="col-sport">{{ p.sport|default:"—" }}</td>
+        <td class="col-league">{{ p.league|default:"—" }}</td>
+        <td class="col-pred"><span class="pick">{{ p.predicted_outcome }}</span></td>
+        <td class="col-num">{% if p.pick_probability_pct %}{{ p.pick_probability_pct }}%{% else %}—{% endif %}</td>
+        <td class="col-num"><span class="badge badge-{{ p.confidence_level|slugify }}">{{ p.confidence_level }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+  <div class="empty">No predictions yet.</div>
+{% endif %}
+{% endblock %}

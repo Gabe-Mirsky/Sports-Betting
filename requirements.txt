@@ -11,3 +11,12 @@ joblib
 nba_api
 pyarrow
 pyyaml
+kagglehub
+openpyxl
+xlrd
+xgboost
+Django>=5.0,<5.2
+gunicorn>=21
+whitenoise>=6.6
+dj-database-url>=2.1
+psycopg[binary]>=3.1
